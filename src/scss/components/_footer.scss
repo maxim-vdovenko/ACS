@@ -1,0 +1,26 @@
+.footer {
+	$footer: &;
+	@include block(); 
+  background-color: $color_blue;
+	
+  .container {
+    min-height: 175px;
+  }
+
+  // .col {
+  //   @media (max-width: $screen_sm) { 
+  //   }
+  // }
+
+
+  &__menu {
+    @include block();
+    
+    li {
+
+      a {
+
+      }
+    }
+  }
+}

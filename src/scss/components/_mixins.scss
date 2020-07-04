@@ -1,0 +1,60 @@
+@mixin block() {
+  position: relative;
+  display: block;
+}
+
+@mixin inline_block($vertical: top, $align: left) {
+  position: relative;
+  display: inline-block;
+  text-align: $align;
+  vertical-align: $vertical;
+}
+
+@mixin inline($align: left) {
+  position: relative;
+  display: inline;
+  text-align: $align;
+}
+
+@mixin flex() {
+  position: relative;
+  display: flex;
+}
+
+@mixin position($pos: absolute, $left: 0, $top: 0, $width: auto, $height: auto) {
+  position: $pos;
+  top: $top;
+  left: $left;
+  width: $width;
+  height: $height;
+}
+
+@mixin image($image, $cover: cover, $pos: top, $repeat: no-repeat) {
+  background-image: url(#{$path_img}#{$image});
+  background-position: $pos;
+  background-repeat: $repeat;
+  background-size: $cover;
+}
+
+@mixin placeholder($color: #000, $weight: 400) {
+  &::-webkit-input-placeholder {
+    color: $color;
+    font-weight: $weight;
+  }
+  &:-moz-placeholder {
+    color: $color;
+    font-weight: $weight;
+  }
+  &::-moz-placeholder {
+    color: $color;
+    font-weight: $weight;
+  }
+  &:-ms-input-placeholder {
+    color: $color;
+    font-weight: $weight;
+  }
+}
+
+@mixin b($col: #f00) {
+  border: 1px solid $col;
+}

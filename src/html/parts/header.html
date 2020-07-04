@@ -1,0 +1,40 @@
+<header class="header"> 
+
+  <div class="container">
+  
+    <div class="row"> 
+
+      <div class="col"> 
+
+        <a class="header__logo" href="index.html"></a>
+
+      </div>
+
+      <div class="col"> 
+
+        <ul class="header__menu">
+          <li @@if (menuIndex === 1) {class="active"}><a href="#">About Us</a></li>
+          <li @@if (menuIndex === 2) {class="active"}><a href="#">Order Fulfillment</a></li>
+          <li @@if (menuIndex === 3) {class="active"}><a href="#">Mail Forwarding</a></li>
+          <li @@if (menuIndex === 4) {class="active"}><a href="#">Dropshipping</a></li>
+          <li @@if (menuIndex === 5) {class="active"}><a href="#">Amazon Returns</a></li>
+          <li @@if (menuIndex === 6) {class="active"}><a href="#">Amazon Preparation Services</a></li>
+          <li @@if (menuIndex === 7) {class="active"}><a href="#">Contact Us</a></li>
+        </ul>
+
+      </div>
+
+      <div class="col"> 
+
+        <ul class="header__login">
+          <li><a class="button button--blueLight" href="#">Login</a></li>
+          <li><a class="button" href="#">Get Started</a></li>
+        </ul>
+
+      </div>
+        
+    </div>
+    
+  </div>
+
+</header>

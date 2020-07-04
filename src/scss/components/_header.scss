@@ -1,0 +1,30 @@
+.header {
+  @include block();
+  
+  .container {
+    min-height: 108px;
+  }
+
+  &__logo {
+    @include inline_block();
+    @include image('logo.svg', contain, 0 0);
+    width: 306px;
+    height: 48px;
+  }
+
+  &__menu {
+    @include block();
+
+    // @media (max-width: $screen_sm) { 
+     
+    // }
+
+    li {
+      @include inline_block();
+
+      a {
+        
+      }
+    }
+  }
+}
