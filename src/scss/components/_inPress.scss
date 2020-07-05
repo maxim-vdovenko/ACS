@@ -1,0 +1,62 @@
+.inPress {
+  @include block();
+
+  .container {
+    max-width: 1170px;
+    min-height: 405px;
+    padding-top: 88px;
+    padding-bottom: 20px;
+  }
+
+  .col {
+    &:nth-child(1) {
+      min-width: 400px;
+      flex: none;
+      padding-top: 34px;
+    }
+    &:nth-child(2) {
+      flex: 1;
+    }
+  }
+
+  &__list {
+    @include flex();
+    flex-wrap: wrap;
+    align-items: flex-end;
+
+    li {
+      @include flex();
+      width: 33.33%;
+      margin-bottom: 43px;
+
+      &:nth-child(3n + 2) {
+        justify-content: center;
+      }
+      &:nth-child(3n + 3) {
+        justify-content: flex-end;
+      }
+
+      img {
+        max-width: 100%;
+      }
+    }
+
+    &--align li {
+      &:nth-child(1) {
+        top: 3px;
+      }
+      &:nth-child(3) {
+        top: 3px;
+      }
+      &:nth-child(4) {
+        padding-left: 17px;
+      }
+      &:nth-child(5) {
+        top: -6px;
+      }
+      &:nth-child(6) {
+        top: 2px;
+      }
+    }
+  }
+}

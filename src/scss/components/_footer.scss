@@ -1,25 +1,105 @@
 .footer {
-	$footer: &;
 	@include block(); 
   background-color: $color_blue;
 	
   .container {
+    max-width: 1854px;
     min-height: 175px;
+    padding-top: 48px;
   }
 
-  // .col {
-  //   @media (max-width: $screen_sm) { 
-  //   }
-  // }
+  .col {
+    &:nth-child(1) {
+      flex: none;
+    }
+    &:nth-child(2) {
+      flex: 1;
+      align-items: center;
+      padding: 5px 0 0 20px;
+    }
+    &:nth-child(3) {
+      flex: none;
+      align-items: flex-end;
+      padding-top: 1px;
+    }
+  }
 
+  &__logo {
+    @include inline_block();
+    @include image('logo-white.svg', contain, 0 0);
+    width: 229px;
+    height: 36px;
+  }
+
+  &__copyright {
+    @include block();
+    margin-top: 29px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 20px;
+    color: $color_text_violet;
+  }
 
   &__menu {
-    @include block();
+    @include flex();
+    flex-wrap: wrap;
     
     li {
+      @include inline_block();
+      margin: 0 18px;
 
       a {
+        font-size: 14px;
+        line-height: 28px;
+        letter-spacing: 0.025em;
+        text-decoration: none;
+        color: $color_text_white;
+        transition: color $time;
+      }
+    }
+  }
 
+  &__paymentSystems {
+    @include flex();
+    flex-wrap: wrap;
+    align-items: center;
+
+    li {
+      @include inline_block();
+
+      &:nth-child(3), &:nth-child(4) {
+        padding-top: 2px;
+      }
+
+      &:not(:first-child) {
+        margin-left: 18px;
+      }
+    }
+  }
+
+  &__terms {
+    @include flex();
+    flex-wrap: wrap;
+    margin-top: 32px;
+
+    li {
+      @include inline_block();
+
+      &:not(:first-child) {
+        margin-left: 36px;
+      }
+
+      a {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 20px;
+        color: $color_text_violet;
+
+        &:hover {
+          text-decoration: none;
+        }
       }
     }
   }

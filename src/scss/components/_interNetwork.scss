@@ -1,0 +1,16 @@
+.interNetwork {
+  @include block();
+  margin: 100px 0 100px 0;
+
+  &__map {
+    @include block();
+    @include image('inter-network-map.svg', contain, 0 0);
+    width: 938px;
+    height: 580px;
+    margin: 40px auto 0 auto;
+
+    &-box {
+
+    }
+  }
+}

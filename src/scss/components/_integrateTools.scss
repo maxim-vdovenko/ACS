@@ -1,0 +1,8 @@
+.integrateTools {
+  @include block();
+  background-color: $color_blueLight_2;
+
+  .container {
+    min-height: 500px;
+  }
+}

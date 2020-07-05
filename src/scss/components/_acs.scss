@@ -1,3 +1,49 @@
 .acs {
   @include block();
+
+  .container {
+    max-width: 1165px;
+    min-height: 872px;
+    padding-top: 163px;
+  }
+
+  .col {
+    flex: none;
+    width: 50%;
+  }
+
+  &__mask {
+    @include image('acs/mask.svg', auto 100%, -390px 0);
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 10000px;
+    height: 100%;
+    margin-left: 231px;
+    background-color: $color_blueLight_2;
+  }
+
+  &__circles {
+    @include image('acs/circles.svg', contain, 0 0);
+    position: absolute;
+    top: 676px;
+    left: 50%;
+    width: 296px;
+    height: 448px;
+    margin-left: -1114px;
+  }
+
+  &__laptop {
+    @include block();
+    @include image('acs/laptop.svg', contain, 0 0);
+    width: 854px;
+    height: 585px;
+    margin: 27px 0 0 31px;
+  }
+
+  &__play {
+    position: absolute;
+    top: 189px;
+    left: 61px;
+  } 
 }

@@ -83,7 +83,6 @@ a, input, textarea, select, button {
 /* Common Elements --------------------------------------*/
 .total-container {
   @include block();
-  min-height: 100%;
   overflow: hidden;
 }
 
@@ -94,6 +93,7 @@ a, input, textarea, select, button {
 
 .col {
   @include flex();
+  flex-direction: column;
   flex: 1;
 }
 
@@ -105,70 +105,21 @@ a, input, textarea, select, button {
   padding-right: $padding_sides;
 }
 
+.titleBox {
+  @include block();
+}
 
-// .textBox {
-//   @include block();
+.textBox {
+  @include block();
 
-//   h2 {
-//     margin-bottom: 24px;
-//     font-weight: 900;
-//     font-size: 36px;
-//     line-height: 40px;
-//     letter-spacing: 0.04em;
-//     color: $color_dark;
+  h1 {
+    margin-bottom: 40px;
+  }
 
-//     @media (max-width: $screen_sm) { 
-//       font-size: 24px;
-//       line-height: 27px;
-//     }
-//   }
-
-//   h4 {
-//     margin-bottom: 32px;
-//     font-weight: 800;
-//     font-size: 24px;
-//     line-height: 27px;
-//     letter-spacing: 0.04em;
-//     color: $color_dark;
-
-//     @media (max-width: $screen_sm) { 
-//       margin-bottom: 25px;
-//       font-size: 20px;
-//       line-height: 25px;
-//     }
-//   }
-
-//   p {
-//     margin-bottom: 16px;
-//     font-size: 18px;
-//     line-height: 24px;
-//     letter-spacing: 0.04em;
-//     color: $color_gray;
-
-//     @media (max-width: $screen_sm) { 
-//       margin-bottom: 25px;
-//       font-size: 16px;
-//       line-height: 20px;
-//     }
-
-//     b {
-//       font-weight: 600;
-//       font-size: inherit;
-//       line-height: inherit;
-//     }
-
-//     a {
-//       display: inline;
-//       font-size: inherit;
-//       line-height: inherit;
-//       color: $color_blue;
-
-//       &:hover {
-//         text-decoration: none;
-//       }
-//     }
-//   }
-// }
+  p {
+    margin-bottom: 20px;
+  }
+}
 
 .button {
   position: relative;
@@ -184,13 +135,57 @@ a, input, textarea, select, button {
   font-size: 14px;
   line-height: 28px;
   letter-spacing: 0.025em;
-  text-transform: uppercase;
   text-decoration: none;
   color: $color_text_white;
   cursor: pointer;
+  user-select: none; 
+  box-shadow: 0 14px 18px -2px rgba(47, 130, 255, 0.4);
 
   &--blueLight {
     background-color: $color_blueLight;
     color: $color_text_main;
+    box-shadow: none;
+  }
+}
+
+.button-play {
+  @include image('icon-play.svg', 33px auto, left 42px center);
+  position: relative;
+  width: 108px;
+  height: 108px;
+  border: none;
+  border-radius: 1000px;
+  background-color: $color_blue;
+  cursor: pointer;
+  box-shadow: 0 14px 18px -2px rgba(47, 130, 255, 0.4);
+}
+
+.paymentSystems {
+  @include block();
+  cursor: pointer;
+  text-decoration: none;
+
+  &--visa {
+    @include image('payment-systems/Visa.svg', contain, 0 0);
+    width: 30px;
+    height: 21px;
+  }
+  
+  &--mc {
+    @include image('payment-systems/MC.svg', contain, 0 0);
+    width: 30px;
+    height: 21px;
+  }
+
+  &--bitcoin {
+    @include image('payment-systems/Bitcoin.svg', contain, 0 0);
+    width: 30px;
+    height: 30px;
+  }
+
+  &--paypal {
+    @include image('payment-systems/Paypal.svg', contain, 0 0);
+    width: 29px;
+    height: 30px;
   }
 }

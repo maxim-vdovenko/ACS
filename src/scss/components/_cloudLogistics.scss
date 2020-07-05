@@ -1,0 +1,153 @@
+.cloudLogistics {
+  @include block();
+  margin-top: 267px;
+
+  .titleBox {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  &__block {
+    @include block();
+  }
+
+  &__cont {
+    @include block();
+    height: 700px;
+  }
+
+  &__box {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border-radius: 30px;
+    opacity: 0;
+
+    &.active {
+      opacity: 1;
+      z-index: 1;
+    }
+
+    &-img {
+      position: relative;
+      width: 50%;
+    }
+
+    &-text {
+      position: relative;
+      width: 50%;
+    }
+
+    &--order {
+      background-color: $color_blueLight;
+    }
+
+    &--dropshipping {
+      background-color: $color_violet;
+    }
+
+    &--returns {
+      background-color: $color_cyan;
+    }
+
+    &--services {
+      background-color: $color_red;
+    }
+
+    &--forwarding {
+      background-color: $color_yellow;
+    }
+
+    .button {
+      min-width: 240px;
+    }
+  }
+
+  &__menu {
+    @include flex();
+    justify-content: center;
+
+    li {
+      @include flex();
+      align-items: flex-start;
+      justify-content: center;
+      width: 140px;
+      padding-top: 87px;
+      margin: 0 30px;
+
+      span {
+        padding-top: 27px;
+        font-size: 18px;
+        line-height: 24px;
+        letter-spacing: 0.025em;
+        text-align: center;
+        color: $color_text_main;
+        cursor: pointer;
+        user-select: none; 
+
+        &:before {
+          position: absolute;
+          top: 0;
+          left: 50%;
+          width: 36px;
+          height: 12px;
+          margin-left: -18px;
+          border-radius: 1000px;
+          transition: all 0.35s;
+          content: '';
+        }
+
+        &:hover {
+          &:before {
+            top: -3px;
+            width: 18px;
+            height: 18px;
+            margin-left: -9px;
+          }
+        }
+      }
+
+      &.cl-order {
+        span:before {
+          background-color: $color_blueLight;
+        }
+      }
+
+      &.cl-dropshipping {
+        span:before {
+          background-color: $color_violet;
+        }
+      }
+
+      &.cl-returns {
+        span:before {
+          background-color: $color_cyan;
+        }
+      }
+
+      &.cl-services {
+        span:before {
+          background-color: $color_red;
+        }
+      }
+
+      &.cl-forwarding {
+        span:before {
+          background-color: $color_yellow;
+        }
+      }
+
+      &.active {
+        span:before {
+          top: -3px;
+          width: 18px;
+          height: 18px;
+          margin-left: -9px;
+        }
+      }
+    }
+  }
+}
