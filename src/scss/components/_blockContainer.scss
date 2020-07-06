@@ -1,0 +1,55 @@
+.blockContainer {
+  @include block();
+  margin-top: 120px;
+
+  .row {
+
+    &:nth-child(2n + 0) .col {
+
+      &:nth-child(1) {
+        order: 1;
+      }
+
+      &:nth-child(2) {
+        order: 0;
+      }
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 240px;
+    }
+  }
+
+  .col {
+    flex: none;
+    width: 50%;
+  }
+
+  &__internationalShipping {
+    @include block();
+    @include image('block-container/international-shipping/main.svg', contain, 0 0);
+    width: 490px;
+    height: 461px;
+  }
+
+  &__storageFulfillment {
+    @include block();
+    @include image('block-container/storage-fulfillment/main.svg', contain, 0 0);
+    width: 604px;
+    height: 512px;
+  }
+
+  &__softwarePlatform {
+    @include block();
+    @include image('block-container/software-platform/main.svg', contain, 0 0);
+    width: 625px;
+    height: 457px;
+  }
+
+  &__scaleCommerce {
+    @include block();
+    @include image('block-container/scale-commerce/main.svg', contain, 0 0);
+    width: 592px;
+    height: 542px;
+  }
+}

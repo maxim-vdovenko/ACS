@@ -2,7 +2,7 @@
   @include block();
 
   .container {
-    max-width: 1165px;
+    max-width: 1168px;
     min-height: 872px;
     padding-top: 163px;
   }
@@ -10,6 +10,10 @@
   .col {
     flex: none;
     width: 50%;
+  }
+
+  .textBox {
+    padding-right: 20px;
   }
 
   &__mask {

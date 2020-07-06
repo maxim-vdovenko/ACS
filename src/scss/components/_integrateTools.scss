@@ -1,8 +1,63 @@
 .integrateTools {
   @include block();
+  margin-top: 110px;
   background-color: $color_blueLight_2;
 
   .container {
     min-height: 500px;
+  }
+
+  &__info {
+    .titleBox {
+      text-align: center;
+    }
+  }
+}
+
+.superiority {
+  @include flex();
+  margin: 0 -30px;
+  padding-top: 144px;
+
+  &__box {
+    position: relative;
+    flex: 1;
+    padding: 0 30px;
+  }
+
+  &__cont {
+    @include block();
+    @include image('icon-quotes.svg', 85px auto, right 10px bottom 0);
+    background-color: $color_white;
+    border-radius: 18px;
+    padding: 45px 36px 30px 36px;
+    box-shadow: 0px 18px 42px rgba(197, 228, 243, 0.4);
+    
+    &-text {
+      @include block();
+      margin-bottom: 34px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 28px;
+      color: $color_text_main;
+    }
+
+    &-name {
+      @include block();
+      font-size: 14px;
+      line-height: 28px;
+      letter-spacing: 0.025em;
+      color: $color_text_blue;
+    }
+
+    &-position {
+      @include block();
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 20px;
+      color: $color_text_main;
+    }
   }
 }

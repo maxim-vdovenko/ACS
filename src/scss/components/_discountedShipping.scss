@@ -1,0 +1,45 @@
+.discountedShipping {
+  @include block();
+  margin-top: 130px;
+
+  .container {
+  
+  }
+
+  .row {
+    min-height: 995px;
+    align-items: center;
+  }
+
+  .col {
+    &:nth-child(1) {
+      // flex: none;
+    }
+    &:nth-child(2) {
+
+    }
+  }
+
+  &__mask {
+    position: absolute;
+    top: 0;
+    right: 50%;
+    width: 10000px;
+    height: 100%;
+    margin-right: -300px;
+    background-color: $color_blueLight_2;
+  }
+
+  &__logos {
+    @include flex();
+    align-items: center;
+
+    li {
+      @include inline_block();
+
+      &:not(:first-child) {
+        margin-left: 36px;
+      } 
+    }
+  }
+}

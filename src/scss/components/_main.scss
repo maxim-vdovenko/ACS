@@ -113,11 +113,11 @@ a, input, textarea, select, button {
   @include block();
 
   h1 {
-    margin-bottom: 40px;
+    margin-bottom: 49px;
   }
 
   p {
-    margin-bottom: 20px;
+    margin-bottom: 22px;
   }
 }
 
@@ -126,7 +126,7 @@ a, input, textarea, select, button {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  min-width: 140px;
+  min-width: 240px;
   height: 48px;
   padding: 0 20px;
   background-color: $color_blue;
@@ -140,11 +140,22 @@ a, input, textarea, select, button {
   cursor: pointer;
   user-select: none; 
   box-shadow: 0 14px 18px -2px rgba(47, 130, 255, 0.4);
+  transition: box-shadow 0.4s;
 
   &--blueLight {
     background-color: $color_blueLight;
     color: $color_text_main;
-    box-shadow: none;
+    box-shadow: none !important;
+  }
+
+  &--big {
+    height: 60px;
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  &:hover {
+    box-shadow: 0 15px 20px 0 rgba(47, 130, 255, 0.6);
   }
 }
 
@@ -158,6 +169,12 @@ a, input, textarea, select, button {
   background-color: $color_blue;
   cursor: pointer;
   box-shadow: 0 14px 18px -2px rgba(47, 130, 255, 0.4);
+  transition: all 0.4s;
+
+  &:hover {
+    box-shadow: 0 15px 20px 0 rgba(47, 130, 255, 0.75);
+    transform: scale(1.06);
+  }
 }
 
 .paymentSystems {
