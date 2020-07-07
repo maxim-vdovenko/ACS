@@ -3,26 +3,49 @@
   margin-top: 111px;
   background-color: $color_blueLight_2;
 
-  .container {
-    min-height: 500px;
+  &__reviews {
+    @include block();
+    padding-top: 144px;
   }
 
-  &__info {
+  &__instruments {
+    @include block();
+    padding: 236px 0 194px 0;
+
     .titleBox {
       text-align: center;
+    }
+
+    &-button {
+      @include flex();
+      justify-content: center;
+      margin-top: 42px;
+    }
+  }
+
+  &__circles {
+    position: absolute;
+    border-radius: 1000px;
+    opacity: 0;
+
+    &--1 {
+      top: 1122px;
+      left: 200px;
+      width: 32px;
+      height: 32px;
+      background-color: $color_red;
     }
   }
 }
 
-.superiority {
+.reviews {
   @include flex();
   margin: 0 -30px;
-  padding-top: 144px;
 
   &__box {
     position: relative;
     flex: 1;
-    padding: 0 30px;
+    padding: 0 30px 30px 30px;
   }
 
   &__cont {
@@ -60,6 +83,104 @@
       font-size: 12px;
       line-height: 20px;
       color: $color_text_main;
+    }
+  }
+}
+
+.instruments {
+  @include flex();
+  margin: 95px -30px 0 -30px;
+
+  &__box {
+    position: relative;
+    flex: 1;
+    padding: 0 30px 30px 30px;
+  }
+
+  &__cont {
+    $cont: &;
+    @include block();
+    min-height: 100%;
+    background-color: $color_white;
+    border-radius: 18px;
+    padding: 36px 15px 18px 15px;
+    box-shadow: 0px 18px 42px rgba(197, 228, 243, 0.4);
+
+    &-icon {
+      @include block();
+      width: 72px;
+      height: 72px;
+      margin: 24px auto;
+
+      &:before, &:after {
+        @include position(absolute, 0, 0, 100%, 100%);
+        content: '';
+      }
+      &:before {
+        opacity: 0.2;
+        border-radius: 18px;
+      }
+    }
+
+    &-title {
+      @include block();
+      font-size: 24px;
+      line-height: 34px;
+      letter-spacing: 0.025em;
+      text-align: center;
+      color: $color_text_main;
+    }
+
+    &-logos {
+      @include flex();
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 51px;
+
+      li {
+        @include inline_block();
+        margin: 0 10px 18px 10px;
+
+        img {
+          opacity: 0.6;
+        }
+      }
+    }
+
+    &--carts {
+      #{$cont}-icon {
+        &:before {
+          transform: rotate(-15deg);
+          background-color: $color_violet;
+        }
+        &:after { 
+          @include image('instruments/carts.svg', 30px auto, center);
+        }
+      }
+    }
+
+    &--marketplaces {
+      #{$cont}-icon {
+        &:before {
+          transform: rotate(15deg);
+          background-color: $color_red;
+        }
+        &:after { 
+          @include image('instruments/marketplaces.svg', 30px auto, center);
+        }
+      }
+    }
+
+    &--tools {
+      #{$cont}-icon {
+        &:before {
+          transform: rotate(-15deg);
+          background-color: $color_yellow;
+        }
+        &:after { 
+          @include image('instruments/tools.svg', 30px auto, center);
+        }
+      }
     }
   }
 }
