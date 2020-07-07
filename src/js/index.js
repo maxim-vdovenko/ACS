@@ -1,6 +1,19 @@
 window.onload = function() {
   cloudLogistics.init()
+  // blockContainer.init()
+
+  $('body').on('click', '.blockContainer__animation', (e) => {
+    const th = $(e.currentTarget)
+
+    if (th.hasClass('active')) {
+      th.removeClass('active')
+    } else {
+      th.addClass('active')
+    }
+  })
+
 }
+
 
 
 const cloudLogistics = {
@@ -27,5 +40,32 @@ cloudLogistics.events = function() {
 
     th.parents(this.menu.bl).find('li').removeClass('active')
     th.parents('li').addClass('active')
+  })
+}
+
+
+
+const blockContainer = {
+  internationalShipping: '.blockContainer__animation--internationalShipping',
+  storageFulfillment:  '.blockContainer__animation--storageFulfillment',
+  softwarePlatform: '.blockContainer__animation--softwarePlatform',
+  scaleCommerce: '.blockContainer__animation--scaleCommerce'
+}
+
+blockContainer.init = function() {
+  this.events(new ScrollMagic.Controller())
+}
+
+blockContainer.events = function(controller) {
+
+  const scene = new ScrollMagic.Scene({
+    triggerElement: this.internationalShipping, 
+    triggerHook: 'onEnter', 
+    offset: '100px'})
+    .setTween(this.internationalShipping)
+    .addTo(controller)
+
+  scene.on('enter', () => {
+    $(this.internationalShipping).addClass('active')
   })
 }

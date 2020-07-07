@@ -51,39 +51,200 @@
     }
   }
 
-  &__internationalShipping {
-    @include image('block-container/international-shipping/main.svg', contain, 0 0);
+  &__animation {
     position: absolute;
-    top: 0;
-    left: -45px;
-    width: 490px;
-    height: 461px;
-  }
 
-  &__storageFulfillment {
-    @include image('block-container/storage-fulfillment/main.svg', contain, 0 0);
-    position: absolute;
-    top: 16px;
-    right: -126px;
-    width: 604px;
-    height: 512px;
-  }
+    span {
+      @include position(absolute, 0, 0, 100%, 100%);
+      transition: all 1s;
 
-  &__softwarePlatform {
-    @include image('block-container/software-platform/main.svg', contain, 0 0);
-    position: absolute;
-    top: 63px;
-    left: -104px;
-    width: 625px;
-    height: 457px;
-  }
+      &:before {
+        @include position(absolute, 0, 0, 100%, 100%);
+        content: '';
+      }
+    }
 
-  &__scaleCommerce {
-    @include image('block-container/scale-commerce/main.svg', contain, 0 0);
-    position: absolute;
-    top: 50px;
-    right: -69px;
-    width: 592px;
-    height: 542px;
+    &--internationalShipping {
+      @include image('block-container/international-shipping/element-1.svg', contain, 0 0);
+      top: 0;
+      left: -45px;
+      width: 490px;
+      height: 461px;
+
+      span {
+        transition: all 1.3s;
+
+        &:nth-child(1) {
+          transform: translate(-50px, 25px);
+
+          &:before {
+            @include image('block-container/international-shipping/element-2.svg', contain, 0 0);
+          }
+        }
+        &:nth-child(2) {
+          transform: translate(0, -50px);
+          opacity: 0;
+
+          &:before {
+            @include image('block-container/international-shipping/element-3.svg', contain, 0 0);
+          }
+        }
+      }
+
+      &.active span {
+        transform: translate(0, 0);
+        opacity: 1;
+
+        &:nth-child(2):before {
+          animation: 2.2s ease-in-out infinite internationalShipping;
+        }
+      }
+    }
+  
+    &--storageFulfillment {
+      @include image('block-container/storage-fulfillment/element-1.svg', contain, 0 0);
+      top: 16px;
+      right: -126px;
+      width: 604px;
+      height: 512px;
+
+      span {
+        &:nth-child(1) {
+          transform: translate(-40px, -30px);
+
+          &:before {
+            @include image('block-container/storage-fulfillment/element-2.svg', contain, 0 0);
+          }
+        }
+        &:nth-child(2) {
+          transform: translate(0, -40px);
+          opacity: 0;
+
+          &:before {
+            @include image('block-container/storage-fulfillment/element-3.svg', contain, 0 0);
+          }
+        }
+        &:nth-child(3) {
+          transform: translate(0, -40px);
+          opacity: 0;
+
+          &:before {
+            @include image('block-container/storage-fulfillment/element-4.svg', contain, 0 0);
+          }
+        }
+      }
+
+      &.active span {
+        transform: translate(0, 0);
+        opacity: 1;
+
+        &:nth-child(2):before {
+          animation: 2s ease-in-out 1s infinite storageFulfillment_1; 
+        }
+        &:nth-child(3):before {
+          animation: 2s ease-in-out 1s infinite storageFulfillment_2; 
+        }
+      }
+    }
+  
+    &--softwarePlatform {
+      @include image('block-container/software-platform/element-1.svg', contain, 0 0);
+      top: 63px;
+      left: -104px;
+      width: 625px;
+      height: 457px;
+
+      span {
+        &:nth-child(1) {
+          &:before {
+            @include image('block-container/software-platform/element-2.svg', contain, 0 0);
+          }
+        }
+        &:nth-child(2) {
+          &:before {
+            @include image('block-container/software-platform/element-3.svg', contain, 0 0);
+          }
+        }
+      }
+    }
+  
+    &--scaleCommerce {
+      @include image('block-container/scale-commerce/element-1.svg', contain, 0 0);
+      top: 50px;
+      right: -69px;
+      width: 592px;
+      height: 542px;
+
+      span {
+        &:nth-child(1) {
+          &:before {
+            @include image('block-container/scale-commerce/element-2.svg', contain, 0 0);
+          }
+        }
+        &:nth-child(2) {
+          &:before {
+            @include image('block-container/scale-commerce/element-3.svg', contain, 0 0);
+          }
+        }
+        &:nth-child(3) {
+          &:before {
+            @include image('block-container/scale-commerce/element-4.svg', contain, 0 0);
+          }
+        }
+        &:nth-child(4) {
+          &:before {
+            @include image('block-container/scale-commerce/element-5.svg', contain, 0 0);
+          }
+        }
+        &:nth-child(5) {
+          &:before {
+            @include image('block-container/scale-commerce/element-6.svg', contain, 0 0);
+          }
+        }
+      }
+    }
+  }
+}
+
+
+@keyframes internationalShipping {
+  0% {
+    transform: translateY(-15px);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-15px);
+  }
+}
+
+@keyframes storageFulfillment_1 {
+  0% {
+    transform: translate(0, 0);
+  }
+  60% {
+    transform: translate(0, 0);
+  }
+  80% {
+    transform: translate(-3px, -8px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes storageFulfillment_2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  20% {
+    transform: translate(-3px, -8px);
+  }
+  40% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(0, 0);
   }
 }
