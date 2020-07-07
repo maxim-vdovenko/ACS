@@ -1,6 +1,6 @@
 .integrateTools {
   @include block();
-  margin-top: 110px;
+  margin-top: 111px;
   background-color: $color_blueLight_2;
 
   .container {
@@ -27,7 +27,7 @@
 
   &__cont {
     @include block();
-    @include image('icon-quotes.svg', 85px auto, right 10px bottom 0);
+    @include image('icon-quotes.svg', 85px auto, right 11px bottom 0);
     background-color: $color_white;
     border-radius: 18px;
     padding: 45px 36px 30px 36px;
@@ -35,7 +35,7 @@
     
     &-text {
       @include block();
-      margin-bottom: 34px;
+      margin-bottom: 33px;
       font-family: 'Montserrat', sans-serif;
       font-weight: 400;
       font-size: 16px;
@@ -45,6 +45,7 @@
 
     &-name {
       @include block();
+      padding: 0 1px;
       font-size: 14px;
       line-height: 28px;
       letter-spacing: 0.025em;
@@ -53,6 +54,7 @@
 
     &-position {
       @include block();
+      padding: 0 1px;
       font-family: 'Montserrat', sans-serif;
       font-weight: 400;
       font-size: 12px;

@@ -1,9 +1,13 @@
 .blockContainer {
   @include block();
-  margin-top: 120px;
+  margin-top: 100px;
 
   .row {
-
+    &:nth-child(2n + 1) .col {
+      &:nth-child(2) {
+       padding-left: 30px;
+      }
+    }
     &:nth-child(2n + 0) .col {
 
       &:nth-child(1) {
@@ -12,11 +16,11 @@
 
       &:nth-child(2) {
         order: 0;
+        padding-right: 30px;
       }
     }
-
     &:not(:last-child) {
-      margin-bottom: 240px;
+      margin-bottom: 230px;
     }
   }
 
@@ -25,30 +29,60 @@
     width: 50%;
   }
 
+  &--delivery {
+    margin-top: 250px;
+  }
+
+  &--software {
+    margin-top: 113px;
+
+    .row {
+      &:not(:last-child) {
+        margin-bottom: 225px;
+      }
+    }
+  }
+
+  .textBox {
+    padding-top: 10px;
+
+    .button {
+      margin-top: 38px;
+    }
+  }
+
   &__internationalShipping {
-    @include block();
     @include image('block-container/international-shipping/main.svg', contain, 0 0);
+    position: absolute;
+    top: 0;
+    left: -45px;
     width: 490px;
     height: 461px;
   }
 
   &__storageFulfillment {
-    @include block();
     @include image('block-container/storage-fulfillment/main.svg', contain, 0 0);
+    position: absolute;
+    top: 16px;
+    right: -126px;
     width: 604px;
     height: 512px;
   }
 
   &__softwarePlatform {
-    @include block();
     @include image('block-container/software-platform/main.svg', contain, 0 0);
+    position: absolute;
+    top: 63px;
+    left: -104px;
     width: 625px;
     height: 457px;
   }
 
   &__scaleCommerce {
-    @include block();
     @include image('block-container/scale-commerce/main.svg', contain, 0 0);
+    position: absolute;
+    top: 50px;
+    right: -69px;
     width: 592px;
     height: 542px;
   }

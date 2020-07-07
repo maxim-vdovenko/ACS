@@ -1,10 +1,6 @@
 .discountedShipping {
   @include block();
-  margin-top: 130px;
-
-  .container {
-  
-  }
+  margin-top: 144px;
 
   .row {
     min-height: 995px;
@@ -13,11 +9,14 @@
 
   .col {
     &:nth-child(1) {
-      // flex: none;
+      flex: none;
+      max-width: 800px;
+      margin-bottom: 8px;
     }
-    &:nth-child(2) {
+  }
 
-    }
+  .textBox {
+    padding-right: 60px;
   }
 
   &__mask {
@@ -26,13 +25,14 @@
     right: 50%;
     width: 10000px;
     height: 100%;
-    margin-right: -300px;
+    margin-right: -330px;
     background-color: $color_blueLight_2;
   }
 
   &__logos {
     @include flex();
     align-items: center;
+    margin-top: 34px;
 
     li {
       @include inline_block();
@@ -40,6 +40,37 @@
       &:not(:first-child) {
         margin-left: 36px;
       } 
+    }
+  }
+
+  &__img {
+    @include block();
+  }
+
+  &__circles {
+    position: absolute;
+    border-radius: 1000px;
+
+    &--1 {
+      background-color: $color_cyan;
+      top: -48px;
+      right: 72px;
+      width: 16px;
+      height: 16px;
+    }
+    &--2 {
+      background-color: $color_blue;
+      top: 81px;
+      right: -21px;
+      width: 32px;
+      height: 32px;
+    }
+    &--3 {
+      background-color: $color_violet;
+      bottom: -32px;
+      left: 169px;
+      width: 48px;
+      height: 48px;
     }
   }
 }

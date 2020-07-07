@@ -112,7 +112,7 @@ a, input, textarea, select, button {
 .textBox {
   @include block();
 
-  h1 {
+  h1, h2 {
     margin-bottom: 49px;
   }
 

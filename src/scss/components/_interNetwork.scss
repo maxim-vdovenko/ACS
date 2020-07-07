@@ -1,6 +1,18 @@
 .interNetwork {
   @include block();
-  margin: 100px 0 100px 0;
+  margin-top: 260px;
+
+  .col {
+    &:nth-child(1) {
+      flex: none;
+      max-width: 500px;
+      padding-right: 40px;
+    }
+    &:nth-child(2) {
+      flex: 1;
+      padding-top: 28px;
+    }
+  }
 
   &__map {
     @include block();
