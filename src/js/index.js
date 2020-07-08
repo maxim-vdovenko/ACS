@@ -1,20 +1,27 @@
 window.onload = function() {
+  // acs.init()
   cloudLogistics.init()
   interNetwork.init()
-
-  // blockContainer.init()
-
-  $('body').on('click', '.blockContainer__animation', (e) => {
-    const th = $(e.currentTarget)
-
-    if (th.hasClass('active')) {
-      th.removeClass('active')
-    } else {
-      th.addClass('active')
-    }
-  })
-
+  blockContainer.init()
 }
+
+
+
+// const acs = {
+//   bl: '.acs',
+//   mask: '.acs__mask'
+// }
+
+// acs.init = function() {
+//   const controller = new ScrollMagic.Controller()
+//   this.parallaxScroll(this.bl, this.mask, '-300px', controller)
+// }
+
+// acs.parallaxScroll = function(section, element, y, controller) {
+//   new ScrollMagic.Scene({triggerElement: section, triggerHook: 'onEnter', duration: '100%', offset: '300px'})
+//   .setTween(element, {y: y, ease: Linear.easeNone})
+//   .addTo(controller)
+// }
 
 
 
@@ -55,20 +62,24 @@ const blockContainer = {
 }
 
 blockContainer.init = function() {
-  this.events(new ScrollMagic.Controller())
+  const controller = new ScrollMagic.Controller()
+  this.animationScroll(this.internationalShipping, controller)
+  this.animationScroll(this.storageFulfillment, controller)
+  this.animationScroll(this.softwarePlatform, controller)
+  this.animationScroll(this.scaleCommerce, controller)
 }
 
-blockContainer.events = function(controller) {
+blockContainer.animationScroll = function(block, controller) {
 
   const scene = new ScrollMagic.Scene({
-    triggerElement: this.internationalShipping, 
+    triggerElement: block, 
     triggerHook: 'onEnter', 
-    offset: '100px'})
-    .setTween(this.internationalShipping)
+    offset: $(block).outerHeight() / 2})
+    .setTween(block)
     .addTo(controller)
 
   scene.on('enter', () => {
-    $(this.internationalShipping).addClass('active')
+    $(block).addClass('active')
   })
 }
 
