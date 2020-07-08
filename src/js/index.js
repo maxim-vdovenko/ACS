@@ -1,6 +1,7 @@
 window.onload = function() {
   cloudLogistics.init()
   interNetwork.init()
+
   // blockContainer.init()
 
   $('body').on('click', '.blockContainer__animation', (e) => {
@@ -84,6 +85,11 @@ interNetwork.init = function() {
 }
 
 interNetwork.events = function() {
+
+  $('body').on('click', (e) => {
+    if($(e.target).closest(this.box).length) return;
+    $(this.box + '.active').removeClass('active')
+  })
   
   $('body').on('click', this.button, (e) => {
     const th = $(e.currentTarget)

@@ -156,14 +156,28 @@
 
       span {
         &:nth-child(1) {
+          transform: translate(-40px, -30px);
+
           &:before {
             @include image('block-container/software-platform/element-2.svg', contain, 0 0);
           }
         }
         &:nth-child(2) {
+          transform: translate(0, -40px);
+          opacity: 0;
+
           &:before {
             @include image('block-container/software-platform/element-3.svg', contain, 0 0);
           }
+        }
+      }
+
+      &.active span {
+        transform: translate(0, 0);
+        opacity: 1;
+
+        &:nth-child(2):before {
+          animation: 2s ease-in-out 1s infinite softwarePlatform; 
         }
       }
     }
@@ -177,21 +191,36 @@
 
       span {
         &:nth-child(1) {
+          transform: translate(40px, -30px);
+          opacity: 0;
+
           &:before {
             @include image('block-container/scale-commerce/element-2.svg', contain, 0 0);
           }
         }
         &:nth-child(2) {
+          transform: translate(30px, -80px);
+          transition-delay: 0.5s;
+          opacity: 0;
+
           &:before {
             @include image('block-container/scale-commerce/element-3.svg', contain, 0 0);
           }
         }
         &:nth-child(3) {
+          transform: translate(30px, -80px);
+          transition-delay: 0.1s;
+          opacity: 0;
+
           &:before {
             @include image('block-container/scale-commerce/element-4.svg', contain, 0 0);
           }
         }
         &:nth-child(4) {
+          transform: translate(30px, -80px);
+          transition-delay: 0.3s;
+          opacity: 0;
+
           &:before {
             @include image('block-container/scale-commerce/element-5.svg', contain, 0 0);
           }
@@ -202,10 +231,24 @@
           }
         }
       }
+
+      &.active span {
+        transform: translate(0, 0);
+        opacity: 1;
+
+        &:nth-child(2):before {
+          animation: 2.2s ease-in-out 1s infinite scaleCommerce_3; 
+        }
+        &:nth-child(3):before {
+          animation: 2.2s ease-in-out 1s infinite scaleCommerce_1; 
+        }
+        &:nth-child(4):before {
+          animation: 2.2s ease-in-out 1s infinite scaleCommerce_2; 
+        }
+      }
     }
   }
 }
-
 
 @keyframes internationalShipping {
   0% {
@@ -242,6 +285,81 @@
     transform: translate(-3px, -8px);
   }
   40% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes softwarePlatform {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleCommerce_1 {
+  0% {
+    transform: translate(0, 0);
+  }
+  20% {
+    transform: translate(0, -8px);
+  }
+  40% {
+    transform: translate(0, 0);
+  }
+  60% {
+    transform: translate(0, 0);
+  }
+  80% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes scaleCommerce_2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  20% {
+    transform: translate(0, 0);
+  }
+  40% {
+    transform: translate(0, -8px);
+  }
+  60% {
+    transform: translate(0, 0);
+  }
+  80% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes scaleCommerce_3 {
+  0% {
+    transform: translate(0, 0);
+  }
+  20% {
+    transform: translate(0, 0);
+  }
+  40% {
+    transform: translate(0, 0);
+  }
+  60% {
+    transform: translate(0, -8px);
+  }
+  80% {
     transform: translate(0, 0);
   }
   100% {

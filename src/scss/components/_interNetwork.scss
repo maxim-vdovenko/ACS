@@ -211,7 +211,7 @@ $time_map_box: 0.2s;
       background-color: $color_blue;
       cursor: pointer;
       z-index: 1;
-      animation: 2s ease-in-out 1s infinite mapButton;
+      animation: 2s ease-in-out 0.3s infinite mapButton;
 
       &:before, &:after {
         @include position(absolute, 0, 0, 100%, 100%);
