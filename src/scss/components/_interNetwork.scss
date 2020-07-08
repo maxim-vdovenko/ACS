@@ -1,3 +1,5 @@
+$time_map_box: 0.2s;
+
 .interNetwork {
   @include block();
   margin-top: 260px;
@@ -15,14 +17,225 @@
   }
 
   &__map {
+    $map: &;
     @include block();
-    @include image('inter-network-map.svg', contain, 0 0);
-    width: 938px;
-    height: 580px;
-    margin: 40px auto 0 auto;
+    max-width: 938px;
+    margin: 36px auto 0 auto;
+
+    > img {
+      @include block();
+      max-width: 100%;
+    }
+
+    &-block {
+      @include position(absolute, 0, 0, 100%, 100%);
+    }
 
     &-box {
+      position: absolute;
+      width: 0;
+      height: 0;
 
+      &.active {
+        z-index: 10;
+
+        #{$map}-title {
+          transform: translate(0, -20px);
+          opacity: 1;
+          z-index: 1;
+        }
+        #{$map}-button {
+          animation: none;
+
+          &:before {
+            width: 54px;
+            height: 54px;
+            left: 50%;
+            top: 50%;
+            margin: -27px 0 0 -27px;
+            opacity: 1;
+          }
+        } 
+      }
+
+      &:nth-child(1) {
+        @include map_button_y(26);
+        @include map_button_x(81);
+      }
+      &:nth-child(2) {
+        @include map_button_y(45);
+        @include map_button_x(121);
+      }
+      &:nth-child(3) {
+        @include map_button_y(202);
+        @include map_button_x(8);
+      }
+      &:nth-child(4) {
+        @include map_button_y(247);
+        @include map_button_x(16);
+      }
+      &:nth-child(5) {
+        @include map_button_y(342);
+        @include map_button_x(53);
+      }
+      &:nth-child(6) {
+        @include map_button_y(378);
+        @include map_button_x(76);
+      }
+      &:nth-child(7) {
+        @include map_button_y(363);
+        @include map_button_x(197);
+      }
+      &:nth-child(8) {
+        @include map_button_y(424);
+        @include map_button_x(290);
+      }
+      &:nth-child(9) {
+        @include map_button_y(344);
+        @include map_button_x(454.5);
+      }
+      &:nth-child(10) {
+        @include map_button_y(493);
+        @include map_button_x(411);
+      }
+      &:nth-child(11) {
+        @include map_button_y(428);
+        @include map_button_x(441);
+      }
+      &:nth-child(12) {
+        @include map_button_y(409);
+        @include map_button_x(481);
+      }
+      &:nth-child(13) {
+        @include map_button_y(462);
+        @include map_button_x(470);
+      }
+      &:nth-child(14) {
+        @include map_button_y(506);
+        @include map_button_x(475);
+      }
+      &:nth-child(15) {
+        @include map_button_y(269);
+        @include map_button_x(320);
+      }
+      &:nth-child(16) {
+        @include map_button_y(114);
+        @include map_button_x(650);
+      }
+      &:nth-child(17) {
+        @include map_button_y(195);
+        @include map_button_x(674);
+      }
+      &:nth-child(18) {
+        @include map_button_y(236);
+        @include map_button_x(691);
+      }
+      &:nth-child(19) {
+        @include map_button_y(246);
+        @include map_button_x(735);
+      }
+      &:nth-child(20) {
+        @include map_button_y(328);
+        @include map_button_x(646);
+      }
+      &:nth-child(21) {
+        @include map_button_y(359);
+        @include map_button_x(763);
+      }
+      &:nth-child(22) {
+        @include map_button_y(473);
+        @include map_button_x(775);
+      }
+      &:nth-child(23) {
+        @include map_button_y(211);
+        @include map_button_x(812);
+      }
+      &:nth-child(24) {
+        @include map_button_y(189);
+        @include map_button_x(854);
+      }
+      &:nth-child(25) {
+        @include map_button_y(127);
+        @include map_button_x(894);
+      }
     }
+
+    &-title {
+      position: absolute;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      width: 140px;
+      height: 69px;
+      left: 50%;
+      bottom: 20px;
+      margin: 0 0 0 -70px;
+      padding-bottom: 8px;
+      transition: all $time_map_box;
+      opacity: 0;
+      z-index: -1;
+
+      &:before {
+        @include position(absolute, 0, 0, 100%, 60px);
+        box-shadow: 0px 12px 24px rgba(197, 228, 243, 0.4);
+        border-radius: 18px;
+        content: '';
+      }
+      &:after {
+        @include position(absolute, 0, 0, 100%, 100%);
+        @include image('tooltip.svg', contain, 0 0);
+        content: '';
+      }
+
+      span {
+        padding: 5px 10px;
+        font-size: 14px;
+        line-height: 21px;
+        letter-spacing: 0.025em;
+        text-align: center;
+        color: $color_text_main;
+        z-index: 1;
+        user-select: none; 
+      }
+    }
+
+    &-button {
+      position: absolute;
+      width: 36px;
+      height: 36px;
+      left: 50%;
+      top: 50%;
+      margin: -18px 0 0 -18px;
+      border-radius: 1000px;
+      background-color: $color_blue;
+      cursor: pointer;
+      z-index: 1;
+      animation: 2s ease-in-out 1s infinite mapButton;
+
+      &:before, &:after {
+        @include position(absolute, 0, 0, 100%, 100%);
+        content: '';
+      }
+      &:before {
+        background-color: inherit;
+        border-radius: inherit;
+        box-shadow: 0 12px 24px rgba(47, 130, 255, 0.4);
+        opacity: 0;
+        transition: all $time_map_box;
+      }
+      &:after {
+        @include image('icon-logo.svg', 18px auto, center);
+      }
+    }
+  }
+}
+
+@keyframes mapButton {
+  from {
+    box-shadow: 0 0 0 0 rgba(47, 130, 255, 0.6);
+  }
+  to {
+    box-shadow: 0 0 0 15px rgba(47, 130, 255, 0);
   }
 }

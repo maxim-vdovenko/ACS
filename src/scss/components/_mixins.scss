@@ -55,6 +55,16 @@
   }
 }
 
+@mixin map_button_x($x) {
+  $width: 938;
+  left: ($x  / ($width / 100))#{'%'};
+}
+
+@mixin map_button_y($y) {
+  $height: 580;
+  top: ($y  / ($height / 100))#{'%'};
+}
+
 @mixin b($col: #f00) {
   border: 1px solid $col;
 }

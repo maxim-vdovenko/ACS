@@ -1,5 +1,6 @@
 window.onload = function() {
   cloudLogistics.init()
+  interNetwork.init()
   // blockContainer.init()
 
   $('body').on('click', '.blockContainer__animation', (e) => {
@@ -67,5 +68,31 @@ blockContainer.events = function(controller) {
 
   scene.on('enter', () => {
     $(this.internationalShipping).addClass('active')
+  })
+}
+
+
+
+const interNetwork = {
+  map: '.interNetwork__map',
+  box: '.interNetwork__map-box',
+  button: '.interNetwork__map-button'
+}
+
+interNetwork.init = function() {
+  this.events()
+}
+
+interNetwork.events = function() {
+  
+  $('body').on('click', this.button, (e) => {
+    const th = $(e.currentTarget)
+
+    if (th.parents(this.box).hasClass('active')) {
+      th.parents(this.box).removeClass('active')
+    } else {
+      th.parents(this.map).find(this.box).removeClass('active')
+      th.parents(this.box).addClass('active')
+    }
   })
 }
