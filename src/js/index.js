@@ -1,27 +1,31 @@
 window.onload = function() {
-  // acs.init()
+  acs.init()
   cloudLogistics.init()
   interNetwork.init()
   blockContainer.init()
+  discountedShipping.init()
+  integrateTools.init()
+  inPress.init()
 }
 
 
 
-// const acs = {
-//   bl: '.acs',
-//   mask: '.acs__mask'
-// }
+const acs = {
+  mask: '.acs__mask',
+  circles: '.acs__circles'
+}
 
-// acs.init = function() {
-//   const controller = new ScrollMagic.Controller()
-//   this.parallaxScroll(this.bl, this.mask, '-300px', controller)
-// }
+acs.init = function() {
+  const controller = new ScrollMagic.Controller()
+  this.parallaxScroll(this.mask, this.mask + ' > span', '-200px', '200%', controller)
+  this.parallaxScroll(this.circles, this.circles + ' > span', '-500px', '100%', controller)
+}
 
-// acs.parallaxScroll = function(section, element, y, controller) {
-//   new ScrollMagic.Scene({triggerElement: section, triggerHook: 'onEnter', duration: '100%', offset: '300px'})
-//   .setTween(element, {y: y, ease: Linear.easeNone})
-//   .addTo(controller)
-// }
+acs.parallaxScroll = function(section, element, y, duration, controller) {
+  new ScrollMagic.Scene({triggerElement: section, triggerHook: 'onEnter', duration, offset: '0'})
+  .setTween(element, {y, ease: Linear.easeNone})
+  .addTo(controller)
+}
 
 
 
@@ -70,7 +74,6 @@ blockContainer.init = function() {
 }
 
 blockContainer.animationScroll = function(block, controller) {
-
   const scene = new ScrollMagic.Scene({
     triggerElement: block, 
     triggerHook: 'onEnter', 
@@ -111,5 +114,126 @@ interNetwork.events = function() {
       th.parents(this.map).find(this.box).removeClass('active')
       th.parents(this.box).addClass('active')
     }
+  })
+}
+
+
+
+const discountedShipping = {
+  bl: '.discountedShipping',
+  mask: '.discountedShipping__mask',
+  logos: '.discountedShipping__logos',
+  circles: [
+    '.discountedShipping__circles--1',
+    '.discountedShipping__circles--2',
+    '.discountedShipping__circles--3'
+  ]
+}
+
+discountedShipping.init = function() {
+  const controller = new ScrollMagic.Controller()
+
+  this.animationScroll(this.mask, controller)
+  this.animationScroll(this.logos, controller)
+
+  this.parallaxScroll(this.circles[0], this.circles[0] + ' > span', '-450px', '100%', controller)
+  this.parallaxScroll(this.circles[1], this.circles[1] + ' > span', '-200px', '100%', controller)
+  this.parallaxScroll(this.circles[2], this.circles[2] + ' > span', '-150px', '100%', controller)
+}
+
+discountedShipping.parallaxScroll = function(section, element, y, duration, controller) {
+  new ScrollMagic.Scene({triggerElement: section, triggerHook: 'onEnter', duration, offset: '0'})
+  .setTween(element, {y, ease: Linear.easeNone})
+  .addTo(controller)
+}
+
+discountedShipping.animationScroll = function(block, controller) {
+  const scene = new ScrollMagic.Scene({
+    triggerElement: block, 
+    triggerHook: 'onEnter', 
+    offset: $(block).outerHeight() / 4})
+    .setTween(block)
+    .addTo(controller)
+
+  scene.on('enter', () => {
+    $(block).addClass('active')
+  })
+}
+
+
+
+const integrateTools = {
+  reviews: '.reviews',
+  instruments: '.instruments',
+  button: '.integrateTools__instruments-button',
+  circles: [
+    '.integrateTools__circles--1',
+    '.integrateTools__circles--2',
+    '.integrateTools__circles--3',
+    '.integrateTools__circles--4',
+    '.integrateTools__circles--5',
+    '.integrateTools__circles--6',
+    '.integrateTools__circles--7',
+    '.integrateTools__circles--8'
+  ]
+}
+
+integrateTools.init = function() {
+  const controller = new ScrollMagic.Controller()
+
+  this.animationScroll(this.reviews, controller)
+  this.animationScroll(this.instruments, controller)
+  this.animationScroll(this.button, controller)
+
+  this.parallaxScroll(this.circles[0], this.circles[0] + ' > span', '-150px', '100%', controller)
+  this.parallaxScroll(this.circles[1], this.circles[1] + ' > span', '-650px', '100%', controller)
+  this.parallaxScroll(this.circles[2], this.circles[2] + ' > span', '-400px', '100%', controller)
+  this.parallaxScroll(this.circles[3], this.circles[3] + ' > span', '-500px', '100%', controller)
+  this.parallaxScroll(this.circles[4], this.circles[4] + ' > span', '-350px', '100%', controller)
+  this.parallaxScroll(this.circles[5], this.circles[5] + ' > span', '-150px', '100%', controller)
+  this.parallaxScroll(this.circles[6], this.circles[6] + ' > span', '-500px', '100%', controller)
+  this.parallaxScroll(this.circles[7], this.circles[7] + ' > span', '-200px', '100%', controller)
+}
+
+integrateTools.parallaxScroll = function(section, element, y, duration, controller) {
+  new ScrollMagic.Scene({triggerElement: section, triggerHook: 'onEnter', duration, offset: '0'})
+  .setTween(element, {y, ease: Linear.easeNone})
+  .addTo(controller)
+}
+
+integrateTools.animationScroll = function(block, controller) {
+  const scene = new ScrollMagic.Scene({
+    triggerElement: block, 
+    triggerHook: 'onEnter', 
+    offset: $(block).outerHeight() / 2})
+    .setTween(block)
+    .addTo(controller)
+
+  scene.on('enter', () => {
+    $(block).addClass('active')
+  })
+}
+
+
+
+const inPress = {
+  list: '.inPress__list',
+}
+
+inPress.init = function() {
+  const controller = new ScrollMagic.Controller()
+  this.animationScroll(this.list, controller)
+}
+
+inPress.animationScroll = function(block, controller) {
+  const scene = new ScrollMagic.Scene({
+    triggerElement: block, 
+    triggerHook: 'onEnter', 
+    offset: $(block).outerHeight() / 2})
+    .setTween(block)
+    .addTo(controller)
+
+  scene.on('enter', () => {
+    $(block).addClass('active')
   })
 }

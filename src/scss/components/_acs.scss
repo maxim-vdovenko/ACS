@@ -17,24 +17,35 @@
   }
 
   &__mask {
-    @include image('acs/mask.svg', auto 100%, -390px 0);
     position: absolute;
     top: 0;
     left: 50%;
     width: 10000px;
     height: 100%;
     margin-left: 231px;
-    background-color: $color_blueLight_2;
+    overflow: hidden;
+
+    > span {
+      @include position(absolute, 0, 90px, 100%, 100%);
+      @include image('acs/mask.svg', auto 100%, -390px 0);
+      background-color: $color_blueLight_2;
+      content: '';
+    }
   }
 
   &__circles {
-    @include image('acs/circles.svg', contain, 0 0);
     position: absolute;
-    top: 676px;
+    top: 735px;
     left: 50%;
     width: 296px;
     height: 448px;
     margin-left: -1114px;
+
+    > span {
+      @include position(absolute, 0, 0, 100%, 100%);
+      @include image('acs/circles.svg', contain, 0 0);
+      content: '';
+    }
   }
 
   &__laptop {

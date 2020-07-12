@@ -20,25 +20,141 @@
       @include flex();
       justify-content: center;
       margin-top: 42px;
+      opacity: 0;
+      transition: opacity 0.5s;
+      transition-delay: 0.5s;
+
+      &.active {
+        opacity: 1;
+      }
     }
   }
 
   &__circles {
     position: absolute;
-    border-radius: 1000px;
-    opacity: 0;
+    left: 50%;
+    width: 0;
+    height: 0;
+
+    span {
+      position: absolute;
+      border-radius: 1000px;
+
+      &:before {
+        @include position(absolute, 0, 0, 100%, 100%);
+        border-radius: inherit;
+        content: '';
+      }
+    }
 
     &--1 {
-      top: 1122px;
-      left: 200px;
-      width: 32px;
-      height: 32px;
-      background-color: $color_red;
+      top: 1138px;
+      margin-left: -788px;
+
+      span {
+        @include circle_position(32px, 32px);
+
+        &:before {
+          background-color: $color_red;
+        }
+      }
+    }
+
+    &--2 {
+      top: 684px;
+      margin-left: -603px;
+
+      span {
+        @include circle_position(12px, 12px);
+
+        &:before {
+          background-color: $color_blue;
+        }
+      }
+    }
+
+    &--3 {
+      top: 815px;
+      margin-left: -138px;
+
+      span {
+        @include circle_position(24px, 24px);
+
+        &:before {
+          background-color: $color_yellow;
+        }
+      }
+    }
+
+    &--4 {
+      top: 1588px;
+      margin-left: -364px;
+
+      span {
+        @include circle_position(12px, 12px);
+
+        &:before {
+          background-color: $color_cyan;
+        }
+      }
+    }
+
+    &--5 {
+      top: 1198px;
+      margin-left: 170px;
+
+      span {
+        @include circle_position(32px, 32px);
+
+        &:before {
+          background-color: $color_violet;
+        }
+      }
+    }
+
+    &--6 {
+      top: 582px;
+      margin-left: 630px;
+
+      span {
+        @include circle_position(32px, 32px);
+
+        &:before {
+          background-color: $color_cyan;
+        }
+      }
+    }
+
+    &--7 {
+      top: 981px;
+      margin-left: 643px;
+
+      span {
+        @include circle_position(12px, 12px);
+
+        &:before {
+          background-color: $color_blue;
+        }
+      }
+    }
+
+    &--8 {
+      top: 1390px;
+      margin-left: 828px;
+
+      span {
+        @include circle_position(24px, 24px);
+
+        &:before {
+          background-color: $color_yellow;
+        }
+      }
     }
   }
 }
 
 .reviews {
+  $reviews: &;
   @include flex();
   margin: 0 -30px;
 
@@ -46,6 +162,15 @@
     position: relative;
     flex: 1;
     padding: 0 30px 30px 30px;
+    opacity: 0;
+    transition: all 0.7s;
+    transform: translateY(10px);
+
+    @for $i from 1 through 3 {
+      &:nth-child(#{$i}) {
+        transition-delay: ($i / 4)#{s};
+      }
+    }
   }
 
   &__cont {
@@ -85,9 +210,17 @@
       color: $color_text_main;
     }
   }
+
+  &.active {
+    #{$reviews}__box {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
 }
 
 .instruments {
+  $instruments: &;
   @include flex();
   margin: 95px -30px 0 -30px;
 
@@ -95,6 +228,15 @@
     position: relative;
     flex: 1;
     padding: 0 30px 30px 30px;
+    opacity: 0;
+    transition: all 0.7s;
+    transform: translateY(10px);
+
+    @for $i from 1 through 3 {
+      &:nth-child(#{$i}) {
+        transition-delay: ($i / 4)#{s};
+      }
+    }
   }
 
   &__cont {
@@ -181,6 +323,13 @@
           @include image('instruments/tools.svg', 30px auto, center);
         }
       }
+    }
+  }
+
+  &.active {
+    #{$instruments}__box {
+      transform: translateY(0);
+      opacity: 1;
     }
   }
 }

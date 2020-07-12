@@ -65,6 +65,13 @@
   top: ($y  / ($height / 100))#{'%'};
 }
 
+@mixin circle_position($w, $h) {
+  width: $w;
+  height: $h;
+  left: -($w / 2);
+  top: -($h / 2);
+}
+
 @mixin b($col: #f00) {
   border: 1px solid $col;
 }

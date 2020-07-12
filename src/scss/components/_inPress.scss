@@ -28,6 +28,15 @@
       @include flex();
       width: 33.33%;
       margin-bottom: 43px;
+      opacity: 0;
+      transition: all 0.6s;
+      transform: translateY(10px);
+
+      @for $i from 1 through 6 {
+        &:nth-child(#{$i}) {
+          transition-delay: ($i / 7)#{s};
+        }
+      }
 
       &:nth-child(3n + 2) {
         justify-content: center;
@@ -57,6 +66,11 @@
       &:nth-child(6) {
         top: 2px;
       }
+    }
+
+    &.active li {
+      transform: translateY(0);
+      opacity: 1;
     }
   }
 }
