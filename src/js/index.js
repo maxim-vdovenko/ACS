@@ -31,7 +31,10 @@ acs.parallaxScroll = function(section, element, y, duration, controller) {
 
 const cloudLogistics = {
   block: '.cloudLogistics__block',
+  cont: '.cloudLogistics__cont',
   box: '.cloudLogistics__box',
+  picBox: '.cloudLogistics__box.active .cloudLogistics__box-img > div',
+  pic: '.cloudLogistics__box.active .cloudLogistics__box-img i',
   menu: {
     bl: '.cloudLogistics__menu',
     button: '.cloudLogistics__menu > li > span'
@@ -53,6 +56,22 @@ cloudLogistics.events = function() {
 
     th.parents(this.menu.bl).find('li').removeClass('active')
     th.parents('li').addClass('active')
+  })
+
+  window.requestAnimationFrame(() => {
+
+    $('body').on('mousemove', this.block, (e) => {
+      const x_block = e.originalEvent.clientX
+      const y_block = e.originalEvent.clientY
+      const x = x_block - ($(this.picBox).width() / 2) + parseInt($(this.picBox).css('marginLeft'), 10)
+      const y = y_block - ($(this.picBox).height() / 2) - (parseInt($(this.picBox).css('marginTop'), 10) / 2)
+   
+      for (let i = 0; i < $(this.picBox + ' span').length; i++) {
+        $(this.picBox + ' span').eq(i).find('i').css({
+          'transform': 'translate('  + (i + 1) * (x / 200) + 'px, ' + (i + 1) * (y / 150) + 'px)',
+        })
+      }
+    })
   })
 }
 
@@ -122,6 +141,7 @@ interNetwork.events = function() {
 const discountedShipping = {
   bl: '.discountedShipping',
   mask: '.discountedShipping__mask',
+  text: '.discountedShipping .textBox',
   logos: '.discountedShipping__logos',
   circles: [
     '.discountedShipping__circles--1',
@@ -133,8 +153,9 @@ const discountedShipping = {
 discountedShipping.init = function() {
   const controller = new ScrollMagic.Controller()
 
-  this.animationScroll(this.mask, controller)
-  this.animationScroll(this.logos, controller)
+  this.animationScroll(this.mask, $(this.mask).outerHeight() / 4, controller)
+  this.animationScroll(this.text, $(this.text).outerHeight() / 2, controller)
+  this.animationScroll(this.logos, $(this.logos).outerHeight() / 2, controller)
 
   this.parallaxScroll(this.circles[0], this.circles[0] + ' > span', '-450px', '100%', controller)
   this.parallaxScroll(this.circles[1], this.circles[1] + ' > span', '-200px', '100%', controller)
@@ -147,11 +168,11 @@ discountedShipping.parallaxScroll = function(section, element, y, duration, cont
   .addTo(controller)
 }
 
-discountedShipping.animationScroll = function(block, controller) {
+discountedShipping.animationScroll = function(block, h, controller) {
   const scene = new ScrollMagic.Scene({
     triggerElement: block, 
     triggerHook: 'onEnter', 
-    offset: $(block).outerHeight() / 4})
+    offset: h})
     .setTween(block)
     .addTo(controller)
 
