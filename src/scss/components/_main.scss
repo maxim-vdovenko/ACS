@@ -32,17 +32,47 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
   font-size: 72px;
   line-height: 78px;
+
+  @include mobile($screen_lg) {
+    font-size: 52px;
+    line-height: 58px;
+  }
+
+  @include mobile($screen_sm) {
+    font-size: 38px;
+    line-height: 44px;
+  }
 }
 
 h2 {
   font-size: 48px;
   line-height: 60px;
+
+  @include mobile($screen_lg) {
+    font-size: 38px;
+    line-height: 50px;
+  }
+
+  @include mobile($screen_sm) {
+    font-size: 28px;
+    line-height: 34px;
+  }
 }
 
 h3 {
   font-size: 30px;
   line-height: 42px;
   letter-spacing: 0.025em;
+
+  @include mobile($screen_lg) {
+    font-size: 28px;
+    line-height: 32px;
+  }
+
+  @include mobile($screen_sm) {
+    font-size: 22px;
+    line-height: 28px;
+  }
 }
 
 h4 {
@@ -70,6 +100,11 @@ p {
   font-size: 16px;
   line-height: 28px;
   color: $color_text_main;
+
+  @include mobile($screen_sm) {
+    font-size: 14px;
+    line-height: 26px;
+  }
 }
 
 a, span, b {
@@ -89,12 +124,20 @@ a, input, textarea, select, button {
 .row {
   @include flex();
   flex: 1;
+
+  @include mobile($screen_md) {
+    display: block;
+  }
 }
 
 .col {
   @include flex();
   flex-direction: column;
   flex: 1;
+
+  @include mobile($screen_md) {
+    display: block;
+  }
 }
 
 .container {
@@ -107,6 +150,19 @@ a, input, textarea, select, button {
 
 .titleBox {
   @include block();
+
+  h1, h2 {
+
+    @include mobile($screen_md) {
+      text-align: center;
+    }
+
+    @include mobile($screen_sm) {
+      max-width: 540px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
 }
 
 .textBox {
@@ -114,10 +170,23 @@ a, input, textarea, select, button {
 
   h1, h2 {
     margin-bottom: 49px;
+
+    @include mobile($screen_md) {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+
+    @include mobile($screen_sm) {
+      margin-bottom: 28px;
+    }
   }
 
   p {
     margin-bottom: 22px;
+
+    @include mobile($screen_sm) {
+      margin-bottom: 18px;
+    }
   }
 }
 
@@ -169,7 +238,21 @@ a, input, textarea, select, button {
   background-color: $color_blue;
   cursor: pointer;
   box-shadow: 0 14px 18px -2px rgba(47, 130, 255, 0.4);
-  transition: all 0.4s;
+  transition: transform 0.4s, box-shadow 0.4s;
+
+  @include mobile($screen_lg) {
+    width: 80px;
+    height: 80px;
+    background-size: 25px auto;
+    background-position: left 31px center;
+  }
+
+  @include mobile($screen_md) {
+    width: 60px;
+    height: 60px;
+    background-size: 16px auto;
+    background-position: left 24px center;
+  }
 
   &:hover {
     box-shadow: 0 15px 20px 0 rgba(47, 130, 255, 0.75);

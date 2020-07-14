@@ -72,6 +72,18 @@
   top: -($h / 2);
 }
 
+@mixin mobile($x) {
+  @media (max-width: $x) { 
+    @content;
+  }
+}
+
+@mixin desktop($x) {
+  @media (min-width: $x) { 
+    @content;
+  }
+}
+
 @mixin b($col: #f00) {
   border: 1px solid $col;
 }

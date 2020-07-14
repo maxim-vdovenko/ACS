@@ -4,6 +4,22 @@ $time_menu_wave: 0.4s;
   @include block();
   margin-top: 267px;
 
+  @include mobile($screen_xl) {
+    margin-top: 200px;
+  }
+
+  @include mobile($screen_lg) {
+    margin-top: 140px;
+  }
+
+  @include mobile($screen_md) {
+    margin-top: 90px;
+  }
+
+  @include mobile($screen_sm) {
+    margin-top: 80px;
+  }
+
   .container {
     max-width: 1170px;
   }

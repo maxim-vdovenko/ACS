@@ -6,14 +6,32 @@
   .container {
     max-width: 1854px;
     min-height: 108px;
+
+    @include mobile($screen_xl) {
+      min-height: 90px;
+    }
+
+    @include mobile($screen_sm) {
+      min-height: 50px;
+    }
   }
 
   .row {
     min-height: inherit;
     align-items: center;
+
+    @include mobile($screen_md) {
+      display: flex;
+      justify-content: space-between;
+    }
   }
 
   .col {
+
+    @include mobile($screen_md) {
+      display: flex;
+    }
+
     &:nth-child(1) {
       flex: none;
     }
@@ -21,6 +39,16 @@
       flex: 1;
       align-items: center;
       padding-right: 10px;
+
+      @include mobile($screen_xl) {
+        padding: 0 20px;
+      }
+      @include mobile($screen_lg) {
+        padding: 0 30px 0 60px;
+      }
+      @include mobile($screen_md) {
+        display: none;
+      }
     }
     &:nth-child(3) {
       flex: none;
@@ -33,15 +61,41 @@
     @include image('logo.svg', contain, 0 0);
     width: 306px;
     height: 48px;
+
+    @include mobile($screen_xl) {
+      width: 240px;
+      height: 40px;
+      top: 2px;
+    }
+
+    @include mobile($screen_lg) {
+      width: 50px;
+      height: 50px;
+      top: auto;
+      background-size: auto 100%;
+    }
+
+    @include mobile($screen_sm) {
+      width: 36px;
+      height: 36px;
+    }
   }
 
   &__menu {
     @include flex();
     flex-wrap: wrap;
 
+    @include mobile($screen_md) {
+      display: none;
+    }
+
     li {
       @include inline_block();
       margin: 0 18px;
+
+      @include mobile($screen_xl) {
+        margin: 0 14px;
+      }
 
       a {
         font-size: 14px;
@@ -60,6 +114,10 @@
 
   &__login {
     @include flex();
+
+    @include mobile($screen_md) {
+      display: none;
+    }
 
     li {
       @include inline_block();

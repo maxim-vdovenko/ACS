@@ -5,11 +5,40 @@
     max-width: 1168px;
     min-height: 872px;
     padding-top: 163px;
+
+    @include mobile($screen_lg) {
+      padding-top: 120px;
+      min-height: 800px;
+    }
+
+    @include mobile($screen_md) {
+      padding-top: 60px;
+    }
   }
 
   .col {
     flex: none;
     width: 50%;
+
+    @include mobile($screen_md) {
+      width: auto;
+    }
+
+    &:nth-child(1) {
+      order: 1;
+
+      @include mobile($screen_md) {
+        order: 0;
+      }
+    }
+
+    &:nth-child(2) {
+      order: 0;
+
+      @include mobile($screen_md) {
+        order: 1;
+      }
+    }
   }
 
   .textBox {
@@ -24,6 +53,10 @@
     height: 100%;
     margin-left: 231px;
     overflow: hidden;
+
+    @include mobile($screen_md) {
+      display: none;
+    }
 
     > span {
       @include position(absolute, 0, 90px, 100%, 100%);
@@ -41,6 +74,14 @@
     height: 448px;
     margin-left: -1114px;
 
+    @include mobile($screen_xl) {
+      margin-left: -930px;
+    }
+
+    @include mobile($screen_lg) {
+      display: none;
+    }
+
     > span {
       @include position(absolute, 0, 0, 100%, 100%);
       @include image('acs/circles.svg', contain, 0 0);
@@ -54,11 +95,39 @@
     width: 854px;
     height: 585px;
     margin: 27px 0 0 31px;
+
+    @include mobile($screen_lg) {
+      width: 780px;
+      height: 500px;
+    }
+
+    @include mobile($screen_md) {
+      width: 100%;
+      max-width: 700px;
+      height: 0;
+      padding-bottom: 48%;
+      margin: 0 auto;
+      background-position: top;
+    }
+
+    @include mobile($screen_sm) {
+      padding-bottom: 68%;
+    }
   }
 
   &__play {
     position: absolute;
     top: 189px;
     left: 61px;
+
+    @include mobile($screen_lg) {
+      left: 74px;
+    }
+
+    @include mobile($screen_md) {
+      top: 50%;
+      left: 50%;
+      margin: -70px 0 0 -30px;
+    }
   } 
 }

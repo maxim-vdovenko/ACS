@@ -6,9 +6,35 @@
     max-width: 1854px;
     min-height: 175px;
     padding-top: 48px;
+
+    @include mobile($screen_sm) {
+      padding-top: 30px;
+      min-height: auto;
+      padding-bottom: 25px;
+    }
+  }
+
+  .row {
+    @include mobile($screen_md) {
+      display: flex;
+    }
+
+    @include mobile($screen_sm) {
+      display: block;
+    }
   }
 
   .col {
+
+    @include mobile($screen_md) {
+      display: flex;
+    }
+
+    @include mobile($screen_sm) {
+      display: block;
+      text-align: center;
+    }
+
     &:nth-child(1) {
       flex: none;
     }
@@ -16,6 +42,14 @@
       flex: 1;
       align-items: center;
       padding: 5px 0 0 20px;
+
+      @include mobile($screen_xl) {
+        padding: 5px 20px 0 20px;
+      }
+
+      @include mobile($screen_sm) {
+        display: none;
+      }
     }
     &:nth-child(3) {
       flex: none;
@@ -39,11 +73,19 @@
     font-size: 12px;
     line-height: 20px;
     color: $color_text_violet;
+
+    @include mobile($screen_sm) {
+      text-align: center;
+    }
   }
 
   &__menu {
     @include flex();
     flex-wrap: wrap;
+
+    @include mobile($screen_md) {
+      display: none;
+    }
     
     li {
       @include inline_block();
@@ -65,6 +107,11 @@
     flex-wrap: wrap;
     align-items: center;
 
+    @include mobile($screen_sm) {
+      justify-content: center;
+      margin-top: 20px;
+    }
+
     li {
       @include inline_block();
 
@@ -83,11 +130,20 @@
     flex-wrap: wrap;
     margin-top: 32px;
 
+    @include mobile($screen_sm) {
+      justify-content: center;
+      margin-top: 20px;
+    }
+
     li {
       @include inline_block();
 
       &:not(:first-child) {
         margin-left: 36px;
+
+        @include mobile($screen_sm) {
+          margin-left: 28px;
+        }
       }
 
       a {

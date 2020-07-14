@@ -6,11 +6,35 @@
   &__reviews {
     @include block();
     padding-top: 144px;
+
+    @include mobile($screen_lg) {
+      padding-top: 100px;
+    }
+
+    @include mobile($screen_md) {
+      padding-top: 80px;
+    }
+
+    @include mobile($screen_sm) {
+      padding-top: 30px;
+    }
   }
 
   &__instruments {
     @include block();
     padding: 236px 0 194px 0;
+
+    @include mobile($screen_lg) {
+      padding: 150px 0 120px 0;
+    }
+
+    @include mobile($screen_md) {
+      padding: 100px 0 100px 0;
+    }
+
+    @include mobile($screen_sm) {
+      padding: 70px 0 60px 0;
+    }
 
     .titleBox {
       text-align: center;
@@ -20,9 +44,20 @@
       @include flex();
       justify-content: center;
       margin-top: 42px;
-      opacity: 0;
-      transition: opacity 0.5s;
-      transition-delay: 0.5s;
+
+      @include desktop($screen_md) {
+        opacity: 0;
+        transition: opacity 0.5s;
+        transition-delay: 0.5s;
+      }
+
+      @include mobile($screen_lg) {
+        margin-top: 35px;
+      }
+
+      @include mobile($screen_sm) {
+        margin-top: 25px;
+      }
 
       &.active {
         opacity: 1;
@@ -35,6 +70,10 @@
     left: 50%;
     width: 0;
     height: 0;
+
+    @include mobile($screen_md) {
+      display: none;
+    }
 
     span {
       position: absolute;
@@ -158,13 +197,32 @@
   @include flex();
   margin: 0 -30px;
 
+  @include mobile($screen_md) {
+    margin: 0 -15px;
+  }
+
+  @include mobile($screen_sm) {
+    display: block;
+  }
+
   &__box {
     position: relative;
     flex: 1;
     padding: 0 30px 30px 30px;
-    opacity: 0;
-    transition: all 0.7s;
-    transform: translateY(10px);
+
+    @include desktop($screen_md) {
+      opacity: 0;
+      transition: transform 0.7s, opacity 0.7s;
+      transform: translateY(10px);
+    }
+
+    @include mobile($screen_md) {
+      padding: 0 15px 30px 15px;
+    }
+
+    @include mobile($screen_sm) {
+      padding-bottom: 25px;
+    }
 
     @for $i from 1 through 3 {
       &:nth-child(#{$i}) {
@@ -180,6 +238,16 @@
     border-radius: 18px;
     padding: 45px 36px 30px 36px;
     box-shadow: 0px 18px 42px rgba(197, 228, 243, 0.4);
+
+    @include mobile($screen_md) {
+      padding: 23px 25px 30px 25px;
+    }
+
+    @include mobile($screen_sm) {
+      padding: 20px 20px 18px 20px;
+      background-size: 70px auto;
+      background-position: right 0 bottom -10px;
+    }
     
     &-text {
       @include block();
@@ -189,6 +257,12 @@
       font-size: 16px;
       line-height: 28px;
       color: $color_text_main;
+
+      @include mobile($screen_sm) {
+        margin-bottom: 25px;
+        font-size: 14px;
+        line-height: 26px;
+      }
     }
 
     &-name {
@@ -212,9 +286,11 @@
   }
 
   &.active {
-    #{$reviews}__box {
-      transform: translateY(0);
-      opacity: 1;
+    @include desktop($screen_md) {
+      #{$reviews}__box {
+        transform: translateY(0);
+        opacity: 1;
+      }
     }
   }
 }
@@ -224,13 +300,37 @@
   @include flex();
   margin: 95px -30px 0 -30px;
 
+  @include mobile($screen_lg) {
+    margin-top: 80px;
+  }
+
+  @include mobile($screen_md) {
+    margin: 60px -15px 0 -15px;
+  }
+
+  @include mobile($screen_sm) {
+    display: block;
+    margin-top: 40px;
+  }
+
   &__box {
     position: relative;
     flex: 1;
     padding: 0 30px 30px 30px;
-    opacity: 0;
-    transition: all 0.7s;
-    transform: translateY(10px);
+
+    @include desktop($screen_md) {
+      opacity: 0;
+      transition: transform 0.7s, opacity 0.7s;
+      transform: translateY(10px);
+    }
+
+    @include mobile($screen_md) {
+      padding: 0 15px 30px 15px;
+    }
+
+    @include mobile($screen_sm) {
+      padding-bottom: 25px;
+    }
 
     @for $i from 1 through 3 {
       &:nth-child(#{$i}) {
@@ -247,6 +347,14 @@
     border-radius: 18px;
     padding: 36px 15px 18px 15px;
     box-shadow: 0px 18px 42px rgba(197, 228, 243, 0.4);
+
+    @include mobile($screen_md) {
+      padding: 25px 15px 18px 15px;
+    }
+
+    @include mobile($screen_sm) {
+      padding: 20px 15px 10px 15px;
+    }
 
     &-icon {
       @include block();
@@ -271,6 +379,11 @@
       letter-spacing: 0.025em;
       text-align: center;
       color: $color_text_main;
+
+      @include mobile($screen_sm) {
+        font-size: 20px;
+        line-height: 30px;
+      }
     }
 
     &-logos {
@@ -278,6 +391,10 @@
       flex-wrap: wrap;
       justify-content: center;
       margin-top: 51px;
+
+      @include mobile($screen_sm) {
+        margin-top: 36px;
+      }
 
       li {
         @include inline_block();
@@ -327,9 +444,11 @@
   }
 
   &.active {
-    #{$instruments}__box {
-      transform: translateY(0);
-      opacity: 1;
+    @include desktop($screen_md) {
+      #{$instruments}__box {
+        transform: translateY(0);
+        opacity: 1;
+      }
     }
   }
 }

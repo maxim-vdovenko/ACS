@@ -4,15 +4,46 @@ $time_map_box: 0.2s;
   @include block();
   margin-top: 260px;
 
+  @include mobile($screen_lg) {
+    margin-top: 200px;
+  }
+
+  @include mobile($screen_md) {
+    margin-top: 150px;
+  }
+
+  @include mobile($screen_sm) {
+    margin-top: 80px;
+  }
+
   .col {
     &:nth-child(1) {
       flex: none;
       max-width: 500px;
       padding-right: 40px;
+
+      @include mobile($screen_md) {
+        max-width: inherit;
+        padding-right: 0;
+      }
     }
     &:nth-child(2) {
       flex: 1;
       padding-top: 28px;
+
+      @include mobile($screen_lg) {
+        padding-top: 10px;
+      }
+
+      @include mobile($screen_md) {
+        padding-top: 0;
+      }
+    }
+  }
+
+  .textBox {
+    @include mobile($screen_md) {
+      margin-top: 30px;
     }
   }
 
@@ -21,6 +52,14 @@ $time_map_box: 0.2s;
     @include block();
     max-width: 938px;
     margin: 36px auto 0 auto;
+
+    @include mobile($screen_md) {
+      margin-top: 50px;
+    }
+
+    @include mobile($screen_sm) {
+      margin-top: 40px;
+    }
 
     > img {
       @include block();
@@ -54,6 +93,12 @@ $time_map_box: 0.2s;
             top: 50%;
             margin: -27px 0 0 -27px;
             opacity: 1;
+
+            @include mobile($screen_sm) {
+              width: 40px;
+              height: 40px;
+              margin: -20px 0 0 -20px;
+            }
           }
         } 
       }
@@ -176,11 +221,23 @@ $time_map_box: 0.2s;
       opacity: 0;
       z-index: -1;
 
+      @include mobile($screen_sm) {
+        width: 120px;
+        height: 60px;
+        bottom: 6px;
+        margin: 0 0 0 -60px;
+        padding-bottom: 6px;
+      }
+
       &:before {
         @include position(absolute, 0, 0, 100%, 60px);
         box-shadow: 0px 12px 24px rgba(197, 228, 243, 0.4);
         border-radius: 18px;
         content: '';
+
+        @include mobile($screen_sm) {
+          height: 48px;
+        }
       }
       &:after {
         @include position(absolute, 0, 0, 100%, 100%);
@@ -211,7 +268,16 @@ $time_map_box: 0.2s;
       background-color: $color_blue;
       cursor: pointer;
       z-index: 1;
-      animation: 2s ease-in-out 0.3s infinite mapButton;
+
+      @include desktop($screen_sm) {
+        animation: 2s ease-in-out 0.3s infinite mapButton;
+      }
+      
+      @include mobile($screen_sm) {
+        width: 24px;
+        height: 24px;
+        margin: -12px 0 0 -12px;
+      }
 
       &:before, &:after {
         @include position(absolute, 0, 0, 100%, 100%);
@@ -226,6 +292,10 @@ $time_map_box: 0.2s;
       }
       &:after {
         @include image('icon-logo.svg', 18px auto, center);
+
+        @include mobile($screen_sm) {
+          background-size: 12px auto;
+        }
       }
     }
   }
