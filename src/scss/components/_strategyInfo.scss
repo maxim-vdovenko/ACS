@@ -1,0 +1,31 @@
+.strategy-info {
+  @include block();
+  margin-top: 200px;
+
+  // .container {
+  //   min-height: 872px;
+  // }
+
+  .col {
+    &:nth-child(1) {
+      order: 1;
+      padding-left: 30px;
+    }
+    &:nth-child(2) {
+      order: 0;
+      padding-right: 30px;
+    }
+  }
+
+  .textBox {
+    h4 {
+      margin-bottom: 40px;
+
+      span {
+        font-size: inherit;
+        line-height: inherit;
+        color: $color_text_blue;
+      }
+    }
+  }
+}

@@ -55,6 +55,10 @@
           color: $color_text_blue;
         }
       }
+
+      &.active a {
+        color: $color_text_blue;
+      }
     }
   }
 

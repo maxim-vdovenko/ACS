@@ -1,0 +1,73 @@
+.fulfillment-process {
+  @include block();
+
+  // .container {
+  //   min-height: 872px;
+  // }
+
+  // .col {
+  //   &:nth-child(1) {
+  //     order: 1;
+  //   }
+  //   &:nth-child(2) {
+  //     order: 0;
+  //   }
+  // }
+
+  &__list {
+    @include block();
+
+    li {
+      @include inline_block();
+
+      b {
+        position: absolute;
+        top: 20px;
+        left: 30px;
+        font-size: 24px;
+        line-height: 34px;
+        letter-spacing: 0.025em;
+        color: $color_text_main;
+      }
+
+      span {
+        @include block();
+        width: 72px;
+        height: 72px;
+        margin: 0 auto;
+
+        &:before, &:after {
+          @include position(absolute, 0, 0, 100%, 100%);
+          content: '';
+        }
+
+        &:before {
+          border-radius: 18px;
+          background-color: $color_blueLight;
+        }
+
+        &:after {
+
+        }
+      }
+
+      p {
+        @include block();
+        font-size: 16px;
+        line-height: 28px;
+        color: $color_text_main;
+      }
+
+      &:nth-child(2n + 0) {
+        span:before {
+          transform: rotate(15deg);
+        }
+      }
+      &:nth-child(2n + 1) {
+        span:before {
+          transform: rotate(-15deg);
+        }
+      }
+    }
+  }
+}

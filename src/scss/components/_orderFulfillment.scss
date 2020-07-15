@@ -1,0 +1,25 @@
+.order-fulfillment {
+  @include block();
+  background-color: $color_blueLight;
+
+  .container {
+    min-height: 872px;
+  }
+
+  .col {
+    &:nth-child(1) {
+      order: 1;
+    }
+    &:nth-child(2) {
+      order: 0;
+    }
+  }
+
+  &__img {
+    @include block();
+    @include image('order-fulfillment/main.svg', contain, center);
+    width: 620px;
+    height: 665px;
+    @include b();
+  }
+}
