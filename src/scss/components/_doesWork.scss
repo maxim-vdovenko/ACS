@@ -1,0 +1,98 @@
+.doesWork {
+  @include block();
+  background-color: $color_blueLight_2;
+  padding: 145px 0;
+
+  &__info {
+    @include block();
+
+    .col {
+      &:nth-child(1) {
+        order: 1;
+      }
+      &:nth-child(2) {
+        order: 0;
+      }
+    }
+
+    &-img {
+      @include inline_block();
+
+      img {
+        max-width: 100%;
+      }
+    }
+
+    &-circles {
+      position: absolute;
+      width: 0;
+      height: 0;
+  
+      span {
+        position: absolute;
+        border-radius: 1000px;
+  
+        &:before {
+          @include position(absolute, 0, 0, 100%, 100%);
+          border-radius: inherit;
+          content: '';
+        }
+      }
+  
+      &--1 {
+        top: 215px;
+        right: 80px;
+  
+        span {
+          @include circle_position(16px, 16px);
+  
+          &:before {
+            background-color: $color_cyan;
+          }
+        }
+      }
+  
+      &--2 {
+        top: 250px;
+        right: -5px;
+  
+        span {
+          @include circle_position(32px, 32px);
+  
+          &:before {
+            background-color: $color_blue;
+          }
+        }
+      }
+  
+      &--3 {
+        bottom: -24px;
+        left: 193px;
+  
+        span {
+          @include circle_position(48px, 48px);
+  
+          &:before {
+            background-color: $color_violet;
+          }
+        }
+      }
+    }
+  }
+
+  &__text {
+    @include block();
+
+    .textBox {
+      h4 span {
+
+      }
+    }
+
+    &-button {
+      @include block();
+      margin-top: 100px;
+      text-align: center;
+    }
+  }
+}

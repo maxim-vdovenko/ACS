@@ -119,6 +119,13 @@ a, input, textarea, select, button {
   p {
     margin-bottom: 22px;
   }
+
+  &-color {
+    @include inline();
+    font-size: inherit;
+    line-height: inherit;
+    color: $color_blue;
+  }
 }
 
 .button {

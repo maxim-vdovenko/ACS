@@ -1,4 +1,4 @@
-.fulfillment-process {
+.fulfillmentProcess {
   @include block();
 
   // .container {
@@ -19,15 +19,20 @@
 
     li {
       @include inline_block();
+      width: 240px;
 
       b {
         position: absolute;
-        top: 20px;
-        left: 30px;
+        width: 0;
+        height: 0;
+        top: 30px;
+        left: 50%;
+        margin-left: -50px;
         font-size: 24px;
         line-height: 34px;
         letter-spacing: 0.025em;
         color: $color_text_main;
+        z-index: 1;
       }
 
       span {
@@ -56,6 +61,7 @@
         font-size: 16px;
         line-height: 28px;
         color: $color_text_main;
+        text-align: center;
       }
 
       &:nth-child(2n + 0) {
@@ -67,6 +73,36 @@
         span:before {
           transform: rotate(-15deg);
         }
+      }
+    }
+
+    &-link {
+      span:after {
+        @include image('fulfillment-process/link.svg', 30px auto, center);
+      }
+    }
+
+    &-storage {
+      span:after {
+        @include image('fulfillment-process/storage.svg', 30px auto, center);
+      }
+    }
+
+    &-inventory {
+      span:after {
+        @include image('fulfillment-process/inventory.svg', 30px auto, center);
+      }
+    }
+
+    &-store {
+      span:after {
+        @include image('fulfillment-process/store.svg', 30px auto, center);
+      }
+    }
+
+    &-happy {
+      span:after {
+        @include image('fulfillment-process/happy.svg', 30px auto, center);
       }
     }
   }

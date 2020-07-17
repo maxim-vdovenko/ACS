@@ -3,7 +3,7 @@ window.onload = function() {
   cloudLogistics.init()
   interNetwork.init()
   blockContainer.init()
-  discountedShipping.init()
+  shipping.init()
   integrateTools.init()
   inPress.init()
 }
@@ -59,7 +59,6 @@ cloudLogistics.events = function() {
   })
 
   window.requestAnimationFrame(() => {
-
     $('body').on('mousemove', this.block, (e) => {
       const x_block = e.originalEvent.clientX
       const y_block = e.originalEvent.clientY
@@ -81,7 +80,10 @@ const blockContainer = {
   internationalShipping: '.blockContainer__animation--internationalShipping',
   storageFulfillment:  '.blockContainer__animation--storageFulfillment',
   softwarePlatform: '.blockContainer__animation--softwarePlatform',
-  scaleCommerce: '.blockContainer__animation--scaleCommerce'
+  scaleCommerce: '.blockContainer__animation--scaleCommerce',
+  flexibleShipping: '.blockContainer__animation--flexibleShipping',
+  specialProjects: '.blockContainer__animation--specialProjects',
+  packingFees: '.blockContainer__animation--packingFees'
 }
 
 blockContainer.init = function() {
@@ -90,6 +92,9 @@ blockContainer.init = function() {
   this.animationScroll(this.storageFulfillment, controller)
   this.animationScroll(this.softwarePlatform, controller)
   this.animationScroll(this.scaleCommerce, controller)
+  this.animationScroll(this.flexibleShipping, controller)
+  this.animationScroll(this.specialProjects, controller)
+  this.animationScroll(this.packingFees, controller)
 }
 
 blockContainer.animationScroll = function(block, controller) {
@@ -138,37 +143,70 @@ interNetwork.events = function() {
 
 
 
-const discountedShipping = {
-  bl: '.discountedShipping',
-  mask: '.discountedShipping__mask',
-  text: '.discountedShipping .textBox',
-  logos: '.discountedShipping__logos',
-  circles: [
-    '.discountedShipping__circles--1',
-    '.discountedShipping__circles--2',
-    '.discountedShipping__circles--3'
-  ]
+const shipping = {
+  discounted: {
+    bl: '.discountedShipping',
+    mask: '.discountedShipping__mask',
+    text: '.discountedShipping .textBox',
+    logos: '.discountedShipping__logos',
+    circles: [
+      '.discountedShipping__circles--1',
+      '.discountedShipping__circles--2',
+      '.discountedShipping__circles--3'
+    ]
+  },
+  flexibility: {
+    bl: '.flexibilityShipping',
+    mask: '.flexibilityShipping__mask',
+    text: '.flexibilityShipping .textBox',
+    circles: [
+      '.flexibilityShipping__circles--1',
+      '.flexibilityShipping__circles--2',
+      '.flexibilityShipping__circles--3'
+    ]
+  },
+  favorite: {
+    bl: '.favoriteCarrier',
+    mask: '.favoriteCarrier__mask',
+    text: '.favoriteCarrier .textBox',
+    circles: [
+      '.favoriteCarrier__circles--1',
+      '.favoriteCarrier__circles--2',
+      '.favoriteCarrier__circles--3'
+    ]
+  }
 }
 
-discountedShipping.init = function() {
+shipping.init = function() {
   const controller = new ScrollMagic.Controller()
 
-  this.animationScroll(this.mask, $(this.mask).outerHeight() / 4, controller)
-  this.animationScroll(this.text, $(this.text).outerHeight() / 2, controller)
-  this.animationScroll(this.logos, $(this.logos).outerHeight() / 2, controller)
+  this.animationScroll(this.discounted.mask, $(this.discounted.mask).outerHeight() / 4, controller)
+  this.animationScroll(this.discounted.text, $(this.discounted.text).outerHeight() / 2, controller)
+  this.animationScroll(this.discounted.logos, $(this.discounted.logos).outerHeight() / 2, controller)
+  this.parallaxScroll(this.discounted.circles[0], this.discounted.circles[0] + ' > span', '-450px', '100%', controller)
+  this.parallaxScroll(this.discounted.circles[1], this.discounted.circles[1] + ' > span', '-200px', '100%', controller)
+  this.parallaxScroll(this.discounted.circles[2], this.discounted.circles[2] + ' > span', '-150px', '100%', controller)
 
-  this.parallaxScroll(this.circles[0], this.circles[0] + ' > span', '-450px', '100%', controller)
-  this.parallaxScroll(this.circles[1], this.circles[1] + ' > span', '-200px', '100%', controller)
-  this.parallaxScroll(this.circles[2], this.circles[2] + ' > span', '-150px', '100%', controller)
+  this.animationScroll(this.flexibility.mask, $(this.flexibility.mask).outerHeight() / 4, controller)
+  this.animationScroll(this.flexibility.text, $(this.flexibility.text).outerHeight() / 2, controller)
+  this.parallaxScroll(this.flexibility.circles[0], this.flexibility.circles[0] + ' > span', '-450px', '100%', controller)
+  this.parallaxScroll(this.flexibility.circles[1], this.flexibility.circles[1] + ' > span', '-200px', '100%', controller)
+  this.parallaxScroll(this.flexibility.circles[2], this.flexibility.circles[2] + ' > span', '-150px', '100%', controller)
+
+  this.animationScroll(this.favorite.mask, $(this.favorite.mask).outerHeight() / 4, controller)
+  this.animationScroll(this.favorite.text, $(this.favorite.text).outerHeight() / 2, controller)
+  this.parallaxScroll(this.favorite.circles[0], this.favorite.circles[0] + ' > span', '-450px', '100%', controller)
+  this.parallaxScroll(this.favorite.circles[1], this.favorite.circles[1] + ' > span', '-200px', '100%', controller)
+  this.parallaxScroll(this.favorite.circles[2], this.favorite.circles[2] + ' > span', '-150px', '100%', controller)
 }
 
-discountedShipping.parallaxScroll = function(section, element, y, duration, controller) {
+shipping.parallaxScroll = function(section, element, y, duration, controller) {
   new ScrollMagic.Scene({triggerElement: section, triggerHook: 'onEnter', duration, offset: '0'})
   .setTween(element, {y, ease: Linear.easeNone})
   .addTo(controller)
 }
 
-discountedShipping.animationScroll = function(block, h, controller) {
+shipping.animationScroll = function(block, h, controller) {
   const scene = new ScrollMagic.Scene({
     triggerElement: block, 
     triggerHook: 'onEnter', 
