@@ -6,6 +6,7 @@ window.onload = function() {
   shipping.init()
   integrateTools.init()
   inPress.init()
+  workSlider.init()
 }
 
 
@@ -295,4 +296,23 @@ inPress.animationScroll = function(block, controller) {
   scene.on('enter', () => {
     $(block).addClass('active')
   })
+}
+
+
+
+const workSlider = {
+  bl: '.workSlider',
+  value: '.workSlider__value',
+  box: '.workSlider__value-box'
+}
+
+workSlider.init = function() {
+
+  $(this.box).slider({
+    animate: 'fast',
+    range: false,
+    min: 0,
+    max: 1000
+  })
+
 }

@@ -1,34 +1,41 @@
 .fulfillmentProcess {
   @include block();
+  margin-top: 257px;
+  z-index: 1;
 
-  // .container {
-  //   min-height: 872px;
-  // }
-
-  // .col {
-  //   &:nth-child(1) {
-  //     order: 1;
-  //   }
-  //   &:nth-child(2) {
-  //     order: 0;
-  //   }
-  // }
+  .col {
+    &:nth-child(1) {
+      flex: none;
+      max-width: 300px;
+      padding-top: 10px;
+    }
+    &:nth-child(2) {
+      justify-content: space-between;
+    }
+  }
 
   &__list {
-    @include block();
+    @include flex();
+    flex-wrap: wrap;
+    justify-content: flex-start;
 
     li {
       @include inline_block();
       width: 240px;
+      min-height: 220px;
+
+      &:not(:nth-child(3n + 0)) {
+        margin: 0 60px 25px 0;
+      }
 
       b {
         position: absolute;
         width: 0;
         height: 0;
-        top: 30px;
+        top: 38px;
         left: 50%;
-        margin-left: -50px;
-        font-size: 24px;
+        margin-left: -53px;
+        font-size: 28px;
         line-height: 34px;
         letter-spacing: 0.025em;
         color: $color_text_main;
@@ -39,7 +46,7 @@
         @include block();
         width: 72px;
         height: 72px;
-        margin: 0 auto;
+        margin: 0 auto 26px auto;
 
         &:before, &:after {
           @include position(absolute, 0, 0, 100%, 100%);
@@ -50,14 +57,12 @@
           border-radius: 18px;
           background-color: $color_blueLight;
         }
-
-        &:after {
-
-        }
       }
 
       p {
         @include block();
+        width: 250px;
+        left: -5px;
         font-size: 16px;
         line-height: 28px;
         color: $color_text_main;
@@ -104,6 +109,21 @@
       span:after {
         @include image('fulfillment-process/happy.svg', 30px auto, center);
       }
+    }
+  }
+
+  &__circles {
+    position: absolute;
+    top: 200px;
+    left: 50%;
+    width: 403px;
+    height: 467px;
+    margin-left: -1161px;
+
+    > span {
+      @include position(absolute, 0, 0, 100%, 100%);
+      @include image('fulfillment-process/circles.svg', contain, 0 0);
+      content: '';
     }
   }
 }

@@ -1,10 +1,6 @@
 .strategyInfo {
   @include block();
-  margin-top: 200px;
-
-  // .container {
-  //   min-height: 872px;
-  // }
+  margin-top: 271px;
 
   .col {
     &:nth-child(1) {
@@ -14,18 +10,13 @@
     &:nth-child(2) {
       order: 0;
       padding-right: 30px;
+      padding-top: 7px;
     }
   }
 
   .textBox {
     h4 {
-      margin-bottom: 40px;
-
-      span {
-        font-size: inherit;
-        line-height: inherit;
-        color: $color_text_blue;
-      }
+      margin-bottom: 44px;
     }
   }
 }

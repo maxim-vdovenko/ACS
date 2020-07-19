@@ -1,10 +1,16 @@
 .doesWork {
   @include block();
   background-color: $color_blueLight_2;
-  padding: 145px 0;
+  padding: 117px 0 145px 0;
+  margin-top: 72px;
 
   &__info {
     @include block();
+
+    .row {
+      min-height: 680px;
+      align-items: center;
+    }
 
     .col {
       &:nth-child(1) {
@@ -12,6 +18,8 @@
       }
       &:nth-child(2) {
         order: 0;
+        flex: none;
+        max-width: 800px;
       }
     }
 
@@ -19,8 +27,12 @@
       @include inline_block();
 
       img {
-        max-width: 100%;
+        max-width: 490px;
       }
+    }
+
+    .textBox {
+      padding: 8px 60px 0 0;
     }
 
     &-circles {
@@ -40,24 +52,12 @@
       }
   
       &--1 {
-        top: 215px;
-        right: 80px;
+        // top: 215px;
+        top: -30px;
+        right: 173px;
   
         span {
           @include circle_position(16px, 16px);
-  
-          &:before {
-            background-color: $color_cyan;
-          }
-        }
-      }
-  
-      &--2 {
-        top: 250px;
-        right: -5px;
-  
-        span {
-          @include circle_position(32px, 32px);
   
           &:before {
             background-color: $color_blue;
@@ -65,9 +65,23 @@
         }
       }
   
+      &--2 {
+        // top: 250px;
+        top: 75px;
+        right: -3px;
+  
+        span {
+          @include circle_position(30px, 30px);
+  
+          &:before {
+            border: 2px solid $color_dark;
+          }
+        }
+      }
+  
       &--3 {
-        bottom: -24px;
-        left: 193px;
+        bottom: 54px;
+        left: 0;
   
         span {
           @include circle_position(48px, 48px);
@@ -80,19 +94,172 @@
     }
   }
 
+  &__slider {
+    @include block();
+    margin-top: 115px;
+  }
+
   &__text {
     @include block();
+    margin-top: 200px;
 
-    .textBox {
-      h4 span {
-
+    .col {
+      &:nth-child(1) {
+        padding: 7px 30px 0 0;
+      }
+      &:nth-child(2) {
+        padding-left: 30px;
       }
     }
 
     &-button {
       @include block();
-      margin-top: 100px;
+      margin-top: 75px;
       text-align: center;
+    }
+  }
+}
+
+.workSlider {
+  @include block();
+
+  &__list {
+    @include flex();
+    margin: 0 -30px;
+
+    &-box {
+      position: relative;
+      min-width: 340px;
+      margin: 0 30px;
+
+      &:before {
+        @include block();
+        width: 144px;
+        height: 144px;
+        margin: 0 auto 25px auto;
+        content: '';
+      }
+
+      &:not(:last-child) {
+        &:after {
+          @include image('icon-arrow.svg', contain, 0 0);
+          position: absolute;
+          top: 63px;
+          right: -37px;
+          width: 10px;
+          height: 17px;
+          content: '';
+        }
+      }
+
+      h4 {
+        text-align: center;
+        margin-bottom: 10px;
+      }
+
+      p {
+        text-align: center;
+      }
+
+      &--manufacture {
+        &:before {
+          @include image('does-work/manufacture.svg', contain, 0 0);
+        }
+      }
+
+      &--link {
+        &:before {
+          @include image('does-work/link.svg', contain, 0 0);
+        }
+      }
+
+      &--shipProducts {
+        &:before {
+          @include image('does-work/ship-products.svg', contain, 0 0);
+        }
+      }
+
+      &--receiving {
+        &:before {
+          @include image('does-work/receiving.svg', contain, 0 0);
+        }
+      }
+    }
+  }
+
+  &__value {
+    @include block();
+    height: 6px;
+    border-radius: 100px;
+    margin-top: 100px;
+    background-color: $color_white;
+
+    &-box {
+      @include block();
+      height: 100%;
+      z-index: 1;
+    }
+
+    &-list {
+      position: absolute;
+      display: flex;
+      justify-content: space-between;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+
+      li {
+        @include inline_block();
+
+        &:before {
+          @include position(absolute, 0, 0, 1px, 100%);
+          background-color: $color_dark;
+          content: '';
+        }
+
+        &:first-child:before {
+          display: none;
+        } 
+
+        &:last-child:before {
+          display: none;
+        } 
+
+        span {
+          @include inline_block();
+          width: 0;
+          left: -8px;
+          top: 30px;
+          font-size: 18px;
+          line-height: 24px;
+          letter-spacing: 0.025em;
+          color: $color_text_main;
+        }
+      }
+    }
+
+    .ui-slider-handle {
+      top: -15px;
+      margin-left: -17px;
+      width: 36px;
+      height: 36px;
+      border-radius: 1000px;
+      background-color: $color_blue;
+      cursor: pointer;
+
+      &:before {
+        @include position(absolute, 50%, 50%, 18px, 18px);
+        margin: -9px 0 0 -9px;
+        background-color: $color_white;
+        border-radius: 1000px;
+        content: '';
+      }
+
+      // &:after {
+      //   @include position(absolute, 50%, 50%, 18px, 6px);
+      //   content: ;
+      // }
     }
   }
 }

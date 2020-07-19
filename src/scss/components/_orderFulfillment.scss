@@ -2,8 +2,9 @@
   @include block();
   background-color: $color_blueLight;
 
-  .container {
+  .row {
     min-height: 872px;
+    align-items: center;
   }
 
   .col {
@@ -15,11 +16,109 @@
     }
   }
 
+  .textBox {
+    left: -20px;
+    padding-bottom: 2px;
+  }
+
   &__img {
     @include block();
-    @include image('order-fulfillment/main.svg', contain, center);
+    top: 15px;
+    left: -187px;
     width: 620px;
     height: 665px;
-    @include b();
+
+    span {
+      @include position(absolute, 0, 0, 100%, 100%);
+
+      &:before {
+        @include position(absolute, 0, 0, 100%, 100%);
+        content: '';
+      }
+
+      &:nth-child(1) {
+        &:before {
+          @include image('order-fulfillment/element-1.svg', contain, center);
+        }
+      }
+      &:nth-child(2) {
+        &:before {
+          @include image('order-fulfillment/element-2.svg', contain, center);
+        }
+      }
+      &:nth-child(3) {
+        width: 632px;
+        height: 677px;
+        left: -12px;
+        top: -11px;
+
+        &:before {
+          @include image('order-fulfillment/element-3.svg', contain, center);
+        }
+      }
+      &:nth-child(4) {
+        width: 652px;
+        height: 665px;
+        top: 1px;
+
+        &:before {
+          @include image('order-fulfillment/element-4.svg', contain, center);
+        }
+      }
+      &:nth-child(5) {
+        width: 620px;
+        height: 725px;
+        top: 1px;
+
+        &:before {
+          @include image('order-fulfillment/element-5.svg', contain, center);
+        }
+      }
+      &:nth-child(6) {
+        &:before {
+          @include image('order-fulfillment/element-6.svg', contain, center);
+        }
+      }
+      &:nth-child(7) {
+        &:before {
+          @include image('order-fulfillment/element-7.svg', contain, center);
+        }
+      }
+      &:nth-child(8) {
+        &:before {
+          @include image('order-fulfillment/element-8.svg', contain, center);
+        }
+      }
+      &:nth-child(9) {
+        &:before {
+          @include image('order-fulfillment/element-9.svg', contain, center);
+        }
+      }
+      &:nth-child(10) {
+        &:before {
+          @include image('order-fulfillment/element-10.svg', contain, center);
+        }
+      }
+      &:nth-child(11) {
+        &:before {
+          @include image('order-fulfillment/element-11.svg', contain, center);
+        }
+      }
+    }
+  }
+
+  &__circles {
+    position: absolute;
+    top: 693px;
+    left: 50%;
+    width: 233px;
+    height: 432px;
+    margin-left: 818px;
+
+    > span {
+      @include position(absolute, 0, 0, 100%, 100%);
+      @include image('order-fulfillment/circles.svg', contain, 0 0);
+      content: '';
+    }
   }
 }

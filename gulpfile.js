@@ -34,6 +34,7 @@ gulp.task('js', () => {
 gulp.task('js-plugins', () => {
   return gulp.src([
     'node_modules/jquery/dist/jquery.min.js',
+    'node_modules/jquery-ui-dist/jquery-ui.min.js',
     'node_modules/slick-carousel/slick/slick.min.js',
     'node_modules/gsap/dist/gsap.min.js',
     'node_modules/scrollmagic/scrollmagic/minified/ScrollMagic.min.js',
