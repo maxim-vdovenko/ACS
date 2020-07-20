@@ -18,5 +18,16 @@
     h4 {
       margin-bottom: 44px;
     }
+
+    .colorBlue {
+      transition: color 1s;
+      color: $color_text_main;
+    }
+
+    &.active {
+      .colorBlue {
+        color: $color_text_blue;
+      }
+    }
   }
 }

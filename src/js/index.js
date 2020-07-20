@@ -9,6 +9,8 @@ window.onload = function() {
   workSlider.init()
   orderFulfillment.init()
   fulfillmentProcess.init()
+  strategyInfo.init()
+  orderAdvantages.init()
 }
 
 
@@ -436,11 +438,13 @@ workSlider.switching = function(ind) {
 
 
 const fulfillmentProcess = {
+  list: '.fulfillmentProcess__list',
   circles: '.fulfillmentProcess__circles',
 }
 
 fulfillmentProcess.init = function() {
   const controller = new ScrollMagic.Controller()
+  this.animationScroll(this.list, controller)
   this.parallaxScroll(this.circles, this.circles + ' span:nth-child(1)', '-250px', '100%', controller)
   this.parallaxScroll(this.circles, this.circles + ' span:nth-child(2)', '-350px', '100%', controller)
 
@@ -462,4 +466,66 @@ fulfillmentProcess.parallaxScroll = function(section, element, y, duration, cont
   new ScrollMagic.Scene({triggerElement: section, triggerHook: 'onEnter', duration, offset: '0'})
   .setTween(element, {y, ease: Linear.easeNone})
   .addTo(controller)
+}
+
+fulfillmentProcess.animationScroll = function(block, controller) {
+  const scene = new ScrollMagic.Scene({
+    triggerElement: block, 
+    triggerHook: 'onEnter', 
+    offset: $(block).outerHeight() / 2})
+    .setTween(block)
+    .addTo(controller)
+
+  scene.on('enter', () => {
+    $(block).addClass('active')
+  })
+}
+
+
+
+const strategyInfo = {
+  bl: '.strategyInfo',
+  textBox: '.strategyInfo .textBox'
+}
+
+strategyInfo.init = function() {
+  const controller = new ScrollMagic.Controller()
+  this.animationScroll(this.textBox, controller)
+}
+
+strategyInfo.animationScroll = function(block, controller) {
+  const scene = new ScrollMagic.Scene({
+    triggerElement: block, 
+    triggerHook: 'onEnter', 
+    offset: $(block).outerHeight() / 2})
+    .setTween(block)
+    .addTo(controller)
+
+  scene.on('enter', () => {
+    $(block).addClass('active')
+  })
+}
+
+
+
+const orderAdvantages = {
+  bl: '.orderAdvantages',
+}
+
+orderAdvantages.init = function() {
+  const controller = new ScrollMagic.Controller()
+  this.animationScroll(this.bl, controller)
+}
+
+orderAdvantages.animationScroll = function(block, controller) {
+  const scene = new ScrollMagic.Scene({
+    triggerElement: block, 
+    triggerHook: 'onEnter', 
+    offset: $(block).outerHeight() / 2})
+    .setTween(block)
+    .addTo(controller)
+
+  scene.on('enter', () => {
+    $(block).addClass('active')
+  })
 }

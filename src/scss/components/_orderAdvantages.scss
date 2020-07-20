@@ -1,4 +1,5 @@
 .orderAdvantages {
+  $orderAdvantages: &;
   @include block();
   margin-top: 103px;
 
@@ -20,6 +21,9 @@
   &__cont {
     @include block();
     padding: 40px 0;
+    transition: transform 0.6s, opacity 0.6s;
+    transform: translateY(20px);
+    opacity: 0;
 
     &:before {
       @include block();
@@ -30,27 +34,42 @@
     }
 
     &--sameDay {
+      transition-delay: 0.1s;
+
       &:before {
         @include image('order-advantages/same-day.svg', contain, 0 0);
       }
     }
 
     &--optimizedReturn {
+      transition-delay: 0.25s;
+
       &:before {
         @include image('order-advantages/optimized-return.svg', contain, 0 0);
       }
     }
 
     &--deliveryAmerica {
+      transition-delay: 0.4s;
+
       &:before {
         @include image('order-advantages/delivery-america.svg', contain, 0 0);
       }
     }
 
     &--crossBorder {
+      transition-delay: 0.55s;
+
       &:before {
         @include image('order-advantages/cross-border.svg', contain, 0 0);
       }
+    }
+  }
+
+  &.active {
+    #{$orderAdvantages}__cont {
+      transform: translateY(0);
+      opacity: 1;
     }
   }
 }
