@@ -1,0 +1,22 @@
+.strategyInfo {
+  @include block();
+  margin-top: 271px;
+
+  .col {
+    &:nth-child(1) {
+      order: 1;
+      padding-left: 30px;
+    }
+    &:nth-child(2) {
+      order: 0;
+      padding-right: 30px;
+      padding-top: 7px;
+    }
+  }
+
+  .textBox {
+    h4 {
+      margin-bottom: 44px;
+    }
+  }
+}

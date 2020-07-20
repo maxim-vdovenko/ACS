@@ -1,0 +1,56 @@
+.orderAdvantages {
+  @include block();
+  margin-top: 103px;
+
+  .col {
+    &:nth-child(2n + 1) {
+      padding-right: 30px;
+    }
+    &:nth-child(2n + 0) {
+      padding-left: 30px;
+    }
+  }
+
+  .textBox {
+    h4 {
+      margin-bottom: 10px;
+    }
+  }
+
+  &__cont {
+    @include block();
+    padding: 40px 0;
+
+    &:before {
+      @include block();
+      width: 144px;
+      height: 144px;
+      margin-bottom: 24px;
+      content: '';
+    }
+
+    &--sameDay {
+      &:before {
+        @include image('order-advantages/same-day.svg', contain, 0 0);
+      }
+    }
+
+    &--optimizedReturn {
+      &:before {
+        @include image('order-advantages/optimized-return.svg', contain, 0 0);
+      }
+    }
+
+    &--deliveryAmerica {
+      &:before {
+        @include image('order-advantages/delivery-america.svg', contain, 0 0);
+      }
+    }
+
+    &--crossBorder {
+      &:before {
+        @include image('order-advantages/cross-border.svg', contain, 0 0);
+      }
+    }
+  }
+}

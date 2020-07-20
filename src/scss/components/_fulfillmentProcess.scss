@@ -1,0 +1,129 @@
+.fulfillmentProcess {
+  @include block();
+  margin-top: 257px;
+  z-index: 1;
+
+  .col {
+    &:nth-child(1) {
+      flex: none;
+      max-width: 300px;
+      padding-top: 10px;
+    }
+    &:nth-child(2) {
+      justify-content: space-between;
+    }
+  }
+
+  &__list {
+    @include flex();
+    flex-wrap: wrap;
+    justify-content: flex-start;
+
+    li {
+      @include inline_block();
+      width: 240px;
+      min-height: 220px;
+
+      &:not(:nth-child(3n + 0)) {
+        margin: 0 60px 25px 0;
+      }
+
+      b {
+        position: absolute;
+        width: 0;
+        height: 0;
+        top: 38px;
+        left: 50%;
+        margin-left: -53px;
+        font-size: 28px;
+        line-height: 34px;
+        letter-spacing: 0.025em;
+        color: $color_text_main;
+        z-index: 1;
+      }
+
+      span {
+        @include block();
+        width: 72px;
+        height: 72px;
+        margin: 0 auto 26px auto;
+
+        &:before, &:after {
+          @include position(absolute, 0, 0, 100%, 100%);
+          content: '';
+        }
+
+        &:before {
+          border-radius: 18px;
+          background-color: $color_blueLight;
+        }
+      }
+
+      p {
+        @include block();
+        width: 250px;
+        left: -5px;
+        font-size: 16px;
+        line-height: 28px;
+        color: $color_text_main;
+        text-align: center;
+      }
+
+      &:nth-child(2n + 0) {
+        span:before {
+          transform: rotate(15deg);
+        }
+      }
+      &:nth-child(2n + 1) {
+        span:before {
+          transform: rotate(-15deg);
+        }
+      }
+    }
+
+    &-link {
+      span:after {
+        @include image('fulfillment-process/link.svg', 30px auto, center);
+      }
+    }
+
+    &-storage {
+      span:after {
+        @include image('fulfillment-process/storage.svg', 30px auto, center);
+      }
+    }
+
+    &-inventory {
+      span:after {
+        @include image('fulfillment-process/inventory.svg', 30px auto, center);
+      }
+    }
+
+    &-store {
+      span:after {
+        @include image('fulfillment-process/store.svg', 30px auto, center);
+      }
+    }
+
+    &-happy {
+      span:after {
+        @include image('fulfillment-process/happy.svg', 30px auto, center);
+      }
+    }
+  }
+
+  &__circles {
+    position: absolute;
+    top: 200px;
+    left: 50%;
+    width: 403px;
+    height: 467px;
+    margin-left: -1161px;
+
+    > span {
+      @include position(absolute, 0, 0, 100%, 100%);
+      @include image('fulfillment-process/circles.svg', contain, 0 0);
+      content: '';
+    }
+  }
+}

@@ -188,6 +188,16 @@ a, input, textarea, select, button {
       margin-bottom: 18px;
     }
   }
+
+  span {
+    @include inline();
+    font-size: inherit;
+    line-height: inherit;
+  }
+
+  .colorBlue {
+    color: $color_blue;
+  }
 }
 
 .button {

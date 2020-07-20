@@ -1,17 +1,21 @@
-.discountedShipping {
+.flexibilityShipping {
   @include block();
-  margin-top: 144px;
+  margin-top: 113px;
 
   .row {
-    min-height: 995px;
+    min-height: 783px;
     align-items: center;
   }
 
   .col {
     &:nth-child(1) {
+      order: 1;
+    }
+    &:nth-child(2) {
+      order: 0;
       flex: none;
-      max-width: 800px;
-      margin-bottom: 8px;
+      max-width: 600px;
+      padding-top: 10px;
     }
   }
 
@@ -23,6 +27,7 @@
       transition: all 0.8s;
       transition-delay: 0.3s;
       opacity: 0;
+      color: $color_text_white;
     }
 
     p {
@@ -30,6 +35,7 @@
       transition: all 0.8s;
       transition-delay: 0.6s;
       opacity: 0;
+      color: $color_text_white;
     }
 
     &.active {
@@ -44,13 +50,21 @@
     }
   }
 
+  &__img {
+    @include inline_block();
+
+    img {
+      max-width: 690px;
+    }
+  }
+
   &__mask {
     position: absolute;
     top: 0;
     right: 50%;
     width: 10000px;
     height: 100%;
-    background-color: $color_blueLight_2;
+    background-color: $color_blue;
     transition: all 1.5s;
     transform: translateX(-100vh);
 
@@ -58,38 +72,6 @@
      transform: translateX(0);
      margin-right: -330px;
     }
-  }
-
-  &__logos {
-    @include flex();
-    align-items: center;
-    margin-top: 34px;
-
-    li {
-      @include inline_block();
-      opacity: 0;
-      transition: all 0.8s;
-      transform: translateY(30px);
-      
-      @for $i from 1 through 4 {
-        &:nth-child(#{$i}) {
-          transition-delay: ($i / 6)#{s};
-        }
-      }
-
-      &:not(:first-child) {
-        margin-left: 36px;
-      } 
-    }
-
-    &.active li {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
-
-  &__img {
-    @include block();
   }
 
   &__circles {
@@ -109,40 +91,40 @@
     }
 
     &--1 {
-      top: 215px;
-      right: 80px;
+      top: 190px;
+      right: 112px;
 
       span {
         @include circle_position(16px, 16px);
 
         &:before {
-          background-color: $color_cyan;
+          background-color: $color_dark;
         }
       }
     }
 
     &--2 {
-      top: 250px;
-      right: -5px;
+      top: 130px;
+      left: 237px;
 
       span {
         @include circle_position(32px, 32px);
 
         &:before {
-          background-color: $color_blue;
+          background-color: $color_white;
         }
       }
     }
 
     &--3 {
-      bottom: -24px;
-      left: 193px;
+      bottom: -35px;
+      right: 220px;
 
       span {
-        @include circle_position(48px, 48px);
+        @include circle_position(45px, 45px);
 
         &:before {
-          background-color: $color_violet;
+          border: 2px solid $color_dark;
         }
       }
     }

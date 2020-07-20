@@ -43,6 +43,10 @@
     }
   }
 
+  &--order {
+    margin-top: 113px;
+  } 
+
   .textBox {
     padding-top: 10px;
 
@@ -228,6 +232,175 @@
         &:nth-child(5) {
           &:before {
             @include image('block-container/scale-commerce/element-6.svg', contain, 0 0);
+          }
+        }
+      }
+
+      &.active span {
+        transform: translate(0, 0);
+        opacity: 1;
+
+        &:nth-child(2):before {
+          animation: 2.2s ease-in-out 1s infinite scaleCommerce_3; 
+        }
+        &:nth-child(3):before {
+          animation: 2.2s ease-in-out 1s infinite scaleCommerce_1; 
+        }
+        &:nth-child(4):before {
+          animation: 2.2s ease-in-out 1s infinite scaleCommerce_2; 
+        }
+      }
+    }
+
+    &--flexibleShipping {
+      @include image('block-container/flexible-shipping/element-1.svg', contain, 0 0);
+      top: 69px;
+      left: 0;
+      width: 469px;
+      height: 340px;
+
+      span {
+        &:nth-child(1) {
+          transform: translate(40px, -30px);
+          opacity: 0;
+
+          &:before {
+            @include image('block-container/flexible-shipping/element-2.svg', contain, 0 0);
+          }
+        }
+        &:nth-child(2) {
+          transform: translate(30px, -80px);
+          transition-delay: 0.5s;
+          opacity: 0;
+
+          &:before {
+            @include image('block-container/flexible-shipping/element-3.svg', contain, 0 0);
+          }
+        }
+        &:nth-child(3) {
+          transform: translate(30px, -80px);
+          transition-delay: 0.1s;
+          opacity: 0;
+
+          &:before {
+            @include image('block-container/flexible-shipping/element-4.svg', contain, 0 0);
+          }
+        }
+        &:nth-child(4) {
+          transform: translate(30px, -80px);
+          transition-delay: 0.3s;
+          opacity: 0;
+
+          &:before {
+            @include image('block-container/flexible-shipping/element-5.svg', contain, 0 0);
+          }
+        }
+        &:nth-child(5) {
+          &:before {
+            @include image('block-container/flexible-shipping/element-6.svg', contain, 0 0);
+          }
+        }
+      }
+
+      &.active span {
+        transform: translate(0, 0);
+        opacity: 1;
+
+        &:nth-child(2):before {
+          animation: 2.2s ease-in-out 1s infinite scaleCommerce_3; 
+        }
+        &:nth-child(3):before {
+          animation: 2.2s ease-in-out 1s infinite scaleCommerce_1; 
+        }
+        &:nth-child(4):before {
+          animation: 2.2s ease-in-out 1s infinite scaleCommerce_2; 
+        }
+      }
+    }
+
+    &--specialProjects {
+      @include image('block-container/special-projects/element-1.svg', contain, 0 0);
+      top: -1px;
+      right: 0;
+      width: 513px;
+      height: 327px;
+
+      span {
+        &:nth-child(1) {
+          transform: translate(40px, -30px);
+
+          &:before {
+            @include image('block-container/special-projects/element-2.svg', contain, 0 0);
+          }
+        }
+        &:nth-child(2) {
+          transform: translate(-30px, 20px);
+
+          &:before {
+            @include image('block-container/special-projects/element-3.svg', contain, 0 0);
+          }
+        }
+        &:nth-child(4) {
+          transform: translate(0, -30px);
+          opacity: 0;
+
+          &:before {
+            @include image('block-container/special-projects/element-4.svg', contain, 0 0);
+          }
+        }
+      }
+
+      &.active span {
+        transform: translate(0, 0);
+        opacity: 1;
+
+        &:nth-child(4):before {
+          animation: 2.2s ease-in-out infinite internationalShipping;
+        }
+      }
+    }
+
+    &--packingFees {
+      @include image('block-container/packing-fees/element-1.svg', contain, 0 0);
+      top: -5px;
+      left: 50px;
+      width: 362px;
+      height: 425px;
+
+      span {
+        &:nth-child(1) {
+          transform: translate(-40px, 30px);
+          opacity: 0;
+
+          &:before {
+            @include image('block-container/packing-fees/element-2.svg', contain, 0 0);
+          }
+        }
+        &:nth-child(2) {
+          transform: translate(0, -80px);
+          transition-delay: 0.5s;
+          opacity: 0;
+
+          &:before {
+            @include image('block-container/packing-fees/element-3.svg', contain, 0 0);
+          }
+        }
+        &:nth-child(3) {
+          transform: translate(0, -80px);
+          transition-delay: 0.1s;
+          opacity: 0;
+
+          &:before {
+            @include image('block-container/packing-fees/element-4.svg', contain, 0 0);
+          }
+        }
+        &:nth-child(4) {
+          transform: translate(0, -80px);
+          transition-delay: 0.3s;
+          opacity: 0;
+
+          &:before {
+            @include image('block-container/packing-fees/element-5.svg', contain, 0 0);
           }
         }
       }

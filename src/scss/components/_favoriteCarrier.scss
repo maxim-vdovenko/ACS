@@ -1,17 +1,23 @@
-.discountedShipping {
+.favoriteCarrier {
+  $favoriteCarrier: &;
   @include block();
-  margin-top: 144px;
+  margin-top: 75px;
+  margin-bottom: 144px;
 
   .row {
-    min-height: 995px;
+    min-height: 915px;
     align-items: center;
   }
 
   .col {
+    width: 50%;
+    
     &:nth-child(1) {
-      flex: none;
-      max-width: 800px;
-      margin-bottom: 8px;
+      align-items: flex-end;
+      padding-right: 30px;
+    }
+    &:nth-child(2) {
+      padding: 0 0 20px 30px;
     }
   }
 
@@ -23,12 +29,21 @@
       transition: all 0.8s;
       transition-delay: 0.3s;
       opacity: 0;
+      color: $color_text_main;
     }
 
     p {
       transform: translateY(30px);
       transition: all 0.8s;
       transition-delay: 0.6s;
+      opacity: 0;
+      color: $color_text_main;
+    }
+
+    #{$favoriteCarrier}__button {
+      margin-top: 40px;
+      transition: opacity 0.8s;
+      transition-delay: 0.9s;
       opacity: 0;
     }
 
@@ -41,55 +56,34 @@
         transform: translateY(0);
         opacity: 1;
       }
+      #{$favoriteCarrier}__button {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__img {
+    @include inline_block();
+
+    img {
+      max-width: 690px;
     }
   }
 
   &__mask {
     position: absolute;
     top: 0;
-    right: 50%;
+    left: 50%;
     width: 10000px;
     height: 100%;
-    background-color: $color_blueLight_2;
+    background-color: $color_blueLight;
     transition: all 1.5s;
-    transform: translateX(-100vh);
+    transform: translateX(100vh);
 
     &.active {
      transform: translateX(0);
-     margin-right: -330px;
+     margin-left: -330px;
     }
-  }
-
-  &__logos {
-    @include flex();
-    align-items: center;
-    margin-top: 34px;
-
-    li {
-      @include inline_block();
-      opacity: 0;
-      transition: all 0.8s;
-      transform: translateY(30px);
-      
-      @for $i from 1 through 4 {
-        &:nth-child(#{$i}) {
-          transition-delay: ($i / 6)#{s};
-        }
-      }
-
-      &:not(:first-child) {
-        margin-left: 36px;
-      } 
-    }
-
-    &.active li {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
-
-  &__img {
-    @include block();
   }
 
   &__circles {
@@ -109,21 +103,21 @@
     }
 
     &--1 {
-      top: 215px;
-      right: 80px;
+      top: 190px;
+      right: 272px;
 
       span {
-        @include circle_position(16px, 16px);
+        @include circle_position(12px, 12px);
 
         &:before {
-          background-color: $color_cyan;
+          border: 2px solid $color_dark;
         }
       }
     }
 
     &--2 {
-      top: 250px;
-      right: -5px;
+      top: 120px;
+      left: 324px;
 
       span {
         @include circle_position(32px, 32px);
@@ -135,14 +129,14 @@
     }
 
     &--3 {
-      bottom: -24px;
-      left: 193px;
+      bottom: -12px;
+      left: 96px;
 
       span {
         @include circle_position(48px, 48px);
 
         &:before {
-          background-color: $color_violet;
+          background-color: $color_blue;
         }
       }
     }
