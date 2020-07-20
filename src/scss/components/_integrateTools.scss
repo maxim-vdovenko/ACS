@@ -1,7 +1,19 @@
 .integrateTools {
+  $tools: &;
   @include block();
   margin-top: 111px;
-  background-color: $color_blueLight_2;
+
+  &__fon {
+    @include position(absolute, 0, 0, 100%, 100%);
+    background-color: $color_blueLight_2;
+    box-shadow: 0 0 60px 60px $color_blueLight_2;
+    transition: opacity 2s;
+    opacity: 0;
+
+    &.active {
+      opacity: 1;
+    }
+  }
 
   &__reviews {
     @include block();
@@ -65,6 +77,14 @@
     }
   }
 
+  &__circlesBlock {
+    @include position(absolute, 0, 0, 100%, 100%);
+    overflow: hidden;
+    transition: opacity 1.5s;
+    transition-delay: 2s;
+    opacity: 0;
+  }
+
   &__circles {
     position: absolute;
     left: 50%;
@@ -77,101 +97,106 @@
 
     span {
       position: absolute;
-      border-radius: 1000px;
 
-      &:before {
+      i {
         @include position(absolute, 0, 0, 100%, 100%);
-        border-radius: inherit;
-        content: '';
+        border-radius: 1000px;
       }
     }
 
     &--1 {
-      top: 1138px;
       margin-left: -788px;
+      animation: 18s linear 2s infinite tools_circles;
 
       span {
         @include circle_position(32px, 32px);
+        animation: 18s ease-in-out 2s infinite tools_circles_side_1;
 
-        &:before {
+        i {
           background-color: $color_red;
         }
       }
     }
 
     &--2 {
-      top: 684px;
       margin-left: -603px;
+      animation: 11s linear 1s infinite tools_circles;
 
       span {
         @include circle_position(12px, 12px);
+        animation: 11s ease-in-out 1s infinite tools_circles_side_2;
 
-        &:before {
+        i {
           background-color: $color_blue;
         }
       }
     }
 
     &--3 {
-      top: 815px;
       margin-left: -138px;
+      animation: 16s linear 0.5s infinite tools_circles;
 
       span {
         @include circle_position(24px, 24px);
+        animation: 16s ease-in-out 0.5s infinite tools_circles_side_2;
 
-        &:before {
+        i {
           background-color: $color_yellow;
         }
       }
     }
 
     &--4 {
-      top: 1588px;
       margin-left: -364px;
+      animation: 13s linear 0.1s infinite tools_circles;
 
       span {
         @include circle_position(12px, 12px);
+        animation: 13s ease-in-out 0.1s infinite tools_circles_side_1;
 
-        &:before {
+        i {
           background-color: $color_cyan;
         }
       }
     }
 
     &--5 {
-      top: 1198px;
       margin-left: 170px;
+      animation: 21s linear 1.5s infinite tools_circles;
 
       span {
         @include circle_position(32px, 32px);
+        animation: 21s ease-in-out 1.5s infinite tools_circles_side_2;
 
-        &:before {
+        i {
           background-color: $color_violet;
         }
       }
     }
 
     &--6 {
-      top: 582px;
       margin-left: 630px;
+      animation: 19s linear 0.7s infinite tools_circles;
 
       span {
         @include circle_position(32px, 32px);
+        animation: 19s ease-in-out 0.7s infinite tools_circles_side_2;
 
-        &:before {
+        i {
           background-color: $color_cyan;
         }
       }
     }
 
     &--7 {
-      top: 981px;
       margin-left: 643px;
+      animation: 15s linear 0.3s infinite tools_circles;
 
       span {
         @include circle_position(12px, 12px);
+        animation: 15s ease-in-out 0.3s infinite tools_circles_side_1;
 
-        &:before {
+        i {
           background-color: $color_blue;
         }
       }
@@ -180,14 +205,22 @@
     &--8 {
       top: 1390px;
       margin-left: 828px;
+      animation: 12s linear 0s infinite tools_circles;
 
       span {
         @include circle_position(24px, 24px);
+        animation: 12s ease-in-out 0s infinite tools_circles_side_2;
 
-        &:before {
+        i {
           background-color: $color_yellow;
         }
       }
+    }
+  }
+
+  &.active {
+    #{$tools}__circlesBlock {
+      opacity: 1;
     }
   }
 }
@@ -450,5 +483,45 @@
         opacity: 1;
       }
     }
+  }
+}
+
+
+@keyframes tools_circles {
+  0% {
+    transform: translate(0, 1750px);
+  }
+  100% {
+    transform: translate(0, -40px);
+  }
+}
+
+@keyframes tools_circles_side_1 {
+  0% {
+    transform: translate(-10px, 0);
+  }
+  40% {
+    transform: translate(30px, 0);
+  }
+  70% {
+    transform: translate(-20px, 0);
+  }
+  100% {
+    transform: translate(30px, 0);
+  }
+}
+
+@keyframes tools_circles_side_2 {
+  0% {
+    transform: translate(10px, 0);
+  }
+  50% {
+    transform: translate(-40px, 0);
+  }
+  80% {
+    transform: translate(30px, 0);
+  }
+  100% {
+    transform: translate(-20px, 0);
   }
 }

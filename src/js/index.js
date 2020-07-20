@@ -286,6 +286,8 @@ shipping.animationScroll = function(block, h, controller) {
 
 
 const integrateTools = {
+  bl: '.integrateTools',
+  fon: '.integrateTools__fon',
   reviews: '.reviews',
   instruments: '.instruments',
   button: '.integrateTools__instruments-button',
@@ -303,32 +305,18 @@ const integrateTools = {
 
 integrateTools.init = function() {
   const controller = new ScrollMagic.Controller()
-
-  this.animationScroll(this.reviews, controller)
-  this.animationScroll(this.instruments, controller)
-  this.animationScroll(this.button, controller)
-
-  this.parallaxScroll(this.circles[0], this.circles[0] + ' > span', '-150px', '100%', controller)
-  this.parallaxScroll(this.circles[1], this.circles[1] + ' > span', '-650px', '100%', controller)
-  this.parallaxScroll(this.circles[2], this.circles[2] + ' > span', '-400px', '100%', controller)
-  this.parallaxScroll(this.circles[3], this.circles[3] + ' > span', '-500px', '100%', controller)
-  this.parallaxScroll(this.circles[4], this.circles[4] + ' > span', '-350px', '100%', controller)
-  this.parallaxScroll(this.circles[5], this.circles[5] + ' > span', '-150px', '100%', controller)
-  this.parallaxScroll(this.circles[6], this.circles[6] + ' > span', '-500px', '100%', controller)
-  this.parallaxScroll(this.circles[7], this.circles[7] + ' > span', '-200px', '100%', controller)
+  $(this.bl).addClass('active')
+  this.animationScroll(this.fon, 200, controller)
+  this.animationScroll(this.reviews, $(this.reviews).outerHeight() / 2, controller)
+  this.animationScroll(this.instruments, $(this.instruments).outerHeight() / 2, controller)
+  this.animationScroll(this.button, $(this.button).outerHeight() / 2, controller)
 }
 
-integrateTools.parallaxScroll = function(section, element, y, duration, controller) {
-  new ScrollMagic.Scene({triggerElement: section, triggerHook: 'onEnter', duration, offset: '0'})
-  .setTween(element, {y, ease: Linear.easeNone})
-  .addTo(controller)
-}
-
-integrateTools.animationScroll = function(block, controller) {
+integrateTools.animationScroll = function(block, h, controller) {
   const scene = new ScrollMagic.Scene({
     triggerElement: block, 
     triggerHook: 'onEnter', 
-    offset: $(block).outerHeight() / 2})
+    offset: h})
     .setTween(block)
     .addTo(controller)
 
