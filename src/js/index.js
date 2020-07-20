@@ -8,6 +8,7 @@ window.onload = function() {
   inPress.init()
   workSlider.init()
   orderFulfillment.init()
+  fulfillmentProcess.init()
 }
 
 
@@ -21,10 +22,8 @@ const acs = {
 acs.init = function() {
   const controller = new ScrollMagic.Controller()
   this.parallaxScroll(this.mask, this.mask + ' span', '-300px', '200%', controller)
-
   this.parallaxScroll(this.circles, this.circles + ' span:nth-child(1)', '-550px', '100%', controller)
   this.parallaxScroll(this.circles, this.circles + ' span:nth-child(2)', '-650px', '100%', controller)
-
   $(this.textBox).addClass('active')
 
   $('body').on('mousemove', (e) => {
@@ -34,14 +33,11 @@ acs.init = function() {
     const yMask = e.originalEvent.clientY / 300
 
     window.requestAnimationFrame(() => {
-
       for (let i = 0; i < $(this.mask + ' span').length; i++) {
         $(this.mask + ' span').eq(i).find('i').css({
           'transform': 'translate3d(0, 0, 0) translate('  + ((i + 1) * xMask) + 'px, ' + ((i + 1) * yMask) + 'px)',
         })
       }
-
-
       for (let i = 0; i < $(this.circles + ' span').length; i++) {
         $(this.circles + ' span').eq(i).find('i').css({
           'transform': 'translate3d(0, 0, 0) translate('  + ((i + 1) * x) + 'px, ' + ((i + 1) * y) + 'px)',
@@ -352,11 +348,45 @@ inPress.animationScroll = function(block, controller) {
 
 
 const orderFulfillment = {
+  img: '.orderFulfillment__img',
+  circles: '.orderFulfillment__circles',
   textBox: '.orderFulfillment .textBox'
 }
 
 orderFulfillment.init = function() {
+  const controller = new ScrollMagic.Controller()
+
+  $(this.img).addClass('active')
   $(this.textBox).addClass('active')
+
+  this.parallaxScroll(this.circles, this.circles + ' span:nth-child(1)', '-350px', '100%', controller)
+  this.parallaxScroll(this.circles, this.circles + ' span:nth-child(2)', '-400px', '100%', controller)
+
+  $('body').on('mousemove', (e) => {
+    const x = e.originalEvent.clientX / 70
+    const y = e.originalEvent.clientY / 50
+    const xImg = e.originalEvent.clientX / 300
+    const yImg = e.originalEvent.clientY / 300
+
+    window.requestAnimationFrame(() => {
+      for (let i = 0; i < $(this.img + ' span').length; i++) {
+        $(this.img + ' span').eq(i).find('i').css({
+          'transform': 'translate3d(0, 0, 0) translate('  + ((i + 1) * xImg) + 'px, ' + ((i + 1) * yImg) + 'px)',
+        })
+      }
+      for (let i = 0; i < $(this.circles + ' span').length; i++) {
+        $(this.circles + ' span').eq(i).find('i').css({
+          'transform': 'translate3d(0, 0, 0) translate('  + ((i + 1) * x) + 'px, ' + ((i + 1) * y) + 'px)',
+        })
+      }
+    })
+  })
+}
+
+orderFulfillment.parallaxScroll = function(section, element, y, duration, controller) {
+  new ScrollMagic.Scene({triggerElement: section, triggerHook: 'onEnter', duration, offset: '0'})
+  .setTween(element, {y, ease: Linear.easeNone})
+  .addTo(controller)
 }
 
 
@@ -401,4 +431,35 @@ workSlider.init = function() {
 workSlider.switching = function(ind) {
   $(this.list).find('li').removeClass('active')
   $(this.list).find('li').eq(ind).addClass('active')
+}
+
+
+
+const fulfillmentProcess = {
+  circles: '.fulfillmentProcess__circles',
+}
+
+fulfillmentProcess.init = function() {
+  const controller = new ScrollMagic.Controller()
+  this.parallaxScroll(this.circles, this.circles + ' span:nth-child(1)', '-250px', '100%', controller)
+  this.parallaxScroll(this.circles, this.circles + ' span:nth-child(2)', '-350px', '100%', controller)
+
+  $('body').on('mousemove', (e) => {
+    const x = e.originalEvent.clientX / 70
+    const y = e.originalEvent.clientY / 50
+
+    window.requestAnimationFrame(() => {
+      for (let i = 0; i < $(this.circles + ' span').length; i++) {
+        $(this.circles + ' span').eq(i).find('i').css({
+          'transform': 'translate3d(0, 0, 0) translate('  + ((i + 1) * x) + 'px, ' + ((i + 1) * y) + 'px)',
+        })
+      }
+    })
+  })
+}
+
+fulfillmentProcess.parallaxScroll = function(section, element, y, duration, controller) {
+  new ScrollMagic.Scene({triggerElement: section, triggerHook: 'onEnter', duration, offset: '0'})
+  .setTween(element, {y, ease: Linear.easeNone})
+  .addTo(controller)
 }

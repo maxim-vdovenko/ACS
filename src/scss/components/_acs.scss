@@ -155,7 +155,6 @@
           @include image('acs/circles-1.svg', contain, 0 0);
         }
       }
-
       &:nth-child(2) {
         i {
           @include image('acs/circles-2.svg', contain, 0 0);

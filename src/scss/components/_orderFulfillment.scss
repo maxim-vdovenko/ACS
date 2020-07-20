@@ -54,19 +54,28 @@
 
     span {
       @include position(absolute, 0, 0, 100%, 100%);
+      transition: transform 1.1s, opacity 1.3s;
 
-      &:before {
+      i {
         @include position(absolute, 0, 0, 100%, 100%);
-        content: '';
+        transition: transform 0.15s;
       }
 
       &:nth-child(1) {
-        &:before {
+        transform: translate(0, 0) scale(0.8) rotate(-15deg);
+        transition-delay: 0.5s;
+        opacity: 0;
+
+        i {
           @include image('order-fulfillment/element-1.svg', contain, center);
         }
       }
       &:nth-child(2) {
-        &:before {
+        transform: translate(0, 0) scale(0.8) rotate(20deg);
+        transition-delay: 0.45s;
+        opacity: 0;
+
+        i {
           @include image('order-fulfillment/element-2.svg', contain, center);
         }
       }
@@ -75,8 +84,11 @@
         height: 677px;
         left: -12px;
         top: -11px;
+        transform: translate(80px, 80px) scale(0.8);
+        transition-delay: 0.4s;
+        opacity: 0;
 
-        &:before {
+        i {
           @include image('order-fulfillment/element-3.svg', contain, center);
         }
       }
@@ -84,8 +96,11 @@
         width: 652px;
         height: 665px;
         top: 1px;
+        transform: translate(-80px, 80px) scale(0.8);
+        transition-delay: 0.35s;
+        opacity: 0;
 
-        &:before {
+        i {
           @include image('order-fulfillment/element-4.svg', contain, center);
         }
       }
@@ -93,56 +108,104 @@
         width: 620px;
         height: 725px;
         top: 1px;
+        transform: translate(-30px, -80px) scale(0.8);
+        transition-delay: 0.3s;
+        opacity: 0;
 
-        &:before {
+        i {
           @include image('order-fulfillment/element-5.svg', contain, center);
         }
       }
       &:nth-child(6) {
-        &:before {
+        transform: translate(150px, -30px);
+        transition-delay: 0.25s;
+        opacity: 0;
+
+        i {
           @include image('order-fulfillment/element-6.svg', contain, center);
         }
       }
       &:nth-child(7) {
-        &:before {
+        transform: translate(0, -50px);
+        transition-delay: 0.2s;
+        opacity: 0;
+
+        i {
           @include image('order-fulfillment/element-7.svg', contain, center);
         }
       }
       &:nth-child(8) {
-        &:before {
+        transform: translate(-10px, 100px);
+        transition-delay: 0.15s;
+        opacity: 0;
+
+        i {
           @include image('order-fulfillment/element-8.svg', contain, center);
         }
       }
       &:nth-child(9) {
-        &:before {
+        transform: translate(70px, 0) scale(0.8);
+        transition-delay: 0.1s;
+        opacity: 0;
+
+        i {
           @include image('order-fulfillment/element-9.svg', contain, center);
         }
       }
       &:nth-child(10) {
-        &:before {
+        transform: translate(-70px, 0) scale(0.8);
+        transition-delay: 0.05s;
+        opacity: 0;
+
+        i {
           @include image('order-fulfillment/element-10.svg', contain, center);
         }
       }
       &:nth-child(11) {
-        &:before {
+        transform: translate(0, 0) scale(0.8);
+        transition-delay: 0s;
+        opacity: 0;
+
+        i {
           @include image('order-fulfillment/element-11.svg', contain, center);
         }
+      }
+    }
+
+    &.active {
+      span {
+        transform: translate(0, 0) scale(1) rotate(0deg);
+        opacity: 1;
       }
     }
   }
 
   &__circles {
     position: absolute;
-    top: 693px;
+    top: 740px;
     left: 50%;
     width: 233px;
     height: 432px;
-    margin-left: 818px;
+    margin-left: 750px;
 
-    > span {
+    span {
       @include position(absolute, 0, 0, 100%, 100%);
-      @include image('order-fulfillment/circles.svg', contain, 0 0);
-      content: '';
+
+      i {
+        @include position(absolute, 0, 0, 100%, 100%);
+        transition: transform 0.15s;
+      }
+
+      &:nth-child(1) {
+        i {
+          @include image('order-fulfillment/circles-1.svg', contain, 0 0);
+        }
+      }
+      &:nth-child(2) {
+        i {
+          @include image('order-fulfillment/circles-2.svg', contain, 0 0);
+        }
+      }
     }
   }
 }
