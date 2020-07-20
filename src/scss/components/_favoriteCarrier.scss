@@ -31,7 +31,6 @@
       opacity: 0;
       color: $color_text_main;
     }
-
     p {
       transform: translateY(30px);
       transition: all 0.8s;
@@ -39,7 +38,6 @@
       opacity: 0;
       color: $color_text_main;
     }
-
     #{$favoriteCarrier}__button {
       margin-top: 40px;
       transition: opacity 0.8s;
@@ -93,49 +91,48 @@
 
     span {
       position: absolute;
-      border-radius: 1000px;
 
-      &:before {
+      i {
         @include position(absolute, 0, 0, 100%, 100%);
-        border-radius: inherit;
-        content: '';
+        border-radius: 1000px;
+        transition: transform 0.15s;
       }
     }
 
     &--1 {
-      top: 190px;
-      right: 272px;
+      top: 180px;
+      right: 260px;
 
       span {
         @include circle_position(12px, 12px);
 
-        &:before {
+        i {
           border: 2px solid $color_dark;
         }
       }
     }
 
     &--2 {
-      top: 120px;
-      left: 324px;
+      top: 130px;
+      left: 320px;
 
       span {
         @include circle_position(32px, 32px);
 
-        &:before {
+        i {
           background-color: $color_blue;
         }
       }
     }
 
     &--3 {
-      bottom: -12px;
-      left: 96px;
+      bottom: 30px;
+      left: 120px;
 
       span {
         @include circle_position(48px, 48px);
 
-        &:before {
+        i {
           background-color: $color_blue;
         }
       }

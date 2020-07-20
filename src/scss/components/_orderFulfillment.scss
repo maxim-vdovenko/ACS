@@ -19,6 +19,30 @@
   .textBox {
     left: -20px;
     padding-bottom: 2px;
+
+    h1 {
+      transform: translateY(50px);
+      transition: all 0.8s;
+      opacity: 0;
+    }
+
+    p {
+      transform: translateY(30px);
+      transition: all 0.8s;
+      transition-delay: 0.3s;
+      opacity: 0;
+    }
+
+    &.active {
+      h1 {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      p {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
   }
 
   &__img {

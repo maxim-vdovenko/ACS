@@ -14,13 +14,41 @@ window.onload = function() {
 
 const acs = {
   mask: '.acs__mask',
-  circles: '.acs__circles'
+  circles: '.acs__circles',
+  textBox: '.acs .textBox'
 }
 
 acs.init = function() {
   const controller = new ScrollMagic.Controller()
-  this.parallaxScroll(this.mask, this.mask + ' > span', '-200px', '200%', controller)
-  this.parallaxScroll(this.circles, this.circles + ' > span', '-500px', '100%', controller)
+  this.parallaxScroll(this.mask, this.mask + ' span', '-300px', '200%', controller)
+
+  this.parallaxScroll(this.circles, this.circles + ' span:nth-child(1)', '-550px', '100%', controller)
+  this.parallaxScroll(this.circles, this.circles + ' span:nth-child(2)', '-650px', '100%', controller)
+
+  $(this.textBox).addClass('active')
+
+  $('body').on('mousemove', (e) => {
+    const x = e.originalEvent.clientX / 70
+    const y = e.originalEvent.clientY / 50
+    const xMask = e.originalEvent.clientX / 300
+    const yMask = e.originalEvent.clientY / 300
+
+    window.requestAnimationFrame(() => {
+
+      for (let i = 0; i < $(this.mask + ' span').length; i++) {
+        $(this.mask + ' span').eq(i).find('i').css({
+          'transform': 'translate3d(0, 0, 0) translate('  + ((i + 1) * xMask) + 'px, ' + ((i + 1) * yMask) + 'px)',
+        })
+      }
+
+
+      for (let i = 0; i < $(this.circles + ' span').length; i++) {
+        $(this.circles + ' span').eq(i).find('i').css({
+          'transform': 'translate3d(0, 0, 0) translate('  + ((i + 1) * x) + 'px, ' + ((i + 1) * y) + 'px)',
+        })
+      }
+    })
+  })
 }
 
 acs.parallaxScroll = function(section, element, y, duration, controller) {
@@ -60,13 +88,13 @@ cloudLogistics.events = function() {
     th.parents('li').addClass('active')
   })
 
-  window.requestAnimationFrame(() => {
-    $('body').on('mousemove', this.block, (e) => {
-      const x_block = e.originalEvent.clientX
-      const y_block = e.originalEvent.clientY
-      const x = x_block - ($(this.picBox).width() / 2) + parseInt($(this.picBox).css('marginLeft'), 10)
-      const y = y_block - ($(this.picBox).height() / 2) - (parseInt($(this.picBox).css('marginTop'), 10) / 2)
-   
+  $('body').on('mousemove', this.block, (e) => {
+    const x_block = e.originalEvent.clientX
+    const y_block = e.originalEvent.clientY
+    const x = x_block - ($(this.picBox).width() / 2) + parseInt($(this.picBox).css('marginLeft'), 10)
+    const y = y_block - ($(this.picBox).height() / 2) - (parseInt($(this.picBox).css('marginTop'), 10) / 2)
+  
+    window.requestAnimationFrame(() => {
       for (let i = 0; i < $(this.picBox + ' span').length; i++) {
         $(this.picBox + ' span').eq(i).find('i').css({
           'transform': 'translate('  + (i + 1) * (x / 200) + 'px, ' + (i + 1) * (y / 150) + 'px)',
@@ -176,6 +204,15 @@ const shipping = {
       '.favoriteCarrier__circles--2',
       '.favoriteCarrier__circles--3'
     ]
+  },
+  doesWork: {
+    bl: '.doesWork__info',
+    text: '.doesWork__info .textBox',
+    circles: [
+      '.doesWork__info-circles--1',
+      '.doesWork__info-circles--2',
+      '.doesWork__info-circles--3'
+    ]
   }
 }
 
@@ -185,21 +222,46 @@ shipping.init = function() {
   this.animationScroll(this.discounted.mask, $(this.discounted.mask).outerHeight() / 4, controller)
   this.animationScroll(this.discounted.text, $(this.discounted.text).outerHeight() / 2, controller)
   this.animationScroll(this.discounted.logos, $(this.discounted.logos).outerHeight() / 2, controller)
-  this.parallaxScroll(this.discounted.circles[0], this.discounted.circles[0] + ' > span', '-450px', '100%', controller)
-  this.parallaxScroll(this.discounted.circles[1], this.discounted.circles[1] + ' > span', '-200px', '100%', controller)
-  this.parallaxScroll(this.discounted.circles[2], this.discounted.circles[2] + ' > span', '-150px', '100%', controller)
+  this.parallaxScroll(this.discounted.circles[0], this.discounted.circles[0] + ' span', '-450px', '100%', controller)
+  this.parallaxScroll(this.discounted.circles[1], this.discounted.circles[1] + ' span', '-200px', '100%', controller)
+  this.parallaxScroll(this.discounted.circles[2], this.discounted.circles[2] + ' span', '-150px', '100%', controller)
 
   this.animationScroll(this.flexibility.mask, $(this.flexibility.mask).outerHeight() / 4, controller)
   this.animationScroll(this.flexibility.text, $(this.flexibility.text).outerHeight() / 2, controller)
-  this.parallaxScroll(this.flexibility.circles[0], this.flexibility.circles[0] + ' > span', '-450px', '100%', controller)
-  this.parallaxScroll(this.flexibility.circles[1], this.flexibility.circles[1] + ' > span', '-200px', '100%', controller)
-  this.parallaxScroll(this.flexibility.circles[2], this.flexibility.circles[2] + ' > span', '-150px', '100%', controller)
+  this.parallaxScroll(this.flexibility.circles[0], this.flexibility.circles[0] + ' span', '-450px', '100%', controller)
+  this.parallaxScroll(this.flexibility.circles[1], this.flexibility.circles[1] + ' span', '-200px', '100%', controller)
+  this.parallaxScroll(this.flexibility.circles[2], this.flexibility.circles[2] + ' span', '-150px', '100%', controller)
 
   this.animationScroll(this.favorite.mask, $(this.favorite.mask).outerHeight() / 4, controller)
   this.animationScroll(this.favorite.text, $(this.favorite.text).outerHeight() / 2, controller)
-  this.parallaxScroll(this.favorite.circles[0], this.favorite.circles[0] + ' > span', '-450px', '100%', controller)
-  this.parallaxScroll(this.favorite.circles[1], this.favorite.circles[1] + ' > span', '-200px', '100%', controller)
-  this.parallaxScroll(this.favorite.circles[2], this.favorite.circles[2] + ' > span', '-150px', '100%', controller)
+  this.parallaxScroll(this.favorite.circles[0], this.favorite.circles[0] + ' span', '-450px', '100%', controller)
+  this.parallaxScroll(this.favorite.circles[1], this.favorite.circles[1] + ' span', '-200px', '100%', controller)
+  this.parallaxScroll(this.favorite.circles[2], this.favorite.circles[2] + ' span', '-150px', '100%', controller)
+
+  this.animationScroll(this.doesWork.text, $(this.doesWork.text).outerHeight() / 2, controller)
+  this.parallaxScroll(this.doesWork.circles[0], this.doesWork.circles[0] + ' span', '-450px', '100%', controller)
+  this.parallaxScroll(this.doesWork.circles[1], this.doesWork.circles[1] + ' span', '-200px', '100%', controller)
+  this.parallaxScroll(this.doesWork.circles[2], this.doesWork.circles[2] + ' span', '-150px', '100%', controller)
+
+  $('body').on('mousemove', (e) => {
+    const x = e.originalEvent.clientX / 60
+    const y = e.originalEvent.clientY / 50
+
+    animationCircles(this.discounted.circles)
+    animationCircles(this.flexibility.circles)
+    animationCircles(this.favorite.circles)
+    animationCircles(this.doesWork.circles)
+
+    function animationCircles (circles) {
+      window.requestAnimationFrame(() => {
+        for (let i = 0; i < circles.length; i++) {
+          $(circles[i] + ' i').css({
+            'transform': 'translate3d(0, 0, 0) translate('  + (((i + 1) * 3) * x) + 'px, ' + (((i + 1) * 3) * y) + 'px)'
+          })
+        }
+      })
+    }
+  })
 }
 
 shipping.parallaxScroll = function(section, element, y, duration, controller) {
@@ -302,11 +364,11 @@ inPress.animationScroll = function(block, controller) {
 
 
 const orderFulfillment = {
-
+  textBox: '.orderFulfillment .textBox'
 }
 
 orderFulfillment.init = function() {
-
+  $(this.textBox).addClass('active')
 }
 
 

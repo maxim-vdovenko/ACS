@@ -24,7 +24,6 @@
       transition-delay: 0.3s;
       opacity: 0;
     }
-
     p {
       transform: translateY(30px);
       transition: all 0.8s;
@@ -99,49 +98,48 @@
 
     span {
       position: absolute;
-      border-radius: 1000px;
 
-      &:before {
+      i {
         @include position(absolute, 0, 0, 100%, 100%);
-        border-radius: inherit;
-        content: '';
+        border-radius: 1000px;
+        transition: transform 0.15s;
       }
     }
 
     &--1 {
-      top: 215px;
-      right: 80px;
+      top: 190px;
+      right: 280px;
 
       span {
         @include circle_position(16px, 16px);
 
-        &:before {
+        i {
           background-color: $color_cyan;
         }
       }
     }
 
     &--2 {
-      top: 250px;
-      right: -5px;
+      top: 230px;
+      right: 200px;
 
       span {
         @include circle_position(32px, 32px);
 
-        &:before {
+        i {
           background-color: $color_blue;
         }
       }
     }
 
     &--3 {
-      bottom: -24px;
-      left: 193px;
+      bottom: 70px;
+      left: 50px;
 
       span {
         @include circle_position(48px, 48px);
 
-        &:before {
+        i {
           background-color: $color_violet;
         }
       }

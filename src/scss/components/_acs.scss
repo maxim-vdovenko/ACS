@@ -43,6 +43,30 @@
 
   .textBox {
     padding-right: 20px;
+
+    h1 {
+      transform: translateY(50px);
+      transition: all 0.8s;
+      opacity: 0;
+    }
+
+    p {
+      transform: translateY(30px);
+      transition: all 0.8s;
+      transition-delay: 0.3s;
+      opacity: 0;
+    }
+
+    &.active {
+      h1 {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      p {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
   }
 
   &__mask {
@@ -53,39 +77,90 @@
     height: 100%;
     margin-left: 231px;
     overflow: hidden;
-
+    
     @include mobile($screen_md) {
       display: none;
     }
 
-    > span {
-      @include position(absolute, 0, 90px, 100%, 100%);
-      @include image('acs/mask.svg', auto 100%, -390px 0);
-      background-color: $color_blueLight_2;
-      content: '';
+    span {
+      @include position(absolute, -50px, 130px, 100%, 100%);
+      overflow: hidden;
+
+      i {
+        @include position(absolute, 0, 0, 100%, 100%);
+        transition: transform 0.15s;
+      }
+
+      &:nth-child(1) {
+        background-color: $color_blueLight_2;
+
+        i {
+          @include image('acs/mask-1.svg', auto 100%, -390px 0);
+        }
+      }
+      &:nth-child(2) {
+        i {
+          @include image('acs/mask-2.svg', auto 100%, -390px 0);
+        }
+      }
+      &:nth-child(3) {
+        i {
+          @include image('acs/mask-3.svg', auto 100%, -390px 0);
+        }
+      }
+      &:nth-child(4) {
+        i {
+          @include image('acs/mask-4.svg', auto 100%, -390px 0);
+        }
+      }
+      &:nth-child(5) {
+        i {
+          @include image('acs/mask-5.svg', auto 100%, -390px 0);
+        }
+      }
+      &:nth-child(6) {
+        i {
+          @include image('acs/mask-6.svg', auto 100%, -390px 0);
+        }
+      }
     }
   }
 
   &__circles {
     position: absolute;
-    top: 735px;
+    top: 800px;
     left: 50%;
     width: 296px;
     height: 448px;
     margin-left: -1114px;
 
     @include mobile($screen_xl) {
-      margin-left: -930px;
+      margin-left: -880px;
     }
 
     @include mobile($screen_lg) {
       display: none;
     }
 
-    > span {
+    span {
       @include position(absolute, 0, 0, 100%, 100%);
-      @include image('acs/circles.svg', contain, 0 0);
-      content: '';
+
+      i {
+        @include position(absolute, 0, 0, 100%, 100%);
+        transition: transform 0.15s;
+      }
+
+      &:nth-child(1) {
+        i {
+          @include image('acs/circles-1.svg', contain, 0 0);
+        }
+      }
+
+      &:nth-child(2) {
+        i {
+          @include image('acs/circles-2.svg', contain, 0 0);
+        }
+      }
     }
   }
 
