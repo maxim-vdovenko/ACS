@@ -303,16 +303,41 @@ inPress.animationScroll = function(block, controller) {
 const workSlider = {
   bl: '.workSlider',
   value: '.workSlider__value',
-  box: '.workSlider__value-box'
+  box: '.workSlider__value-box',
+  slid: '.workSlider__value-slid',
+  block: '.workSlider__list-block',
+  list: '.workSlider__value-list'
 }
 
 workSlider.init = function() {
-
   $(this.box).slider({
-    animate: 'fast',
     range: false,
     min: 0,
-    max: 1000
-  })
+    max: 10000,
+    slide: (event, ui) => {
+      const x = ui.value
+      const xSlid = x / 100
+      const xList = (($(this.block).width() - $(this.box).width() - 60) / 10000) * x  
 
+      $(this.slid).css('width', xSlid + '%')
+      $(this.block).css({'transform': 'translateX('  + -xList + 'px)'})
+
+      if (x <= 1250) {
+        this.switching(0)
+      } else if (x <= 3750) {
+        this.switching(1)
+      } else if (x <= 6250) {
+        this.switching(2)
+      } else if (x <= 8750) {
+        this.switching(3)
+      } else {
+        this.switching(4)
+      }
+    }
+  })
+}
+
+workSlider.switching = function(ind) {
+  $(this.list).find('li').removeClass('active')
+  $(this.list).find('li').eq(ind).addClass('active')
 }
