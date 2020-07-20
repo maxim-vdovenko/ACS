@@ -7,6 +7,7 @@ window.onload = function() {
   integrateTools.init()
   inPress.init()
   workSlider.init()
+  orderFulfillment.init()
 }
 
 
@@ -296,6 +297,16 @@ inPress.animationScroll = function(block, controller) {
   scene.on('enter', () => {
     $(block).addClass('active')
   })
+}
+
+
+
+const orderFulfillment = {
+
+}
+
+orderFulfillment.init = function() {
+
 }
 
 
