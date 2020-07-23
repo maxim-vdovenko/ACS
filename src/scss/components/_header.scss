@@ -1,6 +1,6 @@
 .header {
   @include block();
-  box-shadow: 0px 12px 24px rgba(197, 228, 243, 0.4);
+  background-color: $color_fon;
   z-index: 1;
 
   .container {
