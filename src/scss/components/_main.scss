@@ -107,6 +107,24 @@ p {
   }
 }
 
+ul {
+  @include block();
+
+  li {
+    @include block();
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 28px;
+    color: $color_text_main;
+
+    @include mobile($screen_sm) {
+      font-size: 14px;
+      line-height: 26px;
+    }
+  }
+}
+
 a, span, b {
   @include inline_block();
 }
@@ -193,6 +211,24 @@ a, input, textarea, select, button {
 
     @include mobile($screen_sm) {
       margin-bottom: 18px;
+    }
+  }
+
+  ul {
+    margin-bottom: 22px;
+
+    @include mobile($screen_sm) {
+      margin-bottom: 18px;
+    }
+
+    li {
+      &:not(:last-child) {
+        margin-bottom: 22px;
+
+        @include mobile($screen_sm) {
+          margin-bottom: 18px;
+        }
+      }
     }
   }
 

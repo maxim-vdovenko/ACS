@@ -27,6 +27,7 @@ loader.launch = function() {
   integrateTools.init()
   inPress.init()
   orderFulfillment.init()
+  mailForwarding.init()
   fulfillmentProcess.init()
   strategyInfo.init()
   orderAdvantages.init()
@@ -408,6 +409,33 @@ orderFulfillment.parallaxScroll = function(section, element, y, duration, contro
   new ScrollMagic.Scene({triggerElement: section, triggerHook: 'onEnter', duration, offset: '0'})
   .setTween(element, {y, ease: Linear.easeNone})
   .addTo(controller)
+}
+
+
+
+const mailForwarding = {
+  img: '.mailForwarding__img',
+  textBox: '.mailForwarding .textBox'
+}
+
+mailForwarding.init = function() {
+  const controller = new ScrollMagic.Controller()
+
+  $(this.img).addClass('active')
+  $(this.textBox).addClass('active')
+
+  $('body').on('mousemove', (e) => {
+    const xImg = e.originalEvent.clientX / 300
+    const yImg = e.originalEvent.clientY / 300
+
+    window.requestAnimationFrame(() => {
+      for (let i = 0; i < $(this.img + ' span').length; i++) {
+        $(this.img + ' span').eq(i).find('i').css({
+          'transform': 'translate3d(0, 0, 0) translate('  + ((i + 1) * xImg) + 'px, ' + ((i + 1) * yImg) + 'px)',
+        })
+      }
+    })
+  })
 }
 
 
