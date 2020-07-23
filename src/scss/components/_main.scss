@@ -223,10 +223,10 @@ a, input, textarea, select, button {
 
     li {
       &:not(:last-child) {
-        margin-bottom: 22px;
+        margin-bottom: 17px;
 
         @include mobile($screen_sm) {
-          margin-bottom: 18px;
+          margin-bottom: 14px;
         }
       }
     }

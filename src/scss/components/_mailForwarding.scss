@@ -14,6 +14,7 @@
   }
 
   .textBox {
+    padding: 0 55px 26px 0;
 
     ul {
 
@@ -22,7 +23,7 @@
 
         &:before {
           position: absolute;
-          top: 7px;
+          top: 6px;
           left: 0;
           width: 12px;
           height: 12px;
@@ -34,16 +35,21 @@
     }
   }
 
+  &__button {
+    @include block();
+    margin-top: 62px;
+  }
+
   &__img {
     @include block();
-    top: 15px;
-    left: -187px;
+    top: -9px;
+    left: -180px;
     width: 546px;
     height: 603px;
 
     span {
       @include position(absolute, 0, 0, 100%, 100%);
-      transition: transform 1.1s, opacity 1.3s;
+      transition: transform 1.1s, opacity 0.7s;
 
       i {
         @include position(absolute, 0, 0, 100%, 100%);
@@ -51,8 +57,8 @@
       }
 
       &:nth-child(1) {
-        transform: translate(0, 0) scale(0.8) rotate(-15deg);
-        transition-delay: 0.5s;
+        transform: translate(0, 30px) scale(0.7);
+        transition-delay: 0.6s;
         opacity: 0;
 
         i {
@@ -60,8 +66,8 @@
         }
       }
       &:nth-child(2) {
-        transform: translate(0, 0) scale(0.8) rotate(20deg);
-        transition-delay: 0.45s;
+        transform: translate(40px, -45px);
+        transition-delay: 0.6s;
         opacity: 0;
 
         i {
@@ -69,8 +75,8 @@
         }
       }
       &:nth-child(3) {
-        transform: translate(80px, 80px) scale(0.8);
-        transition-delay: 0.4s;
+        transform: translate(-20px, -30px);
+        transition-delay: 0.6s;
         opacity: 0;
 
         i {
@@ -78,8 +84,8 @@
         }
       }
       &:nth-child(4) {
-        transform: translate(-80px, 80px) scale(0.8);
-        transition-delay: 0.35s;
+        transform: translate(-40px, -10px);
+        transition-delay: 0.25s;
         opacity: 0;
 
         i {
@@ -87,7 +93,7 @@
         }
       }
       &:nth-child(5) {
-        transform: translate(-30px, -80px) scale(0.8);
+        transform: translate(40px, 30px);
         transition-delay: 0.3s;
         opacity: 0;
 
@@ -96,8 +102,8 @@
         }
       }
       &:nth-child(6) {
-        transform: translate(150px, -30px);
-        transition-delay: 0.25s;
+        transform: translate(-30px, -3s0px);
+        transition-delay: 0.35s;
         opacity: 0;
 
         i {
@@ -105,8 +111,8 @@
         }
       }
       &:nth-child(7) {
-        transform: translate(0, -50px);
-        transition-delay: 0.2s;
+        transform: translate(0px, -50px);
+        transition-delay: 0.4s;
         opacity: 0;
 
         i {
@@ -114,8 +120,8 @@
         }
       }
       &:nth-child(8) {
-        transform: translate(-10px, 100px);
-        transition-delay: 0.15s;
+        transform: translate(-40px, -30px);
+        transition-delay: 0.45s;
         opacity: 0;
 
         i {
@@ -123,8 +129,8 @@
         }
       }
       &:nth-child(9) {
-        transform: translate(70px, 0) scale(0.8);
-        transition-delay: 0.1s;
+        transform: translate(-60px, -50px);
+        transition-delay: 0.5s;
         opacity: 0;
 
         i {

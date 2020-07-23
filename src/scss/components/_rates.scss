@@ -1,4 +1,105 @@
 .rates {
   @include block();
 
+  .titleBox {
+    h2 {
+      text-align: center;
+    }
+  }
+
+  &__fon {
+    @include position(absolute, 0, 0, 100%, 100%);
+    background-color: $color_blueLight_2;
+    // box-shadow: 0 0 60px 60px $color_blueLight_2;
+    // transition: opacity 2s;
+    // opacity: 0;
+
+    // &.active {
+    //   opacity: 1;
+    // }
+  }
+
+  &__block {
+    @include block();
+
+    .container {
+      padding-top: 120px;
+    }
+  }
+
+  &__cont {
+    @include block();
+    box-shadow: 0px 18px 42px rgba(197, 228, 243, 0.4);
+    margin-top: 100px;
+    border-radius: 18px;
+    background-color: $color_white;
+  }
+
+  &__box {
+    @include flex();
+    align-items: center;
+    justify-content: space-between;
+    min-height: 206px;
+    padding: 36px;
+
+    &:not(:last-child) {
+      border-bottom: 2px solid $color_blueLight;
+    }
+
+    &-text {
+      @include block();
+      padding-right: 80px;
+    }
+
+    &-price {
+      @include flex();
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-width: 134px;
+      height: 134px;
+
+      &:before {
+        @include position(absolute, 0, 0, 100%, 100%);
+        background-color: $color_yellow;
+        border-radius: 18px;
+        opacity: 0.2;
+        content: '';
+      }
+
+      b {
+        @include block();
+        font-size: 30px;
+        line-height: 42px;
+        letter-spacing: 0.025em;
+        color: $color_text_main;
+        text-align: center;
+      }
+
+      span {
+        @include block();
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 20px;
+        color: $color_text_main;
+        text-align: center;
+      }
+
+      &--request {
+        &:before {
+          background-color: $color_blueLight_2;
+          opacity: 1;
+        }
+
+        span {
+          font-family: 'Raleway', sans-serif;
+          font-weight: 800;
+          font-size: 14px;
+          line-height: 28px;
+          letter-spacing: 0.025em;
+        }
+      }
+    }
+  }
 }

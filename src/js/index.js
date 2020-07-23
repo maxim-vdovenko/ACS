@@ -15,7 +15,7 @@ loader.init = function() {
       $(this.bl).removeClass('active')
       this.launch()
     })
-  }, 1000)
+  }, 0) // 1000
 }
 
 loader.launch = function() {
@@ -419,7 +419,6 @@ const mailForwarding = {
 }
 
 mailForwarding.init = function() {
-  const controller = new ScrollMagic.Controller()
 
   $(this.img).addClass('active')
   $(this.textBox).addClass('active')
