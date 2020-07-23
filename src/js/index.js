@@ -1,4 +1,24 @@
 window.onload = function() {
+  loader.init()
+  workSlider.init()
+}
+
+
+
+const loader = {
+  bl: '.loader'
+}
+
+loader.init = function() {
+  setTimeout(() => {
+    $(this.bl).fadeOut(500, () => {
+      $(this.bl).removeClass('active')
+      this.launch()
+    })
+  }, 1000)
+}
+
+loader.launch = function() {
   acs.init()
   cloudLogistics.init()
   interNetwork.init()
@@ -6,7 +26,6 @@ window.onload = function() {
   shipping.init()
   integrateTools.init()
   inPress.init()
-  workSlider.init()
   orderFulfillment.init()
   fulfillmentProcess.init()
   strategyInfo.init()

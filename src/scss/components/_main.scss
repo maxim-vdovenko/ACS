@@ -116,6 +116,13 @@ a, input, textarea, select, button {
 }
 
 /* Common Elements --------------------------------------*/
+.loader {
+  @include position(fixed, 0, 0, 100%, 100%);
+  @include image('loader.gif', 222px auto, center);
+  background-color: $color_fon;
+  z-index: 10000;
+}
+
 .total-container {
   @include block();
   overflow: hidden;
