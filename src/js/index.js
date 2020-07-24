@@ -16,7 +16,7 @@ loader.init = function() {
       $(this.bl).removeClass('active')
       this.launch()
     })
-  }, 1000) 
+  }, 0) 
 }
 
 loader.launch = function() {
@@ -39,6 +39,39 @@ loader.launch = function() {
 
 
 
+const animationAdd = {
+  controller: null
+}
+
+animationAdd.act = function(block, h) {
+  this.controller = new ScrollMagic.Controller()
+  const scene = new ScrollMagic.Scene({
+    triggerElement: block, 
+    triggerHook: 'onEnter', 
+    offset: h})
+    .setTween(block)
+    .addTo(this.controller)
+
+  scene.on('enter', () => {
+    $(block).addClass('active')
+  })
+}
+
+
+
+const parallaxAdd = {
+  controller: null
+}
+
+parallaxAdd.act = function(section, element, y, duration) {
+  this.controller = new ScrollMagic.Controller()
+  new ScrollMagic.Scene({triggerElement: section, triggerHook: 'onEnter', duration, offset: '0'})
+  .setTween(element, {y, ease: Linear.easeNone})
+  .addTo(this.controller)
+}
+
+
+
 const acs = {
   mask: '.acs__mask',
   circles: '.acs__circles',
@@ -46,11 +79,10 @@ const acs = {
 }
 
 acs.init = function() {
-  const controller = new ScrollMagic.Controller()
-  this.parallaxScroll(this.mask, this.mask + ' span', '-300px', '200%', controller)
-  this.parallaxScroll(this.circles, this.circles + ' span:nth-child(1)', '-550px', '100%', controller)
-  this.parallaxScroll(this.circles, this.circles + ' span:nth-child(2)', '-650px', '100%', controller)
   $(this.textBox).addClass('active')
+  parallaxAdd.act(this.mask, this.mask + ' span', '-300px', '200%')
+  parallaxAdd.act(this.circles, this.circles + ' span:nth-child(1)', '-550px', '100%')
+  parallaxAdd.act(this.circles, this.circles + ' span:nth-child(2)', '-650px', '100%')
 
   $('body').on('mousemove', (e) => {
     const x = e.originalEvent.clientX / 70
@@ -71,12 +103,6 @@ acs.init = function() {
       }
     })
   })
-}
-
-acs.parallaxScroll = function(section, element, y, duration, controller) {
-  new ScrollMagic.Scene({triggerElement: section, triggerHook: 'onEnter', duration, offset: '0'})
-  .setTween(element, {y, ease: Linear.easeNone})
-  .addTo(controller)
 }
 
 
@@ -139,27 +165,13 @@ const blockContainer = {
 }
 
 blockContainer.init = function() {
-  const controller = new ScrollMagic.Controller()
-  this.animationScroll(this.internationalShipping, controller)
-  this.animationScroll(this.storageFulfillment, controller)
-  this.animationScroll(this.softwarePlatform, controller)
-  this.animationScroll(this.scaleCommerce, controller)
-  this.animationScroll(this.flexibleShipping, controller)
-  this.animationScroll(this.specialProjects, controller)
-  this.animationScroll(this.packingFees, controller)
-}
-
-blockContainer.animationScroll = function(block, controller) {
-  const scene = new ScrollMagic.Scene({
-    triggerElement: block, 
-    triggerHook: 'onEnter', 
-    offset: $(block).outerHeight() / 2})
-    .setTween(block)
-    .addTo(controller)
-
-  scene.on('enter', () => {
-    $(block).addClass('active')
-  })
+  animationAdd.act(this.internationalShipping, $(this.internationalShipping).outerHeight() / 2)
+  animationAdd.act(this.storageFulfillment, $(this.storageFulfillment).outerHeight() / 2)
+  animationAdd.act(this.softwarePlatform, $(this.softwarePlatform).outerHeight() / 2)
+  animationAdd.act(this.scaleCommerce, $(this.scaleCommerce).outerHeight() / 2)
+  animationAdd.act(this.flexibleShipping, $(this.flexibleShipping).outerHeight() / 2)
+  animationAdd.act(this.specialProjects, $(this.specialProjects).outerHeight() / 2)
+  animationAdd.act(this.packingFees, $(this.packingFees).outerHeight() / 2)
 }
 
 
@@ -239,31 +251,30 @@ const shipping = {
 }
 
 shipping.init = function() {
-  const controller = new ScrollMagic.Controller()
 
-  this.animationScroll(this.discounted.mask, $(this.discounted.mask).outerHeight() / 4, controller)
-  this.animationScroll(this.discounted.text, $(this.discounted.text).outerHeight() / 2, controller)
-  this.animationScroll(this.discounted.logos, $(this.discounted.logos).outerHeight() / 2, controller)
-  this.parallaxScroll(this.discounted.circles[0], this.discounted.circles[0] + ' span', '-450px', '100%', controller)
-  this.parallaxScroll(this.discounted.circles[1], this.discounted.circles[1] + ' span', '-200px', '100%', controller)
-  this.parallaxScroll(this.discounted.circles[2], this.discounted.circles[2] + ' span', '-150px', '100%', controller)
+  animationAdd.act(this.discounted.mask, $(this.discounted.mask).outerHeight() / 4)
+  animationAdd.act(this.discounted.text, $(this.discounted.text).outerHeight() / 2)
+  animationAdd.act(this.discounted.logos, $(this.discounted.logos).outerHeight() / 2)
+  parallaxAdd.act(this.discounted.circles[0], this.discounted.circles[0] + ' span', '-450px', '100%')
+  parallaxAdd.act(this.discounted.circles[1], this.discounted.circles[1] + ' span', '-200px', '100%')
+  parallaxAdd.act(this.discounted.circles[2], this.discounted.circles[2] + ' span', '-150px', '100%')
 
-  this.animationScroll(this.flexibility.mask, $(this.flexibility.mask).outerHeight() / 4, controller)
-  this.animationScroll(this.flexibility.text, $(this.flexibility.text).outerHeight() / 2, controller)
-  this.parallaxScroll(this.flexibility.circles[0], this.flexibility.circles[0] + ' span', '-450px', '100%', controller)
-  this.parallaxScroll(this.flexibility.circles[1], this.flexibility.circles[1] + ' span', '-200px', '100%', controller)
-  this.parallaxScroll(this.flexibility.circles[2], this.flexibility.circles[2] + ' span', '-150px', '100%', controller)
+  animationAdd.act(this.flexibility.mask, $(this.flexibility.mask).outerHeight() / 4)
+  animationAdd.act(this.flexibility.text, $(this.flexibility.text).outerHeight() / 2)
+  parallaxAdd.act(this.flexibility.circles[0], this.flexibility.circles[0] + ' span', '-450px', '100%')
+  parallaxAdd.act(this.flexibility.circles[1], this.flexibility.circles[1] + ' span', '-200px', '100%')
+  parallaxAdd.act(this.flexibility.circles[2], this.flexibility.circles[2] + ' span', '-150px', '100%')
 
-  this.animationScroll(this.favorite.mask, $(this.favorite.mask).outerHeight() / 4, controller)
-  this.animationScroll(this.favorite.text, $(this.favorite.text).outerHeight() / 2, controller)
-  this.parallaxScroll(this.favorite.circles[0], this.favorite.circles[0] + ' span', '-450px', '100%', controller)
-  this.parallaxScroll(this.favorite.circles[1], this.favorite.circles[1] + ' span', '-200px', '100%', controller)
-  this.parallaxScroll(this.favorite.circles[2], this.favorite.circles[2] + ' span', '-150px', '100%', controller)
+  animationAdd.act(this.favorite.mask, $(this.favorite.mask).outerHeight() / 4)
+  animationAdd.act(this.favorite.text, $(this.favorite.text).outerHeight() / 2)
+  parallaxAdd.act(this.favorite.circles[0], this.favorite.circles[0] + ' span', '-450px', '100%')
+  parallaxAdd.act(this.favorite.circles[1], this.favorite.circles[1] + ' span', '-200px', '100%')
+  parallaxAdd.act(this.favorite.circles[2], this.favorite.circles[2] + ' span', '-150px', '100%')
 
-  this.animationScroll(this.doesWork.text, $(this.doesWork.text).outerHeight() / 2, controller)
-  this.parallaxScroll(this.doesWork.circles[0], this.doesWork.circles[0] + ' span', '-450px', '100%', controller)
-  this.parallaxScroll(this.doesWork.circles[1], this.doesWork.circles[1] + ' span', '-200px', '100%', controller)
-  this.parallaxScroll(this.doesWork.circles[2], this.doesWork.circles[2] + ' span', '-150px', '100%', controller)
+  animationAdd.act(this.doesWork.text, $(this.doesWork.text).outerHeight() / 2)
+  parallaxAdd.act(this.doesWork.circles[0], this.doesWork.circles[0] + ' span', '-450px', '100%')
+  parallaxAdd.act(this.doesWork.circles[1], this.doesWork.circles[1] + ' span', '-200px', '100%')
+  parallaxAdd.act(this.doesWork.circles[2], this.doesWork.circles[2] + ' span', '-150px', '100%')
 
   $('body').on('mousemove', (e) => {
     const x = e.originalEvent.clientX / 60
@@ -283,25 +294,6 @@ shipping.init = function() {
         }
       })
     }
-  })
-}
-
-shipping.parallaxScroll = function(section, element, y, duration, controller) {
-  new ScrollMagic.Scene({triggerElement: section, triggerHook: 'onEnter', duration, offset: '0'})
-  .setTween(element, {y, ease: Linear.easeNone})
-  .addTo(controller)
-}
-
-shipping.animationScroll = function(block, h, controller) {
-  const scene = new ScrollMagic.Scene({
-    triggerElement: block, 
-    triggerHook: 'onEnter', 
-    offset: h})
-    .setTween(block)
-    .addTo(controller)
-
-  scene.on('enter', () => {
-    $(block).addClass('active')
   })
 }
 
@@ -326,25 +318,11 @@ const integrateTools = {
 }
 
 integrateTools.init = function() {
-  const controller = new ScrollMagic.Controller()
   $(this.bl).addClass('active')
-  this.animationScroll(this.fon, 200, controller)
-  this.animationScroll(this.reviews, $(this.reviews).outerHeight() / 2, controller)
-  this.animationScroll(this.instruments, $(this.instruments).outerHeight() / 2, controller)
-  this.animationScroll(this.button, $(this.button).outerHeight() / 2, controller)
-}
-
-integrateTools.animationScroll = function(block, h, controller) {
-  const scene = new ScrollMagic.Scene({
-    triggerElement: block, 
-    triggerHook: 'onEnter', 
-    offset: h})
-    .setTween(block)
-    .addTo(controller)
-
-  scene.on('enter', () => {
-    $(block).addClass('active')
-  })
+  animationAdd.act(this.fon, 200)
+  animationAdd.act(this.reviews, $(this.reviews).outerHeight() / 2)
+  animationAdd.act(this.instruments, $(this.instruments).outerHeight() / 2)
+  animationAdd.act(this.button, $(this.button).outerHeight() / 2)
 }
 
 
@@ -354,21 +332,7 @@ const inPress = {
 }
 
 inPress.init = function() {
-  const controller = new ScrollMagic.Controller()
-  this.animationScroll(this.list, controller)
-}
-
-inPress.animationScroll = function(block, controller) {
-  const scene = new ScrollMagic.Scene({
-    triggerElement: block, 
-    triggerHook: 'onEnter', 
-    offset: $(block).outerHeight() / 2})
-    .setTween(block)
-    .addTo(controller)
-
-  scene.on('enter', () => {
-    $(block).addClass('active')
-  })
+  animationAdd.act(this.list, $(this.list).outerHeight() / 2)
 }
 
 
@@ -380,13 +344,10 @@ const orderFulfillment = {
 }
 
 orderFulfillment.init = function() {
-  const controller = new ScrollMagic.Controller()
-
   $(this.img).addClass('active')
   $(this.textBox).addClass('active')
-
-  this.parallaxScroll(this.circles, this.circles + ' span:nth-child(1)', '-350px', '100%', controller)
-  this.parallaxScroll(this.circles, this.circles + ' span:nth-child(2)', '-400px', '100%', controller)
+  parallaxAdd.act(this.circles, this.circles + ' span:nth-child(1)', '-350px', '100%')
+  parallaxAdd.act(this.circles, this.circles + ' span:nth-child(2)', '-400px', '100%')
 
   $('body').on('mousemove', (e) => {
     const x = e.originalEvent.clientX / 70
@@ -407,12 +368,6 @@ orderFulfillment.init = function() {
       }
     })
   })
-}
-
-orderFulfillment.parallaxScroll = function(section, element, y, duration, controller) {
-  new ScrollMagic.Scene({triggerElement: section, triggerHook: 'onEnter', duration, offset: '0'})
-  .setTween(element, {y, ease: Linear.easeNone})
-  .addTo(controller)
 }
 
 
@@ -493,10 +448,9 @@ const fulfillmentProcess = {
 }
 
 fulfillmentProcess.init = function() {
-  const controller = new ScrollMagic.Controller()
-  this.animationScroll(this.list, controller)
-  this.parallaxScroll(this.circles, this.circles + ' span:nth-child(1)', '-250px', '100%', controller)
-  this.parallaxScroll(this.circles, this.circles + ' span:nth-child(2)', '-350px', '100%', controller)
+  animationAdd.act(this.list, $(this.list).outerHeight() / 2)
+  parallaxAdd.act(this.circles, this.circles + ' span:nth-child(1)', '-250px', '100%')
+  parallaxAdd.act(this.circles, this.circles + ' span:nth-child(2)', '-350px', '100%')
 
   $('body').on('mousemove', (e) => {
     const x = e.originalEvent.clientX / 70
@@ -512,25 +466,6 @@ fulfillmentProcess.init = function() {
   })
 }
 
-fulfillmentProcess.parallaxScroll = function(section, element, y, duration, controller) {
-  new ScrollMagic.Scene({triggerElement: section, triggerHook: 'onEnter', duration, offset: '0'})
-  .setTween(element, {y, ease: Linear.easeNone})
-  .addTo(controller)
-}
-
-fulfillmentProcess.animationScroll = function(block, controller) {
-  const scene = new ScrollMagic.Scene({
-    triggerElement: block, 
-    triggerHook: 'onEnter', 
-    offset: $(block).outerHeight() / 2})
-    .setTween(block)
-    .addTo(controller)
-
-  scene.on('enter', () => {
-    $(block).addClass('active')
-  })
-}
-
 
 
 const strategyInfo = {
@@ -539,21 +474,7 @@ const strategyInfo = {
 }
 
 strategyInfo.init = function() {
-  const controller = new ScrollMagic.Controller()
-  this.animationScroll(this.textBox, controller)
-}
-
-strategyInfo.animationScroll = function(block, controller) {
-  const scene = new ScrollMagic.Scene({
-    triggerElement: block, 
-    triggerHook: 'onEnter', 
-    offset: $(block).outerHeight() / 2})
-    .setTween(block)
-    .addTo(controller)
-
-  scene.on('enter', () => {
-    $(block).addClass('active')
-  })
+  animationAdd.act(this.textBox, $(this.textBox).outerHeight() / 2)
 }
 
 
@@ -563,21 +484,7 @@ const orderAdvantages = {
 }
 
 orderAdvantages.init = function() {
-  const controller = new ScrollMagic.Controller()
-  this.animationScroll(this.bl, controller)
-}
-
-orderAdvantages.animationScroll = function(block, controller) {
-  const scene = new ScrollMagic.Scene({
-    triggerElement: block, 
-    triggerHook: 'onEnter', 
-    offset: $(block).outerHeight() / 2})
-    .setTween(block)
-    .addTo(controller)
-
-  scene.on('enter', () => {
-    $(block).addClass('active')
-  })
+  animationAdd.act(this.bl, $(this.bl).outerHeight() / 2)
 }
 
 
@@ -616,21 +523,7 @@ const assistedPurchase = {
 }
 
 assistedPurchase.init = function() {
-  const controller = new ScrollMagic.Controller()
-  this.animationScroll(this.mask, $(this.mask).outerHeight() / 4, controller)
-}
-
-assistedPurchase.animationScroll = function(block, h, controller) {
-  const scene = new ScrollMagic.Scene({
-    triggerElement: block, 
-    triggerHook: 'onEnter', 
-    offset: h})
-    .setTween(block)
-    .addTo(controller)
-
-  scene.on('enter', () => {
-    $(block).addClass('active')
-  })
+  animationAdd.act(this.mask, $(this.mask).outerHeight() / 4)
 }
 
 
@@ -643,9 +536,8 @@ const shippingMethods = {
 }
 
 shippingMethods.init = function() {
-  const controller = new ScrollMagic.Controller()
   $(this.bl).addClass('active')
-  this.animationScroll(this.fon, 200, controller)
+  animationAdd.act(this.fon, 200)
 }
 
 shippingMethods.masonryItem = function() {
@@ -653,18 +545,5 @@ shippingMethods.masonryItem = function() {
     itemSelector: this.item,
     transitionDuration: 0,
     originLeft: true
-  })
-}
-
-shippingMethods.animationScroll = function(block, h, controller) {
-  const scene = new ScrollMagic.Scene({
-    triggerElement: block, 
-    triggerHook: 'onEnter', 
-    offset: h})
-    .setTween(block)
-    .addTo(controller)
-
-  scene.on('enter', () => {
-    $(block).addClass('active')
   })
 }
