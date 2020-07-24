@@ -1,3 +1,61 @@
 .shoppingOnline {
   @include block();
+
+  .container {
+    padding-top: 122px;
+  }
+
+  .titleBox {
+    max-width: 740px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  &__cont {
+    @include flex();
+    margin: 95px -30px 0 -30px;
+  }
+
+  &__box {
+    @include block();
+    width: 25%;
+    padding: 0 30px;
+    text-align: center;
+
+    &:before {
+      @include block();
+      width: 144px;
+      height: 144px;
+      margin: 0 auto 24px auto;
+      content: '';
+    }
+
+    h4 {
+      margin-bottom: 10px;
+    }
+
+    &--lowestRates {
+      &:before {
+        @include image('shopping-online/lowest-rates.svg', contain, center);
+      }
+    }
+
+    &--consolidating {
+      &:before {
+        @include image('shopping-online/consolidating.svg', contain, center);
+      }
+    }
+
+    &--bestDiscount {
+      &:before {
+        @include image('shopping-online/best-discount.svg', contain, center);
+      }
+    }
+
+    &--taxSales {
+      &:before {
+        @include image('shopping-online/tax-sales.svg', contain, center);
+      }
+    }
+  }
 }

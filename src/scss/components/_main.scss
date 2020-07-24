@@ -101,6 +101,19 @@ p {
   line-height: 28px;
   color: $color_text_main;
 
+  a {
+    @include inline();
+    font-family: inherit;
+    font-weight: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    color: $color_text_blue;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
   @include mobile($screen_sm) {
     font-size: 14px;
     line-height: 26px;

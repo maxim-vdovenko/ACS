@@ -1,3 +1,276 @@
 .shippingMethods {
+  $methods: &;
   @include block();
+
+  .container {
+    min-height: 1358px;
+    padding-top: 123px;
+    padding-bottom: 80px;
+  }
+
+  .titleBox {
+    text-align: center;
+  }
+
+  .textBox {
+    max-width: 740px;
+    margin: 50px auto 0 auto;
+    text-align: center;
+  }
+
+  &__fon {
+    @include position(absolute, 0, 0, 100%, 100%);
+    background-color: $color_blueLight_2;
+    box-shadow: 0 0 60px 60px $color_blueLight_2;
+    transition: opacity 2s;
+    opacity: 0;
+
+    &.active {
+      opacity: 1;
+    }
+  }
+
+  &__circlesBlock {
+    @include position(absolute, 0, 0, 100%, 100%);
+    overflow: hidden;
+    transition: opacity 1.5s;
+    transition-delay: 2s;
+    opacity: 0;
+  }
+
+  &__circles {
+    position: absolute;
+    left: 50%;
+    width: 0;
+    height: 0;
+
+    @include mobile($screen_md) {
+      display: none;
+    }
+
+    span {
+      position: absolute;
+
+      i {
+        @include position(absolute, 0, 0, 100%, 100%);
+        border-radius: 1000px;
+      }
+    }
+
+    &--1 {
+      margin-left: -788px;
+      animation: 18s linear 2s infinite methods_circles;
+
+      span {
+        @include circle_position(24px, 24px);
+        animation: 18s ease-in-out 2s infinite methods_circles_side_1;
+
+        i {
+          background-color: $color_yellow;
+        }
+      }
+    }
+
+    &--2 {
+      margin-left: -603px;
+      animation: 11s linear 1s infinite methods_circles;
+
+      span {
+        @include circle_position(12px, 12px);
+        animation: 11s ease-in-out 1s infinite methods_circles_side_2;
+
+        i {
+          border: 2px solid $color_dark;
+        }
+      }
+    }
+
+    &--3 {
+      margin-left: -138px;
+      animation: 16s linear 0.5s infinite methods_circles;
+
+      span {
+        @include circle_position(24px, 24px);
+        animation: 16s ease-in-out 0.5s infinite methods_circles_side_2;
+
+        i {
+          background-color: $color_blue;
+        }
+      }
+    }
+
+    &--4 {
+      margin-left: -364px;
+      animation: 13s linear 0.1s infinite methods_circles;
+
+      span {
+        @include circle_position(32px, 32px);
+        animation: 13s ease-in-out 0.1s infinite methods_circles_side_1;
+
+        i {
+          background-color: $color_yellow;
+        }
+      }
+    }
+
+    &--5 {
+      margin-left: 170px;
+      animation: 21s linear 1.5s infinite methods_circles;
+
+      span {
+        @include circle_position(36px, 36px);
+        animation: 21s ease-in-out 1.5s infinite methods_circles_side_2;
+
+        i {
+          background-color: $color_yellow;
+        }
+      }
+    }
+
+    &--6 {
+      margin-left: 630px;
+      animation: 19s linear 0.7s infinite methods_circles;
+
+      span {
+        @include circle_position(12px, 12px);
+        animation: 19s ease-in-out 0.7s infinite methods_circles_side_2;
+
+        i {
+          background-color: $color_blue;
+        }
+      }
+    }
+
+    &--7 {
+      margin-left: 643px;
+      animation: 15s linear 0.3s infinite methods_circles;
+
+      span {
+        @include circle_position(12px, 12px);
+        animation: 15s ease-in-out 0.3s infinite methods_circles_side_1;
+
+        i {
+          background-color: $color_blue;
+        }
+      }
+    }
+
+    &--8 {
+      margin-left: 828px;
+      animation: 12s linear 0s infinite methods_circles;
+
+      span {
+        @include circle_position(32px, 32px);
+        animation: 12s ease-in-out 0s infinite methods_circles_side_2;
+
+        i {
+          border: 2px solid $color_dark;
+        }
+      }
+    }
+  }
+
+  &__block {
+    @include block();
+    margin: 97px -30px 0 -30px;
+  }
+
+  &__item {
+    position: relative;
+    width: 33.33%;
+    padding: 0 30px 60px 30px;
+
+    &--wide {
+      width: 66.67%;
+    }
+  }
+
+  &__cont {
+    $cont: &;
+    @include flex();
+    flex-direction: column;
+    width: 100%;
+    min-height: 239px;
+    padding-bottom: 45px;
+    background-color: $color_white;
+    box-shadow: 0px 18px 42px rgba(197, 228, 243, 0.4);
+    border-radius: 18px;
+
+    &-box {
+      @include flex();
+      flex-direction: column;
+
+      &:not(:last-child) {
+        border-bottom: 2px solid $color_blueLight;
+
+        #{$cont}-text {
+          padding-bottom: 26px;
+        }
+      }
+    }
+
+    &-head {
+      @include flex();
+      justify-content: space-between;
+      align-items: center;
+      padding: 42px 36px 9px 36px;
+    }
+
+    &-text {
+      @include flex();
+      flex-direction: column;
+      padding-top: 26px;
+      padding-left: 36px;
+      padding-right: 36px;
+
+      h6 {
+        margin-bottom: 4px;
+      }
+    }
+  }
+
+  &.active {
+    #{$methods}__circlesBlock {
+      opacity: 1;
+    }
+  }
+}
+
+@keyframes methods_circles {
+  0% {
+    transform: translate(0, 1370px);
+  }
+  100% {
+    transform: translate(0, -40px);
+  }
+}
+
+@keyframes methods_circles_side_1 {
+  0% {
+    transform: translate(-10px, 0);
+  }
+  40% {
+    transform: translate(30px, 0);
+  }
+  70% {
+    transform: translate(-20px, 0);
+  }
+  100% {
+    transform: translate(30px, 0);
+  }
+}
+
+@keyframes methods_circles_side_2 {
+  0% {
+    transform: translate(10px, 0);
+  }
+  50% {
+    transform: translate(-40px, 0);
+  }
+  80% {
+    transform: translate(30px, 0);
+  }
+  100% {
+    transform: translate(-20px, 0);
+  }
 }

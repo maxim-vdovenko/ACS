@@ -1,6 +1,7 @@
 window.onload = function() {
   loader.init()
   workSlider.init()
+  shippingMethods.masonryItem()  
 }
 
 
@@ -15,7 +16,7 @@ loader.init = function() {
       $(this.bl).removeClass('active')
       this.launch()
     })
-  }, 0) // 1000
+  }, 1000) 
 }
 
 loader.launch = function() {
@@ -31,6 +32,9 @@ loader.launch = function() {
   fulfillmentProcess.init()
   strategyInfo.init()
   orderAdvantages.init()
+  faq.init()
+  assistedPurchase.init()
+  shippingMethods.init()
 }
 
 
@@ -568,6 +572,95 @@ orderAdvantages.animationScroll = function(block, controller) {
     triggerElement: block, 
     triggerHook: 'onEnter', 
     offset: $(block).outerHeight() / 2})
+    .setTween(block)
+    .addTo(controller)
+
+  scene.on('enter', () => {
+    $(block).addClass('active')
+  })
+}
+
+
+
+const faq = {
+  cont: '.FAQ__cont',
+  box: '.FAQ__box',
+  title: '.FAQ__box-title',
+  text: '.FAQ__box-text'
+}
+
+faq.init = function() {
+  this.events()
+}
+
+faq.events = function() {
+  $('body').on('click', this.title, (e) => {
+    const th = $(e.currentTarget)
+    if (th.parents(this.box).hasClass('active')) {
+      th.parents(this.box).find(this.text).slideUp(200)
+      th.parents(this.box).removeClass('active')
+    } else {
+      th.parents(this.cont).find(this.text).slideUp(200)
+      th.parents(this.cont).find(this.box).removeClass('active')
+      th.parents(this.box).find(this.text).stop(true)
+      th.parents(this.box).find(this.text).slideDown(200)
+      th.parents(this.box).addClass('active')
+    }
+  })
+}
+
+
+
+const assistedPurchase = {
+  mask: '.assistedPurchase__mask'
+}
+
+assistedPurchase.init = function() {
+  const controller = new ScrollMagic.Controller()
+  this.animationScroll(this.mask, $(this.mask).outerHeight() / 4, controller)
+}
+
+assistedPurchase.animationScroll = function(block, h, controller) {
+  const scene = new ScrollMagic.Scene({
+    triggerElement: block, 
+    triggerHook: 'onEnter', 
+    offset: h})
+    .setTween(block)
+    .addTo(controller)
+
+  scene.on('enter', () => {
+    $(block).addClass('active')
+  })
+}
+
+
+
+const shippingMethods = {
+  bl: '.shippingMethods',
+  fon: '.shippingMethods__fon',
+  block: '.shippingMethods__block',
+  item: '.shippingMethods__item'
+}
+
+shippingMethods.init = function() {
+  const controller = new ScrollMagic.Controller()
+  $(this.bl).addClass('active')
+  this.animationScroll(this.fon, 200, controller)
+}
+
+shippingMethods.masonryItem = function() {
+  $(this.block).masonry({
+    itemSelector: this.item,
+    transitionDuration: 0,
+    originLeft: true
+  })
+}
+
+shippingMethods.animationScroll = function(block, h, controller) {
+  const scene = new ScrollMagic.Scene({
+    triggerElement: block, 
+    triggerHook: 'onEnter', 
+    offset: h})
     .setTween(block)
     .addTo(controller)
 

@@ -3,17 +3,14 @@
   display: block;
 }
 
-@mixin inline_block($vertical: top, $align: left) {
+@mixin inline_block() {
   position: relative;
   display: inline-block;
-  text-align: $align;
-  vertical-align: $vertical;
 }
 
-@mixin inline($align: left) {
+@mixin inline() {
   position: relative;
   display: inline;
-  text-align: $align;
 }
 
 @mixin flex() {
