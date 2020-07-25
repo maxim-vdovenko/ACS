@@ -1,6 +1,7 @@
 .shippingMethods {
   $methods: &;
   @include block();
+  margin-top: 200px;
 
   .container {
     min-height: 1358px;
@@ -173,6 +174,13 @@
   &__block {
     @include block();
     margin: 97px -30px 0 -30px;
+
+    &.active {
+      #{$methods}__cont {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
   }
 
   &__item {
@@ -182,6 +190,32 @@
 
     &--wide {
       width: 66.67%;
+    }
+
+    &:nth-child(1) { 
+      #{$methods}__cont {
+        transition-delay: 0.1s;
+      }
+    }
+    &:nth-child(2) { 
+      #{$methods}__cont {
+        transition-delay: 0.3s;
+      }
+    }
+    &:nth-child(3) { 
+      #{$methods}__cont {
+        transition-delay: 0.5s;
+      }
+    }
+    &:nth-child(4) { 
+      #{$methods}__cont {
+        transition-delay: 0.7s;
+      }
+    }
+    &:nth-child(5) { 
+      #{$methods}__cont {
+        transition-delay: 0.9s;
+      }
     }
   }
 
@@ -195,6 +229,9 @@
     background-color: $color_white;
     box-shadow: 0px 18px 42px rgba(197, 228, 243, 0.4);
     border-radius: 18px;
+    transition: transform 0.6s, opacity 0.6s;
+    transform: translateY(20px);
+    opacity: 0;
 
     &-box {
       @include flex();

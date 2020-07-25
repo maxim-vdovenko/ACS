@@ -1,3 +1,166 @@
 .trackPurchases {
   @include block();
+  margin-top: 177px;
+
+  .col {
+    &:nth-child(2) {
+      padding: 35px 0 0 59px;
+    }
+  }
+  
+  &__phone {
+    @include block();
+    width: 405px;
+    height: 546px;
+    margin-left: 100px;
+
+    &-slider {
+      @include block();
+      @include image('track-purchases/phone.svg', contain, 0 0);
+      width: 100%;
+      height: 100%;
+    }
+
+    &-button {
+      position: absolute;
+      left: -100px;
+      width: 48px;
+      height: 48px;
+      border-radius: 1000px;
+      background-color: $color_blueLight;
+      border: none;
+      color: transparent;
+      cursor: pointer;
+      z-index: 1;
+      transition: background-color 0.3s, box-shadow 0.3s;
+
+      &:before {
+        @include position(absolute, 0, 0, 100%, 100%);
+        content: '';
+      }
+
+      &--prev {
+        top: 58px;
+
+        &:before {
+          @include image('icon-arrow-white.svg', 10px auto, 20px center);
+          transform: rotate(-90deg);
+        }
+      }
+
+      &--next {
+        top: 130px;
+
+        &:before {
+          @include image('icon-arrow-white.svg', 10px auto, 20px center);
+          transform: rotate(90deg);
+        }
+      }
+
+      &:hover {
+        box-shadow: 0 14px 18px -2px rgba(47, 130, 255, 0.4);
+        background-color: $color_blue;
+      }
+    }
+
+    &-icon {
+      position: absolute;
+
+      span {
+        @include position(absolute, 0, 0, 100%, 100%);
+
+        i {
+          @include position(absolute, 0, 0, 100%, 100%);
+          transition: transform 0.15s;
+        }
+      }
+
+      &--messages {
+        width: 168px;
+        height: 168px;
+        top: 30px;
+        right: 20px;
+
+        span i {
+          @include image('track-purchases/messages.svg', contain, 0 0);
+        }
+      }
+
+      &--notifications {
+        width: 192px;
+        height: 192px;
+        bottom: 60px;
+        left: -10px;
+
+        span i {
+          @include image('track-purchases/notifications.svg', contain, 0 0);
+        }
+      }
+    }
+  }
+
+  &__list {
+    @include block();
+    margin-top: 52px;
+    min-height: 170px;
+
+    &-button {
+      @include block();
+      top: 10px;
+      left: 0;
+      width: 36px;
+
+      li {
+        @include block();
+        height: 12px;
+
+        &:not(:last-child) {
+          margin-bottom: 25px;
+        } 
+
+        span { 
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          right: 0;
+          border-radius: 100px;
+          background-color: $color_yellow;
+          cursor: pointer;
+          transition: all 0.3s;
+        }
+
+        &.active {
+          span {
+            transform: translateY(-4px);
+            width: 18px;
+            height: 18px;
+            cursor: auto;
+          }
+        }
+      }
+    }
+
+    &-cont {
+      position: absolute;
+      top: 0;
+      left: 100px;
+      right: 0;
+    }
+
+    &-box {
+      position: absolute;
+      top: 0;
+      opacity: 0;
+      transition: opacity 0.3s;
+
+      &.active {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__button {
+    @include block();
+    margin-top: 35px;
+  }
 }

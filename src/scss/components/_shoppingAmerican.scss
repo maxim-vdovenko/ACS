@@ -1,6 +1,87 @@
 .shoppingAmerican {
   @include block();
-  margin-top: 270px;
+  margin-top: 197px;
 
+  .textBox {
+    padding: 80px 20px 0 0;
+  }
 
+  &__img {
+    @include block();
+    width: 433px;
+    height: 350px;
+    margin-left: 140px;
+
+    span {
+      position: absolute;
+      transition: opacity 0.8s;
+      opacity: 0;
+
+      i {
+        @include position(absolute, 0, 0, 100%, 100%);
+      }
+
+      &:nth-child(1) {
+        width: 168px;
+        height: 168px;
+        top: 6px;
+        left: -42px;
+        transition-delay: 0.1s;
+
+        i {
+          @include image('shopping-american/walmart.svg', contain, center);
+        }
+      }
+      &:nth-child(2) {
+        width: 192px;
+        height: 192px;
+        top: 36px;
+        left: 90px;
+        transition-delay: 0.5s;
+
+        i {
+          @include image('shopping-american/ebay.svg', contain, center);
+        }
+      }
+      &:nth-child(3) {
+        width: 288px;
+        height: 288px;
+        top: -54px;
+        right: -72px;
+        transition-delay: 0.3s;
+        
+        i {
+          @include image('shopping-american/amazon.svg', contain, center);
+        }
+      }
+      &:nth-child(4) {
+        width: 288px;
+        height: 288px;
+        bottom: -90px;
+        left: -42px;
+        transition-delay: 0.4s;
+
+        i {
+          @include image('shopping-american/best-buy.svg', contain, center);
+        }
+      }
+      &:nth-child(5) {
+        width: 192px;
+        height: 192px;
+        bottom: -30px;
+        right: 43px;
+        transition-delay: 0.2s;
+
+        i {
+          @include image('shopping-american/group.svg', contain, center);
+        }
+      }
+    }
+
+    &.active {
+      span {
+        opacity: 1;
+      }
+    }
+  }
 }

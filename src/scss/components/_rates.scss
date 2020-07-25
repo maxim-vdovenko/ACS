@@ -1,5 +1,6 @@
 .rates {
   @include block();
+  margin-top: 70px;
 
   .titleBox {
     h2 {
@@ -34,6 +35,9 @@
     justify-content: space-between;
     min-height: 200px;
     padding: 35px;
+    transition: opacity 0.6s;
+    transition-delay: 0.35s;
+    opacity: 0;
 
     &:not(:last-child) {
       border-bottom: 2px solid $color_blueLight;
@@ -96,6 +100,51 @@
           font-size: 14px;
           line-height: 28px;
           letter-spacing: 0.025em;
+        }
+      }
+    }
+
+    &.active {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  &__circles {
+    position: absolute;
+    top: 515px;
+    left: 50%;
+    width: 192px;
+    height: 318px;
+    margin-left: -1050px;
+
+    @include mobile($screen_xl) {
+      margin-left: -880px;
+    }
+
+    @include mobile($screen_lg) {
+      display: none;
+    }
+
+    span {
+      @include position(absolute, 0, 0, 100%, 100%);
+
+      i {
+        @include position(absolute, 0, 0, 100%, 100%);
+        transition: transform 0.15s;
+      }
+
+      &:nth-child(1) {
+        i {
+          @include image('rates/circles-1.svg', contain, 0 0);
+        }
+      }
+      &:nth-child(2) {
+        top: 20px;
+        left: -10px;
+
+        i {
+          @include image('rates/circles-2.svg', contain, 0 0);
         }
       }
     }

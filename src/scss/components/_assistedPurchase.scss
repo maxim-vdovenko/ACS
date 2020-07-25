@@ -65,6 +65,9 @@
       @include block();
       min-height: 100px;
       padding-left: 124px;
+      transition: transform 0.6s, opacity 0.6s;
+      transform: translateY(20px);
+      opacity: 0;
 
       &:not(:last-child) {
         margin-bottom: 48px;
@@ -108,6 +111,16 @@
         padding-top: 3px;
         padding-bottom: 12px;
       }
+
+      &:nth-child(1) {
+        transition-delay: 0.1s;
+      }
+      &:nth-child(2) {
+        transition-delay: 0.4s;
+      }
+      &:nth-child(3) {
+        transition-delay: 0.7s;
+      }
     }
 
     &-choose {
@@ -125,6 +138,13 @@
     &-delivery {
       span:after {
         @include image('assisted-purchase/delivery.svg', 30px auto, center);
+      }
+    }
+
+    &.active {
+      li {
+        transform: translateY(0);
+        opacity: 1;
       }
     }
   }

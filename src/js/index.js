@@ -1,7 +1,15 @@
 window.onload = function() {
   loader.init()
   workSlider.init()
-  shippingMethods.masonryItem()  
+  shippingMethods.masonryItem() 
+  trackPurchases.init() 
+
+  $('body').on('click', '.button', (e) => {
+    const th = $(e.currentTarget)
+    if (th.attr('href') === '#') {
+      e.preventDefault()
+    }
+  })
 }
 
 
@@ -35,6 +43,10 @@ loader.launch = function() {
   faq.init()
   assistedPurchase.init()
   shippingMethods.init()
+  shoppingAmerican.init()
+  shoppingAdvantages.init()
+  rates.init()
+  shoppingOnline.init()
 }
 
 
@@ -120,10 +132,6 @@ const cloudLogistics = {
 }
 
 cloudLogistics.init = function() {
-  this.events()
-}
-
-cloudLogistics.events = function() {
 
   $('body').on('click', this.menu.button, (e) => {
     const th = $(e.currentTarget)
@@ -183,10 +191,6 @@ const interNetwork = {
 }
 
 interNetwork.init = function() {
-  this.events()
-}
-
-interNetwork.events = function() {
 
   $('body').on('click', (e) => {
     if($(e.target).closest(this.box).length) return;
@@ -493,14 +497,14 @@ const faq = {
   cont: '.FAQ__cont',
   box: '.FAQ__box',
   title: '.FAQ__box-title',
-  text: '.FAQ__box-text'
+  text: '.FAQ__box-text',
+  circles: '.FAQ__circles'
 }
 
 faq.init = function() {
-  this.events()
-}
+  parallaxAdd.act(this.circles, this.circles + ' span:nth-child(1)', '-250px', '100%')
+  parallaxAdd.act(this.circles, this.circles + ' span:nth-child(2)', '-350px', '100%')
 
-faq.events = function() {
   $('body').on('click', this.title, (e) => {
     const th = $(e.currentTarget)
     if (th.parents(this.box).hasClass('active')) {
@@ -514,16 +518,31 @@ faq.events = function() {
       th.parents(this.box).addClass('active')
     }
   })
+
+  $('body').on('mousemove', (e) => {
+    const x = e.originalEvent.clientX / 70
+    const y = e.originalEvent.clientY / 50
+
+    window.requestAnimationFrame(() => {
+      for (let i = 0; i < $(this.circles + ' span').length; i++) {
+        $(this.circles + ' span').eq(i).find('i').css({
+          'transform': 'translate3d(0, 0, 0) translate('  + ((i + 1) * x) + 'px, ' + ((i + 1) * y) + 'px)',
+        })
+      }
+    })
+  })
 }
 
 
 
 const assistedPurchase = {
-  mask: '.assistedPurchase__mask'
+  mask: '.assistedPurchase__mask',
+  list: '.assistedPurchase__list'
 }
 
 assistedPurchase.init = function() {
   animationAdd.act(this.mask, $(this.mask).outerHeight() / 4)
+  animationAdd.act(this.list, $(this.list).outerHeight() / 2)
 }
 
 
@@ -538,6 +557,7 @@ const shippingMethods = {
 shippingMethods.init = function() {
   $(this.bl).addClass('active')
   animationAdd.act(this.fon, 200)
+  animationAdd.act(this.block, $(this.block).outerHeight() / 2)
 }
 
 shippingMethods.masonryItem = function() {
@@ -545,5 +565,107 @@ shippingMethods.masonryItem = function() {
     itemSelector: this.item,
     transitionDuration: 0,
     originLeft: true
+  })
+}
+
+
+
+const shoppingAmerican = {
+  img: '.shoppingAmerican__img'
+}
+
+shoppingAmerican.init = function() {
+  animationAdd.act(this.img, $(this.img).outerHeight() / 2)
+}
+
+
+
+const shoppingAdvantages = {
+  bl: '.shoppingAdvantages'
+}
+
+shoppingAdvantages.init = function() {
+  animationAdd.act(this.bl, $(this.bl).outerHeight() / 2)
+}
+
+
+
+const rates = {
+  cont: '.rates__cont',
+  box: '.rates__box',
+  circles: '.rates__circles',
+}
+
+rates.init = function() {
+
+  for (let i = 0; i < $(this.box).length; i++) {
+    const box = this.box + ':nth-child(' + (i + 1) + ')'
+    animationAdd.act(box, $(box).outerHeight() / 2)
+  }
+
+  parallaxAdd.act(this.circles, this.circles + ' span:nth-child(1)', '-250px', '100%')
+  parallaxAdd.act(this.circles, this.circles + ' span:nth-child(2)', '-350px', '100%')
+
+  $('body').on('mousemove', (e) => {
+    const x = e.originalEvent.clientX / 70
+    const y = e.originalEvent.clientY / 50
+
+    window.requestAnimationFrame(() => {
+      for (let i = 0; i < $(this.circles + ' span').length; i++) {
+        $(this.circles + ' span').eq(i).find('i').css({
+          'transform': 'translate3d(0, 0, 0) translate('  + ((i + 1) * x) + 'px, ' + ((i + 1) * y) + 'px)',
+        })
+      }
+    })
+  })
+}
+
+
+
+const shoppingOnline = {
+  cont: '.shoppingOnline__cont'
+}
+
+shoppingOnline.init = function() {
+  animationAdd.act(this.cont, $(this.cont).outerHeight() / 2)
+}
+
+
+
+const trackPurchases = {
+  list: '.trackPurchases__list',
+  listButton: '.trackPurchases__list-button',
+  listBox: '.trackPurchases__list-box',
+  icon: {
+    messages: '.trackPurchases__phone-icon--messages',
+    notifications: '.trackPurchases__phone-icon--notifications'
+  }
+}
+
+trackPurchases.init = function() {
+  
+  $('body').on('click', this.listButton + ' li span', (e) => {
+    const th = $(e.currentTarget)
+    const ind = th.parents('li').index()
+
+    th.parents(this.listButton).find('li').removeClass('active')
+    th.parents('li').addClass('active')
+
+    th.parents(this.list).find(this.listBox).removeClass('active')
+    th.parents(this.list).find(this.listBox).eq(ind).addClass('active')
+  })
+
+  $('body').on('mousemove', (e) => {
+    const x = e.originalEvent.clientX / 200
+    const y = e.originalEvent.clientY / 200
+
+    window.requestAnimationFrame(() => {
+      $(this.icon.messages).find('i').css({
+        'transform': 'translate3d(0, 0, 0) translate('  + (6 * x) + 'px, ' + (6 * y) + 'px)',
+      })
+      $(this.icon.notifications).find('i').css({
+        'transform': 'translate3d(0, 0, 0) translate('  + (2.5 * x) + 'px, ' + (2.5 * y) + 'px)',
+      })
+    })
   })
 }

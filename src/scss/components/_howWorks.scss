@@ -1,4 +1,7 @@
 .howWorks {
   @include block();
 
+  .titleBox {
+    text-align: center;
+  }
 }
