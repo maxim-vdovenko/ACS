@@ -24,7 +24,7 @@ loader.init = function() {
       $(this.bl).removeClass('active')
       this.launch()
     })
-  }, 0) 
+  }, 1000) 
 }
 
 loader.launch = function() {
@@ -169,7 +169,12 @@ const blockContainer = {
   scaleCommerce: '.blockContainer__animation--scaleCommerce',
   flexibleShipping: '.blockContainer__animation--flexibleShipping',
   specialProjects: '.blockContainer__animation--specialProjects',
-  packingFees: '.blockContainer__animation--packingFees'
+  packingFees: '.blockContainer__animation--packingFees',
+  getAddress: '.blockContainer__animation--getAddress',
+  goShopping: '.blockContainer__animation--goShopping',
+  storeItems: '.blockContainer__animation--storeItems',
+  confirmation: '.blockContainer__animation--confirmation',
+  saveWithUs: '.blockContainer__animation--saveWithUs'
 }
 
 blockContainer.init = function() {
@@ -180,6 +185,11 @@ blockContainer.init = function() {
   animationAdd.act(this.flexibleShipping, $(this.flexibleShipping).outerHeight() / 2)
   animationAdd.act(this.specialProjects, $(this.specialProjects).outerHeight() / 2)
   animationAdd.act(this.packingFees, $(this.packingFees).outerHeight() / 2)
+  animationAdd.act(this.getAddress, $(this.getAddress).outerHeight() / 2)
+  animationAdd.act(this.goShopping, $(this.goShopping).outerHeight() / 2)
+  animationAdd.act(this.storeItems, $(this.storeItems).outerHeight() / 2)
+  animationAdd.act(this.confirmation, $(this.confirmation).outerHeight() / 2)
+  animationAdd.act(this.saveWithUs, $(this.saveWithUs).outerHeight() / 2)
 }
 
 

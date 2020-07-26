@@ -15,24 +15,6 @@
 
   .textBox {
     padding: 0 55px 26px 0;
-
-    ul {
-
-      li {
-        padding-left: 36px;
-
-        &:before {
-          position: absolute;
-          top: 6px;
-          left: 0;
-          width: 12px;
-          height: 12px;
-          border-radius: 1000px;
-          background-color: $color_blue;
-          content: '';
-        }
-      }
-    }
   }
 
   &__button {

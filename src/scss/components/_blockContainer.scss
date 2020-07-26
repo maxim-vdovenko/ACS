@@ -1,13 +1,16 @@
 .blockContainer {
+  $block: &;
   @include block();
   margin-top: 100px;
 
   .row {
+
     &:nth-child(2n + 1) .col {
       &:nth-child(2) {
        padding-left: 30px;
       }
     }
+
     &:nth-child(2n + 0) .col {
 
       &:nth-child(1) {
@@ -19,6 +22,7 @@
         padding-right: 30px;
       }
     }
+
     &:not(:last-child) {
       margin-bottom: 230px;
     }
@@ -47,12 +51,124 @@
     margin-top: 113px;
   } 
 
+  &--howWorks {
+    margin-top: 190px;
+
+    .row {
+
+      &:nth-child(2n + 1) .col {
+
+        &:nth-child(1) {
+          order: 0;
+        }
+  
+        &:nth-child(2) {
+          order: 1;
+        }
+      }
+
+      &:nth-child(2n + 0) .col {
+
+        &:nth-child(1) {
+          order: 1;
+          padding-left: 30px;          
+        }
+  
+        &:nth-child(2) {
+          order: 0;
+        }
+      }
+
+      &:nth-child(1) {
+        margin-bottom: -202px;
+
+        #{$block}-strip {
+          bottom: 54px;
+          left: -110px;
+          transform: rotate(32deg);
+        }
+      }
+
+      &:nth-child(2) {
+        margin-bottom: 84px;
+
+        #{$block}-strip {
+          bottom: -168px;
+          right: 3px;
+          transform: rotate(-30.5deg);
+        }
+      }
+
+      &:nth-child(3) {
+        margin-bottom: -192px;
+
+        #{$block}-strip {
+          bottom: 60px;
+          left: -110px;
+          transform: rotate(30.5deg);
+        }
+      }
+
+      &:nth-child(4) {
+        #{$block}-strip {
+          width: 2px;
+          height: 110px;
+          bottom: -315px;
+          right: -1px;
+        }
+      }
+
+      &--full {
+        margin-top: 364px;
+        margin-bottom: 0;
+
+        .col {
+          &:nth-child(2) {
+            padding-left: 30px; 
+          }
+        }
+
+        .textBox {
+          height: auto;
+          padding-top: 48px;
+
+          .button {
+            margin-top: 30px;
+          }
+        }
+      }
+    }
+
+    .titleBox {
+      text-align: center;
+      margin-bottom: 96px;
+    }
+
+    .textBox {
+      max-width: 440px;
+      height: 0;
+
+      h4 {
+        margin-bottom: 11px;
+      }
+    }
+
+    #{$block}__animation {
+      @include block();
+      margin-bottom: 37px;
+    }
+  }
+
   .textBox {
     padding-top: 10px;
 
     .button {
       margin-top: 38px;
     }
+  }
+
+  &__cont {
+    @include block();
   }
 
   &__animation {
@@ -420,6 +536,201 @@
         }
       }
     }
+
+    &--getAddress {
+      @include image('block-container/get-address/element-1.svg', contain, 0 0);
+      width: 405px;
+      height: 372px;
+
+      span {
+        &:nth-child(1) {
+          transform: translate(0, -35px);
+          opacity: 0;
+
+          &:before {
+            @include image('block-container/get-address/element-2.svg', contain, 0 0);
+          }
+        }
+        &:nth-child(2) {
+          transform: translate(0, -40px);
+          opacity: 0;
+
+          &:before {
+            @include image('block-container/get-address/element-3.svg', contain, 0 0);
+          }
+        }
+      }
+
+      &.active span {
+        transform: translate(0, 0);
+        opacity: 1;
+
+        &:nth-child(1):before {
+          animation: 2.2s ease-in-out infinite internationalShipping;
+        }
+        &:nth-child(2):before {
+          animation: 2.2s ease-in-out infinite internationalShipping;
+        }
+      }
+    }
+
+    &--goShopping {
+      @include image('block-container/go-shopping/element-1.svg', contain, 0 0);
+      width: 410px;
+      height: 380px;
+
+      span {
+        &:nth-child(1) {
+          transform: translate(-40px, -20px);
+          opacity: 0;
+
+          &:before {
+            @include image('block-container/go-shopping/element-2.svg', contain, 0 0);
+          }
+        }
+        &:nth-child(2) {
+          transform: translate(0, -40px);
+          opacity: 0;
+
+          &:before {
+            @include image('block-container/go-shopping/element-3.svg', contain, 0 0);
+          }
+        }
+      }
+
+      &.active span {
+        transform: translate(0, 0);
+        opacity: 1;
+
+        &:nth-child(2):before {
+          animation: 2s ease-in-out infinite internationalShipping;
+        }
+      }
+    }
+
+    &--storeItems {
+      @include image('block-container/store-items/element-1.svg', contain, 0 0);
+      width: 419px;
+      height: 370px;
+
+      span {
+        &:nth-child(1) {
+          transform: translate(0, -30px);
+          opacity: 0;
+
+          &:before {
+            @include image('block-container/store-items/element-2.svg', contain, 0 0);
+          }
+        }
+        &:nth-child(2) {
+          transform: translate(0, -30px);
+          opacity: 0;
+
+          &:before {
+            @include image('block-container/store-items/element-3.svg', contain, 0 0);
+          }
+        }
+        &:nth-child(3) {
+          transform: translate(40px, -30px);
+          opacity: 0;
+
+          &:before {
+            @include image('block-container/store-items/element-4.svg', contain, 0 0);
+          }
+        }
+      }
+
+      &.active span {
+        transform: translate(0, 0);
+        opacity: 1;
+
+        &:nth-child(1):before {
+          animation: 2.8s ease-in-out 1s infinite storageFulfillment_3; 
+        }
+        &:nth-child(2):before {
+          animation: 2.8s ease-in-out 1s infinite storageFulfillment_4; 
+        }
+      }
+    }
+
+    &--confirmation {
+      @include image('block-container/confirmation/element-1.svg', contain, 0 0);
+      width: 392px;
+      height: 371px;
+
+      span {
+        &:nth-child(1) {
+          transform: translate(0, -30px);
+          opacity: 0;
+
+          &:before {
+            @include image('block-container/confirmation/element-2.svg', contain, 0 0);
+          }
+        }
+      }
+
+      &.active span {
+        transform: translate(0, 0);
+        opacity: 1;
+
+        &:nth-child(1):before {
+          animation: 2.2s ease-in-out infinite internationalShipping;
+        }
+      }
+    }
+
+    &--saveWithUs {
+      @include image('block-container/save-withUs/element-1.svg', contain, 0 0);
+      left: 110px;
+      width: 382px;
+      height: 321px;
+
+      span {
+        &:nth-child(1) {
+          transform: translate(-50px, 40px);
+          opacity: 0;
+
+          &:before {
+            @include image('block-container/save-withUs/element-2.svg', contain, 0 0);
+          }
+        }
+        &:nth-child(2) {
+          transform: translate(0, -30px);
+          transition-delay: 0.7s;
+          opacity: 0;
+
+          &:before {
+            @include image('block-container/save-withUs/element-3.svg', contain, 0 0);
+          }
+        }
+        &:nth-child(3) {
+          transition: opacity 0.7s;
+          transition-delay: 0.7s;
+          opacity: 0;
+
+          &:before {
+            @include image('block-container/save-withUs/element-4.svg', contain, 0 0);
+          }
+        }
+      }
+
+      &.active span {
+        transform: translate(0, 0);
+        opacity: 1;
+
+        &:nth-child(2):before {
+          animation: 2s ease-in-out 0.7s infinite internationalShipping;
+        }
+      }
+    }
+  }
+
+  &-strip {
+    position: absolute;
+    width: 110px;
+    height: 2px;
+    border-radius: 10px;
+    background-color: $color_blueLight;
   }
 }
 
@@ -456,6 +767,36 @@
   }
   20% {
     transform: translate(-3px, -8px);
+  }
+  40% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes storageFulfillment_3 {
+  0% {
+    transform: translate(0, 0);
+  }
+  60% {
+    transform: translate(0, 0);
+  }
+  80% {
+    transform: translate(0, -12px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes storageFulfillment_4 {
+  0% {
+    transform: translate(0, 0);
+  }
+  20% {
+    transform: translate(0, -12px);
   }
   40% {
     transform: translate(0, 0);

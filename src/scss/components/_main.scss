@@ -235,11 +235,34 @@ a, input, textarea, select, button {
     }
 
     li {
+      padding-left: 36px;
+
+      @include mobile($screen_sm) {
+        padding-left: 22px;
+      }
+
       &:not(:last-child) {
         margin-bottom: 17px;
 
         @include mobile($screen_sm) {
           margin-bottom: 14px;
+        }
+      }
+
+      &:before {
+        position: absolute;
+        top: 6px;
+        left: 0;
+        width: 12px;
+        height: 12px;
+        border-radius: 1000px;
+        background-color: $color_blue;
+        content: '';
+  
+        @include mobile($screen_sm) {
+          top: 9px;
+          width: 8px;
+          height: 8px;
         }
       }
     }
