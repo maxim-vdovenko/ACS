@@ -4,7 +4,7 @@ window.onload = function() {
   shippingMethods.masonryItem() 
   trackPurchases.init() 
 
-  $('body').on('click', '.button', (e) => {
+  $('body').on('click', 'a', (e) => {
     const th = $(e.currentTarget)
     if (th.attr('href') === '#') {
       e.preventDefault()
