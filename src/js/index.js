@@ -24,7 +24,7 @@ loader.init = function() {
       $(this.bl).removeClass('active')
       this.launch()
     })
-  }, 0) // 1000 
+  }, 1000)
 }
 
 loader.launch = function() {
