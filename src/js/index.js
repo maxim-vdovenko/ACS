@@ -1,6 +1,6 @@
 window.onload = function() {
   loader.init()
-  workSlider.init()
+  slider.init()
   shippingMethods.masonryItem() 
   trackPurchases.init() 
 
@@ -24,7 +24,7 @@ loader.init = function() {
       $(this.bl).removeClass('active')
       this.launch()
     })
-  }, 1000) 
+  }, 0) // 1000 
 }
 
 loader.launch = function() {
@@ -47,6 +47,9 @@ loader.launch = function() {
   shoppingAdvantages.init()
   rates.init()
   shoppingOnline.init()
+  amazonReturns.init()
+  dropshipping.init()
+  amazonPreparationServices.init()
 }
 
 
@@ -412,16 +415,16 @@ mailForwarding.init = function() {
 
 
 
-const workSlider = {
-  bl: '.workSlider',
-  value: '.workSlider__value',
-  box: '.workSlider__value-box',
-  slid: '.workSlider__value-slid',
-  block: '.workSlider__list-block',
-  list: '.workSlider__value-list'
+const slider = {
+  bl: '.slider',
+  value: '.slider__value',
+  box: '.slider__value-box',
+  slid: '.slider__value-slid',
+  block: '.slider__list-block',
+  list: '.slider__value-list'
 }
 
-workSlider.init = function() {
+slider.init = function() {
   $(this.box).slider({
     range: false,
     min: 0,
@@ -449,7 +452,7 @@ workSlider.init = function() {
   })
 }
 
-workSlider.switching = function(ind) {
+slider.switching = function(ind) {
   $(this.list).find('li').removeClass('active')
   $(this.list).find('li').eq(ind).addClass('active')
 }
@@ -676,6 +679,91 @@ trackPurchases.init = function() {
       $(this.icon.notifications).find('i').css({
         'transform': 'translate3d(0, 0, 0) translate('  + (2.5 * x) + 'px, ' + (2.5 * y) + 'px)',
       })
+    })
+  })
+}
+
+
+
+const amazonReturns = {
+  img: '.amazonReturns__img',
+  circles: '.amazonReturns__circles',
+  textBox: '.amazonReturns .textBox'
+}
+
+amazonReturns.init = function() {
+  $(this.img).addClass('active')
+  $(this.textBox).addClass('active')
+  parallaxAdd.act(this.circles, this.circles + ' span:nth-child(1)', '-350px', '100%')
+  parallaxAdd.act(this.circles, this.circles + ' span:nth-child(2)', '-400px', '100%')
+
+  $('body').on('mousemove', (e) => {
+    const x = e.originalEvent.clientX / 70
+    const y = e.originalEvent.clientY / 50
+    const xImg = e.originalEvent.clientX / 300
+    const yImg = e.originalEvent.clientY / 300
+
+    window.requestAnimationFrame(() => {
+      for (let i = 0; i < $(this.img + ' span').length; i++) {
+        $(this.img + ' span').eq(i).find('i').css({
+          'transform': 'translate3d(0, 0, 0) translate('  + ((i + 1) * xImg) + 'px, ' + ((i + 1) * yImg) + 'px)',
+        })
+      }
+      for (let i = 0; i < $(this.circles + ' span').length; i++) {
+        $(this.circles + ' span').eq(i).find('i').css({
+          'transform': 'translate3d(0, 0, 0) translate('  + ((i + 1) * x) + 'px, ' + ((i + 1) * y) + 'px)',
+        })
+      }
+    })
+  })
+}
+
+
+
+const dropshipping = {
+  img: '.dropshipping__img',
+  textBox: '.dropshipping .textBox'
+}
+
+dropshipping.init = function() {
+  $(this.img).addClass('active')
+  $(this.textBox).addClass('active')
+
+  $('body').on('mousemove', (e) => {
+    const xImg = e.originalEvent.clientX / 300
+    const yImg = e.originalEvent.clientY / 300
+
+    window.requestAnimationFrame(() => {
+      for (let i = 0; i < $(this.img + ' span').length; i++) {
+        $(this.img + ' span').eq(i).find('i').css({
+          'transform': 'translate3d(0, 0, 0) translate('  + ((i + 1) * xImg) + 'px, ' + ((i + 1) * yImg) + 'px)',
+        })
+      }
+    })
+  })
+}
+
+
+
+const amazonPreparationServices = {
+  img: '.amazonPreparationServices__img',
+  textBox: '.amazonPreparationServices .textBox'
+}
+
+amazonPreparationServices.init = function() {
+  $(this.img).addClass('active')
+  $(this.textBox).addClass('active')
+
+  $('body').on('mousemove', (e) => {
+    const xImg = e.originalEvent.clientX / 300
+    const yImg = e.originalEvent.clientY / 300
+
+    window.requestAnimationFrame(() => {
+      for (let i = 0; i < $(this.img + ' span').length; i++) {
+        $(this.img + ' span').eq(i).find('i').css({
+          'transform': 'translate3d(0, 0, 0) translate('  + ((i + 1) * xImg) + 'px, ' + ((i + 1) * yImg) + 'px)',
+        })
+      }
     })
   })
 }

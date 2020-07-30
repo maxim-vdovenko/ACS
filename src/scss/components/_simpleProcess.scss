@@ -1,0 +1,8 @@
+.simpleProcess {
+  @include block();
+  margin-bottom: 280px;
+
+  &__slider {
+    @include block();
+  }
+}

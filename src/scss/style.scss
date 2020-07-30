@@ -1,6 +1,7 @@
 @import "components/variables";
 @import "components/mixins";
 @import "components/main";
+@import "components/slider";
 
 @import "components/header";
 @import "components/acs";
@@ -29,5 +30,15 @@
 @import "components/trackPurchases";
 @import "components/rates";
 @import "components/FAQ";
+
+@import "components/amazonReturns";
+@import "components/amazonTrusted";
+@import "components/amazonInfo";
+@import "components/returnInspections";
+@import "components/simpleProcess";
+
+@import "components/dropshipping";
+
+@import "components/amazonPreparationServices";
 
 @import "components/footer";
