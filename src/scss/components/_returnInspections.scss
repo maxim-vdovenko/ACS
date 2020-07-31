@@ -1,3 +1,133 @@
 .returnInspections {
+  @include flex();
+  justify-content: flex-end;
+  margin-top: 14px;
 
+  &__list {
+    @include flex();
+    flex-wrap: wrap-reverse;
+    justify-content: flex-end;
+    min-width: 900px;
+
+    li {
+      position: relative;
+      width: 240px;
+      min-height: 220px;
+      text-align: center;
+      margin: 0 0 53px 60px;
+      transition: transform 0.7s, opacity 0.7s;
+      transform: translateY(20px);
+      opacity: 0;
+
+      span {
+        @include block();
+        width: 72px;
+        height: 72px;
+        margin: 0 auto 26px auto;
+  
+        &:before, &:after {
+          @include position(absolute, 0, 0, 100%, 100%);
+          content: '';
+        }
+  
+        &:before {
+          border-radius: 18px;
+          background-color: $color_white;
+        }
+      }
+  
+      &:nth-child(2n + 0) {
+        span:before {
+          transform: rotate(15deg);
+        }
+      }
+      &:nth-child(2n + 1) {
+        span:before {
+          transform: rotate(-15deg);
+        }
+      }
+
+      &:nth-child(4) {
+        transition-delay: 0.1s;
+      }
+      &:nth-child(5) {
+        transition-delay: 0.3s;
+      }
+      &:nth-child(1) {
+        transition-delay: 0.5s;
+      }
+      &:nth-child(2) {
+        transition-delay: 0.7s;
+      }
+      &:nth-child(3) {
+        transition-delay: 0.9s;
+      }
+    }
+
+    &-label {
+      span:after {
+        @include image('return-inspections/label.svg', 30px auto, center);
+      }
+    }
+
+    &-address {
+      span:after {
+        @include image('return-inspections/address.svg', 30px auto, center);
+      }
+    }
+
+    &-check {
+      span:after {
+        @include image('return-inspections/check.svg', 30px auto, center);
+      }
+    }
+
+    &-back {
+      span:after {
+        @include image('return-inspections/back.svg', 30px auto, center);
+      }
+    }
+
+    &-trash {
+      span:after {
+        @include image('return-inspections/trash.svg', 30px auto, center);
+      }
+    }
+
+    &.active li {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  &__circles {
+    position: absolute;
+    top: 350px;
+    left: 50%;
+    width: 313px;
+    height: 404px;
+    margin-left: -1320px;
+
+    span {
+      @include position(absolute, 0, 0, 100%, 100%);
+
+      i {
+        @include position(absolute, 0, 0, 100%, 100%);
+        transition: transform 0.15s;
+      }
+
+      &:nth-child(1) {
+        i {
+          @include image('return-inspections/circles-1.svg', contain, 0 0);
+        }
+      }
+      &:nth-child(2) {
+        top: 60px;
+
+        i {
+          @include image('return-inspections/circles-2.svg', contain, 0 0);
+        }
+      }
+    }
+  }
 }

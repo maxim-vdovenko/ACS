@@ -1,3 +1,98 @@
 .amazonInfo {
+  @include block();
+  margin-top: 76px;
 
+  .col {
+    &:nth-child(1) {
+      order: 1;
+      padding-left: 30px;
+    }
+    &:nth-child(2) {
+      order: 0;
+      padding-right: 30px;
+    }
+  }
+
+  &__button {
+    @include block();
+    margin-top: 62px;
+  }
+
+  &__img {
+    @include inline_block();
+  }
+
+  .textBox {
+    padding-top: 43px;
+
+    h4 {
+      margin-top: 39px;
+    }
+
+    .colorBlue {
+      transition: color 1s;
+      color: $color_text_main;
+    }
+
+    &.active {
+      .colorBlue {
+        color: $color_text_blue;
+      }
+    }
+  }
+
+  &__circles {
+    position: absolute;
+    width: 0;
+    height: 0;
+
+    span {
+      position: absolute;
+
+      i {
+        @include position(absolute, 0, 0, 100%, 100%);
+        border-radius: 1000px;
+        transition: transform 0.15s;
+      }
+    }
+
+    &--1 {
+      top: 200px;
+      right: 230px;
+
+      span {
+        @include circle_position(16px, 16px);
+
+        i {
+          background-color: $color_blue;
+        }
+      }
+    }
+
+    &--2 {
+      top: 180px;
+      right: 150px;
+
+      span {
+        @include circle_position(32px, 32px);
+
+        i {
+          border: 2px solid $color_dark;
+        }
+      }
+    }
+
+    &--3 {
+      bottom: 80px;
+      left: 0;
+
+      span {
+        @include circle_position(48px, 48px);
+
+        i {
+          background-color: $color_cyan;
+        }
+      }
+    }
+  }
 }

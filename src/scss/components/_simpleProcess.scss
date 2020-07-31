@@ -1,8 +1,21 @@
 .simpleProcess {
   @include block();
-  margin-bottom: 280px;
+  margin-top: 122px;
+  margin-bottom: 184px;
+
+  .col {
+    &:nth-child(1) {
+      max-width: 300px;
+      flex: auto;
+    }
+  }
+
+  .textBox {
+    padding-top: 28px;
+  }
 
   &__slider {
     @include block();
+    margin-top: 112px;
   }
 }

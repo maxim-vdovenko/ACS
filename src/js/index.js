@@ -24,7 +24,7 @@ loader.init = function() {
       $(this.bl).removeClass('active')
       this.launch()
     })
-  }, 1000)
+  }, 0) // 1000 
 }
 
 loader.launch = function() {
@@ -50,6 +50,7 @@ loader.launch = function() {
   amazonReturns.init()
   dropshipping.init()
   amazonPreparationServices.init()
+  returnIns.init()
 }
 
 
@@ -177,7 +178,8 @@ const blockContainer = {
   goShopping: '.blockContainer__animation--goShopping',
   storeItems: '.blockContainer__animation--storeItems',
   confirmation: '.blockContainer__animation--confirmation',
-  saveWithUs: '.blockContainer__animation--saveWithUs'
+  saveWithUs: '.blockContainer__animation--saveWithUs',
+  returnInspections: '.blockContainer__animation--returnInspections'
 }
 
 blockContainer.init = function() {
@@ -193,6 +195,7 @@ blockContainer.init = function() {
   animationAdd.act(this.storeItems, $(this.storeItems).outerHeight() / 2)
   animationAdd.act(this.confirmation, $(this.confirmation).outerHeight() / 2)
   animationAdd.act(this.saveWithUs, $(this.saveWithUs).outerHeight() / 2)
+  animationAdd.act(this.returnInspections, $(this.returnInspections).outerHeight() / 2)
 }
 
 
@@ -264,6 +267,14 @@ const shipping = {
       '.doesWork__info-circles--2',
       '.doesWork__info-circles--3'
     ]
+  },
+  amazonInfo: {
+    text: '.amazonInfo .textBox',
+    circles: [
+      '.amazonInfo__circles--1',
+      '.amazonInfo__circles--2',
+      '.amazonInfo__circles--3'
+    ]
   }
 }
 
@@ -293,6 +304,11 @@ shipping.init = function() {
   parallaxAdd.act(this.doesWork.circles[1], this.doesWork.circles[1] + ' span', '-200px', '100%')
   parallaxAdd.act(this.doesWork.circles[2], this.doesWork.circles[2] + ' span', '-150px', '100%')
 
+  animationAdd.act(this.amazonInfo.text, $(this.amazonInfo.text).outerHeight() / 2)
+  parallaxAdd.act(this.amazonInfo.circles[0], this.amazonInfo.circles[0] + ' span', '-450px', '100%')
+  parallaxAdd.act(this.amazonInfo.circles[1], this.amazonInfo.circles[1] + ' span', '-200px', '100%')
+  parallaxAdd.act(this.amazonInfo.circles[2], this.amazonInfo.circles[2] + ' span', '-150px', '100%')
+
   $('body').on('mousemove', (e) => {
     const x = e.originalEvent.clientX / 60
     const y = e.originalEvent.clientY / 50
@@ -301,6 +317,7 @@ shipping.init = function() {
     animationCircles(this.flexibility.circles)
     animationCircles(this.favorite.circles)
     animationCircles(this.doesWork.circles)
+    animationCircles(this.amazonInfo.circles)
 
     function animationCircles (circles) {
       window.requestAnimationFrame(() => {
@@ -694,7 +711,7 @@ const amazonReturns = {
 amazonReturns.init = function() {
   $(this.img).addClass('active')
   $(this.textBox).addClass('active')
-  parallaxAdd.act(this.circles, this.circles + ' span:nth-child(1)', '-350px', '100%')
+  parallaxAdd.act(this.circles, this.circles + ' span:nth-child(1)', '-280px', '100%')
   parallaxAdd.act(this.circles, this.circles + ' span:nth-child(2)', '-400px', '100%')
 
   $('body').on('mousemove', (e) => {
@@ -762,6 +779,32 @@ amazonPreparationServices.init = function() {
       for (let i = 0; i < $(this.img + ' span').length; i++) {
         $(this.img + ' span').eq(i).find('i').css({
           'transform': 'translate3d(0, 0, 0) translate('  + ((i + 1) * xImg) + 'px, ' + ((i + 1) * yImg) + 'px)',
+        })
+      }
+    })
+  })
+}
+
+
+
+const returnIns = {
+  list: '.returnInspections__list',
+  circles: '.returnInspections__circles',
+}
+
+returnIns.init = function() {
+  animationAdd.act(this.list, $(this.list).outerHeight() / 2)
+  parallaxAdd.act(this.circles, this.circles + ' span:nth-child(1)', '-250px', '100%')
+  parallaxAdd.act(this.circles, this.circles + ' span:nth-child(2)', '-400px', '100%')
+
+  $('body').on('mousemove', (e) => {
+    const x = e.originalEvent.clientX / 70
+    const y = e.originalEvent.clientY / 50
+
+    window.requestAnimationFrame(() => {
+      for (let i = 0; i < $(this.circles + ' span').length; i++) {
+        $(this.circles + ' span').eq(i).find('i').css({
+          'transform': 'translate3d(0, 0, 0) translate('  + ((i + 1) * x) + 'px, ' + ((i + 1) * y) + 'px)',
         })
       }
     })

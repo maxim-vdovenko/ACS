@@ -33,6 +33,14 @@
     width: 50%;
   }
 
+  .textBox {
+    padding-top: 10px;
+
+    .button {
+      margin-top: 38px;
+    }
+  }
+
   &--delivery {
     margin-top: 250px;
   }
@@ -159,11 +167,19 @@
     }
   }
 
-  .textBox {
-    padding-top: 10px;
+  &--returnInspections {
+    background-color: $color_blueLight_2;
+    margin-top: 142px;
+    padding: 122px 0 72px 0;
 
-    .button {
-      margin-top: 38px;
+    .row {
+      &:not(:last-child) {
+        margin-bottom: 103px;
+      }
+    }
+
+    .textBox {
+      padding-top: 0;
     }
   }
 
@@ -720,6 +736,56 @@
 
         &:nth-child(2):before {
           animation: 2s ease-in-out 0.7s infinite internationalShipping;
+        }
+      }
+    }
+
+    &--returnInspections {
+      @include image('block-container/return-inspections/element-1.svg', contain, 0 0);
+      top: 48px;
+      left: 2px;
+      width: 498px;
+      height: 430px;
+
+      span {
+        &:nth-child(1) {
+          transform: translate(0, -50px);
+          opacity: 0;
+
+          &:before {
+            @include image('block-container/return-inspections/element-2.svg', contain, 0 0);
+          }
+        }
+        &:nth-child(2) {
+          transform: translate(0, -50px);
+          opacity: 0;
+
+          &:before {
+            @include image('block-container/return-inspections/element-3.svg', contain, 0 0);
+          }
+        }
+        &:nth-child(3) {
+          transform: translate(0, -50px);
+          opacity: 0;
+
+          &:before {
+            @include image('block-container/return-inspections/element-4.svg', contain, 0 0);
+          }
+        }
+      }
+
+      &.active span {
+        transform: translate(0, 0);
+        opacity: 1;
+
+        &:nth-child(1):before {
+          animation: 2.2s ease-in-out 1s infinite scaleCommerce_1; 
+        }
+        &:nth-child(2):before {
+          animation: 2.2s ease-in-out 1s infinite scaleCommerce_2; 
+        }
+        &:nth-child(3):before {
+          animation: 2.2s ease-in-out 1s infinite scaleCommerce_3; 
         }
       }
     }

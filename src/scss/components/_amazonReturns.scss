@@ -14,8 +14,8 @@
   }
 
   .textBox {
-    left: -20px;
-    padding-bottom: 2px;
+    left: 18px;
+    padding-bottom: 23px;
 
     h1 {
       transform: translateY(50px);
@@ -44,8 +44,8 @@
 
   &__img {
     @include block();
-    top: 15px;
-    left: -187px;
+    top: 6px;
+    left: -113px;
     width: 583px;
     height: 516px;
 
@@ -178,11 +178,11 @@
 
   &__circles {
     position: absolute;
-    top: 740px;
+    top: 1050px;
     left: 50%;
     width: 326px;
     height: 378px;
-    margin-left: 750px;
+    margin-left: 730px;
 
     span {
       @include position(absolute, 0, 0, 100%, 100%);
@@ -198,6 +198,9 @@
         }
       }
       &:nth-child(2) {
+        top: 50px;
+        left: 30px;
+
         i {
           @include image('amazon-returns/circles-2.svg', contain, 0 0);
         }
