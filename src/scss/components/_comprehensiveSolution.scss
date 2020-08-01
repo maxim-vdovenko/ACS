@@ -1,0 +1,155 @@
+.comprehensiveSolution {
+  $solution: &;
+  @include block();
+  margin-top: 235px;
+
+  .titleBox {
+    max-width: 740px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  &__cont {
+    @include flex();
+    margin: 130px -30px 0 -30px;
+  }
+
+  &__contBloc {
+    position: relative;
+    display: inline-flex;
+    flex-wrap: wrap;
+
+    &.active {
+      #{$solution}__box {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+  }
+
+  &__box {
+    position: relative;
+    text-align: center;
+    width: 33.33%;
+    height: 300px;
+    transition: transform 0.7s, opacity 0.7s;
+    transform: translateY(20px);
+    opacity: 0;
+
+    > img {
+      @include block();
+      width: 144px;
+      height: 144px;
+      margin: 0 auto 24px auto;
+    }
+
+    > h4 {
+      padding: 0 30px;
+    }
+
+    &:nth-child(1) {
+      transition-delay: 0.1s;
+    }
+    &:nth-child(2) {
+      transition-delay: 0.25s;
+    }
+    &:nth-child(3) {
+      transition-delay: 0.4s;
+    }
+    &:nth-child(4) {
+      transition-delay: 0.55s;
+    }
+    &:nth-child(5) {
+      transition-delay: 0.7s;
+    }
+    &:nth-child(6) {
+      transition-delay: 0.85s;
+    }
+    &:nth-child(7) {
+      transition-delay: 1s;
+    }
+    &:nth-child(8) {
+      transition-delay: 1.15s;
+    }
+  }
+
+  &__block {
+    @include block();
+    width: 340px;
+    min-height: 469px;
+    padding: 100px 40px 0 40px;
+    margin: 57px 0 0 30px;
+    background-color: $color_blueLight_2;
+
+    &-text {
+      @include block();
+      text-align: center;
+    }
+
+    &-button {
+      @include flex();
+      justify-content: center;
+      margin-top: 62px;
+    }
+
+    &-circlesCont {
+      @include position(absolute, 0, 0, 100%, 100%);
+      overflow: hidden;
+    }
+
+    &-circles {
+      position: absolute;
+      width: 0;
+      height: 0;
+  
+      span {
+        position: absolute;
+  
+        i {
+          @include position(absolute, 0, 0, 100%, 100%);
+          border-radius: 1000px;
+          transition: transform 0.15s;
+        }
+      }
+  
+      &--1 {
+        top: -1px;
+        right: 70px;
+  
+        span {
+          @include circle_position(24px, 24px);
+  
+          i {
+            background-color: $color_blue;
+          }
+        }
+      }
+  
+      &--2 {
+        top: 59px;
+        left: 100px;
+  
+        span {
+          @include circle_position(14px, 14px);
+  
+          i {
+            border: 2px solid $color_dark;
+          }
+        }
+      }
+  
+      &--3 {
+        bottom: 55px;
+        right: 103px;
+  
+        span {
+          @include circle_position(32px, 32px);
+  
+          i {
+            background-color: $color_red;
+          }
+        }
+      }
+    }
+  }
+}

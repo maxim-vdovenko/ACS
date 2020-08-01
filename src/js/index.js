@@ -51,6 +51,9 @@ loader.launch = function() {
   dropshipping.init()
   amazonPreparationServices.init()
   returnIns.init()
+  avoidProblems.init()
+  comprehensiveSolution.init()
+  
 }
 
 
@@ -179,7 +182,11 @@ const blockContainer = {
   storeItems: '.blockContainer__animation--storeItems',
   confirmation: '.blockContainer__animation--confirmation',
   saveWithUs: '.blockContainer__animation--saveWithUs',
-  returnInspections: '.blockContainer__animation--returnInspections'
+  returnInspections: '.blockContainer__animation--returnInspections',
+  customPacking: '.blockContainer__animation--customPacking',
+  amazonConsultant: '.blockContainer__animation--amazonConsultant',
+  technology: '.blockContainer__animation--technology',
+  crossdocking: '.blockContainer__animation--crossdocking'
 }
 
 blockContainer.init = function() {
@@ -196,6 +203,10 @@ blockContainer.init = function() {
   animationAdd.act(this.confirmation, $(this.confirmation).outerHeight() / 2)
   animationAdd.act(this.saveWithUs, $(this.saveWithUs).outerHeight() / 2)
   animationAdd.act(this.returnInspections, $(this.returnInspections).outerHeight() / 2)
+  animationAdd.act(this.customPacking, $(this.customPacking).outerHeight() / 2)
+  animationAdd.act(this.amazonConsultant, $(this.amazonConsultant).outerHeight() / 2)
+  animationAdd.act(this.technology, $(this.technology).outerHeight() / 2)
+  animationAdd.act(this.crossdocking, $(this.crossdocking).outerHeight() / 2)
 }
 
 
@@ -275,6 +286,16 @@ const shipping = {
       '.amazonInfo__circles--2',
       '.amazonInfo__circles--3'
     ]
+  },
+  amazonProduct: {
+    bl: '.amazonProduct',
+    mask: '.amazonProduct__mask',
+    text: '.amazonProduct .textBox',
+    circles: [
+      '.amazonProduct__circles--1',
+      '.amazonProduct__circles--2',
+      '.amazonProduct__circles--3'
+    ]
   }
 }
 
@@ -309,6 +330,12 @@ shipping.init = function() {
   parallaxAdd.act(this.amazonInfo.circles[1], this.amazonInfo.circles[1] + ' span', '-200px', '100%')
   parallaxAdd.act(this.amazonInfo.circles[2], this.amazonInfo.circles[2] + ' span', '-150px', '100%')
 
+  animationAdd.act(this.amazonProduct.mask, $(this.amazonProduct.mask).outerHeight() / 4)
+  animationAdd.act(this.amazonProduct.text, $(this.amazonProduct.text).outerHeight() / 2)
+  parallaxAdd.act(this.amazonProduct.circles[0], this.amazonProduct.circles[0] + ' span', '-450px', '100%')
+  parallaxAdd.act(this.amazonProduct.circles[1], this.amazonProduct.circles[1] + ' span', '-200px', '100%')
+  parallaxAdd.act(this.amazonProduct.circles[2], this.amazonProduct.circles[2] + ' span', '-150px', '100%')
+
   $('body').on('mousemove', (e) => {
     const x = e.originalEvent.clientX / 60
     const y = e.originalEvent.clientY / 50
@@ -318,6 +345,7 @@ shipping.init = function() {
     animationCircles(this.favorite.circles)
     animationCircles(this.doesWork.circles)
     animationCircles(this.amazonInfo.circles)
+    animationCircles(this.amazonProduct.circles)
 
     function animationCircles (circles) {
       window.requestAnimationFrame(() => {
@@ -737,6 +765,30 @@ amazonReturns.init = function() {
 
 
 
+const avoidProblems = {
+  circles: '.avoidProblems__circles'
+}
+
+avoidProblems.init = function() {
+  parallaxAdd.act(this.circles, this.circles + ' span:nth-child(1)', '-280px', '100%')
+  parallaxAdd.act(this.circles, this.circles + ' span:nth-child(2)', '-400px', '100%')
+
+  $('body').on('mousemove', (e) => {
+    const x = e.originalEvent.clientX / 70
+    const y = e.originalEvent.clientY / 50
+
+    window.requestAnimationFrame(() => {
+      for (let i = 0; i < $(this.circles + ' span').length; i++) {
+        $(this.circles + ' span').eq(i).find('i').css({
+          'transform': 'translate3d(0, 0, 0) translate('  + ((i + 1) * x) + 'px, ' + ((i + 1) * y) + 'px)',
+        })
+      }
+    })
+  })
+}
+
+
+
 const dropshipping = {
   img: '.dropshipping__img',
   textBox: '.dropshipping .textBox'
@@ -809,4 +861,14 @@ returnIns.init = function() {
       }
     })
   })
+}
+
+
+
+const comprehensiveSolution = {
+  cont: '.comprehensiveSolution__contBloc'
+}
+
+comprehensiveSolution.init = function() {
+  animationAdd.act(this.cont, $(this.cont).outerHeight() / 2)
 }

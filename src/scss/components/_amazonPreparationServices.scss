@@ -14,8 +14,8 @@
   }
 
   .textBox {
-    left: -20px;
-    padding-bottom: 2px;
+    left: 30px;
+    padding-bottom: 20px;
 
     h1 {
       transform: translateY(50px);
@@ -44,8 +44,8 @@
 
   &__img {
     @include block();
-    top: 15px;
-    left: -187px;
+    top: -8px;
+    left: -143px;
     width: 555px;
     height: 531px;
 
@@ -148,7 +148,4 @@
       }
     }
   }
-
-
-  
 }
