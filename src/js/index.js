@@ -24,7 +24,7 @@ loader.init = function() {
       $(this.bl).removeClass('active')
       this.launch()
     })
-  }, 1000) 
+  }, 0) / 1000
 }
 
 loader.launch = function() {
@@ -621,12 +621,29 @@ faq.init = function() {
 
 const assistedPurchase = {
   mask: '.assistedPurchase__mask',
-  list: '.assistedPurchase__list'
+  list: '.assistedPurchase__list',
+  circles: '.assistedPurchase__circles'
 }
 
 assistedPurchase.init = function() {
   animationAdd.act(this.mask, $(this.mask).outerHeight() / 4)
   animationAdd.act(this.list, $(this.list).outerHeight() / 2)
+
+  parallaxAdd.act(this.circles, this.circles + ' span:nth-child(1)', '-250px', '100%')
+  parallaxAdd.act(this.circles, this.circles + ' span:nth-child(2)', '-350px', '100%')
+
+  $('body').on('mousemove', (e) => {
+    const x = e.originalEvent.clientX / 70
+    const y = e.originalEvent.clientY / 50
+
+    window.requestAnimationFrame(() => {
+      for (let i = 0; i < $(this.circles + ' span').length; i++) {
+        $(this.circles + ' span').eq(i).find('i').css({
+          'transform': 'translate3d(0, 0, 0) translate('  + ((i + 1) * x) + 'px, ' + ((i + 1) * y) + 'px)',
+        })
+      }
+    })
+  })
 }
 
 

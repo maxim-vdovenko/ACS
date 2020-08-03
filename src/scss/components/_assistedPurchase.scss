@@ -148,4 +148,59 @@
       }
     }
   }
+
+  &__circles {
+    position: absolute;
+    width: 0;
+    height: 0;
+
+    span {
+      position: absolute;
+
+      i {
+        @include position(absolute, 0, 0, 100%, 100%);
+        border-radius: 1000px;
+        transition: transform 0.15s;
+      }
+    }
+
+    &--1 {
+      top: 85px;
+      right: 100px;
+
+      span {
+        @include circle_position(16px, 16px);
+
+        i {
+          background-color: $color_blue;
+        }
+      }
+    }
+
+    &--2 {
+      top: 210px;
+      right: 25px;
+
+      span {
+        @include circle_position(32px, 32px);
+
+        i {
+          background-color: $color_white;
+        }
+      }
+    }
+
+    &--3 {
+      bottom: -90px;
+      left: 100px;
+
+      span {
+        @include circle_position(50px, 50px);
+
+        i {
+          border: 2px solid $color_dark;
+        }
+      }
+    }
+  }
 }
