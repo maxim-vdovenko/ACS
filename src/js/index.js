@@ -24,7 +24,7 @@ loader.init = function() {
       $(this.bl).removeClass('active')
       this.launch()
     })
-  }, 0) // 1000 
+  }, 1000) 
 }
 
 loader.launch = function() {
@@ -53,7 +53,8 @@ loader.launch = function() {
   returnIns.init()
   avoidProblems.init()
   comprehensiveSolution.init()
-  
+  connectManufacturers.init()
+  positiveFinancial.init()
 }
 
 
@@ -186,7 +187,11 @@ const blockContainer = {
   customPacking: '.blockContainer__animation--customPacking',
   amazonConsultant: '.blockContainer__animation--amazonConsultant',
   technology: '.blockContainer__animation--technology',
-  crossdocking: '.blockContainer__animation--crossdocking'
+  crossdocking: '.blockContainer__animation--crossdocking',
+  compliance: '.blockContainer__animation--compliance',
+  crossBorderShipping: '.blockContainer__animation--crossBorderShipping',
+  yourConnections: '.blockContainer__animation--yourConnections',
+  increasedExposure: '.blockContainer__animation--increasedExposure'
 }
 
 blockContainer.init = function() {
@@ -207,6 +212,10 @@ blockContainer.init = function() {
   animationAdd.act(this.amazonConsultant, $(this.amazonConsultant).outerHeight() / 2)
   animationAdd.act(this.technology, $(this.technology).outerHeight() / 2)
   animationAdd.act(this.crossdocking, $(this.crossdocking).outerHeight() / 2)
+  animationAdd.act(this.compliance, $(this.compliance).outerHeight() / 2)
+  animationAdd.act(this.crossBorderShipping, $(this.crossBorderShipping).outerHeight() / 2)
+  animationAdd.act(this.yourConnections, $(this.yourConnections).outerHeight() / 2)
+  animationAdd.act(this.increasedExposure, $(this.increasedExposure).outerHeight() / 2)
 }
 
 
@@ -296,6 +305,16 @@ const shipping = {
       '.amazonProduct__circles--2',
       '.amazonProduct__circles--3'
     ]
+  },
+  successfulStrategy: {
+    bl: '.successfulStrategy',
+    mask: '.successfulStrategy__mask',
+    text: '.successfulStrategy .textBox',
+    circles: [
+      '.successfulStrategy__circles--1',
+      '.successfulStrategy__circles--2',
+      '.successfulStrategy__circles--3'
+    ]
   }
 }
 
@@ -336,6 +355,12 @@ shipping.init = function() {
   parallaxAdd.act(this.amazonProduct.circles[1], this.amazonProduct.circles[1] + ' span', '-200px', '100%')
   parallaxAdd.act(this.amazonProduct.circles[2], this.amazonProduct.circles[2] + ' span', '-150px', '100%')
 
+  animationAdd.act(this.successfulStrategy.mask, $(this.successfulStrategy.mask).outerHeight() / 4)
+  animationAdd.act(this.successfulStrategy.text, $(this.successfulStrategy.text).outerHeight() / 2)
+  parallaxAdd.act(this.successfulStrategy.circles[0], this.successfulStrategy.circles[0] + ' span', '-450px', '100%')
+  parallaxAdd.act(this.successfulStrategy.circles[1], this.successfulStrategy.circles[1] + ' span', '-200px', '100%')
+  parallaxAdd.act(this.successfulStrategy.circles[2], this.successfulStrategy.circles[2] + ' span', '-150px', '100%')
+  
   $('body').on('mousemove', (e) => {
     const x = e.originalEvent.clientX / 60
     const y = e.originalEvent.clientY / 50
@@ -346,6 +371,7 @@ shipping.init = function() {
     animationCircles(this.doesWork.circles)
     animationCircles(this.amazonInfo.circles)
     animationCircles(this.amazonProduct.circles)
+    animationCircles(this.successfulStrategy.circles)
 
     function animationCircles (circles) {
       window.requestAnimationFrame(() => {
@@ -871,4 +897,44 @@ const comprehensiveSolution = {
 
 comprehensiveSolution.init = function() {
   animationAdd.act(this.cont, $(this.cont).outerHeight() / 2)
+}
+
+
+
+const connectManufacturers = {
+  textBox: '.connectManufacturers__cont .textBox',
+  blockIcon: '.connectManufacturers__blockIcon',
+  block: '.connectManufacturers__block'
+}
+
+connectManufacturers.init = function() {
+  animationAdd.act(this.textBox, $(this.textBox).outerHeight() / 2)
+  animationAdd.act(this.blockIcon, $(this.blockIcon).outerHeight() / 2)
+  animationAdd.act(this.block, $(this.block).outerHeight() / 2)
+}
+
+
+
+const positiveFinancial = {
+  list: '.positiveFinancial__list',
+  circles: '.positiveFinancial__circles'
+}
+
+positiveFinancial.init = function() {
+  animationAdd.act(this.list, $(this.list).outerHeight() / 2)
+  parallaxAdd.act(this.circles, this.circles + ' span:nth-child(1)', '-250px', '100%')
+  parallaxAdd.act(this.circles, this.circles + ' span:nth-child(2)', '-400px', '100%')
+
+  $('body').on('mousemove', (e) => {
+    const x = e.originalEvent.clientX / 70
+    const y = e.originalEvent.clientY / 50
+
+    window.requestAnimationFrame(() => {
+      for (let i = 0; i < $(this.circles + ' span').length; i++) {
+        $(this.circles + ' span').eq(i).find('i').css({
+          'transform': 'translate3d(0, 0, 0) translate('  + ((i + 1) * x) + 'px, ' + ((i + 1) * y) + 'px)',
+        })
+      }
+    })
+  })
 }

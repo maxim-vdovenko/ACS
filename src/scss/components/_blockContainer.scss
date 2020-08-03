@@ -41,6 +41,16 @@
     }
   }
 
+  &__cont {
+    @include block();
+  }
+
+  &__button {
+    @include flex();
+    justify-content: center;
+    margin-top: 57px;
+  }
+
   &--delivery {
     margin-top: 250px;
   }
@@ -220,14 +230,45 @@
     }
   }
 
-  &__cont {
-    @include block();
-  }
+  &--dropshipping {
+    margin-top: 256px;
+    margin-bottom: 144px;
 
-  &__button {
-    @include flex();
-    justify-content: center;
-    margin-top: 57px;
+    .row {
+      
+      &:nth-child(2n + 0) .col {
+
+        &:nth-child(1) {
+          order: 0;
+        }
+  
+        &:nth-child(2) {
+          order: 1;
+          padding: 0 0 0 30px;  
+        }
+      }
+
+      &:nth-child(2n + 1) .col {
+
+        &:nth-child(1) {
+          order: 1;
+          padding: 0;  
+        }
+  
+        &:nth-child(2) { 
+          order: 0;
+          padding-left: 0;  
+        }
+      }
+
+      &:not(:last-child) {
+        margin-bottom: 225px;
+      }
+    }
+
+    #{$block}__button {
+      margin-top: 110px;
+    }
   }
 
   &__animation {
@@ -992,6 +1033,193 @@
         }
         &:nth-child(2):before {
           animation: 3s ease-in-out 1.5s infinite scaleCommerce_2; 
+        }
+      }
+    }
+
+    &--compliance {
+      @include image('block-container/compliance/element-1.svg', contain, 0 0);
+      top: -24px;
+      right: 0;
+      width: 482px;
+      height: 317px;
+
+      span {
+        &:nth-child(1) {
+          transform: translate(0, -40px);
+          opacity: 0;
+
+          &:before {
+            @include image('block-container/compliance/element-2.svg', contain, 0 0);
+          }
+        }
+        &:nth-child(2) {
+          transform: translate(0, -40px);
+          opacity: 0;
+
+          &:before {
+            @include image('block-container/compliance/element-3.svg', contain, 0 0);
+          }
+        }
+      }
+
+      &.active span {
+        transform: translate(0, 0);
+        opacity: 1;
+
+        &:nth-child(1):before {
+          animation: 2.6s ease-in-out 1.2s infinite scaleCommerce_1; 
+        }
+        &:nth-child(2):before {
+          animation: 2.6s ease-in-out 1.2s infinite scaleCommerce_2; 
+        }
+      }
+    }
+
+    &--crossBorderShipping {
+      @include image('block-container/crossBorder-shipping/element-1.svg', contain, 0 0);
+      top: 33px;
+      left: 0;
+      width: 385px;
+      height: 302px;
+
+      span {
+        &:nth-child(1) {
+          transform: translate(-40px, 10px);
+          opacity: 0;
+
+          &:before {
+            @include image('block-container/crossBorder-shipping/element-2.svg', contain, 0 0);
+          }
+        }
+        &:nth-child(2) {
+          transform: translate(-30px, -15px);
+          opacity: 0;
+
+          &:before {
+            @include image('block-container/crossBorder-shipping/element-3.svg', contain, 0 0);
+          }
+        }
+        &:nth-child(3) {
+          transform: translate(-30px, 20px);
+          opacity: 0;
+
+          &:before {
+            @include image('block-container/crossBorder-shipping/element-4.svg', contain, 0 0);
+          }
+        }
+      }
+
+      &.active span {
+        transform: translate(0, 0);
+        opacity: 1;
+
+        &:nth-child(2):before {
+          animation: 2.8s ease-in-out 1.4s infinite scaleCommerce_1; 
+        }
+        &:nth-child(3):before {
+          animation: 2.8s ease-in-out 1.4s infinite scaleCommerce_2; 
+        }
+      }
+    }
+
+    &--yourConnections {
+      @include image('block-container/your-connections/element-1.svg', contain, 0 0);
+      top: -39px;
+      right: 0;
+      width: 427px;
+      height: 323px;
+
+      span {
+        &:nth-child(1) {
+          transform: translate(20px, -30px);
+          opacity: 0;
+
+          &:before {
+            @include image('block-container/your-connections/element-2.svg', contain, 0 0);
+          }
+        }
+        &:nth-child(2) {
+          transform: translate(10px, -40px);
+          transition-delay: 0.3s;
+          opacity: 0;
+
+          &:before {
+            @include image('block-container/your-connections/element-3.svg', contain, 0 0);
+          }
+        }
+        &:nth-child(3) {
+          transform: translate(10px, -40px);
+          transition-delay: 0.3s;
+          opacity: 0;
+
+          &:before {
+            @include image('block-container/your-connections/element-4.svg', contain, 0 0);
+          }
+        }
+        &:nth-child(4) {
+          transform: translate(10px, -40px);
+          transition-delay: 0.3s;
+          opacity: 0;
+
+          &:before {
+            @include image('block-container/your-connections/element-5.svg', contain, 0 0);
+          }
+        }
+      }
+
+      &.active span {
+        transform: translate(0, 0);
+        opacity: 1;
+
+        &:nth-child(2):before {
+          animation: 2.1s ease-in-out 1.5s infinite scaleCommerce_1; 
+        }
+        &:nth-child(3):before {
+          animation: 2.1s ease-in-out 1.5s infinite scaleCommerce_2; 
+        }
+        &:nth-child(4):before {
+          animation: 2.1s ease-in-out 1.5s infinite scaleCommerce_3; 
+        }
+      }
+    }
+
+    &--increasedExposure {
+      @include image('block-container/increased-exposure/element-1.svg', contain, 0 0);
+      top: 40px;
+      left: 0;
+      width: 412px;
+      height: 338px;
+
+      span {
+        &:nth-child(1) {
+          transform: translate(0, -30px);
+          transition-delay: 0.4s;
+          opacity: 0;
+
+          &:before {
+            @include image('block-container/increased-exposure/element-2.svg', contain, 0 0);
+          }
+        }
+        &:nth-child(2) {
+          transform: translate(0, -50px);
+          opacity: 0;
+
+          &:before {
+            @include image('block-container/increased-exposure/element-3.svg', contain, 0 0);
+          }
+        }
+      }
+
+      &.active span {
+        transform: translate(0, 0);
+        opacity: 1;
+
+        &:nth-child(1):before {
+          animation: 2.6s ease-in-out 1.6s infinite scaleCommerce_2; 
+        }
+        &:nth-child(2):before {
+          animation: 2.6s ease-in-out 1.6s infinite scaleCommerce_1; 
         }
       }
     }

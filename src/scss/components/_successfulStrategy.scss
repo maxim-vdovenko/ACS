@@ -1,37 +1,40 @@
-.amazonProduct {
+.successfulStrategy {
   @include block();
-  margin-top: 217px;
+  margin-top: 113px;
 
   .row {
-    min-height: 866px;
+    min-height: 754px;
     align-items: center;
   }
 
   .col {
+    width: 50%;
+
     &:nth-child(1) {
-      width: 30%;
       padding-right: 60px;
       align-items: flex-end;
     }
     &:nth-child(2) {
-      width: 70%;
       padding-top: 6px;
     }
   }
 
   .textBox {
-    width: 740px;
+    width: 540px;
 
+    * {
+      color: $color_text_white;
+    }
     h2 {
       transform: translateY(50px);
       transition: all 0.8s;
-      transition-delay: 0.3s;
+      transition-delay: 0.5s;
       opacity: 0;
     }
     p {
       transform: translateY(30px);
       transition: all 0.8s;
-      transition-delay: 0.6s;
+      transition-delay: 0.8s;
       opacity: 0;
     }
 
@@ -51,7 +54,7 @@
     @include inline_block();
 
     img {
-      max-width: 490px;
+      max-width: 690px;
     }
   }
 
@@ -61,7 +64,7 @@
     left: 50%;
     width: 10000px;
     height: 100%;
-    background-color: $color_blueLight_2;
+    background-color: $color_violet;
     transition: all 1.5s;
     transform: translateX(100vh);
 
@@ -87,24 +90,11 @@
     }
 
     &--1 {
-      top: 175px;
-      right: 140px;
+      top: 185px;
+      right: 350px;
 
       span {
         @include circle_position(16px, 16px);
-
-        i {
-          background-color: $color_blue;
-        }
-      }
-    }
-
-    &--2 {
-      top: 540px;
-      left: 345px;
-
-      span {
-        @include circle_position(34px, 34px);
 
         i {
           border: 2px solid $color_dark;
@@ -112,15 +102,28 @@
       }
     }
 
+    &--2 {
+      top: 15px;
+      left: 150px;
+
+      span {
+        @include circle_position(32px, 32px);
+
+        i {
+          background-color: $color_violet;
+        }
+      }
+    }
+
     &--3 {
-      bottom: 30px;
-      left: 120px;
+      bottom: 45px;
+      right: 330px;
 
       span {
         @include circle_position(48px, 48px);
 
         i {
-          background-color: $color_red;
+          background-color: $color_blue;
         }
       }
     }

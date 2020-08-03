@@ -14,8 +14,8 @@
   }
 
   .textBox {
-    left: -20px;
-    padding-bottom: 2px;
+    left: 30px;
+    padding-top: 6px;
 
     h1 {
       transform: translateY(50px);
@@ -44,8 +44,8 @@
 
   &__img {
     @include block();
-    top: 15px;
-    left: -187px;
+    top: -34px;
+    left: -90px;
     width: 555px;
     height: 531px;
 
@@ -69,7 +69,7 @@
       }
       &:nth-child(2) {
         transform: translate(-30px, 30px);
-        transition-delay: 0.35s;
+        transition-delay: 0.15s;
         opacity: 0;
 
         i {
