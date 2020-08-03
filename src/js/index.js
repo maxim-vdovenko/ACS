@@ -25,7 +25,7 @@ loader.init = function() {
       $(this.bl).removeClass('active')
       this.launch()
     })
-  }, 0) // 1000
+  }, 1000) 
 }
 
 loader.launch = function() {
@@ -808,7 +808,7 @@ trackPurchases.sliderFn = function() {
 }
 
 trackPurchases.sliderSwitch = function(ind) {
-  
+
   $(this.icon.bl).removeClass('open').addClass('close')
 
   switch (ind) {
