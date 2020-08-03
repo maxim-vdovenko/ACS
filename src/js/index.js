@@ -3,6 +3,7 @@ window.onload = function() {
   slider.init()
   shippingMethods.masonryItem() 
   trackPurchases.init() 
+  trackPurchases.sliderFn()
 
   $('body').on('click', 'a', (e) => {
     const th = $(e.currentTarget)
@@ -24,7 +25,7 @@ loader.init = function() {
       $(this.bl).removeClass('active')
       this.launch()
     })
-  }, 0) / 1000
+  }, 0) // 1000
 }
 
 loader.launch = function() {
@@ -737,10 +738,20 @@ const trackPurchases = {
   list: '.trackPurchases__list',
   listButton: '.trackPurchases__list-button',
   listBox: '.trackPurchases__list-box',
+  slider: '.trackPurchases__phone-slider',
+  slick: null,
   icon: {
+    bl: '.trackPurchases__phone-icon',
     messages: '.trackPurchases__phone-icon--messages',
-    notifications: '.trackPurchases__phone-icon--notifications'
-  }
+    notifications: '.trackPurchases__phone-icon--notifications',
+
+    photo: '.trackPurchases__phone-icon--photo',
+    add: '.trackPurchases__phone-icon--add',
+
+    questions: '.trackPurchases__phone-icon--questions',
+    chat: '.trackPurchases__phone-icon--chat'
+  },
+  iconType: ['.trackPurchases__phone-icon--type1', '.trackPurchases__phone-icon--type2']
 }
 
 trackPurchases.init = function() {
@@ -754,6 +765,8 @@ trackPurchases.init = function() {
 
     th.parents(this.list).find(this.listBox).removeClass('active')
     th.parents(this.list).find(this.listBox).eq(ind).addClass('active')
+
+    $(this.slick).slick('slickGoTo', ind);	
   })
 
   $('body').on('mousemove', (e) => {
@@ -761,14 +774,59 @@ trackPurchases.init = function() {
     const y = e.originalEvent.clientY / 200
 
     window.requestAnimationFrame(() => {
-      $(this.icon.messages).find('i').css({
+      $(this.iconType[0]).find('i').css({
         'transform': 'translate3d(0, 0, 0) translate('  + (6 * x) + 'px, ' + (6 * y) + 'px)',
       })
-      $(this.icon.notifications).find('i').css({
+      $(this.iconType[1]).find('i').css({
         'transform': 'translate3d(0, 0, 0) translate('  + (2.5 * x) + 'px, ' + (2.5 * y) + 'px)',
       })
     })
   })
+}
+
+trackPurchases.sliderFn = function() {
+  this.slick = $(this.slider).slick({
+    arrows: true,
+    dots: false,
+    infinite: true,
+    fade: true,
+    speed: 400,
+    slidesToShow: 1,
+    slidesToScroll: 1
+  })
+
+  $(this.slider).on('beforeChange', (event, slick, currentSlide, nextSlide) => {
+    const ind = nextSlide
+
+    $(this.listButton).find('li').removeClass('active')
+    $(this.listButton).find('li').eq(ind).addClass('active')
+    $(this.listBox).removeClass('active')
+    $(this.listBox).eq(ind).addClass('active')
+
+    this.sliderSwitch(ind + 1)
+  })
+}
+
+trackPurchases.sliderSwitch = function(ind) {
+  
+  $(this.icon.bl).removeClass('open').addClass('close')
+
+  switch (ind) {
+    case 1:
+      $(this.icon.messages).addClass('open').removeClass('close')
+      $(this.icon.notifications).addClass('open').removeClass('close')
+      break
+    case 2:
+      $(this.icon.photo).addClass('open').removeClass('close')
+      $(this.icon.add).addClass('open').removeClass('close')
+      break
+    case 3:
+      $(this.icon.questions).addClass('open').removeClass('close')
+      $(this.icon.chat).addClass('open').removeClass('close')
+      break
+    default:
+      break
+  }
 }
 
 

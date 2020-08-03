@@ -1,10 +1,10 @@
 .trackPurchases {
   @include block();
-  margin-top: 177px;
+  margin-top: 150px;
 
   .col {
     &:nth-child(2) {
-      padding: 35px 0 0 59px;
+      padding: 62px 0 0 59px;
     }
   }
   
@@ -13,34 +13,40 @@
     width: 405px;
     height: 546px;
     margin-left: 100px;
+    user-select: none;
 
     &-slider {
       @include block();
-      @include image('track-purchases/phone.svg', contain, 0 0);
       width: 100%;
       height: 100%;
-    }
+      z-index: 0;
 
-    &-button {
-      position: absolute;
-      left: -100px;
-      width: 48px;
-      height: 48px;
-      border-radius: 1000px;
-      background-color: $color_blueLight;
-      border: none;
-      color: transparent;
-      cursor: pointer;
-      z-index: 1;
-      transition: background-color 0.3s, box-shadow 0.3s;
+      .slick-arrow {
+        position: absolute;
+        left: -100px;
+        width: 48px;
+        height: 48px;
+        border-radius: 1000px;
+        background-color: $color_blueLight;
+        border: none;
+        color: transparent;
+        cursor: pointer;
+        z-index: 1;
+        transition: background-color 0.3s, box-shadow 0.3s;
 
-      &:before {
-        @include position(absolute, 0, 0, 100%, 100%);
-        content: '';
+        &:before {
+          @include position(absolute, 0, 0, 100%, 100%);
+          content: '';
+        }
+
+        &:hover {
+          box-shadow: 0 14px 18px -2px rgba(47, 130, 255, 0.4);
+          background-color: $color_blue;
+        }
       }
 
-      &--prev {
-        top: 58px;
+      .slick-prev {
+        top: 25px;
 
         &:before {
           @include image('icon-arrow-white.svg', 10px auto, 20px center);
@@ -48,8 +54,8 @@
         }
       }
 
-      &--next {
-        top: 130px;
+      .slick-next {
+        top: 100px;
 
         &:before {
           @include image('icon-arrow-white.svg', 10px auto, 20px center);
@@ -57,14 +63,20 @@
         }
       }
 
-      &:hover {
-        box-shadow: 0 14px 18px -2px rgba(47, 130, 255, 0.4);
-        background-color: $color_blue;
+      &-box {
+        @include inline_block();
+
+        > img {
+          @include inline_block();
+        }
       }
     }
 
     &-icon {
+      $icon: &;
       position: absolute;
+      transition: all 0.8s;
+      opacity: 0;
 
       span {
         @include position(absolute, 0, 0, 100%, 100%);
@@ -78,8 +90,9 @@
       &--messages {
         width: 168px;
         height: 168px;
-        top: 30px;
-        right: 20px;
+        top: 50px;
+        right: 30px;
+        transform: translate(-80px, 0);
 
         span i {
           @include image('track-purchases/messages.svg', contain, 0 0);
@@ -89,12 +102,70 @@
       &--notifications {
         width: 192px;
         height: 192px;
-        bottom: 60px;
+        bottom: 45px;
         left: -10px;
+        transform: translate(80px, 0);
 
         span i {
           @include image('track-purchases/notifications.svg', contain, 0 0);
         }
+      }
+
+      &--photo {
+        width: 192px;
+        height: 192px;
+        top: 190px;
+        right: 7px;
+        transform: translate(-80px, 0);
+
+        span i {
+          @include image('track-purchases/photo.svg', contain, 0 0);
+        }
+      }
+
+      &--add {
+        width: 126px;
+        height: 133px;
+        bottom: 45px;
+        left: -12px;
+        transform: translate(80px, 0);
+
+        span i {
+          @include image('track-purchases/add.svg', contain, 0 0);
+        }
+      }
+
+      &--questions {
+        width: 126px;
+        height: 133px;
+        top: 65px;
+        right: 50px;
+        transform: translate(-80px, 0);
+
+        span i {
+          @include image('track-purchases/questions.svg', contain, 0 0);
+        }
+      }
+
+      &--chat {
+        width: 316px;
+        height: 252px;
+        bottom: 73px;
+        left: -80px;
+        transform: translate(80px, 0);
+
+        span i {
+          @include image('track-purchases/chat.svg', contain, 0 0);
+        }
+      }
+
+      &.open {
+        transform: translate(0, 0);
+        opacity: 1;
+      }
+
+      &.close {
+        opacity: 0;
       }
     }
   }
@@ -148,8 +219,8 @@
     }
 
     &-box {
-      position: absolute;
-      top: 0;
+      @include block();
+      height: 39px;
       opacity: 0;
       transition: opacity 0.3s;
 
