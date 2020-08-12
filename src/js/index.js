@@ -1,9 +1,13 @@
 window.onload = function() {
   loader.init()
   slider.init()
+  select.init()
   shippingMethods.masonryItem() 
   trackPurchases.init() 
   trackPurchases.sliderFn()
+  login.init()
+  getStarted.init()
+  termsService.init()
 
   $('body').on('click', 'a', (e) => {
     const th = $(e.currentTarget)
@@ -25,7 +29,7 @@ loader.init = function() {
       $(this.bl).removeClass('active')
       this.launch()
     })
-  }, 1000) 
+  }, 1000)
 }
 
 loader.launch = function() {
@@ -89,6 +93,48 @@ parallaxAdd.act = function(section, element, y, duration) {
   new ScrollMagic.Scene({triggerElement: section, triggerHook: 'onEnter', duration, offset: '0'})
   .setTween(element, {y, ease: Linear.easeNone})
   .addTo(this.controller)
+}
+
+
+
+const select = {
+  bl: '.select',
+  sel: 'select',
+  dropdown: '.jq-selectbox__dropdown',
+  addTop: 'jq-selectbox__dropdown--top',
+  addBottom: 'jq-selectbox__dropdown--bottom'
+}
+
+select.init = function() {
+
+  if ($(this.bl).length) {
+
+    $(this.bl + ' ' + this.sel).styler({
+      selectSearch: false,
+      onSelectOpened: () => {
+        this.changePosition()
+        $(window).resize(() => {
+          this.changePosition()
+        })
+      },
+      onSelectClosed: () => {
+        $(this.dropdown).removeClass(this.addTop).removeClass(this.addBottom)
+      }
+    })
+  }
+}
+
+select.changePosition = function() {
+  const yWind = $(window).height()
+  const ySel = $(this.bl).height()
+  const offsetSel = $(this.bl).offset().top
+  const hPopup = 200
+
+  if ((offsetSel + ySel + hPopup) < yWind) {
+    $(this.dropdown).removeClass(this.addTop).addClass(this.addBottom)
+  } else {
+    $(this.dropdown).removeClass(this.addBottom).addClass(this.addTop)
+  }
 }
 
 
@@ -1012,4 +1058,106 @@ positiveFinancial.init = function() {
       }
     })
   })
+}
+
+
+
+const login = {
+  circles: '.login__circles'
+}
+
+login.init = function() {
+  parallaxAdd.act(this.circles, this.circles + ' span:nth-child(1)', '-200px', '100%')
+  parallaxAdd.act(this.circles, this.circles + ' span:nth-child(2)', '-300px', '100%')
+
+  $('body').on('mousemove', (e) => {
+    const x = e.originalEvent.clientX / 80
+    const y = e.originalEvent.clientY / 70
+
+    window.requestAnimationFrame(() => {
+      for (let i = 0; i < $(this.circles + ' span').length; i++) {
+        $(this.circles + ' span').eq(i).find('i').css({
+          'transform': 'translate3d(0, 0, 0) translate('  + ((i + 1) * x) + 'px, ' + ((i + 1) * y) + 'px)',
+        })
+      }
+    })
+  })
+}
+
+
+
+const getStarted = {
+  circles: '.getStarted__circles',
+  slider: '.getStarted__slider'
+}
+
+getStarted.init = function() {
+  this.sliderFn()
+
+  if ($(this.circles).length) {
+    parallaxAdd.act(this.circles, this.circles + ' span:nth-child(1)', '-200px', '100%')
+    parallaxAdd.act(this.circles, this.circles + ' span:nth-child(2)', '-300px', '100%')
+  
+    $('body').on('mousemove', (e) => {
+      const x = e.originalEvent.clientX / 80
+      const y = e.originalEvent.clientY / 70
+  
+      window.requestAnimationFrame(() => {
+        for (let i = 0; i < $(this.circles + ' span').length; i++) {
+          $(this.circles + ' span').eq(i).find('i').css({
+            'transform': 'translate3d(0, 0, 0) translate('  + ((i + 1) * x) + 'px, ' + ((i + 1) * y) + 'px)',
+          })
+        }
+      })
+    })
+  }
+}
+
+getStarted.sliderFn = function() {
+  if (!$(this.slider).length) return
+  $(this.slider).slick({
+    arrows: false,
+    dots: true,
+    infinite: true,
+    fade: true,
+    speed: 400,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 5000
+  })
+}
+
+
+
+const termsService = {
+  sliderTop: '.termsService__circlesTop',
+  sliderBottom: '.termsService__circlesBottom'
+}
+
+termsService.init = function() {
+  if ($(this.sliderTop).length || $(this.sliderBottom).length) {
+    parallaxAdd.act(this.sliderTop, this.sliderTop + ' span:nth-child(1)', '-200px', '100%')
+    parallaxAdd.act(this.sliderTop, this.sliderTop + ' span:nth-child(2)', '-300px', '100%')
+    parallaxAdd.act(this.sliderBottom, this.sliderBottom + ' span:nth-child(1)', '-200px', '100%')
+    parallaxAdd.act(this.sliderBottom, this.sliderBottom + ' span:nth-child(2)', '-300px', '100%')
+
+    $('body').on('mousemove', (e) => {
+      const x = e.originalEvent.clientX / 80
+      const y = e.originalEvent.clientY / 70
+  
+      window.requestAnimationFrame(() => {
+        for (let i = 0; i < $(this.sliderTop + ' span').length; i++) {
+          $(this.sliderTop + ' span').eq(i).find('i').css({
+            'transform': 'translate3d(0, 0, 0) translate('  + ((i + 1) * x) + 'px, ' + ((i + 1) * y) + 'px)',
+          })
+        }
+        for (let i = 0; i < $(this.sliderBottom + ' span').length; i++) {
+          $(this.sliderBottom + ' span').eq(i).find('i').css({
+            'transform': 'translate3d(0, 0, 0) translate('  + ((i + 1) * x) + 'px, ' + ((i + 1) * y) + 'px)',
+          })
+        }
+      })
+    })
+  }
 }

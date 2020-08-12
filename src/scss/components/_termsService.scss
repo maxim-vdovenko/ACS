@@ -1,0 +1,89 @@
+.termsService {
+  @include block();
+  padding-top: 118px;
+  padding-bottom: 110px;
+
+  &:after {
+    @include position(absolute, 0, -40px, 100%, 40px);
+    box-shadow: 0px 12px 24px rgba(197, 228, 243, 0.4);
+    content: '';
+  }
+
+  .container {
+    max-width: 770px;
+  }
+
+  .titleBox {
+    text-align: center;
+    margin-bottom: 80px;
+  }
+
+  .textBox {
+    h4 {
+      margin-top: 50px;
+      margin-bottom: 35px;
+    }
+  }
+
+  &__circlesTop {
+    position: absolute;
+    top: 470px;
+    left: 50%;
+    width: 312px;
+    height: 506px;
+    margin-left: -1040px;
+
+    span {
+      @include position(absolute, 0, 0, 100%, 100%);
+
+      i {
+        @include position(absolute, 0, 0, 100%, 100%);
+        transition: transform 0.15s;
+      }
+
+      &:nth-child(1) {
+        i {
+          @include image('terms-service/circles-1.svg', contain, 0 0);
+        }
+      }
+      &:nth-child(2) {
+        top: 30px;
+
+        i {
+          @include image('terms-service/circles-2.svg', contain, 0 0);
+        }
+      }
+    }
+  }
+
+  &__circlesBottom {
+    position: absolute;
+    bottom: 340px;
+    left: 50%;
+    width: 296px;
+    height: 448px;
+    margin-left: 780px;
+
+    span {
+      @include position(absolute, 0, 0, 100%, 100%);
+
+      i {
+        @include position(absolute, 0, 0, 100%, 100%);
+        transition: transform 0.15s;
+      }
+
+      &:nth-child(1) {
+        i {
+          @include image('terms-service/circles-3.svg', contain, 0 0);
+        }
+      }
+      &:nth-child(2) {
+        top: 30px;
+
+        i {
+          @include image('terms-service/circles-4.svg', contain, 0 0);
+        }
+      }
+    }
+  }
+}

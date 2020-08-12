@@ -1,7 +1,11 @@
 @import "components/variables";
 @import "components/mixins";
 @import "components/main";
+@import "components/select";
 @import "components/slider";
+
+@import "components/login";
+@import "components/getStarted";
 
 @import "components/header";
 @import "components/acs";
@@ -46,5 +50,7 @@
 @import "components/avoidProblems";
 @import "components/comprehensiveSolution";
 @import "components/amazonProduct";
+
+@import "components/termsService";
 
 @import "components/footer";

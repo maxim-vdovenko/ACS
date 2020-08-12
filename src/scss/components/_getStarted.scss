@@ -1,0 +1,257 @@
+.getStarted {
+  @include block();
+  min-height: 100vh;
+  margin-top: -108px;
+  z-index: 0;
+
+  @include mobile($screen_xl) {
+    margin-top: -90px;
+  }
+
+  @include mobile($screen_sm) {
+    margin-top: -50px;
+  }
+
+  &:after {
+    @include position(absolute, 0, 68px, 100%, 40px);
+    box-shadow: 0px 12px 24px rgba(197, 228, 243, 0.4);
+    content: '';
+
+    @include mobile($screen_xl) {
+      top: 50px;
+    }
+  
+    @include mobile($screen_sm) {
+      top: 10px;
+    }
+  }
+
+  .container {
+    min-height: inherit;
+  }
+
+  .row {
+    min-height: inherit;
+  }
+
+  .col {
+    min-height: inherit;
+    padding-top: 108px;
+    flex: none;
+    width: 50%;
+
+    @include mobile($screen_xl) {
+      padding-top: 90px;
+    }
+  
+    @include mobile($screen_sm) {
+      padding-top: 50px;
+    }
+    &:nth-child(1) {
+      padding-right: 30px;
+    }
+    &:nth-child(2) {
+      padding-left: 90px;
+    }
+  }
+
+  .titleBox {
+    margin-top: 117px;
+  }
+
+  &__fon {
+    position: absolute;
+    top: 0;
+    left: 30px;
+    width: 10000px;
+    height: 100%;
+    background-color: $color_blueLight_2;
+  }
+
+  &__slider {
+    @include block();
+    max-width: 480px;
+    margin: 108px 0 50px 0;
+
+    &-box {
+      @include inline_block();
+
+      img {
+        @include block();
+        width: 144px;
+        margin-bottom: 24px;
+      }
+
+      h4 {
+        margin-bottom: 13px;
+        transition: transform 0.6s, opacity 0.6s;
+        transform: translateY(20px);
+        transition-delay: 0.05s;
+        opacity: 0;
+      }
+
+      p {
+        font-size: 12px;
+        line-height: 20px;
+        transition: transform 0.6s, opacity 0.6s;
+        transform: translateY(20px);
+        transition-delay: 0.1s;
+        opacity: 0;
+      }
+
+      &.slick-active {
+        h4, p {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+    }
+
+    .slick-list {
+      overflow: hidden;
+      padding-bottom: 42px;
+    }
+
+    .slick-dots {
+      @include flex();
+      z-index: 1;
+    
+      li {
+        @include flex();
+        justify-content: center;
+        width: 36px;
+        height: 12px;
+
+        &:not(:last-child) {
+          margin-right: 24px;
+        }
+
+        &:nth-child(1) button {
+          background-color: $color_violet;
+        }
+        &:nth-child(2) button {
+          background-color: $color_red;
+        }
+        &:nth-child(3) button {
+          background-color: $color_yellow;
+        }
+
+        button {
+          @include block();
+          width: 100%;
+          height: 100%;
+          border: none;
+          border-radius: 1000px;
+          overflow: hidden;
+          color: transparent;
+          cursor: pointer;
+          transition: all 0.2s;
+        }
+
+        &.slick-active button {
+          transform: translateY(-3px);
+          border: none;
+          width: 18px;
+          height: 18px;
+        }
+      }
+    }
+  }
+
+  &__reviews {
+    @include block();
+    max-width: 480px;
+    margin: auto 0 48px 0;
+
+    .reviews__box {
+      opacity: 1;
+      transition: none;
+      transform: translateY(0);
+      flex: none;
+      padding: 0;
+    }
+
+    .reviews__cont {
+      padding: 29px 36px 30px 36px;
+    }
+
+    .reviews__cont-text {
+      font-size: 12px;
+      line-height: 20px;
+      margin-bottom: 20px;
+    }
+  }
+
+  &__form {
+    @include flex();
+    flex-wrap: wrap;
+    margin: 50px 0 50px 0;
+
+    &-box {
+      @include flex();
+      flex-direction: column;
+      justify-content: flex-end;
+      width: 50%;
+      padding-bottom: 23px;
+
+      &:nth-child(2n + 1) {
+        padding-right: 18px;
+      }
+      &:nth-child(2n + 0) {
+        padding-left: 18px;
+      }
+    }
+
+    .button {
+      min-width: 0;
+      width: 100%;
+    }
+  }
+
+  &__info {
+    @include inline_block();
+    margin: auto 0 43px 0;
+
+    span {
+      @include inline_block();
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 20px;
+      color: $color_text_main;
+    }
+  }
+
+  &__circles {
+    position: absolute;
+    top: 400px;
+    left: 50%;
+    width: 312px;
+    height: 506px;
+    margin-left: 790px;
+    z-index: 1;
+
+    span {
+      @include position(absolute, 0, 0, 100%, 100%);
+
+      i {
+        @include position(absolute, 0, 0, 100%, 100%);
+        transition: transform 0.15s;
+      }
+
+      &:nth-child(1) {
+        i {
+          @include image('get-started/circles-1.svg', contain, 0 0);
+        }
+      }
+      &:nth-child(2) {
+        top: 40px;
+        left: 10px;
+
+        i {
+          @include image('get-started/circles-2.svg', contain, 0 0);
+        }
+      }
+    }
+  }
+}

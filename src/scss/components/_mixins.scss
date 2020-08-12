@@ -33,22 +33,18 @@
   background-size: $cover;
 }
 
-@mixin placeholder($color: #000, $weight: 400) {
+@mixin placeholder($color) {
   &::-webkit-input-placeholder {
     color: $color;
-    font-weight: $weight;
   }
   &:-moz-placeholder {
     color: $color;
-    font-weight: $weight;
   }
   &::-moz-placeholder {
     color: $color;
-    font-weight: $weight;
   }
   &:-ms-input-placeholder {
     color: $color;
-    font-weight: $weight;
   }
 }
 

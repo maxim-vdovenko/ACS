@@ -138,6 +138,41 @@ ul {
   }
 }
 
+ol {
+  @include block();
+
+  li {
+    @include block();
+    padding-left: 49px;
+
+    > b {
+      position: absolute;
+      top: 0;
+      left: 0;
+      font-weight: 700;
+      font-size: 21px;
+      line-height: 24px;
+      color: $color_text_main;
+    }
+
+    ol {
+      margin: -8px 0 0 50px;
+
+      li {
+
+        &:not(:last-child) {
+          margin-bottom: -5px;
+        }
+
+        > b {
+          font-size: 17px;
+          line-height: 24px;
+        }
+      }
+    } 
+  }
+}
+
 a, span, b {
   @include inline_block();
 }
@@ -157,6 +192,7 @@ a, input, textarea, select, button {
 .total-container {
   @include block();
   overflow: hidden;
+  min-height: 100%;
 }
 
 .row {
@@ -376,5 +412,64 @@ a, input, textarea, select, button {
     @include image('payment-systems/Paypal.svg', contain, 0 0);
     width: 29px;
     height: 30px;
+  }
+}
+
+.formBox {
+  $form: &;
+  @include block();
+
+  &__title {
+    @include block();
+    padding: 0 20px 8px 20px;
+    font-size: 14px;
+    line-height: 28px;
+    letter-spacing: 0.025em;
+    color: $color_text_main;
+  }
+
+  &__input {
+    @include block();
+    @include placeholder($color_blueLight);
+    width: 100%;
+    height: 60px;
+    border-radius: 1000px;
+    background-color: $color_white;
+    border: 2px solid $color_blueLight;
+    padding: 5px 18px;
+    font-size: 16px;
+    line-height: 28px;
+    letter-spacing: 0.025em;
+    color: $color_text_main;
+    transition: background-color 0.2s;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    &:focus {
+      background-color: $color_blueLight_2;
+    }
+  }
+
+  &__error {
+    position: absolute;
+    display: none;
+    left: 0;
+    bottom: -23px;
+    padding: 0 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 20px;
+    color: $color_red;
+  }
+
+  &.error {
+    #{$form}__input {
+      border-color: $color_red;
+    }
+    #{$form}__error {
+      display: block;
+    }
   }
 }
