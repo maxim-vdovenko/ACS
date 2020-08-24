@@ -7,7 +7,11 @@
 
     &:nth-child(2n + 1) .col {
       &:nth-child(2) {
-       padding-left: 30px;
+        padding-left: 30px;
+
+        @include mobile($screen_md) {
+          padding-left: 0;
+        }
       }
     }
 
@@ -20,24 +24,50 @@
       &:nth-child(2) {
         order: 0;
         padding-right: 30px;
+
+        @include mobile($screen_md) {
+          padding-right: 0;
+        }
       }
     }
 
     &:not(:last-child) {
       margin-bottom: 230px;
+
+      @include mobile($screen_md) {
+        margin-bottom: 100px;
+      }
+    }
+
+    @include mobile($screen_md) {
+      display: block;
     }
   }
 
   .col {
     flex: none;
     width: 50%;
+
+    @include mobile($screen_md) {
+      width: auto;
+    }
   }
 
   .textBox {
     padding-top: 10px;
 
+    @include mobile($screen_md) {
+      display: flex;
+      flex-direction: column;
+    }
+
     .button {
       margin-top: 38px;
+
+      @include mobile($screen_md) {
+        margin-left: auto;
+        margin-right: auto;
+      }
     }
   }
 
@@ -53,14 +83,26 @@
 
   &--delivery {
     margin-top: 250px;
+
+    @include mobile($screen_md) {
+      margin-top: 170px;
+    }
   }
 
   &--software {
     margin-top: 113px;
 
+    @include mobile($screen_md) {
+      margin-top: 100px;
+    }
+
     .row {
       &:not(:last-child) {
         margin-bottom: 225px;
+
+        @include mobile($screen_md) {
+          margin-bottom: 100px;
+        }
       }
     }
   }
@@ -89,7 +131,11 @@
 
         &:nth-child(1) {
           order: 1;
-          padding-left: 30px;          
+          padding-left: 30px;    
+          
+          @include mobile($screen_md) {
+            padding-left: 0;    
+          }
         }
   
         &:nth-child(2) {
@@ -274,6 +320,10 @@
   &__animation {
     position: absolute;
 
+    @include mobile($screen_md) {
+      @include block();
+    }
+
     span {
       @include position(absolute, 0, 0, 100%, 100%);
       transition: all 1s;
@@ -291,32 +341,50 @@
       width: 490px;
       height: 461px;
 
-      span {
-        transition: all 1.3s;
+      @include mobile($screen_md) {
+        top: auto;
+        left: auto;
+        margin: 0 auto;
+      }
 
+      @include mobile($screen_sm) {
+        width: 350px;
+        height: 350px;
+      }
+
+      span {        
         &:nth-child(1) {
-          transform: translate(-50px, 25px);
-
           &:before {
             @include image('block-container/international-shipping/element-2.svg', contain, 0 0);
           }
         }
         &:nth-child(2) {
-          transform: translate(0, -50px);
-          opacity: 0;
-
           &:before {
             @include image('block-container/international-shipping/element-3.svg', contain, 0 0);
           }
         }
+
+        @include desktop($screen_md) {
+          transition: all 1.3s;
+
+          &:nth-child(1) {
+            transform: translate(-50px, 25px);
+          }
+          &:nth-child(2) {
+            transform: translate(0, -50px);
+            opacity: 0;
+          }
+        }
       }
 
-      &.active span {
-        transform: translate(0, 0);
-        opacity: 1;
-
-        &:nth-child(2):before {
-          animation: 2.2s ease-in-out infinite internationalShipping;
+      @include desktop($screen_md) {
+        &.active span {
+          transform: translate(0, 0);
+          opacity: 1;
+  
+          &:nth-child(2):before {
+            animation: 2.2s ease-in-out infinite internationalShipping;
+          }
         }
       }
     }
@@ -328,41 +396,61 @@
       width: 604px;
       height: 512px;
 
+      @include mobile($screen_md) {
+        top: auto;
+        right: auto;
+        margin: 0 auto;
+      }
+
+      @include mobile($screen_sm) {
+        width: 445px;
+        height: 380px;
+        margin: 0;
+      }
+
       span {
         &:nth-child(1) {
-          transform: translate(-40px, -30px);
-
           &:before {
             @include image('block-container/storage-fulfillment/element-2.svg', contain, 0 0);
           }
         }
         &:nth-child(2) {
-          transform: translate(0, -40px);
-          opacity: 0;
-
           &:before {
             @include image('block-container/storage-fulfillment/element-3.svg', contain, 0 0);
           }
         }
         &:nth-child(3) {
-          transform: translate(0, -40px);
-          opacity: 0;
-
           &:before {
             @include image('block-container/storage-fulfillment/element-4.svg', contain, 0 0);
           }
         }
+
+        @include desktop($screen_md) {
+          &:nth-child(1) {
+            transform: translate(-40px, -30px);
+          }
+          &:nth-child(2) {
+            transform: translate(0, -40px);
+            opacity: 0;
+          }
+          &:nth-child(3) {
+            transform: translate(0, -40px);
+            opacity: 0;
+          }
+        }
       }
 
-      &.active span {
-        transform: translate(0, 0);
-        opacity: 1;
-
-        &:nth-child(2):before {
-          animation: 2s ease-in-out 1s infinite storageFulfillment_1; 
-        }
-        &:nth-child(3):before {
-          animation: 2s ease-in-out 1s infinite storageFulfillment_2; 
+      @include desktop($screen_md) {
+        &.active span {
+          transform: translate(0, 0);
+          opacity: 1;
+  
+          &:nth-child(2):before {
+            animation: 2s ease-in-out 1s infinite storageFulfillment_1; 
+          }
+          &:nth-child(3):before {
+            animation: 2s ease-in-out 1s infinite storageFulfillment_2; 
+          }
         }
       }
     }
@@ -374,30 +462,49 @@
       width: 625px;
       height: 457px;
 
+      @include mobile($screen_md) {
+        top: auto;
+        left: auto;
+        margin: 0 auto;
+      }
+
+      @include mobile($screen_sm) {
+        width: 445px;
+        height: 350px;
+        left: -60px;
+      }
+
       span {
         &:nth-child(1) {
-          transform: translate(-40px, -30px);
-
           &:before {
             @include image('block-container/software-platform/element-2.svg', contain, 0 0);
           }
         }
         &:nth-child(2) {
-          transform: translate(0, -40px);
-          opacity: 0;
-
           &:before {
             @include image('block-container/software-platform/element-3.svg', contain, 0 0);
           }
         }
+
+        @include desktop($screen_md) {
+          &:nth-child(1) {
+            transform: translate(-40px, -30px);
+          }
+          &:nth-child(2) {
+            transform: translate(0, -40px);
+            opacity: 0;
+          }
+        }
       }
 
-      &.active span {
-        transform: translate(0, 0);
-        opacity: 1;
+      @include desktop($screen_md) {
+        &.active span {
+          transform: translate(0, 0);
+          opacity: 1;
 
-        &:nth-child(2):before {
-          animation: 2s ease-in-out 1s infinite softwarePlatform; 
+          &:nth-child(2):before {
+            animation: 2s ease-in-out 1s infinite softwarePlatform; 
+          }
         }
       }
     }
@@ -409,38 +516,34 @@
       width: 592px;
       height: 542px;
 
+      @include mobile($screen_md) {
+        top: auto;
+        right: auto;
+        margin: 0 auto;
+      }
+
+      @include mobile($screen_sm) {
+        width: 430px;
+        height: 410px;
+      }
+
       span {
         &:nth-child(1) {
-          transform: translate(40px, -30px);
-          opacity: 0;
-
           &:before {
             @include image('block-container/scale-commerce/element-2.svg', contain, 0 0);
           }
         }
         &:nth-child(2) {
-          transform: translate(30px, -80px);
-          transition-delay: 0.5s;
-          opacity: 0;
-
           &:before {
             @include image('block-container/scale-commerce/element-3.svg', contain, 0 0);
           }
         }
         &:nth-child(3) {
-          transform: translate(30px, -80px);
-          transition-delay: 0.1s;
-          opacity: 0;
-
           &:before {
             @include image('block-container/scale-commerce/element-4.svg', contain, 0 0);
           }
         }
         &:nth-child(4) {
-          transform: translate(30px, -80px);
-          transition-delay: 0.3s;
-          opacity: 0;
-
           &:before {
             @include image('block-container/scale-commerce/element-5.svg', contain, 0 0);
           }
@@ -450,20 +553,44 @@
             @include image('block-container/scale-commerce/element-6.svg', contain, 0 0);
           }
         }
+
+        @include desktop($screen_md) {
+          &:nth-child(1) {
+            transform: translate(40px, -30px);
+            opacity: 0;
+          }
+          &:nth-child(2) {
+            transform: translate(30px, -80px);
+            transition-delay: 0.5s;
+            opacity: 0;
+          }
+          &:nth-child(3) {
+            transform: translate(30px, -80px);
+            transition-delay: 0.1s;
+            opacity: 0;
+          }
+          &:nth-child(4) {
+            transform: translate(30px, -80px);
+            transition-delay: 0.3s;
+            opacity: 0;
+          }
+        }
       }
 
-      &.active span {
-        transform: translate(0, 0);
-        opacity: 1;
-
-        &:nth-child(2):before {
-          animation: 2.2s ease-in-out 1s infinite scaleCommerce_3; 
-        }
-        &:nth-child(3):before {
-          animation: 2.2s ease-in-out 1s infinite scaleCommerce_1; 
-        }
-        &:nth-child(4):before {
-          animation: 2.2s ease-in-out 1s infinite scaleCommerce_2; 
+      @include desktop($screen_md) {
+        &.active span {
+          transform: translate(0, 0);
+          opacity: 1;
+  
+          &:nth-child(2):before {
+            animation: 2.2s ease-in-out 1s infinite scaleCommerce_3; 
+          }
+          &:nth-child(3):before {
+            animation: 2.2s ease-in-out 1s infinite scaleCommerce_1; 
+          }
+          &:nth-child(4):before {
+            animation: 2.2s ease-in-out 1s infinite scaleCommerce_2; 
+          }
         }
       }
     }
@@ -475,38 +602,35 @@
       width: 469px;
       height: 340px;
 
+      @include mobile($screen_md) {
+        top: auto;
+        left: auto;
+        margin: 0 auto 20px auto;
+      }
+
+      @include mobile($screen_sm) {
+        width: 340px;
+        height: 260px;
+        margin-bottom: 5px;
+      }
+
       span {
         &:nth-child(1) {
-          transform: translate(40px, -30px);
-          opacity: 0;
-
           &:before {
             @include image('block-container/flexible-shipping/element-2.svg', contain, 0 0);
           }
         }
         &:nth-child(2) {
-          transform: translate(30px, -80px);
-          transition-delay: 0.5s;
-          opacity: 0;
-
           &:before {
             @include image('block-container/flexible-shipping/element-3.svg', contain, 0 0);
           }
         }
         &:nth-child(3) {
-          transform: translate(30px, -80px);
-          transition-delay: 0.1s;
-          opacity: 0;
-
           &:before {
             @include image('block-container/flexible-shipping/element-4.svg', contain, 0 0);
           }
         }
         &:nth-child(4) {
-          transform: translate(30px, -80px);
-          transition-delay: 0.3s;
-          opacity: 0;
-
           &:before {
             @include image('block-container/flexible-shipping/element-5.svg', contain, 0 0);
           }
@@ -516,20 +640,44 @@
             @include image('block-container/flexible-shipping/element-6.svg', contain, 0 0);
           }
         }
+
+        @include desktop($screen_md) {
+          &:nth-child(1) {
+            transform: translate(40px, -30px);
+            opacity: 0;
+          }
+          &:nth-child(2) {
+            transform: translate(30px, -80px);
+            transition-delay: 0.5s;
+            opacity: 0;
+          }
+          &:nth-child(3) {
+            transform: translate(30px, -80px);
+            transition-delay: 0.1s;
+            opacity: 0;
+          }
+          &:nth-child(4) {
+            transform: translate(30px, -80px);
+            transition-delay: 0.3s;
+            opacity: 0;
+          }
+        }
       }
 
-      &.active span {
-        transform: translate(0, 0);
-        opacity: 1;
-
-        &:nth-child(2):before {
-          animation: 2.2s ease-in-out 1s infinite scaleCommerce_3; 
-        }
-        &:nth-child(3):before {
-          animation: 2.2s ease-in-out 1s infinite scaleCommerce_1; 
-        }
-        &:nth-child(4):before {
-          animation: 2.2s ease-in-out 1s infinite scaleCommerce_2; 
+      @include desktop($screen_md) {
+        &.active span {
+          transform: translate(0, 0);
+          opacity: 1;
+  
+          &:nth-child(2):before {
+            animation: 2.2s ease-in-out 1s infinite scaleCommerce_3; 
+          }
+          &:nth-child(3):before {
+            animation: 2.2s ease-in-out 1s infinite scaleCommerce_1; 
+          }
+          &:nth-child(4):before {
+            animation: 2.2s ease-in-out 1s infinite scaleCommerce_2; 
+          }
         }
       }
     }
@@ -541,37 +689,57 @@
       width: 513px;
       height: 327px;
 
+      @include mobile($screen_md) {
+        top: auto;
+        left: auto;
+        margin: 0 auto 20px auto;
+      }
+
+      @include mobile($screen_sm) {
+        width: 385px;
+        height: 260px;
+        margin-bottom: 5px;
+      }
+
       span {
         &:nth-child(1) {
-          transform: translate(40px, -30px);
-
           &:before {
             @include image('block-container/special-projects/element-2.svg', contain, 0 0);
           }
         }
         &:nth-child(2) {
-          transform: translate(-30px, 20px);
-
           &:before {
             @include image('block-container/special-projects/element-3.svg', contain, 0 0);
           }
         }
         &:nth-child(4) {
-          transform: translate(0, -30px);
-          opacity: 0;
-
           &:before {
             @include image('block-container/special-projects/element-4.svg', contain, 0 0);
           }
         }
+
+        @include desktop($screen_md) {
+          &:nth-child(1) {
+            transform: translate(40px, -30px);
+          }
+          &:nth-child(2) {
+            transform: translate(-30px, 20px);
+          }
+          &:nth-child(4) {
+            transform: translate(0, -30px);
+            opacity: 0;
+          }
+        }
       }
 
-      &.active span {
-        transform: translate(0, 0);
-        opacity: 1;
-
-        &:nth-child(4):before {
-          animation: 2.2s ease-in-out infinite internationalShipping;
+      @include desktop($screen_md) {
+        &.active span {
+          transform: translate(0, 0);
+          opacity: 1;
+  
+          &:nth-child(4):before {
+            animation: 2.2s ease-in-out infinite internationalShipping;
+          }
         }
       }
     }
@@ -583,56 +751,77 @@
       width: 362px;
       height: 425px;
 
+      @include mobile($screen_md) {
+        top: auto;
+        left: auto;
+        margin: 0 auto 30px auto;
+      }
+
+      @include mobile($screen_sm) {
+        width: 270px;
+        height: 320px;
+        margin-bottom: 20px;
+      }
+
       span {
         &:nth-child(1) {
-          transform: translate(-40px, 30px);
-          opacity: 0;
-
           &:before {
             @include image('block-container/packing-fees/element-2.svg', contain, 0 0);
           }
         }
         &:nth-child(2) {
-          transform: translate(0, -80px);
-          transition-delay: 0.5s;
-          opacity: 0;
-
           &:before {
             @include image('block-container/packing-fees/element-3.svg', contain, 0 0);
           }
         }
         &:nth-child(3) {
-          transform: translate(0, -80px);
-          transition-delay: 0.1s;
-          opacity: 0;
-
           &:before {
             @include image('block-container/packing-fees/element-4.svg', contain, 0 0);
           }
         }
         &:nth-child(4) {
-          transform: translate(0, -80px);
-          transition-delay: 0.3s;
-          opacity: 0;
-
           &:before {
             @include image('block-container/packing-fees/element-5.svg', contain, 0 0);
           }
         }
+
+        @include desktop($screen_md) {
+          &:nth-child(1) {
+            transform: translate(-40px, 30px);
+            opacity: 0;
+          }
+          &:nth-child(2) {
+            transform: translate(0, -80px);
+            transition-delay: 0.5s;
+            opacity: 0;
+          }
+          &:nth-child(3) {
+            transform: translate(0, -80px);
+            transition-delay: 0.1s;
+            opacity: 0;
+          }
+          &:nth-child(4) {
+            transform: translate(0, -80px);
+            transition-delay: 0.3s;
+            opacity: 0;
+          }
+        }
       }
 
-      &.active span {
-        transform: translate(0, 0);
-        opacity: 1;
-
-        &:nth-child(2):before {
-          animation: 2.2s ease-in-out 1s infinite scaleCommerce_3; 
-        }
-        &:nth-child(3):before {
-          animation: 2.2s ease-in-out 1s infinite scaleCommerce_1; 
-        }
-        &:nth-child(4):before {
-          animation: 2.2s ease-in-out 1s infinite scaleCommerce_2; 
+      @include desktop($screen_md) {
+        &.active span {
+          transform: translate(0, 0);
+          opacity: 1;
+  
+          &:nth-child(2):before {
+            animation: 2.2s ease-in-out 1s infinite scaleCommerce_3; 
+          }
+          &:nth-child(3):before {
+            animation: 2.2s ease-in-out 1s infinite scaleCommerce_1; 
+          }
+          &:nth-child(4):before {
+            animation: 2.2s ease-in-out 1s infinite scaleCommerce_2; 
+          }
         }
       }
     }
@@ -644,32 +833,39 @@
 
       span {
         &:nth-child(1) {
-          transform: translate(0, -35px);
-          opacity: 0;
-
           &:before {
             @include image('block-container/get-address/element-2.svg', contain, 0 0);
           }
         }
         &:nth-child(2) {
-          transform: translate(0, -40px);
-          opacity: 0;
-
           &:before {
             @include image('block-container/get-address/element-3.svg', contain, 0 0);
           }
         }
+
+        @include desktop($screen_md) {
+          &:nth-child(1) {
+            transform: translate(0, -35px);
+            opacity: 0;
+          }
+          &:nth-child(2) {
+            transform: translate(0, -40px);
+            opacity: 0;
+          }
+        }
       }
 
-      &.active span {
-        transform: translate(0, 0);
-        opacity: 1;
-
-        &:nth-child(1):before {
-          animation: 2.2s ease-in-out infinite internationalShipping;
-        }
-        &:nth-child(2):before {
-          animation: 2.2s ease-in-out infinite internationalShipping;
+      @include desktop($screen_md) {
+        &.active span {
+          transform: translate(0, 0);
+          opacity: 1;
+  
+          &:nth-child(1):before {
+            animation: 2.2s ease-in-out infinite internationalShipping;
+          }
+          &:nth-child(2):before {
+            animation: 2.2s ease-in-out infinite internationalShipping;
+          }
         }
       }
     }
@@ -681,29 +877,36 @@
 
       span {
         &:nth-child(1) {
-          transform: translate(-40px, -20px);
-          opacity: 0;
-
           &:before {
             @include image('block-container/go-shopping/element-2.svg', contain, 0 0);
           }
         }
         &:nth-child(2) {
-          transform: translate(0, -40px);
-          opacity: 0;
-
           &:before {
             @include image('block-container/go-shopping/element-3.svg', contain, 0 0);
           }
         }
+
+        @include desktop($screen_md) {
+          &:nth-child(1) {
+            transform: translate(-40px, -20px);
+            opacity: 0;
+          }
+          &:nth-child(2) {
+            transform: translate(0, -40px);
+            opacity: 0;
+          }
+        }
       }
 
-      &.active span {
-        transform: translate(0, 0);
-        opacity: 1;
-
-        &:nth-child(2):before {
-          animation: 2s ease-in-out infinite internationalShipping;
+      @include desktop($screen_md) {
+        &.active span {
+          transform: translate(0, 0);
+          opacity: 1;
+  
+          &:nth-child(2):before {
+            animation: 2s ease-in-out infinite internationalShipping;
+          }
         }
       }
     }
@@ -715,40 +918,48 @@
 
       span {
         &:nth-child(1) {
-          transform: translate(0, -30px);
-          opacity: 0;
-
           &:before {
             @include image('block-container/store-items/element-2.svg', contain, 0 0);
           }
         }
         &:nth-child(2) {
-          transform: translate(0, -30px);
-          opacity: 0;
-
           &:before {
             @include image('block-container/store-items/element-3.svg', contain, 0 0);
           }
         }
         &:nth-child(3) {
-          transform: translate(40px, -30px);
-          opacity: 0;
-
           &:before {
             @include image('block-container/store-items/element-4.svg', contain, 0 0);
           }
         }
+
+        @include desktop($screen_md) {
+          &:nth-child(1) {
+            transform: translate(0, -30px);
+            opacity: 0;
+          }
+          &:nth-child(2) {
+            transform: translate(0, -30px);
+            opacity: 0;
+          }
+          &:nth-child(3) {
+            transform: translate(40px, -30px);
+            opacity: 0;
+          }
+        }
       }
 
-      &.active span {
-        transform: translate(0, 0);
-        opacity: 1;
-
-        &:nth-child(1):before {
-          animation: 2.8s ease-in-out 1s infinite storageFulfillment_3; 
-        }
-        &:nth-child(2):before {
-          animation: 2.8s ease-in-out 1s infinite storageFulfillment_4; 
+      @include desktop($screen_md) {
+        &.active span {
+          transform: translate(0, 0);
+          opacity: 1;
+  
+          &:nth-child(1):before {
+            animation: 2.8s ease-in-out 1s infinite storageFulfillment_3; 
+          }
+          &:nth-child(2):before {
+            animation: 2.8s ease-in-out 1s infinite storageFulfillment_4; 
+          }
         }
       }
     }
@@ -760,21 +971,27 @@
 
       span {
         &:nth-child(1) {
-          transform: translate(0, -30px);
-          opacity: 0;
-
           &:before {
             @include image('block-container/confirmation/element-2.svg', contain, 0 0);
           }
         }
+
+        @include desktop($screen_md) {
+          &:nth-child(1) {
+            transform: translate(0, -30px);
+            opacity: 0;
+          }
+        }
       }
 
-      &.active span {
-        transform: translate(0, 0);
-        opacity: 1;
+      @include desktop($screen_md) {
+        &.active span {
+          transform: translate(0, 0);
+          opacity: 1;
 
-        &:nth-child(1):before {
-          animation: 2.2s ease-in-out infinite internationalShipping;
+          &:nth-child(1):before {
+            animation: 2.2s ease-in-out infinite internationalShipping;
+          }
         }
       }
     }
@@ -787,39 +1004,47 @@
 
       span {
         &:nth-child(1) {
-          transform: translate(-50px, 40px);
-          opacity: 0;
-
           &:before {
             @include image('block-container/save-withUs/element-2.svg', contain, 0 0);
           }
         }
         &:nth-child(2) {
-          transform: translate(0, -30px);
-          transition-delay: 0.7s;
-          opacity: 0;
-
           &:before {
             @include image('block-container/save-withUs/element-3.svg', contain, 0 0);
           }
         }
         &:nth-child(3) {
-          transition: opacity 0.7s;
-          transition-delay: 0.7s;
-          opacity: 0;
-
           &:before {
             @include image('block-container/save-withUs/element-4.svg', contain, 0 0);
           }
         }
+
+        @include desktop($screen_md) {
+          &:nth-child(1) {
+            transform: translate(-50px, 40px);
+            opacity: 0;
+          }
+          &:nth-child(2) {
+            transform: translate(0, -30px);
+            transition-delay: 0.7s;
+            opacity: 0;
+          }
+          &:nth-child(3) {
+            transition: opacity 0.7s;
+            transition-delay: 0.7s;
+            opacity: 0;
+          }
+        }
       }
 
-      &.active span {
-        transform: translate(0, 0);
-        opacity: 1;
-
-        &:nth-child(2):before {
-          animation: 2s ease-in-out 0.7s infinite internationalShipping;
+      @include desktop($screen_md) {
+        &.active span {
+          transform: translate(0, 0);
+          opacity: 1;
+  
+          &:nth-child(2):before {
+            animation: 2s ease-in-out 0.7s infinite internationalShipping;
+          }
         }
       }
     }
@@ -833,43 +1058,51 @@
 
       span {
         &:nth-child(1) {
-          transform: translate(0, -50px);
-          opacity: 0;
-
           &:before {
             @include image('block-container/return-inspections/element-2.svg', contain, 0 0);
           }
         }
         &:nth-child(2) {
-          transform: translate(0, -50px);
-          opacity: 0;
-
           &:before {
             @include image('block-container/return-inspections/element-3.svg', contain, 0 0);
           }
         }
         &:nth-child(3) {
-          transform: translate(0, -50px);
-          opacity: 0;
-
           &:before {
             @include image('block-container/return-inspections/element-4.svg', contain, 0 0);
           }
         }
+
+        @include desktop($screen_md) {
+          &:nth-child(1) {
+            transform: translate(0, -50px);
+            opacity: 0;
+          }
+          &:nth-child(2) {
+            transform: translate(0, -50px);
+            opacity: 0;
+          }
+          &:nth-child(3) {
+            transform: translate(0, -50px);
+            opacity: 0;
+          }
+        }
       }
 
-      &.active span {
-        transform: translate(0, 0);
-        opacity: 1;
-
-        &:nth-child(1):before {
-          animation: 2.2s ease-in-out 1s infinite scaleCommerce_1; 
-        }
-        &:nth-child(2):before {
-          animation: 2.2s ease-in-out 1s infinite scaleCommerce_2; 
-        }
-        &:nth-child(3):before {
-          animation: 2.2s ease-in-out 1s infinite scaleCommerce_3; 
+      @include desktop($screen_md) {
+        &.active span {
+          transform: translate(0, 0);
+          opacity: 1;
+  
+          &:nth-child(1):before {
+            animation: 2.2s ease-in-out 1s infinite scaleCommerce_1; 
+          }
+          &:nth-child(2):before {
+            animation: 2.2s ease-in-out 1s infinite scaleCommerce_2; 
+          }
+          &:nth-child(3):before {
+            animation: 2.2s ease-in-out 1s infinite scaleCommerce_3; 
+          }
         }
       }
     }
@@ -883,32 +1116,39 @@
 
       span {
         &:nth-child(1) {
-          transform: translate(0, -50px);
-          opacity: 0;
-
           &:before {
             @include image('block-container/custom-packing/element-2.svg', contain, 0 0);
           }
         }
         &:nth-child(2) {
-          transform: translate(0, -50px);
-          opacity: 0;
-
           &:before {
             @include image('block-container/custom-packing/element-3.svg', contain, 0 0);
           }
         }
+
+        @include desktop($screen_md) {
+          &:nth-child(1) {
+            transform: translate(0, -50px);
+            opacity: 0;
+          }
+          &:nth-child(2) {
+            transform: translate(0, -50px);
+            opacity: 0;
+          }
+        }
       }
 
-      &.active span {
-        transform: translate(0, 0);
-        opacity: 1;
-
-        &:nth-child(1):before {
-          animation: 2.5s ease-in-out 1.3s infinite scaleCommerce_1; 
-        }
-        &:nth-child(2):before {
-          animation: 2.5s ease-in-out 1.3s infinite scaleCommerce_2; 
+      @include desktop($screen_md) {
+        &.active span {
+          transform: translate(0, 0);
+          opacity: 1;
+  
+          &:nth-child(1):before {
+            animation: 2.5s ease-in-out 1.3s infinite scaleCommerce_1; 
+          }
+          &:nth-child(2):before {
+            animation: 2.5s ease-in-out 1.3s infinite scaleCommerce_2; 
+          }
         }
       }
     }
@@ -922,32 +1162,39 @@
 
       span {
         &:nth-child(1) {
-          transform: translate(-20px, -20px) rotate3d(1, -1, 5, -10deg);
-          opacity: 0;
-
           &:before {
             @include image('block-container/amazon-consultant/element-2.svg', contain, 0 0);
           }
         }
         &:nth-child(2) {
-          transform: translate(-20px, 20px) rotate3d(1, -2, 5, 30deg);
-          opacity: 0;
-
           &:before {
             @include image('block-container/amazon-consultant/element-3.svg', contain, 0 0);
           }
         }
+
+        @include desktop($screen_md) {
+          &:nth-child(1) {
+            transform: translate(-20px, -20px) rotate3d(1, -1, 5, -10deg);
+            opacity: 0;
+          }
+          &:nth-child(2) {
+            transform: translate(-20px, 20px) rotate3d(1, -2, 5, 30deg);
+            opacity: 0;
+          }
+        }
       }
 
-      &.active span {
-        transform: translate(0, 0);
-        opacity: 1;
-
-        &:nth-child(1):before {
-          animation: 2.3s ease-in-out 1.1s infinite scaleCommerce_1; 
-        }
-        &:nth-child(2):before {
-          animation: 2.3s ease-in-out 1.1s infinite scaleCommerce_2; 
+      @include desktop($screen_md) {
+        &.active span {
+          transform: translate(0, 0);
+          opacity: 1;
+  
+          &:nth-child(1):before {
+            animation: 2.3s ease-in-out 1.1s infinite scaleCommerce_1; 
+          }
+          &:nth-child(2):before {
+            animation: 2.3s ease-in-out 1.1s infinite scaleCommerce_2; 
+          }
         }
       }
     }
@@ -961,41 +1208,49 @@
 
       span {
         &:nth-child(1) {
-          transform: translate(-60px, 35px);
-          opacity: 0;
-
           &:before {
             @include image('block-container/technology/element-2.svg', contain, 0 0);
           }
         }
         &:nth-child(2) {
-          transform: translate(40px, -25px);
-          opacity: 0;
-
           &:before {
             @include image('block-container/technology/element-3.svg', contain, 0 0);
           }
         }
         &:nth-child(3) {
-          transform: translate(30px, -20px);
-          transition-delay: 0.4s;
-          opacity: 0;
-
           &:before {
             @include image('block-container/technology/element-4.svg', contain, 0 0);
           }
         }
+
+        @include desktop($screen_md) {
+          &:nth-child(1) {
+            transform: translate(-60px, 35px);
+            opacity: 0;
+          }
+          &:nth-child(2) {
+            transform: translate(40px, -25px);
+            opacity: 0;
+          }
+          &:nth-child(3) {
+            transform: translate(30px, -20px);
+            transition-delay: 0.4s;
+            opacity: 0;
+          }
+        }
       }
 
-      &.active span {
-        transform: translate(0, 0);
-        opacity: 1;
-
-        &:nth-child(2):before {
-          animation: 2.2s ease-in-out 1.2s infinite scaleCommerce_1; 
-        }
-        &:nth-child(3):before {
-          animation: 2.2s ease-in-out 1.2s infinite scaleCommerce_2; 
+      @include desktop($screen_md) {
+        &.active span {
+          transform: translate(0, 0);
+          opacity: 1;
+  
+          &:nth-child(2):before {
+            animation: 2.2s ease-in-out 1.2s infinite scaleCommerce_1; 
+          }
+          &:nth-child(3):before {
+            animation: 2.2s ease-in-out 1.2s infinite scaleCommerce_2; 
+          }
         }
       }
     }
@@ -1009,30 +1264,37 @@
 
       span {
         &:nth-child(1) {
-          transform: translate(40px, 25px);
-
           &:before {
             @include image('block-container/crossdocking/element-2.svg', contain, 0 0);
           }
         }
         &:nth-child(2) {
-          transform: translate(40px, -20px);
-
           &:before {
             @include image('block-container/crossdocking/element-3.svg', contain, 0 0);
           }
         }
+
+        @include desktop($screen_md) {
+          &:nth-child(1) {
+            transform: translate(40px, 25px);
+          }
+          &:nth-child(2) {
+            transform: translate(40px, -20px);
+          }
+        }
       }
 
-      &.active span {
-        transform: translate(0, 0);
-        opacity: 1;
-
-        &:nth-child(1):before {
-          animation: 3s ease-in-out 1.5s infinite scaleCommerce_1; 
-        }
-        &:nth-child(2):before {
-          animation: 3s ease-in-out 1.5s infinite scaleCommerce_2; 
+      @include desktop($screen_md) {
+        &.active span {
+          transform: translate(0, 0);
+          opacity: 1;
+  
+          &:nth-child(1):before {
+            animation: 3s ease-in-out 1.5s infinite scaleCommerce_1; 
+          }
+          &:nth-child(2):before {
+            animation: 3s ease-in-out 1.5s infinite scaleCommerce_2; 
+          }
         }
       }
     }
@@ -1046,32 +1308,39 @@
 
       span {
         &:nth-child(1) {
-          transform: translate(0, -40px);
-          opacity: 0;
-
           &:before {
             @include image('block-container/compliance/element-2.svg', contain, 0 0);
           }
         }
         &:nth-child(2) {
-          transform: translate(0, -40px);
-          opacity: 0;
-
           &:before {
             @include image('block-container/compliance/element-3.svg', contain, 0 0);
           }
         }
+
+        @include desktop($screen_md) {
+          &:nth-child(1) {
+            transform: translate(0, -40px);
+            opacity: 0;
+          }
+          &:nth-child(2) {
+            transform: translate(0, -40px);
+            opacity: 0;
+          }
+        }
       }
 
-      &.active span {
-        transform: translate(0, 0);
-        opacity: 1;
-
-        &:nth-child(1):before {
-          animation: 2.6s ease-in-out 1.2s infinite scaleCommerce_1; 
-        }
-        &:nth-child(2):before {
-          animation: 2.6s ease-in-out 1.2s infinite scaleCommerce_2; 
+      @include desktop($screen_md) {
+        &.active span {
+          transform: translate(0, 0);
+          opacity: 1;
+  
+          &:nth-child(1):before {
+            animation: 2.6s ease-in-out 1.2s infinite scaleCommerce_1; 
+          }
+          &:nth-child(2):before {
+            animation: 2.6s ease-in-out 1.2s infinite scaleCommerce_2; 
+          }
         }
       }
     }
@@ -1083,42 +1352,62 @@
       width: 385px;
       height: 302px;
 
+      @include mobile($screen_md) {
+        top: auto;
+        left: auto;
+        margin: 0 auto 30px auto;
+      }
+
+      @include mobile($screen_sm) {
+        width: 300px;
+        height: 240px;
+        margin-bottom: 20px;
+      }
+
       span {
         &:nth-child(1) {
-          transform: translate(-40px, 10px);
-          opacity: 0;
-
           &:before {
             @include image('block-container/crossBorder-shipping/element-2.svg', contain, 0 0);
           }
         }
         &:nth-child(2) {
-          transform: translate(-30px, -15px);
-          opacity: 0;
-
           &:before {
             @include image('block-container/crossBorder-shipping/element-3.svg', contain, 0 0);
           }
         }
         &:nth-child(3) {
-          transform: translate(-30px, 20px);
-          opacity: 0;
-
           &:before {
             @include image('block-container/crossBorder-shipping/element-4.svg', contain, 0 0);
           }
         }
+
+        @include desktop($screen_md) {
+          &:nth-child(1) {
+            transform: translate(-40px, 10px);
+            opacity: 0;
+          }
+          &:nth-child(2) {
+            transform: translate(-30px, -15px);
+            opacity: 0;
+          }
+          &:nth-child(3) {
+            transform: translate(-30px, 20px);
+            opacity: 0;
+          }
+        }
       }
 
-      &.active span {
-        transform: translate(0, 0);
-        opacity: 1;
-
-        &:nth-child(2):before {
-          animation: 2.8s ease-in-out 1.4s infinite scaleCommerce_1; 
-        }
-        &:nth-child(3):before {
-          animation: 2.8s ease-in-out 1.4s infinite scaleCommerce_2; 
+      @include desktop($screen_md) {
+        &.active span {
+          transform: translate(0, 0);
+          opacity: 1;
+  
+          &:nth-child(2):before {
+            animation: 2.8s ease-in-out 1.4s infinite scaleCommerce_1; 
+          }
+          &:nth-child(3):before {
+            animation: 2.8s ease-in-out 1.4s infinite scaleCommerce_2; 
+          }
         }
       }
     }
@@ -1132,54 +1421,63 @@
 
       span {
         &:nth-child(1) {
-          transform: translate(20px, -30px);
-          opacity: 0;
-
           &:before {
             @include image('block-container/your-connections/element-2.svg', contain, 0 0);
           }
         }
         &:nth-child(2) {
-          transform: translate(10px, -40px);
-          transition-delay: 0.3s;
-          opacity: 0;
-
           &:before {
             @include image('block-container/your-connections/element-3.svg', contain, 0 0);
           }
         }
         &:nth-child(3) {
-          transform: translate(10px, -40px);
-          transition-delay: 0.3s;
-          opacity: 0;
-
           &:before {
             @include image('block-container/your-connections/element-4.svg', contain, 0 0);
           }
         }
         &:nth-child(4) {
-          transform: translate(10px, -40px);
-          transition-delay: 0.3s;
-          opacity: 0;
-
           &:before {
             @include image('block-container/your-connections/element-5.svg', contain, 0 0);
           }
         }
+
+        @include desktop($screen_md) {
+          &:nth-child(1) {
+            transform: translate(20px, -30px);
+            opacity: 0;
+          }
+          &:nth-child(2) {
+            transform: translate(10px, -40px);
+            transition-delay: 0.3s;
+            opacity: 0;
+          }
+          &:nth-child(3) {
+            transform: translate(10px, -40px);
+            transition-delay: 0.3s;
+            opacity: 0;
+          }
+          &:nth-child(4) {
+            transform: translate(10px, -40px);
+            transition-delay: 0.3s;
+            opacity: 0;
+          }
+        }
       }
 
-      &.active span {
-        transform: translate(0, 0);
-        opacity: 1;
-
-        &:nth-child(2):before {
-          animation: 2.1s ease-in-out 1.5s infinite scaleCommerce_1; 
-        }
-        &:nth-child(3):before {
-          animation: 2.1s ease-in-out 1.5s infinite scaleCommerce_2; 
-        }
-        &:nth-child(4):before {
-          animation: 2.1s ease-in-out 1.5s infinite scaleCommerce_3; 
+      @include desktop($screen_md) {
+        &.active span {
+          transform: translate(0, 0);
+          opacity: 1;
+  
+          &:nth-child(2):before {
+            animation: 2.1s ease-in-out 1.5s infinite scaleCommerce_1; 
+          }
+          &:nth-child(3):before {
+            animation: 2.1s ease-in-out 1.5s infinite scaleCommerce_2; 
+          }
+          &:nth-child(4):before {
+            animation: 2.1s ease-in-out 1.5s infinite scaleCommerce_3; 
+          }
         }
       }
     }
@@ -1193,33 +1491,40 @@
 
       span {
         &:nth-child(1) {
-          transform: translate(0, -30px);
-          transition-delay: 0.4s;
-          opacity: 0;
-
           &:before {
             @include image('block-container/increased-exposure/element-2.svg', contain, 0 0);
           }
         }
         &:nth-child(2) {
-          transform: translate(0, -50px);
-          opacity: 0;
-
           &:before {
             @include image('block-container/increased-exposure/element-3.svg', contain, 0 0);
           }
         }
+
+        @include desktop($screen_md) {
+          &:nth-child(1) {
+            transform: translate(0, -30px);
+            transition-delay: 0.4s;
+            opacity: 0;
+          }
+          &:nth-child(2) {
+            transform: translate(0, -50px);
+            opacity: 0;
+          }
+        }
       }
 
-      &.active span {
-        transform: translate(0, 0);
-        opacity: 1;
-
-        &:nth-child(1):before {
-          animation: 2.6s ease-in-out 1.6s infinite scaleCommerce_2; 
-        }
-        &:nth-child(2):before {
-          animation: 2.6s ease-in-out 1.6s infinite scaleCommerce_1; 
+      @include desktop($screen_md) {
+        &.active span {
+          transform: translate(0, 0);
+          opacity: 1;
+  
+          &:nth-child(1):before {
+            animation: 2.6s ease-in-out 1.6s infinite scaleCommerce_2; 
+          }
+          &:nth-child(2):before {
+            animation: 2.6s ease-in-out 1.6s infinite scaleCommerce_1; 
+          }
         }
       }
     }

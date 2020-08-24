@@ -5,6 +5,10 @@
     @include position(absolute, 0, -40px, 100%, 40px);
     box-shadow: 0px 12px 24px rgba(197, 228, 243, 0.4);
     content: '';
+
+    @include mobile($screen_md) {
+      display: none;
+    }
   }
 
   .container {
@@ -18,7 +22,13 @@
     }
 
     @include mobile($screen_md) {
-      padding-top: 60px;
+      padding-top: 20px;
+    }
+  }
+
+  .row {
+    @include mobile($screen_md) {
+      flex-wrap: wrap;
     }
   }
 
@@ -27,50 +37,75 @@
     width: 50%;
 
     @include mobile($screen_md) {
-      width: auto;
+      width: 100%;
     }
 
     &:nth-child(1) {
       order: 1;
 
-      @include mobile($screen_md) {
-        order: 0;
+      .textBox {
+        margin-top: 20px;
+
+        @include mobile($screen_sm) {
+          margin-top: 150px;
+        }
+
+        @include desktop($screen_md) {
+          display: none;
+        }
+
+        p {
+          text-align: center;
+        }
       }
     }
 
     &:nth-child(2) {
       order: 0;
 
-      @include mobile($screen_md) {
-        order: 1;
-      }
-    }
-  }
+      .textBox {
+        padding-right: 20px;
 
-  .textBox {
-    padding-right: 20px;
+        @include mobile($screen_md) {
+          padding-right: 0;
+    
+          h1 {
+            margin-bottom: 15px;
+            text-align: center;
+          }
+    
+          p {
+            font-size: 12px;
+            line-height: 20px;
+            text-align: center;
+          } 
+        }
 
-    h1 {
-      transform: translateY(50px);
-      transition: all 0.8s;
-      opacity: 0;
-    }
-
-    p {
-      transform: translateY(30px);
-      transition: all 0.8s;
-      transition-delay: 0.3s;
-      opacity: 0;
-    }
-
-    &.active {
-      h1 {
-        transform: translateY(0);
-        opacity: 1;
-      }
-      p {
-        transform: translateY(0);
-        opacity: 1;
+        @include desktop($screen_md) {
+          h1 {
+            transform: translateY(50px);
+            transition: all 0.8s;
+            opacity: 0;
+          }
+      
+          p {
+            transform: translateY(30px);
+            transition: all 0.8s;
+            transition-delay: 0.3s;
+            opacity: 0;
+          }
+      
+          &.active {
+            h1 {
+              transform: translateY(0);
+              opacity: 1;
+            }
+            p {
+              transform: translateY(0);
+              opacity: 1;
+            }
+          }
+        }
       }
     }
   }
@@ -144,16 +179,29 @@
       margin-left: -880px;
     }
 
-    @include mobile($screen_lg) {
-      display: none;
+    @include mobile($screen_md) {
+      width: 150px;
+      height: 250px;
+      top: auto;
+      bottom: -110px;
+      left: -60px;
+      margin-left: 0;
     }
 
     span {
       @include position(absolute, 0, 0, 100%, 100%);
 
+      @include mobile($screen_md) {
+        transform: translate3d(0, 0, 0) !important;
+      }
+
       i {
         @include position(absolute, 0, 0, 100%, 100%);
         transition: transform 0.15s;
+
+        @include mobile($screen_md) {
+          transform: translate3d(0, 0, 0) translate(0, 0) !important;
+        }
       }
 
       &:nth-child(1) {
@@ -166,6 +214,22 @@
           @include image('acs/circles-2.svg', contain, 0 0);
         }
       }
+    }
+  }
+
+  &__fonMobile {
+    position: absolute;
+    top: 85px;
+    left: -$padding_sides;
+    right: -$padding_sides;
+
+    @include desktop($screen_sm) {
+      display: none;
+    }
+
+    img {
+      @include block();
+      width: 100%;
     }
   }
 
@@ -186,7 +250,7 @@
       max-width: 700px;
       height: 0;
       padding-bottom: 48%;
-      margin: 0 auto;
+      margin: 50px auto 0 auto;
       background-position: top;
     }
 
@@ -205,9 +269,9 @@
     }
 
     @include mobile($screen_md) {
-      top: 50%;
+      top: 10px;
       left: 50%;
-      margin: -70px 0 0 -30px;
+      margin-left: -54px;
     }
   } 
 }

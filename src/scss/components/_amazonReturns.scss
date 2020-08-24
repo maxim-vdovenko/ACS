@@ -11,34 +11,72 @@
   .row {
     min-height: 872px;
     align-items: center;
+
+    @include mobile($screen_lg) {
+      min-height: 750px;
+    }
+
+    @include mobile($screen_md) {
+      display: block;
+      min-height: auto;
+    }
+  }
+
+  .col {
+    &:nth-child(1) {
+      @include mobile($screen_md) {
+        padding-top: 60px;
+      }
+    }
+
+    &:nth-child(2) {
+      @include mobile($screen_lg) {
+        padding-left: 40px;
+      }
+
+      @include mobile($screen_md) {
+        padding: 30px 0 80px 0;
+      }
+    }
   }
 
   .textBox {
     left: 18px;
     padding-bottom: 23px;
 
-    h1 {
-      transform: translateY(50px);
-      transition: all 0.8s;
-      opacity: 0;
-    }
-
-    p {
-      transform: translateY(30px);
-      transition: all 0.8s;
-      transition-delay: 0.3s;
-      opacity: 0;
-    }
-
-    &.active {
+    @include desktop($screen_md) {
       h1 {
-        transform: translateY(0);
-        opacity: 1;
+        transform: translateY(50px);
+        transition: all 0.8s;
+        opacity: 0;
       }
+  
       p {
-        transform: translateY(0);
-        opacity: 1;
+        transform: translateY(30px);
+        transition: all 0.8s;
+        transition-delay: 0.3s;
+        opacity: 0;
       }
+
+      &.active {
+        h1 {
+          transform: translateY(0);
+          opacity: 1;
+        }
+        p {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+    }
+
+    @include mobile($screen_lg) {
+      left: 0;
+      padding-bottom: 0;
+    }
+
+    @include mobile($screen_md) {
+      text-align: center;
     }
   }
 
@@ -49,13 +87,42 @@
     width: 583px;
     height: 516px;
 
+    @include mobile($screen_xl) {
+      left: -100px;
+    }
+
+    @include mobile($screen_lg) {
+      top: 0;
+      left: 0;
+      width: 480px;
+      height: 500px;
+    }
+
+    @include mobile($screen_md) {
+      margin: 0 auto;
+    }
+
+    @include mobile($screen_sm) {
+      width: 310px;
+      height: 330px;
+    }
+
     span {
       @include position(absolute, 0, 0, 100%, 100%);
       transition: transform 0.9s, opacity 1s;
 
+      @include mobile($screen_md) {
+        transform: translate3d(0, 0, 0) !important;
+        opacity: 1 !important;
+      }
+
       i {
         @include position(absolute, 0, 0, 100%, 100%);
         transition: transform 0.15s;
+
+        @include mobile($screen_md) {
+          transform: translate3d(0, 0, 0) translate(0, 0) !important;
+        }
       }
 
       &:nth-child(1) {
@@ -184,12 +251,30 @@
     height: 378px;
     margin-left: 730px;
 
+    @include mobile($screen_md) {
+      top: auto;
+      left: auto;
+      right: -90px;
+      bottom: -120px;
+      width: 140px;
+      height: 160px;
+      margin-left: 0;
+    }
+
     span {
       @include position(absolute, 0, 0, 100%, 100%);
+
+      @include mobile($screen_md) {
+        transform: translate3d(0, 0, 0) !important;
+      }
 
       i {
         @include position(absolute, 0, 0, 100%, 100%);
         transition: transform 0.15s;
+
+        @include mobile($screen_md) {
+          transform: translate3d(0, 0, 0) translate(0, 0) !important;
+        }
       }
 
       &:nth-child(1) {
@@ -200,6 +285,11 @@
       &:nth-child(2) {
         top: 50px;
         left: 30px;
+
+        @include mobile($screen_md) {
+          top: 0;
+          left: 0;
+        }
 
         i {
           @include image('amazon-returns/circles-2.svg', contain, 0 0);

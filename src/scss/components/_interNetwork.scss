@@ -9,11 +9,13 @@ $time_map_box: 0.2s;
   }
 
   @include mobile($screen_md) {
-    margin-top: 150px;
+    margin-top: 180px;
   }
 
-  @include mobile($screen_sm) {
-    margin-top: 80px;
+  .row {
+    @include mobile($screen_md) {
+      display: block;
+    }
   }
 
   .col {
@@ -23,7 +25,7 @@ $time_map_box: 0.2s;
       padding-right: 40px;
 
       @include mobile($screen_md) {
-        max-width: inherit;
+        max-width: none;
         padding-right: 0;
       }
     }
@@ -36,7 +38,7 @@ $time_map_box: 0.2s;
       }
 
       @include mobile($screen_md) {
-        padding-top: 0;
+        padding-top: 20px;
       }
     }
   }

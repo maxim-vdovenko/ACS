@@ -8,53 +8,91 @@
     padding-top: 48px;
 
     @include mobile($screen_sm) {
-      padding-top: 30px;
       min-height: auto;
       padding-bottom: 25px;
     }
   }
 
   .row {
-    @include mobile($screen_md) {
-      display: flex;
-    }
-
-    @include mobile($screen_sm) {
-      display: block;
-    }
+    flex-wrap: wrap;
   }
 
   .col {
-
-    @include mobile($screen_md) {
-      display: flex;
-    }
-
-    @include mobile($screen_sm) {
-      display: block;
-      text-align: center;
-    }
+    flex: none;
 
     &:nth-child(1) {
-      flex: none;
-    }
-    &:nth-child(2) {
-      flex: 1;
-      align-items: center;
-      padding: 5px 0 0 20px;
+      width: 18%;
 
       @include mobile($screen_xl) {
-        padding: 5px 20px 0 20px;
+        width: 22%;
+      }
+
+      @include mobile($screen_lg) {
+        width: 25%;
+      }
+
+      @include mobile($screen_md) {
+        width: 50%;
+        order: 0;
+      }
+    }
+
+    &:nth-child(2) {
+      width: 67%;
+      align-items: center;
+      padding: 5px 0 0 2px;
+
+      @include mobile($screen_xl) {
+        width: 58%;
+      }
+
+      @include mobile($screen_lg) {
+        width: 55%;
+      }
+
+      @include mobile($screen_md) {
+        width: 100%;
+        order: 2;
+        padding: 20px 0 0 0;
+      }
+    }
+
+    &:nth-child(3) {
+      width: 15%;
+      align-items: flex-end;
+      padding-top: 1px;
+
+      @include mobile($screen_xl) {
+        width: 20%;
+      }
+
+      @include mobile($screen_md) {
+        width: 50%;
+        order: 1;
+        padding-top: 0;
       }
 
       @include mobile($screen_sm) {
-        display: none;
+        align-items: flex-start;
       }
     }
-    &:nth-child(3) {
-      flex: none;
-      align-items: flex-end;
-      padding-top: 1px;
+
+    &:nth-child(4) {
+      width: 50%;
+      justify-content: flex-start;
+
+      @include mobile($screen_md) {
+        order: 3;
+        padding-right: 30px;
+      }
+    }
+
+    &:nth-child(5) {
+      width: 50%;
+
+      @include mobile($screen_md) {
+        order: 4;
+      }
     }
   }
 
@@ -63,6 +101,11 @@
     @include image('logo-white.svg', contain, 0 0);
     width: 229px;
     height: 36px;
+
+    @include mobile($screen_sm) {
+      width: 36px;
+      background-size: cover;
+    }
   }
 
   &__copyright {
@@ -74,8 +117,8 @@
     line-height: 20px;
     color: $color_text_violet;
 
-    @include mobile($screen_sm) {
-      text-align: center;
+    @include mobile($screen_md) {
+      margin: 25px 0 0 0;
     }
   }
 
@@ -83,13 +126,26 @@
     @include flex();
     flex-wrap: wrap;
 
-    @include mobile($screen_md) {
-      display: none;
+    @include mobile($screen_sm) {
+      margin-top: 12px;
     }
     
     li {
       @include inline_block();
       margin: 0 18px;
+
+      @include mobile($screen_md) {
+        margin: 0 30px 0 0;
+      }
+
+      @include mobile($screen_sm) {
+        margin: 0 0 0 0;
+        width: 50%;
+
+        &:last-child {
+          margin-top: -35px;
+        }
+      }
 
       a {
         font-size: 14px;
@@ -98,6 +154,10 @@
         text-decoration: none;
         color: $color_text_white;
         transition: color $time;
+
+        @include mobile($screen_sm) {
+          line-height: 36px;
+        }
       }
     }
   }
@@ -107,11 +167,6 @@
     flex-wrap: wrap;
     align-items: center;
 
-    @include mobile($screen_sm) {
-      justify-content: center;
-      margin-top: 20px;
-    }
-
     li {
       @include inline_block();
 
@@ -119,8 +174,16 @@
         padding-top: 2px;
       }
 
-      &:not(:first-child) {
-        margin-left: 18px;
+      &:not(:last-child) {
+        margin-right: 18px;
+
+        @include mobile($screen_sm) {
+          margin-right: 12px;
+        }
+      }
+
+      @include mobile($screen_sm) {
+        margin-bottom: 5px;
       }
     }
   }
@@ -128,21 +191,35 @@
   &__terms {
     @include flex();
     flex-wrap: wrap;
-    margin-top: 32px;
+    justify-content: flex-end;
+    margin-top: 25px;
+
+    @include mobile($screen_md) {
+      margin: 20px 0 10px 0;
+    }
 
     @include mobile($screen_sm) {
-      justify-content: center;
-      margin-top: 20px;
+      display: block;
     }
 
     li {
       @include inline_block();
 
+      @include mobile($screen_sm) {
+        display: block;
+      }
+
       &:not(:first-child) {
-        margin-left: 36px;
+        margin-left: 35px;
 
         @include mobile($screen_sm) {
-          margin-left: 28px;
+          margin-left: 0;
+        }
+      }
+
+      &:not(:last-child) {
+        @include mobile($screen_sm) {
+          margin-bottom: 5px;
         }
       }
 

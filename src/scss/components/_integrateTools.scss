@@ -254,6 +254,23 @@
 
     @include mobile($screen_sm) {
       padding-bottom: 25px;
+
+      &:nth-child(1) {
+        &:before {
+          position: absolute;
+          left: 33px;
+          right: 33px;
+          top: 0;
+          bottom: 5px;
+          content: '';
+          background-color: #fff;
+          border-radius: 18px;
+        }
+      }
+
+      &:nth-child(2), &:nth-child(3) {
+        display: none;
+      }
     }
 
     @for $i from 1 through 3 {

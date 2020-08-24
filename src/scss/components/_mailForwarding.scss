@@ -1,4 +1,5 @@
 .mailForwarding {
+  $Forwarding: &;
   @include block();
   background-color: $color_yellow;
 
@@ -11,10 +12,98 @@
   .row {
     min-height: 872px;
     align-items: center;
+
+    @include mobile($screen_lg) {
+      min-height: 750px;
+    }
+
+    @include mobile($screen_md) {
+      display: block;
+      min-height: auto;
+    }
+  }
+
+  .col {
+    &:nth-child(1) {
+      @include mobile($screen_md) {
+        padding-top: 60px;
+      }
+    }
+
+    &:nth-child(2) {
+      @include mobile($screen_lg) {
+        padding-left: 40px;
+      }
+
+      @include mobile($screen_md) {
+        padding: 30px 0 80px 0;
+      }
+    }
   }
 
   .textBox {
     padding: 0 55px 26px 0;
+
+    @include desktop($screen_md) {
+      h1 {
+        transform: translateY(50px);
+        transition: all 0.8s;
+        opacity: 0;
+      }
+  
+      p {
+        transform: translateY(30px);
+        transition: all 0.8s;
+        transition-delay: 0.3s;
+        opacity: 0;
+      }
+
+      ul {
+        transform: translateY(20px);
+        transition: all 0.8s;
+        transition-delay: 0.5s;
+        opacity: 0;
+      }
+
+      #{$Forwarding}__button {
+        transform: translateY(20px);
+        transition: all 0.8s;
+        transition-delay: 0.7s;
+        opacity: 0;
+      }
+
+      &.active {
+        h1 {
+          transform: translateY(0);
+          opacity: 1;
+        }
+        p {
+          transform: translateY(0);
+          opacity: 1;
+        }
+        ul {
+          transform: translateY(0);
+          opacity: 1;
+        }
+        #{$Forwarding}__button {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+    }
+
+    @include mobile($screen_lg) {
+      padding: 0;
+    }
+
+    @include mobile($screen_md) {
+      h1, p {
+        text-align: center;
+      }
+      #{$Forwarding}__button {
+        text-align: center;
+      }
+    }
   }
 
   &__button {
@@ -29,13 +118,42 @@
     width: 546px;
     height: 603px;
 
+    @include mobile($screen_xl) {
+      left: -100px;
+    }
+
+    @include mobile($screen_lg) {
+      top: 0;
+      left: 0;
+      width: 480px;
+      height: 500px;
+    }
+
+    @include mobile($screen_md) {
+      margin: 0 auto;
+    }
+
+    @include mobile($screen_sm) {
+      width: 310px;
+      height: 330px;
+    }
+
     span {
       @include position(absolute, 0, 0, 100%, 100%);
       transition: transform 1.1s, opacity 0.7s;
 
+      @include mobile($screen_md) {
+        transform: translate3d(0, 0, 0) !important;
+        opacity: 1 !important;
+      }
+
       i {
         @include position(absolute, 0, 0, 100%, 100%);
         transition: transform 0.15s;
+
+        @include mobile($screen_md) {
+          transform: translate3d(0, 0, 0) translate(0, 0) !important;
+        }
       }
 
       &:nth-child(1) {

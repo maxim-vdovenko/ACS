@@ -2,6 +2,20 @@
   @include block();
   margin-top: 265px;
 
+  @include mobile($screen_lg) {
+    margin-top: 230px;
+  }
+
+  @include mobile($screen_md) {
+    margin-top: 150px;
+  }
+
+  .row {
+    @include mobile($screen_md) {
+      flex-direction: column;
+    }
+  }
+
   .col {
     width: 50%;
 

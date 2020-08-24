@@ -11,6 +11,18 @@
       min-height: 360px;
       padding-top: 70px;
     }
+
+    @include mobile($screen_md) {
+      min-height: auto;
+      padding-top: 50px;
+      padding-bottom: 40px;
+    }
+  }
+
+  .row {
+    @include mobile($screen_md) {
+      display: block;
+    }
   }
 
   .col {
@@ -30,6 +42,14 @@
     }
   }
 
+  .titleBox {
+    h2 {
+      @include mobile($screen_md) {
+        text-align: center;
+      }
+    }
+  }
+
   &__list {
     @include flex();
     flex-wrap: wrap;
@@ -41,6 +61,7 @@
 
     @include mobile($screen_sm) {
       align-items: center;
+      margin-top: 50px;
     }
 
     li {
@@ -70,16 +91,11 @@
       }
 
       @include mobile($screen_sm) {
-        width: 50%;
         justify-content: center;
       }
 
       img {
         max-width: 100%;
-
-        @include mobile($screen_xs) {
-          max-width: 70%;
-        }
       }
     }
 
@@ -99,6 +115,27 @@
         }
         &:nth-child(6) {
           top: 2px;
+        }
+      }
+
+      @include mobile($screen_sm) {
+        &:nth-child(1) img {
+          max-width: 80%;
+        }
+        &:nth-child(2) img {
+          max-width: 40%;
+        }
+        &:nth-child(3) img {
+          max-width: 80%;
+        }
+        &:nth-child(4) img {
+          max-width: 70%;
+        }
+        &:nth-child(5) img {
+          max-width: 60%;
+        }
+        &:nth-child(6) img {
+          max-width: 80%;
         }
       }
     }

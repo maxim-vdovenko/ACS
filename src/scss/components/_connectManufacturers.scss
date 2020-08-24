@@ -3,28 +3,52 @@
   @include block();
   margin-top: 270px;
 
+  @include mobile($screen_lg) {
+    margin-top: 150px;
+  }
+
+  @include mobile($screen_md) {
+    margin-top: 96px;
+  }
+
   &__cont {
     @include block();
+
+    .row {
+      @include mobile($screen_md) {
+        flex-direction: column;
+      }
+    }
 
     .col {
       &:nth-child(1) {
         padding-right: 30px;
+
+        @include mobile($screen_md) {
+          padding: 0 0 40px 0;
+        }
       }
+
       &:nth-child(2) {
         padding: 7px 0 0 30px;
+
+        @include mobile($screen_md) {
+          padding: 0;
+        }
       }
     }
 
     .textBox {
-
-      .colorBlue {
-        transition: color 1s;
-        color: $color_text_main;
-      }
-
-      &.active {
+      @include desktop($screen_md) {
         .colorBlue {
-          color: $color_text_blue;
+          transition: color 1s;
+          color: $color_text_main;
+        }
+  
+        &.active {
+          .colorBlue {
+            color: $color_text_blue;
+          }
         }
       }
     }
@@ -35,11 +59,18 @@
     flex-wrap: wrap;
     margin: 95px -30px 0 -30px;
 
-    &.active {
-      #{$bl}__box {
-        transform: translateY(0);
-        opacity: 1;
+    @include desktop($screen_md) {
+      &.active {
+        #{$bl}__box {
+          transform: translateY(0);
+          opacity: 1;
+        }
       }
+    }
+
+    @include mobile($screen_sm) {
+      flex-direction: column;
+      margin: 60px 0 0 0;
     }
   }
 
@@ -50,9 +81,23 @@
     padding: 0 30px;
     margin-bottom: 37px;
     text-align: center;
-    transition: transform 0.7s, opacity 0.7s;
-    transform: translateY(20px);
-    opacity: 0;
+
+    @include desktop($screen_md) {
+      transition: transform 0.7s, opacity 0.7s;
+      transform: translateY(20px);
+      opacity: 0;
+    }
+
+    @include mobile($screen_md) {
+      width: 50%;
+    }
+
+    @include mobile($screen_sm) {
+      width: 100%;
+      max-width: 380px;
+      min-height: auto;
+      margin: 0 auto 65px auto;
+    }
 
     > img {
       @include block();
@@ -65,23 +110,25 @@
       margin-bottom: 10px;
     }
 
-    &:nth-child(1) {
-      transition-delay: 0.1s;
-    }
-    &:nth-child(2) {
-      transition-delay: 0.25s;
-    }
-    &:nth-child(3) {
-      transition-delay: 0.4s;
-    }
-    &:nth-child(4) {
-      transition-delay: 0.55s;
-    }
-    &:nth-child(5) {
-      transition-delay: 0.7s;
-    }
-    &:nth-child(6) {
-      transition-delay: 0.85s;
+    @include desktop($screen_md) {
+      &:nth-child(1) {
+        transition-delay: 0.1s;
+      }
+      &:nth-child(2) {
+        transition-delay: 0.25s;
+      }
+      &:nth-child(3) {
+        transition-delay: 0.4s;
+      }
+      &:nth-child(4) {
+        transition-delay: 0.55s;
+      }
+      &:nth-child(5) {
+        transition-delay: 0.7s;
+      }
+      &:nth-child(6) {
+        transition-delay: 0.85s;
+      }
     }
   }
 
@@ -91,7 +138,16 @@
     min-height: 413px;
     padding: 99px 40px 0 40px;
     margin-top: 28px;
-    transition: background-color 0.7s;
+
+    @include desktop($screen_md) {
+      transition: background-color 0.7s;
+    }
+
+    @include mobile($screen_md) {
+      background-color: $color_blueLight_2;
+      min-height: auto;
+      padding: 99px 40px 108px 40px;
+    }
 
     &-text {
       @include block();
@@ -104,14 +160,21 @@
       @include flex();
       justify-content: center;
       margin-top: 62px;
+
+      @include mobile($screen_md) {
+        margin-top: 45px;
+      }
     }
 
     &-circlesCont {
       @include position(absolute, 0, 0, 100%, 100%);
       overflow: hidden;
-      transition: opacity 0.7s;
-      transition-delay: 0.8s;
-      opacity: 0;
+
+      @include desktop($screen_md) {
+        transition: opacity 0.7s;
+        transition-delay: 0.8s;
+        opacity: 0;
+      }
     }
 
     &-circles {
@@ -131,11 +194,21 @@
   
       &--1 {
         left: 73px;
-        animation: 7s linear 0.1s infinite connect_circles;
   
+        @include desktop($screen_md) {
+          animation: 7s linear 0.1s infinite connect_circles;
+        }
+
+        @include mobile($screen_md) {
+          display: none;
+        }
+
         span {
           @include circle_position(14px, 14px);
-          animation: 7s ease-in-out 0.1s infinite connect_circles_side_1;
+
+          @include desktop($screen_md) {
+            animation: 7s ease-in-out 0.1s infinite connect_circles_side_1;
+          }
 
           i {
             border: 2px solid $color_dark;
@@ -145,11 +218,22 @@
   
       &--2 {
         left: 265px;
-        animation: 10s linear 0.5s infinite connect_circles;
   
+        @include desktop($screen_md) {
+          animation: 10s linear 0.5s infinite connect_circles;
+        }
+
+        @include mobile($screen_md) {
+          left: 50px;
+          bottom: 220px; 
+        }
+
         span {
           @include circle_position(32px, 32px);
-          animation: 10s ease-in-out 0.5s infinite connect_circles_side_2;
+
+          @include desktop($screen_md) {
+            animation: 10s ease-in-out 0.5s infinite connect_circles_side_2;
+          }
 
           i {
             background-color: $color_violet;
@@ -159,11 +243,21 @@
   
       &--3 {
         left: 417px;
-        animation: 8s linear 1.2s infinite connect_circles;
   
+        @include desktop($screen_md) {
+          animation: 8s linear 1.2s infinite connect_circles;
+        }
+
+        @include mobile($screen_md) {
+          left: 30px;
+        }
+
         span {
           @include circle_position(24px, 24px);
-          animation: 8s ease-in-out 1.2s infinite connect_circles_side_1;
+
+          @include desktop($screen_md) {
+            animation: 8s ease-in-out 1.2s infinite connect_circles_side_1;
+          }
   
           i {
             background-color: $color_blue;
@@ -173,11 +267,23 @@
 
       &--4 {
         right: 337px;
-        animation: 10s linear 0.4s infinite connect_circles;
-  
+
+        @include desktop($screen_md) {
+          animation: 10s linear 0.4s infinite connect_circles;
+        }
+
+        @include mobile($screen_md) {
+          right: 50%;
+          margin-right: -30px;
+          bottom: 60px;
+        }
+
         span {
           @include circle_position(12px, 12px);
-          animation: 10s ease-in-out 0.4s infinite connect_circles_side_2;
+
+          @include desktop($screen_md) {
+            animation: 10s ease-in-out 0.4s infinite connect_circles_side_2;
+          }
 
           i {
             background-color: $color_blue;
@@ -187,11 +293,22 @@
 
       &--5 {
         right: 231px;
-        animation: 8s linear 1.5s infinite connect_circles;
   
+        @include desktop($screen_md) {
+          animation: 8s linear 1.5s infinite connect_circles;
+        }
+
+        @include mobile($screen_md) {
+          right: 100px;
+          top: 40px;
+        }
+
         span {
           @include circle_position(24px, 24px);
-          animation: 8s ease-in-out 1.5s infinite connect_circles_side_1;
+
+          @include desktop($screen_md) {
+            animation: 8s ease-in-out 1.5s infinite connect_circles_side_1;
+          }
 
           i {
             background-color: $color_violet;
@@ -201,11 +318,22 @@
 
       &--6 {
         right: 20px;
-        animation: 11s linear 0s infinite connect_circles;
   
+        @include desktop($screen_md) {
+          animation: 11s linear 0s infinite connect_circles;
+        }
+
+        @include mobile($screen_md) {
+          right: 10px;
+          bottom: 100px;
+        }
+
         span {
           @include circle_position(34px, 34px);
-          animation: 11s ease-in-out 0s infinite connect_circles_side_2;
+
+          @include desktop($screen_md) {
+            animation: 11s ease-in-out 0s infinite connect_circles_side_2;
+          }
 
           i {
             border: 2px solid $color_dark;
@@ -214,11 +342,13 @@
       }
     }
 
-    &.active {
-      background-color: $color_blueLight_2;
-
-      #{$block}-circlesCont {
-        opacity: 1;
+    @include desktop($screen_md) {
+      &.active {
+        background-color: $color_blueLight_2;
+  
+        #{$block}-circlesCont {
+          opacity: 1;
+        }
       }
     }
   }

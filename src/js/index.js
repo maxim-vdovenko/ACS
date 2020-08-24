@@ -1,5 +1,6 @@
 window.onload = function() {
   loader.init()
+  acs.init()
   slider.init()
   select.init()
   shippingMethods.masonryItem() 
@@ -8,6 +9,7 @@ window.onload = function() {
   login.init()
   getStarted.init()
   termsService.init()
+  navigation.init()
 
   $('body').on('click', 'a', (e) => {
     const th = $(e.currentTarget)
@@ -29,11 +31,10 @@ loader.init = function() {
       $(this.bl).removeClass('active')
       this.launch()
     })
-  }, 1000)
+  }, 0) // 1000
 }
 
 loader.launch = function() {
-  acs.init()
   cloudLogistics.init()
   interNetwork.init()
   blockContainer.init()
@@ -97,6 +98,25 @@ parallaxAdd.act = function(section, element, y, duration) {
 
 
 
+const navigation = {
+  button: '.header__nav'
+}
+
+navigation.init = function() {
+
+  $('body').on('click', this.button, (e) => {
+    const th = $(e.currentTarget)
+
+    if (th.hasClass('active')) {
+      th.removeClass('active')
+    } else {
+      th.addClass('active')
+    }
+  })
+}
+
+
+
 const select = {
   bl: '.select',
   sel: 'select',
@@ -140,6 +160,7 @@ select.changePosition = function() {
 
 
 const acs = {
+  bl: '.acs',
   mask: '.acs__mask',
   circles: '.acs__circles',
   textBox: '.acs .textBox'

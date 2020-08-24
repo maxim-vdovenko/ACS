@@ -8,11 +8,11 @@
     min-height: 108px;
 
     @include mobile($screen_xl) {
-      min-height: 90px;
+      min-height: 95px;
     }
 
-    @include mobile($screen_sm) {
-      min-height: 50px;
+    @include mobile($screen_md) {
+      min-height: 84px;
     }
   }
 
@@ -53,6 +53,10 @@
     &:nth-child(3) {
       flex: none;
       align-items: flex-end;
+
+      @include mobile($screen_md) {
+        flex-direction: row;
+      }
     }
   }
 
@@ -69,15 +73,10 @@
     }
 
     @media (max-width: 1640px) { 
-      width: 50px;
-      height: 50px;
+      width: 48px;
+      height: 48px;
       top: auto;
       background-size: auto 100%;
-    }
-
-    @include mobile($screen_sm) {
-      width: 36px;
-      height: 36px;
     }
   }
 
@@ -133,6 +132,65 @@
 
     .button {
       min-width: 140px;
+    }
+  }
+
+  &__user {
+    @include image('user.svg', 30px 30px, center);
+    display: none;
+    width: 48px;
+    height: 48px;
+    border-radius: 1000px;
+    background-color: $color_blueLight;
+    cursor: pointer;
+
+    @include mobile($screen_md) {
+      @include flex();
+    }
+  }
+
+  &__nav {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    margin-left: 18px;
+    border-radius: 1000px;
+    background-color: $color_blue;
+    transition: box-shadow 0.3s;
+    box-shadow: 0 10px 25px 0 rgba(47, 130, 255, 0.4);
+    cursor: pointer;
+
+    @include mobile($screen_md) {
+      @include flex();
+    }
+
+    span {
+      @include block();
+      width: 18px;
+      height: 2px;
+      margin: 2px 0;
+      border-radius: 100px;
+      background-color: $color_white;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    &.active {
+      box-shadow: 0 10px 25px 0 rgba(47, 130, 255, 0.8);
+
+      span {
+        &:nth-child(1) {
+          transform: translate(0px, 6px) rotate(-45deg);
+        }
+        &:nth-child(2) {
+          opacity: 0;
+        }
+        &:nth-child(3) {
+          transform: translate(0px, -6px) rotate(45deg);
+        }
+      }
     }
   }
 }
