@@ -7,7 +7,7 @@
   }
 
   @include mobile($screen_md) {
-    margin-top: 96px;
+    margin-top: 120px;
   }
 
   .row {
@@ -16,12 +16,21 @@
     }
 
     &:nth-child(1) {
+
       .col {
         flex: none;
         width: 50%;
 
         &:nth-child(2) {
           padding: 17px 0 0 30px;
+
+          @include mobile($screen_md) {
+            padding: 50px 0 0 0;
+          }
+        }
+
+        @include mobile($screen_md) {
+          width: 100%;
         }
       }
     }
@@ -29,17 +38,31 @@
     &:nth-child(2) {
       margin-top: 100px;
 
+      @include mobile($screen_md) {
+        margin-top: 0;
+      }
+
       .col {
         flex: none;
         
         &:nth-child(1) {
           width: 70%;
           padding: 7px 40px 0 0;
+
+          @include mobile($screen_md) {
+            width: 100%;
+            padding: 0;
+          }
         }
 
         &:nth-child(2) {
           width: 30%;
           padding-left: 2px;
+
+          @include mobile($screen_md) {
+            width: 100%;
+            padding-left: 0;
+          }
         }
       }
     }
@@ -66,6 +89,12 @@
         }
       }
     }
+
+    @include mobile($screen_md) {
+      .colorBlue {
+        color: $color_text_blue;
+      }
+    }
   }
 
   &__image {
@@ -73,6 +102,15 @@
     width: 458px;
     height: 461px;
     margin-top: 35px;
+
+    @include mobile($screen_md) {
+      margin: 0 auto;
+    }
+
+    @include mobile($screen_sm) {
+      width: 320px;
+      height: 340px;
+    }
   }
 
   &__img {
@@ -130,19 +168,36 @@
     width: 0;
     height: 0;
 
+    @include mobile($screen_md) {
+      z-index: 1;
+    }
+
     span {
       position: absolute;
+
+      @include mobile($screen_md) {
+        transform: translate3d(0, 0, 0) !important;
+      }
 
       i {
         @include position(absolute, 0, 0, 100%, 100%);
         border-radius: 1000px;
         transition: transform 0.15s;
+
+        @include mobile($screen_md) {
+          transform: translate3d(0, 0, 0) translate(0, 0) !important;
+        }
       }
     }
 
     &--1 {
       top: 20px;
       right: 250px;
+
+      @include mobile($screen_md) {
+        top: -40px;
+        right: 200px;
+      }
 
       span {
         @include circle_position(16px, 16px);
@@ -157,6 +212,11 @@
       top: 30px;
       right: 180px;
 
+      @include mobile($screen_md) {
+        top: 50px;
+        right: 80px;
+      }
+
       span {
         @include circle_position(32px, 32px);
 
@@ -169,6 +229,11 @@
     &--3 {
       bottom: 60px;
       left: -100px;
+
+      @include mobile($screen_md) {
+        bottom: 10px;
+        left: 5px;
+      }
 
       span {
         @include circle_position(48px, 48px);

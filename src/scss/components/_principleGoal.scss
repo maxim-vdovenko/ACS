@@ -63,5 +63,11 @@
         }
       }
     }
+
+    @include mobile($screen_md) {
+      .colorBlue {
+        color: $color_text_blue;
+      }
+    }
   }
 }

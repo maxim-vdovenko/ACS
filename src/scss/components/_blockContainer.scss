@@ -280,6 +280,11 @@
     margin-top: 226px;
     margin-bottom: 110px;
 
+    @include mobile($screen_md) {
+      margin-top: 60px;
+      margin-bottom: 80px;
+    }
+
     .row {
       
       &:nth-child(2n + 0) .col {
@@ -291,6 +296,10 @@
         &:nth-child(2) {
           order: 1;
           padding: 0 0 0 30px;  
+
+          @include mobile($screen_md) {
+            padding: 0;  
+          }
         }
       }
 
@@ -309,6 +318,10 @@
 
       &:not(:last-child) {
         margin-bottom: 227px;
+
+        @include mobile($screen_md) {
+          margin-bottom: 100px;
+        }
       }
     }
   }
@@ -1573,6 +1586,18 @@
       width: 452px;
       height: 263px;
 
+      @include mobile($screen_md) {
+        top: auto;
+        right: auto;
+        margin: 0 auto 30px auto;
+      }
+
+      @include mobile($screen_sm) {
+        width: 300px;
+        height: 178px;
+        margin-bottom: 20px;
+      }
+
       span {
         &:nth-child(1) {
           &:before {
@@ -1620,6 +1645,18 @@
       left: 0;
       width: 400px;
       height: 262px;
+
+      @include mobile($screen_md) {
+        top: auto;
+        right: auto;
+        margin: 0 auto 30px auto;
+      }
+
+      @include mobile($screen_sm) {
+        width: 300px;
+        height: 200px;
+        margin-bottom: 20px;
+      }
 
       span {
         &:nth-child(1) {
