@@ -8,8 +8,9 @@
     margin-top: -95px;
   }
 
-  @include mobile($screen_sm) {
-    margin-top: -50px;
+  @include mobile($screen_md) {
+    margin-top: 0;
+    min-height: auto;
   }
 
   &:after {
@@ -21,8 +22,8 @@
       top: 50px;
     }
   
-    @include mobile($screen_sm) {
-      top: 10px;
+    @include mobile($screen_md) {
+      top: -40px;
     }
   }
 
@@ -32,6 +33,10 @@
 
   .row {
     min-height: inherit;
+
+    @include mobile($screen_md) {
+      flex-direction: column;
+    }
   }
 
   .col {
@@ -44,19 +49,38 @@
       padding-top: 90px;
     }
   
-    @include mobile($screen_sm) {
-      padding-top: 50px;
+    @include mobile($screen_md) {
+      width: 100%;
     }
+
     &:nth-child(1) {
       padding-right: 30px;
+
+      @include mobile($screen_md) {
+        padding: 86px 0 50px 0;
+      }
+
+      @include mobile($screen_sm) {
+        padding-bottom: 90px;
+      }
     }
+
     &:nth-child(2) {
       padding-left: 90px;
+
+      @include mobile($screen_md) {
+        padding: 0 0 100px 0;
+      }
     }
   }
 
   .titleBox {
     margin-top: 117px;
+
+    @include mobile($screen_md) {
+      margin-top: 0;
+      text-align: center;
+    }
   }
 
   &__fon {
@@ -66,15 +90,30 @@
     width: 10000px;
     height: 100%;
     background-color: $color_blueLight_2;
+
+    @include mobile($screen_md) {
+      width: auto;
+      left: -$padding_sides; 
+      right: -$padding_sides;
+    }
   }
 
   &__slider {
     @include block();
+    width: 100%;
     max-width: 480px;
     margin: 108px 0 50px 0;
 
+    @include mobile($screen_md) {
+      margin: 90px auto 0 auto;
+    }
+
     &-box {
       @include inline_block();
+
+      @include mobile($screen_md) {
+        vertical-align: top;
+      }
 
       img {
         @include block();
@@ -84,25 +123,34 @@
 
       h4 {
         margin-bottom: 13px;
-        transition: transform 0.6s, opacity 0.6s;
-        transform: translateY(20px);
-        transition-delay: 0.05s;
-        opacity: 0;
       }
 
       p {
         font-size: 12px;
         line-height: 20px;
-        transition: transform 0.6s, opacity 0.6s;
-        transform: translateY(20px);
-        transition-delay: 0.1s;
-        opacity: 0;
       }
 
-      &.slick-active {
-        h4, p {
-          transform: translateY(0);
-          opacity: 1;
+      @include desktop($screen_md) {
+        h4 {
+          transition: transform 0.6s, opacity 0.6s;
+          transform: translateY(20px);
+          transition-delay: 0.05s;
+          opacity: 0;
+        }
+        p {
+          transition: transform 0.6s, opacity 0.6s;
+          transform: translateY(20px);
+          transition-delay: 0.1s;
+          opacity: 0;
+        }
+      }
+
+      @include desktop($screen_md) {
+        &.slick-active {
+          h4, p {
+            transform: translateY(0);
+            opacity: 1;
+          }
         }
       }
     }
@@ -110,11 +158,19 @@
     .slick-list {
       overflow: hidden;
       padding-bottom: 42px;
+
+      @include mobile($screen_md) {
+        padding-bottom: 0;
+      }
     }
 
     .slick-dots {
       @include flex();
       z-index: 1;
+
+      @include mobile($screen_md) {
+        margin-top: 40px;
+      }
     
       li {
         @include flex();
@@ -163,6 +219,10 @@
     max-width: 480px;
     margin: auto 0 48px 0;
 
+    @include mobile($screen_md) {
+      margin: 100px auto 0 auto;
+    }
+
     .reviews__box {
       opacity: 1;
       transition: none;
@@ -187,6 +247,14 @@
     flex-wrap: wrap;
     margin: 50px 0 50px 0;
 
+    @include mobile($screen_md) {
+      margin-bottom: 40px;
+    }
+    
+    @include mobile($screen_sm) {
+      display: block;
+    }
+
     &-box {
       @include flex();
       flex-direction: column;
@@ -194,11 +262,28 @@
       width: 50%;
       padding-bottom: 23px;
 
+      @include mobile($screen_sm) {
+        width: 100%;
+      }
+
       &:nth-child(2n + 1) {
         padding-right: 18px;
+
+        @include mobile($screen_sm) {
+          padding-right: 0;
+        }
       }
+
       &:nth-child(2n + 0) {
         padding-left: 18px;
+
+        @include mobile($screen_sm) {
+          padding-left: 0;
+        }
+      }
+
+      &--button {
+        margin-top: 40px;
       }
     }
 
@@ -211,6 +296,11 @@
   &__info {
     @include inline_block();
     margin: auto 0 43px 0;
+
+    @include mobile($screen_sm) {
+      text-align: center;
+      margin: 0 0 0 0;
+    }
 
     span {
       @include inline_block();
@@ -231,12 +321,33 @@
     margin-left: 790px;
     z-index: 1;
 
+    @include mobile($screen_md) {
+      top: 780px;
+      left: auto;
+      right: -60px;
+      width: 150px;
+      height: 250px;
+      margin-left: 0;
+    }
+
+    @include mobile($screen_sm) {
+      top: 1250px;
+    }
+
     span {
       @include position(absolute, 0, 0, 100%, 100%);
+
+      @include mobile($screen_md) {
+        transform: translate3d(0, 0, 0) !important;
+      }
 
       i {
         @include position(absolute, 0, 0, 100%, 100%);
         transition: transform 0.15s;
+
+        @include mobile($screen_md) {
+          transform: translate3d(0, 0, 0) translate(0, 0) !important;
+        }
       }
 
       &:nth-child(1) {
@@ -247,6 +358,11 @@
       &:nth-child(2) {
         top: 40px;
         left: 10px;
+
+        @include mobile($screen_md) {
+          top: 0;
+          left: 0;
+        }
 
         i {
           @include image('get-started/circles-2.svg', contain, 0 0);
