@@ -151,7 +151,7 @@ select.init = function() {
 }
 
 select.changePosition = function() {
-  const yWind = $(window).height()
+  const yWind = $('.total-container').height()
   const ySel = $(this.bl).height()
   const offsetSel = $(this.bl).offset().top
   const hPopup = 200

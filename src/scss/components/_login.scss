@@ -5,11 +5,12 @@
   z-index: 0;
 
   @include mobile($screen_xl) {
-    margin-top: -90px;
+    margin-top: -95px;
   }
 
-  @include mobile($screen_sm) {
-    margin-top: -50px;
+  @include mobile($screen_md) {
+    margin-top: 0;
+    min-height: auto;
   }
 
   &:after {
@@ -20,9 +21,9 @@
     @include mobile($screen_xl) {
       top: 50px;
     }
-  
-    @include mobile($screen_sm) {
-      top: 10px;
+
+    @include mobile($screen_md) {
+      top: -40px;
     }
   }
 
@@ -33,6 +34,10 @@
 
   .row {
     min-height: inherit;
+
+    @include mobile($screen_md) {
+      flex-direction: column;
+    }
   }
 
   .col {
@@ -45,31 +50,66 @@
     @include mobile($screen_xl) {
       padding-top: 90px;
     }
-  
-    @include mobile($screen_sm) {
-      padding-top: 50px;
+
+    &:nth-child(1) {
+      @include mobile($screen_md) {
+        display: none;
+      }
     }
 
     &:nth-child(2) {
       padding-left: 130px;
+
+      @include mobile($screen_xl) {
+        padding-left: 100px;
+      }
+
+      @include mobile($screen_lg) {
+        padding-left: 60px;
+      }
+
+      @include mobile($screen_md) {
+        width: 100%;
+        padding: 86px 0 40px 0;
+      }
     }
   }
 
   .titleBox {
     margin-top: 117px;
     margin-bottom: 23px;
+
+    @include mobile($screen_md) {
+      margin-top: 0;
+      margin-bottom: 25px;
+      text-align: center;
+    }
+  }
+
+  .textBox {
+    @include mobile($screen_md) {
+      text-align: center;
+    }
   }
 
   &__fon {
     @include position(absolute, 0, 0, 50%, 100%);
     @include image('login-fon.jpg', cover, center);
     z-index: 1;
+
+    @include mobile($screen_md) {
+      display: none;
+    }
   }
 
   &__text {
     @include block();
     max-width: 520px;
     margin-top: 132px;
+
+    @include mobile($screen_md) {
+      display: none;
+    }
 
     p {
       font-family: 'Raleway', sans-serif;
@@ -86,6 +126,10 @@
     max-width: 340px;
     margin: auto 0 48px 0;
 
+    @include mobile($screen_md) {
+      display: none;
+    }
+
     .reviews__box {
       opacity: 1;
       transition: none;
@@ -101,6 +145,12 @@
     margin-top: 66px;
     margin-bottom: 40px;
 
+    @include mobile($screen_md) {
+      margin: 30px auto 40px auto;
+      width: 100%;
+      max-width: 500px;
+    }
+
     &-box {
       @include block();
 
@@ -113,6 +163,14 @@
         align-items: center;
         justify-content: space-between;
         margin-top: 60px;
+
+        @include mobile($screen_md) {
+          flex-direction: column;
+
+          .button  {
+            margin-bottom: 50px;
+          }
+        }
       }
     }
 
@@ -131,6 +189,11 @@
   &__info {
     @include inline_block();
     margin: auto 0 43px 0;
+
+    @include mobile($screen_md) {
+      margin: 45px 0 0 0;
+      text-align: center;
+    }
 
     span {
       @include inline_block();
@@ -162,12 +225,29 @@
     height: 448px;
     margin-left: 810px;
 
+    @include mobile($screen_md) {
+      top: -80px;
+      left: auto;
+      right: -50px;
+      width: 130px;
+      height: 220px;
+      margin-left: 0;
+    }
+
     span {
       @include position(absolute, 0, 0, 100%, 100%);
+
+      @include mobile($screen_md) {
+        transform: translate3d(0, 0, 0) !important;
+      }
 
       i {
         @include position(absolute, 0, 0, 100%, 100%);
         transition: transform 0.15s;
+
+        @include mobile($screen_md) {
+          transform: translate3d(0, 0, 0) translate(0, 0) !important;
+        }
       }
 
       &:nth-child(1) {
@@ -178,6 +258,11 @@
       &:nth-child(2) {
         top: 20px;
         left: -10px;
+
+        @include mobile($screen_md) {
+          top: 0;
+          left: 0;
+        }
 
         i {
           @include image('login/circles-2.svg', contain, 0 0);
