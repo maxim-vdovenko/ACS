@@ -8,6 +8,7 @@ window.onload = function() {
   trackPurchases.sliderFn()
   login.init()
   getStarted.init()
+  contactUs.init()
   termsService.init()
   navigation.init()
 
@@ -45,6 +46,7 @@ loader.launch = function() {
   mailForwarding.init()
   fulfillmentProcess.init()
   strategyInfo.init()
+  principleGoal.init()
   orderAdvantages.init()
   faq.init()
   assistedPurchase.init()
@@ -61,6 +63,10 @@ loader.launch = function() {
   comprehensiveSolution.init()
   connectManufacturers.init()
   positiveFinancial.init()
+  professionalPrinciples.init()
+  aboutUs.init()
+  serviceDream.init()
+  shippingAgents.init()
 }
 
 
@@ -259,7 +265,9 @@ const blockContainer = {
   compliance: '.blockContainer__animation--compliance',
   crossBorderShipping: '.blockContainer__animation--crossBorderShipping',
   yourConnections: '.blockContainer__animation--yourConnections',
-  increasedExposure: '.blockContainer__animation--increasedExposure'
+  increasedExposure: '.blockContainer__animation--increasedExposure',
+  ourMission: '.blockContainer__animation--ourMission',
+  ourCulture: '.blockContainer__animation--ourCulture'
 }
 
 blockContainer.init = function() {
@@ -284,6 +292,8 @@ blockContainer.init = function() {
   animationAdd.act(this.crossBorderShipping, $(this.crossBorderShipping).outerHeight() / 2)
   animationAdd.act(this.yourConnections, $(this.yourConnections).outerHeight() / 2)
   animationAdd.act(this.increasedExposure, $(this.increasedExposure).outerHeight() / 2)
+  animationAdd.act(this.ourMission, $(this.ourMission).outerHeight())
+  animationAdd.act(this.ourCulture, $(this.ourCulture).outerHeight())
 }
 
 
@@ -383,6 +393,23 @@ const shipping = {
       '.successfulStrategy__circles--2',
       '.successfulStrategy__circles--3'
     ]
+  },
+  ourTeam: {
+    bl: '.ourTeam',
+    mask: '.ourTeam__mask',
+    text: '.ourTeam .textBox',
+    circles: [
+      '.ourTeam__circles--1',
+      '.ourTeam__circles--2',
+      '.ourTeam__circles--3'
+    ]
+  },
+  serviceDream: {
+    circles: [
+      '.serviceDream__circles--1',
+      '.serviceDream__circles--2',
+      '.serviceDream__circles--3'
+    ]
   }
 }
 
@@ -429,6 +456,16 @@ shipping.init = function() {
   parallaxAdd.act(this.successfulStrategy.circles[1], this.successfulStrategy.circles[1] + ' span', '-200px', '100%')
   parallaxAdd.act(this.successfulStrategy.circles[2], this.successfulStrategy.circles[2] + ' span', '-150px', '100%')
   
+  animationAdd.act(this.ourTeam.mask, $(this.ourTeam.mask).outerHeight() / 4)
+  animationAdd.act(this.ourTeam.text, $(this.ourTeam.text).outerHeight() / 2)
+  parallaxAdd.act(this.ourTeam.circles[0], this.ourTeam.circles[0] + ' span', '-450px', '100%')
+  parallaxAdd.act(this.ourTeam.circles[1], this.ourTeam.circles[1] + ' span', '-200px', '100%')
+  parallaxAdd.act(this.ourTeam.circles[2], this.ourTeam.circles[2] + ' span', '-150px', '100%')
+
+  parallaxAdd.act(this.serviceDream.circles[0], this.serviceDream.circles[0] + ' span', '-200px', '100%')
+  parallaxAdd.act(this.serviceDream.circles[1], this.serviceDream.circles[1] + ' span', '-100px', '100%')
+  parallaxAdd.act(this.serviceDream.circles[2], this.serviceDream.circles[2] + ' span', '-50px', '100%')
+
   $('body').on('mousemove', (e) => {
     const x = e.originalEvent.clientX / 60
     const y = e.originalEvent.clientY / 50
@@ -440,6 +477,8 @@ shipping.init = function() {
     animationCircles(this.amazonInfo.circles)
     animationCircles(this.amazonProduct.circles)
     animationCircles(this.successfulStrategy.circles)
+    animationCircles(this.ourTeam.circles)
+    animationCircles(this.serviceDream.circles)
 
     function animationCircles (circles) {
       window.requestAnimationFrame(() => {
@@ -630,6 +669,17 @@ const strategyInfo = {
 }
 
 strategyInfo.init = function() {
+  animationAdd.act(this.textBox, $(this.textBox).outerHeight() / 2)
+}
+
+
+
+const principleGoal = {
+  bl: '.principleGoal',
+  textBox: '.principleGoal .textBox'
+}
+
+principleGoal.init = function() {
   animationAdd.act(this.textBox, $(this.textBox).outerHeight() / 2)
 }
 
@@ -1083,6 +1133,16 @@ positiveFinancial.init = function() {
 
 
 
+const professionalPrinciples = {
+  list: '.professionalPrinciples__list'
+}
+
+professionalPrinciples.init = function() {
+  animationAdd.act(this.list, $(this.list).outerHeight() / 2)
+}
+
+
+
 const login = {
   circles: '.login__circles'
 }
@@ -1181,4 +1241,90 @@ termsService.init = function() {
       })
     })
   }
+}
+
+
+
+const contactUs = {
+  circles: '.contactUs__circles'
+}
+
+contactUs.init = function() {
+
+  if ($(this.circles).length) {
+    parallaxAdd.act(this.circles, this.circles + ' span:nth-child(1)', '-200px', '100%')
+    parallaxAdd.act(this.circles, this.circles + ' span:nth-child(2)', '-300px', '100%')
+  
+    $('body').on('mousemove', (e) => {
+      const x = e.originalEvent.clientX / 80
+      const y = e.originalEvent.clientY / 70
+  
+      window.requestAnimationFrame(() => {
+        for (let i = 0; i < $(this.circles + ' span').length; i++) {
+          $(this.circles + ' span').eq(i).find('i').css({
+            'transform': 'translate3d(0, 0, 0) translate('  + ((i + 1) * x) + 'px, ' + ((i + 1) * y) + 'px)',
+          })
+        }
+      })
+    })
+  }
+}
+
+
+
+const aboutUs = {
+  img: '.aboutUs__img',
+  textBox: '.aboutUs .textBox',
+  circles: '.aboutUs__circles'
+}
+
+aboutUs.init = function() {
+  $(this.img).addClass('active')
+  $(this.textBox).addClass('active')
+  parallaxAdd.act(this.circles, this.circles + ' span:nth-child(1)', '-280px', '100%')
+  parallaxAdd.act(this.circles, this.circles + ' span:nth-child(2)', '-400px', '100%')
+
+  $('body').on('mousemove', (e) => {
+    const x = e.originalEvent.clientX / 70
+    const y = e.originalEvent.clientY / 50
+    const xImg = e.originalEvent.clientX / 300
+    const yImg = e.originalEvent.clientY / 300
+
+    window.requestAnimationFrame(() => {
+      for (let i = 0; i < $(this.img + ' span').length; i++) {
+        $(this.img + ' span').eq(i).find('i').css({
+          'transform': 'translate3d(0, 0, 0) translate('  + ((i + 1) * xImg) + 'px, ' + ((i + 1) * yImg) + 'px)',
+        })
+      }
+      for (let i = 0; i < $(this.circles + ' span').length; i++) {
+        $(this.circles + ' span').eq(i).find('i').css({
+          'transform': 'translate3d(0, 0, 0) translate('  + ((i + 1) * x) + 'px, ' + ((i + 1) * y) + 'px)',
+        })
+      }
+    })
+  })
+}
+
+
+
+const serviceDream = {
+  img: '.serviceDream__img',
+  textBox: '.serviceDream-textBoxColor'
+}
+
+serviceDream.init = function() {
+  animationAdd.act(this.img, $(this.img).outerHeight() / 2)
+  animationAdd.act(this.textBox, $(this.textBox).outerHeight())
+}
+
+
+
+const shippingAgents = {
+  img: '.shippingAgents__img',
+  textBox: '.shippingAgents__advantages'
+}
+
+shippingAgents.init = function() {
+  animationAdd.act(this.img, $(this.img).outerHeight() / 2)
+  animationAdd.act(this.textBox, $(this.textBox).outerHeight())
 }

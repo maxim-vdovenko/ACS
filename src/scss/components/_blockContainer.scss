@@ -276,6 +276,43 @@
     }
   }
 
+  &--aboutUs {
+    margin-top: 226px;
+    margin-bottom: 110px;
+
+    .row {
+      
+      &:nth-child(2n + 0) .col {
+
+        &:nth-child(1) {
+          order: 0;
+        }
+  
+        &:nth-child(2) {
+          order: 1;
+          padding: 0 0 0 30px;  
+        }
+      }
+
+      &:nth-child(2n + 1) .col {
+
+        &:nth-child(1) {
+          order: 1;
+          padding: 0;  
+        }
+  
+        &:nth-child(2) { 
+          order: 0;
+          padding-left: 0;  
+        }
+      }
+
+      &:not(:last-child) {
+        margin-bottom: 227px;
+      }
+    }
+  }
+
   &--dropshipping {
     margin-top: 256px;
     margin-bottom: 144px;
@@ -1524,6 +1561,99 @@
           }
           &:nth-child(2):before {
             animation: 2.6s ease-in-out 1.6s infinite scaleCommerce_1; 
+          }
+        }
+      }
+    }
+
+    &--ourMission {
+      @include image('block-container/our-mission/element-1.svg', contain, 0 0);
+      top: 20px;
+      right: 0;
+      width: 452px;
+      height: 263px;
+
+      span {
+        &:nth-child(1) {
+          &:before {
+            @include image('block-container/our-mission/element-2.svg', contain, 0 0);
+          }
+        }
+        &:nth-child(2) {
+          &:before {
+            @include image('block-container/our-mission/element-3.svg', contain, 0 0);
+          }
+        }
+
+        @include desktop($screen_md) {
+          &:nth-child(1) {
+            transform: translate(-30px, -30px);
+            transition-delay: 0.3s;
+            opacity: 0;
+          }
+          &:nth-child(2) {
+            transform: translate(30px, -30px);
+            transition-delay: 0.1s;
+            opacity: 0;
+          }
+        }
+      }
+
+      @include desktop($screen_md) {
+        &.active span {
+          transform: translate(0, 0);
+          opacity: 1;
+  
+          &:nth-child(1):before {
+            animation: 2.6s ease-in-out 1.6s infinite scaleCommerce_2; 
+          }
+          &:nth-child(2):before {
+            animation: 2.6s ease-in-out 1.6s infinite scaleCommerce_1; 
+          }
+        }
+      }
+    }
+
+    &--ourCulture {
+      @include image('block-container/our-culture/element-1.svg', contain, 0 0);
+      top: 5px;
+      left: 0;
+      width: 400px;
+      height: 262px;
+
+      span {
+        &:nth-child(1) {
+          &:before {
+            @include image('block-container/our-culture/element-2.svg', contain, 0 0);
+          }
+        }
+        &:nth-child(2) {
+          &:before {
+            @include image('block-container/our-culture/element-3.svg', contain, 0 0);
+          }
+        }
+
+        @include desktop($screen_md) {
+          &:nth-child(1) {
+            transform: translate(-30px, 30px);
+            transition-delay: 0.3s;
+            opacity: 0;
+          }
+          &:nth-child(2) {
+            transform: translate(-10px, -30px);
+            transition-delay: 0.1s;
+            opacity: 0;
+          }
+        }
+      }
+
+      @include desktop($screen_md) {
+        &.active span {
+          transform: translate(0, 0);
+          opacity: 1;
+  
+          &:nth-child(2):before {
+            animation: 2.2s ease-in-out infinite internationalShipping;
           }
         }
       }

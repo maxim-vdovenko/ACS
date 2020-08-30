@@ -1,0 +1,103 @@
+.shippingAgents {
+  @include block();
+  background-color: $color_blueLight_2;
+  padding-top: 122px;
+  padding-bottom: 144px;
+
+  .col {
+
+    &:nth-child(1) {
+      padding-right: 30px;
+    }
+
+    &:nth-child(2) {
+      padding-left: 30px;
+    }
+  }
+
+  .titleBox {
+    max-width: 740px;
+    margin: 0 auto 85px auto;
+    text-align: center;
+  }
+
+  &__img {
+    @include block();
+    height: 281px;
+    margin-top: 70px;
+
+    span {
+      @include position(absolute, 0, 0, 100%, 100%);
+
+      &:nth-child(1) { 
+        @include image('shipping-agents/element-1.svg', contain, center);
+        transition-delay: 0.1s;
+        z-index: 1;
+      }
+      &:nth-child(2) { 
+        @include image('shipping-agents/separator-1.svg', contain, center);
+        transition-delay: 0.2s;
+      }
+      &:nth-child(3) { 
+        @include image('shipping-agents/element-2.svg', contain, center);
+        transition-delay: 0.3s;
+        z-index: 1;
+      }
+      &:nth-child(4) { 
+        @include image('shipping-agents/separator-2.svg', contain, center);
+        transition-delay: 0.4s;
+      }
+      &:nth-child(5) { 
+        @include image('shipping-agents/element-3.svg', contain, center);
+        transition-delay: 0.5s;
+        z-index: 1;
+      }
+      &:nth-child(6) { 
+        @include image('shipping-agents/separator-3.svg', contain, center);
+        transition-delay: 0.6s;
+      }
+      &:nth-child(7) { 
+        @include image('shipping-agents/element-4.svg', contain, center);
+        transition-delay: 0.7s;
+        z-index: 1;
+      }
+
+      @include desktop($screen_md) {
+        transition: all 0.85s;
+        opacity: 0;
+      }
+    }
+
+    @include desktop($screen_md) {
+      &.active span {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__advantages {
+    @include block();
+    max-width: 740px;
+    margin: 97px auto 0 auto;
+    text-align: center;
+
+    @include desktop($screen_sm) {
+      .colorBlue {
+        transition: color 1s;
+        color: $color_text_main;
+      }
+  
+      &.active {
+        .colorBlue {
+          color: $color_text_blue;
+        }
+      }
+    }
+  }
+
+  &__button {
+    @include flex();
+    justify-content: center;
+    margin-top: 97px;
+  }
+}

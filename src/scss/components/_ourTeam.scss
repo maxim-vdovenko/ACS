@@ -1,0 +1,128 @@
+.ourTeam {
+  @include block();
+  margin-top: 215px;
+
+  .row {
+    min-height: 778px;
+    align-items: center;
+  }
+
+  .col {
+    &:nth-child(1) {
+      order: 1;
+    }
+    &:nth-child(2) {
+      order: 0;
+      flex: none;
+      max-width: 600px;
+      padding-top: 10px;
+    }
+  }
+
+  .textBox {
+    padding-right: 60px;
+
+    h2 {
+      transform: translateY(50px);
+      transition: all 0.8s;
+      transition-delay: 0.3s;
+      opacity: 0;
+    }
+    p {
+      transform: translateY(30px);
+      transition: all 0.8s;
+      transition-delay: 0.6s;
+      opacity: 0;
+    }
+
+    &.active {
+      h2 {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      p {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+  }
+
+  &__img {
+    @include inline_block();
+
+    img {
+      max-width: 690px;
+    }
+  }
+
+  &__mask {
+    position: absolute;
+    top: 0;
+    right: 50%;
+    width: 10000px;
+    height: 100%;
+    background-color: $color_blueLight_2;
+    transition: all 1.5s;
+    transform: translateX(-100vh);
+
+    &.active {
+     transform: translateX(0);
+     margin-right: -330px;
+    }
+  }
+
+  &__circles {
+    position: absolute;
+    width: 0;
+    height: 0;
+
+    span {
+      position: absolute;
+
+      i {
+        @include position(absolute, 0, 0, 100%, 100%);
+        border-radius: 1000px;
+        transition: transform 0.15s;
+      }
+    }
+
+    &--1 {
+      top: 140px;
+      right: 200px;
+
+      span {
+        @include circle_position(16px, 16px);
+
+        i {
+          background-color: $color_blue;
+        }
+      }
+    }
+
+    &--2 {
+      top: 100px;
+      left: 120px;
+
+      span {
+        @include circle_position(32px, 32px);
+
+        i {
+          background-color: $color_red;
+        }
+      }
+    }
+
+    &--3 {
+      bottom: 70px;
+      left: 200px;
+
+      span {
+        @include circle_position(48px, 48px);
+
+        i {
+          background-color: $color_yellow;
+        }
+      }
+    }
+  }
+}

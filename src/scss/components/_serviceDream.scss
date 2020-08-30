@@ -1,0 +1,182 @@
+.serviceDream {
+  @include block();
+  margin-top: 260px;
+
+  @include mobile($screen_lg) {
+    margin-top: 150px;
+  }
+
+  @include mobile($screen_md) {
+    margin-top: 96px;
+  }
+
+  .row {
+    @include mobile($screen_md) {
+      flex-direction: column;
+    }
+
+    &:nth-child(1) {
+      .col {
+        flex: none;
+        width: 50%;
+
+        &:nth-child(2) {
+          padding: 17px 0 0 30px;
+        }
+      }
+    }
+
+    &:nth-child(2) {
+      margin-top: 100px;
+
+      .col {
+        flex: none;
+        
+        &:nth-child(1) {
+          width: 70%;
+          padding: 7px 40px 0 0;
+        }
+
+        &:nth-child(2) {
+          width: 30%;
+          padding-left: 2px;
+        }
+      }
+    }
+  }
+
+  .textBox {
+    h4 {
+      margin-bottom: 44px;
+
+      @include mobile($screen_md) {
+        margin-bottom: 40px;
+      }
+    }
+
+    @include desktop($screen_sm) {
+      .colorBlue {
+        transition: color 1s;
+        color: $color_text_main;
+      }
+  
+      &.active {
+        .colorBlue {
+          color: $color_text_blue;
+        }
+      }
+    }
+  }
+
+  &__image {
+    @include block();
+    width: 458px;
+    height: 461px;
+    margin-top: 35px;
+  }
+
+  &__img {
+    @include image('service-dream/element-1.svg', contain, 0 0);
+    @include position(absolute, 0, 0, 100%, 100%);
+    
+    span {
+      @include position(absolute, 0, 0, 100%, 100%);
+      transition: all 1s;
+
+      &:before {
+        @include position(absolute, 0, 0, 100%, 100%);
+        content: '';
+      }
+
+      &:nth-child(1) {
+        &:before {
+          @include image('service-dream/element-2.svg', contain, 0 0);
+        }
+      }
+      &:nth-child(2) {
+        &:before {
+          @include image('service-dream/element-3.svg', contain, 0 0);
+        }
+      }
+
+      @include desktop($screen_md) {
+        &:nth-child(1) {
+          transform: translate(0, 70px) scale(0.7);
+          transition-delay: 0.2s;
+          opacity: 0;
+        }
+        &:nth-child(2) {
+          transform: translate(0, 70px) scale(0.7);
+          transition-delay: 0s;
+          opacity: 0;
+        }
+      }
+    }
+
+    @include desktop($screen_md) {
+      &.active span {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+
+        &:nth-child(2):before {
+          animation: 2.2s ease-in-out infinite internationalShipping;
+        }
+      }
+    }
+  }
+
+  &__circles {
+    position: absolute;
+    width: 0;
+    height: 0;
+
+    span {
+      position: absolute;
+
+      i {
+        @include position(absolute, 0, 0, 100%, 100%);
+        border-radius: 1000px;
+        transition: transform 0.15s;
+      }
+    }
+
+    &--1 {
+      top: 20px;
+      right: 250px;
+
+      span {
+        @include circle_position(16px, 16px);
+
+        i {
+          background-color: $color_blue;
+        }
+      }
+    }
+
+    &--2 {
+      top: 30px;
+      right: 180px;
+
+      span {
+        @include circle_position(32px, 32px);
+
+        i {
+          background-color: $color_yellow;
+        }
+      }
+    }
+
+    &--3 {
+      bottom: 60px;
+      left: -100px;
+
+      span {
+        @include circle_position(48px, 48px);
+
+        i {
+          background-color: $color_blueLight_2;
+        }
+      }
+    }
+  }
+}

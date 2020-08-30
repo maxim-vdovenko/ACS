@@ -1,0 +1,134 @@
+@@include('parts/head.html', {"title" : ""})
+
+  <div class="total-container"> 
+
+    @@include('parts/header.html', {"menuIndex" : 7})
+
+
+    <div class="contactUs">
+
+      <div class="container">
+
+        <div class="contactUs__circles">
+          <span><i></i></span>
+          <span><i></i></span>
+        </div> 
+
+        <div class="row">
+
+          <div class="col">
+
+            <div class="titleBox"><h1>Contact Us</h1></div>
+
+            <ul class="contactUs__info">
+              <li class="contactUs__info-address"><span>120 N Racine Ave. Suite</span><span>100 Chicago, IL 60607</span></li>
+              <li class="contactUs__info-phone"><span>1-312-313-1104</span><span>1-844-474-4726</span></li>
+            </ul>
+
+            <form class="contactUs__form">
+
+              <div class="contactUs__form-box">
+
+                <div class="formBox">
+                  <span class="formBox__title">First Name*</span>
+                  <input class="formBox__input" type="text" placeholder="Enter First Name" /> 
+                  <span class="formBox__error">Must be present.</span>
+                </div>
+
+              </div>
+
+              <div class="contactUs__form-box">
+
+                <div class="formBox">
+                  <span class="formBox__title">Last Name*</span>
+                  <input class="formBox__input" type="text" placeholder="Enter Last Name" /> 
+                  <span class="formBox__error">Must be present.</span>
+                </div>
+
+              </div>
+
+              <div class="contactUs__form-box">
+
+                <div class="formBox">
+                  <span class="formBox__title">Email Address*</span>
+                  <input class="formBox__input" type="email" placeholder="Enter Email Address" /> 
+                  <span class="formBox__error">Must be present.</span>
+                </div>
+
+              </div>
+
+              <div class="contactUs__form-box">
+
+                <div class="formBox">
+                  <span class="formBox__title">Phone*</span>
+                  <input class="formBox__input" type="tel" placeholder="Enter Phone" /> 
+                  <span class="formBox__error">Must be present.</span>
+                </div>
+
+              </div>
+
+              <div class="contactUs__form-box">
+
+                <div class="formBox">
+                  <span class="formBox__title">Company Name*</span>
+                  <input class="formBox__input" type="text" placeholder="Enter Company Name" /> 
+                  <span class="formBox__error">Must be present.</span>
+                </div>
+
+              </div>
+
+              <div class="contactUs__form-box">
+
+                <div class="formBox">
+                  <span class="formBox__title">Current Monthly Shipments*</span>
+                  <div class="select">
+                    <select>
+                      <option>100-200</option>
+                      <option>300-400</option>
+                      <option>500-600</option>
+                    </select>
+                  </div>
+                  <span class="formBox__error">Must be present.</span>
+                </div>
+
+              </div>
+
+              <div class="contactUs__form-column contactUs__form-column--indent">
+
+                <div class="formBox">
+                  <span class="formBox__title">Comments*</span>
+                  <textarea class="formBox__textarea" placeholder="Enter Your Comments"></textarea>
+                  <span class="formBox__error">Must be present.</span>
+                </div>
+
+              </div>
+
+              <div class="contactUs__form-captcha">
+
+                <div class="captcha"></div>
+
+              </div>
+
+              <div class="contactUs__form-button">
+                <button class="button button--big">Contact Us</button>
+              </div>
+
+            </form>
+
+          </div>
+          
+        </div>  
+
+      </div>
+
+    </div>
+
+    <div class="contactUs-map">
+      <div class="contactUs-map-cont"></div>
+    </div>
+
+  </div>
+  
+@@include('parts/footer.html', {"menuIndex" : 7})
+@@include('parts/end.html')
+   

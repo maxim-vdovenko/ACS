@@ -1,0 +1,216 @@
+.professionalPrinciples {
+  @include block();
+  margin-top: 265px;
+
+  @include mobile($screen_lg) {
+    margin-top: 230px;
+  }
+
+  @include mobile($screen_md) {
+    margin-top: 100px;
+  }
+
+  .row {
+    @include mobile($screen_md) {
+      flex-direction: column;
+    }
+  }
+
+  .col {
+    width: 50%;
+
+    &:nth-child(2) {
+      align-items: flex-end;
+
+      @include mobile($screen_md) {
+        align-items: center;
+      }
+    }
+
+    @include mobile($screen_md) {
+      width: 100%;
+    }
+  }
+
+  .titleBox {
+    h2 {
+      @include mobile($screen_md) {
+        text-align: center;
+      }
+    }
+  }
+
+  &__list {
+    @include flex();
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    min-width: 1210px;
+    margin-top: -8px;
+
+    @include mobile($screen_lg) {
+      min-width: 980px;
+    }
+
+    @include mobile($screen_md) {
+      min-width: auto;
+      justify-content: center;
+      margin-top: 50px;
+    }
+
+    @include mobile($screen_sm) {
+      display: block;
+    }
+
+    li {
+      position: relative;
+      width: 240px;
+      min-height: 220px;
+      text-align: center;
+      margin: 0 0 25px 60px;
+      transition: transform 0.7s, opacity 0.7s;
+      transform: translateY(20px);
+      opacity: 0;
+
+      @include mobile($screen_md) {
+        margin: 0 30px 25px 30px;
+      }
+
+      @include mobile($screen_sm) {
+        min-height: auto;
+        margin: 0 15px 50px 15px;
+      }
+
+      span {
+        @include block();
+        width: 72px;
+        height: 72px;
+        margin: 0 auto 26px auto;
+  
+        &:before, &:after {
+          @include position(absolute, 0, 0, 100%, 100%);
+          content: '';
+        }
+  
+        &:before {
+          border-radius: 18px;
+        }
+      }
+
+      &:nth-child(2n + 0) {
+        span:before {
+          transform: rotate(15deg);
+        }
+      }
+      &:nth-child(2n + 1) {
+        span:before {
+          transform: rotate(-15deg);
+        }
+      }
+
+      &:nth-child(1) {
+        @include mobile($screen_md) {
+          display: none;
+        }
+      }
+      &:nth-child(2) {
+        @include mobile($screen_md) {
+          display: none;
+        }
+      }
+      &:nth-child(3) {
+        transition-delay: 0.1s;
+      }
+      &:nth-child(4) {
+        transition-delay: 0.25s;
+      }
+      &:nth-child(5) {
+        transition-delay: 0.4s;
+      }
+      &:nth-child(6) {
+        transition-delay: 0.55s;
+      }
+      &:nth-child(7) {
+        transition-delay: 0.7s;
+      }
+      &:nth-child(8) {
+        transition-delay: 0.85s;
+      }
+    }
+
+    &-transactions {
+      span {
+        &:before {
+          background-color: $color_blueLight;
+        }
+        &:after {
+          @include image('professional-principles/transactions.svg', 30px auto, center);
+        }
+      }
+    }
+
+    &-success {
+      span {
+        &:before {
+          background-color: $color_violet;
+          opacity: 0.2;
+        }
+        &:after {
+          @include image('professional-principles/success.svg', 30px auto, center);
+        }
+      }
+    }
+
+    &-service {
+      span {
+        &:before {
+          background-color: $color_cyan;
+          opacity: 0.2;
+        }
+        &:after {
+          @include image('professional-principles/service.svg', 30px auto, center);
+        }
+      }
+    }
+
+    &-technologies {
+      span {
+        &:before {
+          background-color: $color_violet;
+          opacity: 0.2;
+        }
+        &:after {
+          @include image('professional-principles/technologies.svg', 30px auto, center);
+        }
+      }
+    }
+
+    &-companies {
+      span {
+        &:before {
+          background-color: $color_red;
+          opacity: 0.2;
+        }
+        &:after {
+          @include image('professional-principles/companies.svg', 30px auto, center);
+        }
+      }
+    }
+
+    &-satisfied {
+      span {
+        &:before {
+          background-color: $color_yellow;
+          opacity: 0.2;
+        }
+        &:after {
+          @include image('professional-principles/satisfied.svg', 30px auto, center);
+        }
+      }
+    }
+
+    &.active li {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+}
