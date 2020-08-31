@@ -148,6 +148,10 @@ ol {
     ol {
       margin: -8px 0 0 50px;
 
+      @include mobile($screen_md) {
+        margin: -8px 0 0 0;
+      }
+
       li {
 
         &:not(:last-child) {

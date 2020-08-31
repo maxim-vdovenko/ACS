@@ -1,29 +1,10 @@
 .contactUs {
   @include block();
-  // min-height: 100vh;
-  // margin-top: -108px;
-  // z-index: 0;
-
-  // @include mobile($screen_xl) {
-  //   margin-top: -90px;
-  // }
-
-  // @include mobile($screen_sm) {
-  //   margin-top: -50px;
-  // }
 
   &:after {
     @include position(absolute, 0, -40px, 100%, 40px);
     box-shadow: 0px 12px 24px rgba(197, 228, 243, 0.4);
     content: '';
-
-    // @include mobile($screen_xl) {
-    //   top: 50px;
-    // }
-  
-    // @include mobile($screen_sm) {
-    //   top: 10px;
-    // }
   }
 
   .container {
@@ -32,32 +13,34 @@
 
   .row {
     min-height: inherit;
+
+    @include mobile($screen_md) {
+      flex-direction: column;
+    }
   }
 
   .col {
     min-height: inherit;
-    // padding-top: 108px;
     flex: none;
-
-    // @include mobile($screen_xl) {
-    //   padding-top: 90px;
-    // }
-  
-    // @include mobile($screen_sm) {
-    //   padding-top: 50px;
-    // }
 
     &:nth-child(1) {
       width: 58%;
       padding-right: 30px;
+
+      @include mobile($screen_md) {
+        width: 100%;
+        padding: 86px 0 0 0;
+      }
     }
-    // &:nth-child(2) {
-    //   width: 42%;
-    // }
   }
 
   .titleBox {
     margin-top: 117px;
+
+    @include mobile($screen_md) {
+      margin-top: 0;
+      text-align: center;
+    }
   }
 
   &__info {
@@ -65,10 +48,26 @@
     flex-wrap: wrap;
     margin-top: 55px;
 
+    @include mobile($screen_md) {
+      justify-content: center;
+    }
+
+    @include mobile($screen_xs) {
+      flex-direction: column;
+    }
+
     li {
       @include flex();
       flex-direction: column;
       padding-left: 48px;
+
+      @include mobile($screen_sm) {
+        padding-left: 45px;
+      }
+
+      @include mobile($screen_xs) {
+        margin-bottom: 20px;
+      }
 
       span {
         @include block();
@@ -82,11 +81,27 @@
 
       &:not(:last-child) {
         margin-right: 55px;
+
+        @include mobile($screen_sm) {
+          margin-right: 40px;
+        }
+
+        @include mobile($screen_xs) {
+          margin-right: 0;
+        }
       }
     }
 
     &-address {
       @include image('icon-address.svg', 22px 30px, 3px 2px);
+
+      @include mobile($screen_sm) {
+        background-position: 8px 2px;
+      }
+
+      @include mobile($screen_xs) {
+        background-position: 5px 2px;
+      }
     }
 
     &-phone { 
@@ -100,6 +115,19 @@
     margin: 120px 0 135px 0;
     max-width: 540px;
 
+    @include mobile($screen_md) {
+      margin: 60px 0 60px 0;
+      max-width: none;
+    }
+
+    @include mobile($screen_sm) {
+      display: block;
+    }
+
+    @include mobile($screen_xs) {
+      margin-top: 20px;
+    }
+
     &-box {
       @include flex();
       flex-direction: column;
@@ -109,9 +137,22 @@
 
       &:nth-child(2n + 1) {
         padding-right: 18px;
+
+        @include mobile($screen_sm) {
+          padding-right: 0;
+        }
       }
+
       &:nth-child(2n + 0) {
         padding-left: 18px;
+
+        @include mobile($screen_sm) {
+          padding-left: 0;
+        }
+      }
+
+      @include mobile($screen_sm) {
+        width: 100%;
       }
     }
 
@@ -124,6 +165,10 @@
 
       &--indent {
         margin-bottom: 32px;
+
+        @include mobile($screen_sm) {
+          margin-bottom: 5px;
+        }
       }
     }
 
@@ -133,6 +178,13 @@
       justify-content: flex-end;
       width: 63%;
       padding-right: 38px;
+
+      @include mobile($screen_sm) {
+        align-items: center;
+        width: 100%;
+        padding-right: 0;
+        margin-bottom: 28px;
+      }
     }
 
     &-button {
@@ -140,6 +192,11 @@
       flex-direction: column;
       justify-content: center;
       width: 37%;
+
+      @include mobile($screen_sm) {
+        display: block;
+        width: auto;
+      }
     }
 
     .button {
@@ -156,12 +213,28 @@
     height: 453px;
     margin-left: -1050px;
 
+    @include mobile($screen_md) {
+      top: -110px;
+      left: -80px;
+      width: 150px;
+      height: 250px;
+      margin-left: 0;
+    }
+
     span {
       @include position(absolute, 0, 0, 100%, 100%);
+
+      @include mobile($screen_md) {
+        transform: translate3d(0, 0, 0) !important;
+      }
 
       i {
         @include position(absolute, 0, 0, 100%, 100%);
         transition: transform 0.15s;
+
+        @include mobile($screen_md) {
+          transform: translate3d(0, 0, 0) translate(0, 0) !important;
+        }
       }
 
       &:nth-child(1) {
@@ -171,6 +244,10 @@
       }
       &:nth-child(2) {
         top: 20px;
+
+        @include mobile($screen_md) {
+          top: 0;
+        }
 
         i {
           @include image('contact-us/circles-2.svg', contain, 0 0);
@@ -191,8 +268,16 @@
       top: 95px;
     }
 
+    @include mobile($screen_lg) {
+      width: 41%;
+    }
+
     @include mobile($screen_md) {
-      top: 84px;
+      top: auto;
+      width: auto;
+      height: 300px;
+      position: relative;
+      display: block;
     }  
 
     &-cont {
