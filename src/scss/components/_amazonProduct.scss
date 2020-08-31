@@ -2,56 +2,99 @@
   @include block();
   margin-top: 217px;
 
+  @include mobile($screen_md) {
+    background-color: $color_blueLight_2;
+    margin-top: 250px;
+  }
+
   .row {
     min-height: 866px;
     align-items: center;
+
+    @include mobile($screen_md) {
+      flex-direction: column;
+      min-height: auto;
+    }
   }
 
   .col {
+
     &:nth-child(1) {
       width: 30%;
       padding-right: 60px;
       align-items: flex-end;
+
+      @include mobile($screen_md) {
+        width: 100%;
+        padding-right: 0;
+        margin-bottom: 50px;
+        align-items: center;
+      }
     }
+
     &:nth-child(2) {
       width: 70%;
       padding-top: 6px;
+
+      @include mobile($screen_md) {
+        width: 100%;
+        padding-top: 0;
+        margin-bottom: 90px;
+      }
     }
   }
 
   .textBox {
     width: 740px;
 
-    h2 {
-      transform: translateY(50px);
-      transition: all 0.8s;
-      transition-delay: 0.3s;
-      opacity: 0;
-    }
-    p {
-      transform: translateY(30px);
-      transition: all 0.8s;
-      transition-delay: 0.6s;
-      opacity: 0;
-    }
-
-    &.active {
+    @include desktop($screen_md) {
       h2 {
-        transform: translateY(0);
-        opacity: 1;
+        transform: translateY(50px);
+        transition: all 0.8s;
+        transition-delay: 0.3s;
+        opacity: 0;
       }
       p {
-        transform: translateY(0);
-        opacity: 1;
+        transform: translateY(30px);
+        transition: all 0.8s;
+        transition-delay: 0.6s;
+        opacity: 0;
       }
+
+      &.active {
+        h2 {
+          transform: translateY(0);
+          opacity: 1;
+        }
+        p {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+    }
+    
+    @include mobile($screen_lg) {
+      width: 600px;
+    }
+
+    @include mobile($screen_md) {
+      width: auto;
     }
   }
 
   &__img {
     @include inline_block();
 
+    @include mobile($screen_md) {
+      margin-top: -108px;
+    }
+
     img {
       max-width: 490px;
+
+      @include mobile($screen_md) {
+        max-width: 100%;
+      }
     }
   }
 
@@ -69,6 +112,10 @@
      transform: translateX(0);
      margin-left: -330px;
     }
+
+    @include mobile($screen_md) {
+      display: none;
+    }
   }
 
   &__circles {
@@ -79,16 +126,29 @@
     span {
       position: absolute;
 
+      @include mobile($screen_md) {
+        transform: translate3d(0, 0, 0) !important;
+      }
+
       i {
         @include position(absolute, 0, 0, 100%, 100%);
         border-radius: 1000px;
         transition: transform 0.15s;
+
+        @include mobile($screen_md) {
+          transform: translate3d(0, 0, 0) translate(0, 0) !important;
+        }
       }
     }
 
     &--1 {
       top: 175px;
       right: 140px;
+
+      @include mobile($screen_md) {
+        top: -40px;
+        right: 80px;
+      }
 
       span {
         @include circle_position(16px, 16px);
@@ -103,6 +163,13 @@
       top: 540px;
       left: 345px;
 
+      @include mobile($screen_md) {
+        top: auto;
+        left: auto;
+        bottom: 50px;
+        right: 50px;
+      }
+
       span {
         @include circle_position(34px, 34px);
 
@@ -115,6 +182,11 @@
     &--3 {
       bottom: 30px;
       left: 120px;
+
+      @include mobile($screen_md) {
+        bottom: 0;
+        left: 100px;
+      }
 
       span {
         @include circle_position(48px, 48px);

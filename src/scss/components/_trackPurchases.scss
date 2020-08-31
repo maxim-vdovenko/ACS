@@ -2,9 +2,42 @@
   @include block();
   margin-top: 150px;
 
+  .row {
+    @include mobile($screen_md) {
+      flex-direction: column;
+    }
+  }
+
   .col {
+
+    @include mobile($screen_md) {
+      width: 100%;
+      flex: none;
+    }
+
     &:nth-child(2) {
       padding: 62px 0 0 59px;
+
+      @include mobile($screen_md) {
+        padding: 0;
+      }
+
+      .titleBox {
+        @include mobile($screen_md) {
+          display: none;
+        }
+      }
+    }
+  }
+
+  &-titleBox {
+    position: relative;
+    display: none;
+    text-align: center;
+    margin-bottom: 50px;
+
+    @include mobile($screen_md) {
+      display: block;
     }
   }
   
@@ -14,6 +47,14 @@
     height: 546px;
     margin-left: 100px;
     user-select: none;
+
+    @include mobile($screen_md) {
+      margin: 0 auto;
+    }
+
+    @include mobile($screen_sm) {
+      margin: 0 0 0 20px;
+    }
 
     &-slider {
       @include block();
@@ -31,8 +72,12 @@
         border: none;
         color: transparent;
         cursor: pointer;
-        z-index: 1;
+        z-index: 1000;
         transition: background-color 0.3s, box-shadow 0.3s;
+
+        @include mobile($screen_sm) {
+          left: -20px;
+        }
 
         &:before {
           @include position(absolute, 0, 0, 100%, 100%);
@@ -46,7 +91,7 @@
       }
 
       .slick-prev {
-        top: 25px;
+        top: 70px;
 
         &:before {
           @include image('icon-arrow-white.svg', 10px auto, 20px center);
@@ -55,7 +100,7 @@
       }
 
       .slick-next {
-        top: 100px;
+        top: 140px;
 
         &:before {
           @include image('icon-arrow-white.svg', 10px auto, 20px center);
@@ -84,6 +129,10 @@
         i {
           @include position(absolute, 0, 0, 100%, 100%);
           transition: transform 0.15s;
+
+          @include mobile($screen_md) {
+            transform: translate3d(0, 0, 0) translate(0, 0) !important;
+          }
         }
       }
 
@@ -175,6 +224,10 @@
     margin-top: 52px;
     min-height: 170px;
 
+    @include mobile($screen_md) {
+      margin-top: 20px;
+    }
+
     &-button {
       @include block();
       top: 10px;
@@ -216,6 +269,10 @@
       top: 0;
       left: 100px;
       right: 0;
+
+      @include mobile($screen_md) {
+        left: 75px;
+      }
     }
 
     &-box {
@@ -233,5 +290,9 @@
   &__button {
     @include block();
     margin-top: 35px;
+
+    @include mobile($screen_md) {
+      margin-top: 3px;
+    }
   }
 }

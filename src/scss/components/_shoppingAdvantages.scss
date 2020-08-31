@@ -3,10 +3,19 @@
   @include block();
   margin-top: 77px;
 
+  @include mobile($screen_md) {
+    margin-top: 70px;
+  }
+
   &__cont {
     @include flex();
     flex-wrap: wrap;
     margin: 0 -30px;
+
+    @include mobile($screen_md) {
+      max-width: 240px;
+      margin: 0 auto;
+    }
   }
 
   &__box {
@@ -15,9 +24,19 @@
     width: 25%;
     padding: 0 30px;
     margin-bottom: 65px;
-    transition: transform 0.6s, opacity 0.6s;
-    transform: translateY(30px);
-    opacity: 0;
+
+    @include desktop($screen_md) {
+      transition: transform 0.6s, opacity 0.6s;
+      transform: translateY(30px);
+      opacity: 0;
+    }
+
+    @include mobile($screen_md) {
+      display: block;
+      width: auto;
+      padding: 0;
+      margin-bottom: 52px;
+    }
 
     &-icon {
       @include block();
@@ -80,7 +99,9 @@
     }
 
     &:nth-child(1) {
-      transition-delay: 0.1s;
+      @include desktop($screen_md) {
+        transition-delay: 0.1s;
+      }
 
       #{$box}-icon {
         &:after {
@@ -89,7 +110,9 @@
       }
     }
     &:nth-child(2) {
-      transition-delay: 0.2s;
+      @include desktop($screen_md) {
+        transition-delay: 0.2s;
+      }
 
       #{$box}-icon {
         &:after {
@@ -98,7 +121,9 @@
       }
     }
     &:nth-child(3) {
-      transition-delay: 0.3s;
+      @include desktop($screen_md) {
+        transition-delay: 0.3s;
+      }
 
       #{$box}-icon {
         &:after {
@@ -107,7 +132,9 @@
       }
     }
     &:nth-child(4) {
-      transition-delay: 0.4s;
+      @include desktop($screen_md) {
+        transition-delay: 0.4s;
+      }
 
       #{$box}-icon {
         &:after {
@@ -116,7 +143,9 @@
       }
     }
     &:nth-child(5) {
-      transition-delay: 0.5s;
+      @include desktop($screen_md) {
+        transition-delay: 0.5s;
+      }
 
       #{$box}-icon {
         &:after {
@@ -125,7 +154,9 @@
       }
     }
     &:nth-child(6) {
-      transition-delay: 0.6s;
+      @include desktop($screen_md) {
+        transition-delay: 0.6s;
+      }
 
       #{$box}-icon {
         &:after {
@@ -134,7 +165,9 @@
       }
     }
     &:nth-child(7) {
-      transition-delay: 0.7s;
+      @include desktop($screen_md) {
+        transition-delay: 0.7s;
+      }
 
       #{$box}-icon {
         &:after {
@@ -143,7 +176,9 @@
       }
     }
     &:nth-child(8) {
-      transition-delay: 0.8s;
+      @include desktop($screen_md) {
+        transition-delay: 0.8s;
+      }
 
       #{$box}-icon {
         &:after {
@@ -153,10 +188,12 @@
     }
   }
 
-  &.active {
-    #{$advantages}__box {
-      transform: translateY(0);
-      opacity: 1;
+  @include desktop($screen_md) {
+    &.active {
+      #{$advantages}__box {
+        transform: translateY(0);
+        opacity: 1;
+      }
     }
   }
 }

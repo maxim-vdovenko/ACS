@@ -3,12 +3,36 @@
   @include block();
   margin-top: 103px;
 
+  @include mobile($screen_md) {
+    margin-top: 100px;
+  }
+
+  .row {
+    @include mobile($screen_md) {
+      flex-direction: column;
+    }
+  }
+
   .col {
+    @include mobile($screen_md) {
+      width: 100%;
+      flex: none;
+    }
+
     &:nth-child(2n + 1) {
       padding-right: 30px;
+
+      @include mobile($screen_md) {
+        padding-right: 0;
+      }
     }
+
     &:nth-child(2n + 0) {
       padding-left: 30px;
+
+      @include mobile($screen_md) {
+        padding-left: 0;
+      }
     }
   }
 
@@ -21,9 +45,18 @@
   &__cont {
     @include block();
     padding: 40px 0;
-    transition: transform 0.6s, opacity 0.6s;
-    transform: translateY(20px);
-    opacity: 0;
+
+    @include desktop($screen_md) {
+      transition: transform 0.6s, opacity 0.6s;
+      transform: translateY(20px);
+      opacity: 0;
+    }
+
+    @include mobile($screen_md) {
+      max-width: 720px;
+      padding: 0 0 50px 0;
+      margin: 0 auto;
+    }
 
     &:before {
       @include block();
@@ -66,10 +99,12 @@
     }
   }
 
-  &.active {
-    #{$orderAdvantages}__cont {
-      transform: translateY(0);
-      opacity: 1;
+  @include desktop($screen_md) {
+    &.active {
+      #{$orderAdvantages}__cont {
+        transform: translateY(0);
+        opacity: 1;
+      }
     }
   }
 }

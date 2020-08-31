@@ -19,8 +19,28 @@
   .col {
     width: 50%;
 
+    @include mobile($screen_md) {
+      width: 100%;
+      flex: 1;
+    }
+
     &:nth-child(2) {
       align-items: flex-end;
+
+      @include mobile($screen_md) {
+        align-items: center;
+      }
+    }
+  }
+
+  .titleBox {
+
+    @include mobile($screen_lg) {
+      padding-right: 50px;
+    }
+
+    @include mobile($screen_md) {
+      padding-right: 0;
     }
   }
 
@@ -30,15 +50,29 @@
     min-width: 900px;
     margin-top: 23px;
 
+    @include mobile($screen_md) {
+      display: block;
+      min-width: 0;
+      margin-top: 60px;
+    }
+
     li {
       position: relative;
       width: 240px;
       min-height: 198px;
       text-align: center;
       margin: 0 0 20px 60px;
-      transition: transform 0.7s, opacity 0.7s;
-      transform: translateY(20px);
-      opacity: 0;
+
+      @include desktop($screen_md) {
+        transition: transform 0.7s, opacity 0.7s;
+        transform: translateY(20px);
+        opacity: 0;
+      }
+
+      @include mobile($screen_md) {
+        min-height: auto;
+        margin: 0 0 50px 0;
+      }
 
       span {
         @include block();
@@ -69,26 +103,50 @@
         }
       }
 
+      &:nth-child(1) {
+        @include mobile($screen_md) {
+          display: none;
+        }
+      }
       &:nth-child(2) {
-        transition-delay: 0.1s;
+        @include desktop($screen_md) {
+          transition-delay: 0.1s;
+        }
       }
       &:nth-child(3) {
-        transition-delay: 0.25s;
+        @include desktop($screen_md) {
+          transition-delay: 0.25s;
+        }
+      }
+      &:nth-child(4) {
+        @include mobile($screen_md) {
+          display: none;
+        }
       }
       &:nth-child(5) {
-        transition-delay: 0.4s;
+        @include desktop($screen_md) {
+          transition-delay: 0.4s;
+        }
       }
       &:nth-child(6) {
-        transition-delay: 0.55s;
+        @include desktop($screen_md) {
+          transition-delay: 0.55s;
+        }
       }
       &:nth-child(7) {
-        transition-delay: 0.7s;
+        @include desktop($screen_md) {
+          transition-delay: 0.7s;
+        }
       }
       &:nth-child(8) {
-        transition-delay: 0.85s;
+        @include desktop($screen_md) {
+          transition-delay: 0.85s;
+        }
       }
       &:nth-child(9) {
-        transition-delay: 1s;
+        @include desktop($screen_md) {
+          transition-delay: 1s;
+        }
       }
     }
 
@@ -148,12 +206,28 @@
     height: 423px;
     margin-left: -1320px;
 
+    @include mobile($screen_md) {
+      top: 460px;
+      left: -60px;
+      width: 160px;
+      height: 220px;
+      margin-left: 0;
+    }
+
     span {
       @include position(absolute, 0, 0, 100%, 100%);
+
+      @include mobile($screen_md) {
+        transform: translate3d(0, 0, 0) !important;
+      }
 
       i {
         @include position(absolute, 0, 0, 100%, 100%);
         transition: transform 0.15s;
+
+        @include mobile($screen_md) {
+          transform: translate3d(0, 0, 0) translate(0, 0) !important;
+        }
       }
 
       &:nth-child(1) {
@@ -163,6 +237,10 @@
       }
       &:nth-child(2) {
         top: 70px;
+
+        @include mobile($screen_md) {
+          top: 0;
+        }
 
         i {
           @include image('positive-financial/circles-2.svg', contain, 0 0);

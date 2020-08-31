@@ -2,12 +2,41 @@
   @include block();
   margin-top: 278px;
 
+  @include mobile($screen_lg) {
+    margin-top: 150px;
+  }
+
+  @include mobile($screen_md) {
+    margin-top: 96px;
+  }
+
+  .row {
+    @include mobile($screen_md) {
+      flex-direction: column;
+    }
+  }
+
   .col {
+
+    @include mobile($screen_md) {
+      width: 100%;
+      flex: none;
+    }
+
     &:nth-child(1) {
       padding-right: 30px;
+
+      @include mobile($screen_md) {
+        padding-right: 0;
+      }
     }
+
     &:nth-child(2) {
       padding-left: 30px;
+
+      @include mobile($screen_md) {
+        padding-left: 0;
+      }
     }
   }
 }

@@ -3,6 +3,14 @@
   @include block();
   margin-top: 235px;
 
+  @include mobile($screen_lg) {
+    margin-top: 180px;
+  }
+
+  @include mobile($screen_md) {
+    margin-top: 160px;
+  }
+
   .titleBox {
     max-width: 740px;
     margin: 0 auto;
@@ -12,6 +20,10 @@
   &__cont {
     @include flex();
     margin: 130px -30px 0 -30px;
+
+    @include mobile($screen_md) {
+      margin: 70px 0 0 0;
+    }
   }
 
   &__contBloc {
@@ -19,11 +31,20 @@
     display: inline-flex;
     flex-wrap: wrap;
 
-    &.active {
-      #{$solution}__box {
-        transform: translateY(0);
-        opacity: 1;
+    @include desktop($screen_md) {
+      &.active {
+        #{$solution}__box {
+          transform: translateY(0);
+          opacity: 1;
+        }
       }
+    }
+
+    @include mobile($screen_md) {
+      display: flex;
+      max-width: 340px;
+      margin: 0 auto;
+      justify-content: center;
     }
   }
 
@@ -32,9 +53,19 @@
     text-align: center;
     width: 33.33%;
     height: 300px;
-    transition: transform 0.7s, opacity 0.7s;
-    transform: translateY(20px);
-    opacity: 0;
+
+    @include desktop($screen_md) {
+      transition: transform 0.7s, opacity 0.7s;
+      transform: translateY(20px);
+      opacity: 0;
+    }
+
+    @include mobile($screen_md) {
+      display: block;
+      width: auto;
+      height: auto;
+      margin-bottom: 63px;
+    }
 
     > img {
       @include block();
@@ -47,29 +78,40 @@
       padding: 0 30px;
     }
 
-    &:nth-child(1) {
-      transition-delay: 0.1s;
+    @include desktop($screen_md) {
+      &:nth-child(1) {
+        transition-delay: 0.1s;
+      }
+      &:nth-child(2) {
+        transition-delay: 0.25s;
+      }
+      &:nth-child(3) {
+        transition-delay: 0.4s;
+      }
+      &:nth-child(4) {
+        transition-delay: 0.55s;
+      }
+      &:nth-child(5) {
+        transition-delay: 0.7s;
+      }
+      &:nth-child(6) {
+        transition-delay: 0.85s;
+      }
+      &:nth-child(7) {
+        transition-delay: 1s;
+      }
+      &:nth-child(8) {
+        transition-delay: 1.15s;
+      }
     }
-    &:nth-child(2) {
-      transition-delay: 0.25s;
-    }
-    &:nth-child(3) {
-      transition-delay: 0.4s;
-    }
-    &:nth-child(4) {
-      transition-delay: 0.55s;
-    }
-    &:nth-child(5) {
-      transition-delay: 0.7s;
-    }
-    &:nth-child(6) {
-      transition-delay: 0.85s;
-    }
-    &:nth-child(7) {
-      transition-delay: 1s;
-    }
-    &:nth-child(8) {
-      transition-delay: 1.15s;
+
+    @include mobile($screen_md) {
+      &:nth-child(6) {
+        order: 1;
+      }
+      &:nth-child(8) {
+        order: 0;
+      }
     }
   }
 
@@ -80,6 +122,12 @@
     padding: 100px 40px 0 40px;
     margin: 57px 0 0 30px;
     background-color: $color_blueLight_2;
+
+    @include mobile($screen_md) {
+      width: auto;
+      max-width: 340px;
+      margin: 35px 0 0 0;
+    }
 
     &-text {
       @include block();
@@ -104,21 +152,38 @@
   
       span {
         position: absolute;
+
+        @include mobile($screen_md) {
+          transform: translate3d(0, 0, 0) !important;
+        }
   
         i {
           @include position(absolute, 0, 0, 100%, 100%);
           border-radius: 1000px;
           transition: transform 0.15s;
+
+          @include mobile($screen_md) {
+            transform: translate3d(0, 0, 0) translate(0, 0) !important;
+          }
         }
       }
   
       &--1 {
         right: 70px;
-        animation: 8s linear 0.1s infinite solution_circles;
+
+        @include desktop($screen_md) {
+          animation: 8s linear 0.1s infinite solution_circles;
+        }
+
+        @include mobile($screen_md) {
+          top: 0;
+        }
   
         span {
           @include circle_position(24px, 24px);
-          animation: 8s ease-in-out 0.1s infinite solution_circles_side_1;
+          @include desktop($screen_md) {
+            animation: 8s ease-in-out 0.1s infinite solution_circles_side_1;
+          }
 
           i {
             background-color: $color_blue;
@@ -128,11 +193,20 @@
   
       &--2 {
         left: 100px;
-        animation: 7s linear 0.4s infinite solution_circles;
+
+        @include desktop($screen_md) {
+          animation: 7s linear 0.4s infinite solution_circles;
+        }
+
+        @include mobile($screen_md) {
+          top: 55px;
+        }
   
         span {
           @include circle_position(14px, 14px);
-          animation: 7s ease-in-out 0.4s infinite solution_circles_side_2;
+          @include desktop($screen_md) {
+            animation: 7s ease-in-out 0.4s infinite solution_circles_side_2;
+          }
 
           i {
             border: 2px solid $color_dark;
@@ -142,11 +216,21 @@
   
       &--3 {
         right: 130px;
-        animation: 12s linear 0.8s infinite solution_circles;
+
+        @include desktop($screen_md) {
+          animation: 12s linear 0.8s infinite solution_circles;
+        }
+
+        @include mobile($screen_md) {
+          right: 100px;
+          bottom: 55px;
+        }
   
         span {
           @include circle_position(32px, 32px);
-          animation: 12s ease-in-out 0.8s infinite solution_circles_side_1;
+          @include desktop($screen_md) {
+            animation: 12s ease-in-out 0.8s infinite solution_circles_side_1;
+          }
 
           i {
             background-color: $color_red;

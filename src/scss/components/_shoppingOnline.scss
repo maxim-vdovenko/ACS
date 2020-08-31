@@ -4,6 +4,10 @@
 
   .container {
     padding-top: 122px;
+
+    @include mobile($screen_md) {
+      padding-top: 140px;
+    }
   }
 
   .titleBox {
@@ -16,10 +20,18 @@
     @include flex();
     margin: 95px -30px 0 -30px;
 
-    &.active {
-      #{$online}__box {
-        transform: translateY(0);
-        opacity: 1;
+    @include mobile($screen_md) {
+      display: block;
+      max-width: 340px;
+      margin: 95px auto 0 auto;
+    }
+
+    @include desktop($screen_md) {
+      &.active {
+        #{$online}__box {
+          transform: translateY(0);
+          opacity: 1;
+        }
       }
     }
   }
@@ -29,9 +41,18 @@
     width: 25%;
     padding: 0 30px;
     text-align: center;
-    transition: transform 0.6s, opacity 0.6s;
-    transform: translateY(20px);
-    opacity: 0;
+
+    @include desktop($screen_md) {
+      transition: transform 0.6s, opacity 0.6s;
+      transform: translateY(20px);
+      opacity: 0;
+    }
+
+    @include mobile($screen_md) {
+      width: auto;
+      padding: 0;
+      margin-bottom: 63px;
+    }
 
     &:before {
       @include block();

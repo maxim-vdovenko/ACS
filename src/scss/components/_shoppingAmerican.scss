@@ -2,8 +2,34 @@
   @include block();
   margin-top: 197px;
 
+  @include mobile($screen_lg) {
+    margin-top: 150px;
+  }
+
+  @include mobile($screen_md) {
+    margin-top: 96px;
+  }
+
+  .row {
+    @include mobile($screen_md) {
+      flex-direction: column;
+      min-height: auto;
+    }
+  }
+
+  .col {
+    @include mobile($screen_md) {
+      width: 100%;
+      flex: none;
+    }
+  }
+
   .textBox {
     padding: 80px 20px 0 0;
+
+    @include mobile($screen_md) {
+      padding: 0;
+    }
   }
 
   &__img {
@@ -12,10 +38,23 @@
     height: 350px;
     margin-left: 140px;
 
+    @include mobile($screen_md) {
+      margin: 60px auto 0 auto;
+    }
+
+    @include mobile($screen_sm) {
+      width: 325px;
+      height: 263px;
+      margin: 30px auto 0 auto;
+    }
+
     span {
       position: absolute;
-      transition: opacity 0.8s;
-      opacity: 0;
+
+      @include desktop($screen_md) {
+        transition: opacity 0.8s;
+        opacity: 0;
+      }
 
       i {
         @include position(absolute, 0, 0, 100%, 100%);
@@ -26,7 +65,17 @@
         height: 168px;
         top: 6px;
         left: -42px;
-        transition-delay: 0.1s;
+
+        @include desktop($screen_md) {
+          transition-delay: 0.1s;
+        }
+
+        @include mobile($screen_sm) {
+          width: 120px;
+          height: 120px;
+          top: 15px;
+          left: -20px;
+        }
 
         i {
           @include image('shopping-american/walmart.svg', contain, center);
@@ -37,7 +86,17 @@
         height: 192px;
         top: 36px;
         left: 90px;
-        transition-delay: 0.5s;
+
+        @include desktop($screen_md) {
+          transition-delay: 0.5s;
+        }
+
+        @include mobile($screen_sm) {
+          width: 120px;
+          height: 120px;
+          top: 35px;
+          left: 80px;
+        }
 
         i {
           @include image('shopping-american/ebay.svg', contain, center);
@@ -48,7 +107,17 @@
         height: 288px;
         top: -54px;
         right: -72px;
-        transition-delay: 0.3s;
+
+        @include desktop($screen_md) {
+          transition-delay: 0.3s;
+        }
+
+        @include mobile($screen_sm) {
+          width: 200px;
+          height: 200px;
+          top: -20px;
+          right: -20px;
+        }
         
         i {
           @include image('shopping-american/amazon.svg', contain, center);
@@ -59,7 +128,17 @@
         height: 288px;
         bottom: -90px;
         left: -42px;
-        transition-delay: 0.4s;
+
+        @include desktop($screen_md) {
+          transition-delay: 0.4s;
+        }
+
+        @include mobile($screen_sm) {
+          width: 200px;
+          height: 200px;
+          bottom: -60px;
+          left: -20px;
+        }
 
         i {
           @include image('shopping-american/best-buy.svg', contain, center);
@@ -70,7 +149,17 @@
         height: 192px;
         bottom: -30px;
         right: 43px;
-        transition-delay: 0.2s;
+
+        @include desktop($screen_md) {
+          transition-delay: 0.2s;
+        }
+
+        @include mobile($screen_sm) {
+          width: 130px;
+          height: 130px;
+          bottom: -15px;
+          right: 30px;
+        }
 
         i {
           @include image('shopping-american/group.svg', contain, center);
@@ -78,9 +167,11 @@
       }
     }
 
-    &.active {
-      span {
-        opacity: 1;
+    @include desktop($screen_md) {
+      &.active {
+        span {
+          opacity: 1;
+        }
       }
     }
   }

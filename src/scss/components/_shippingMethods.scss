@@ -7,6 +7,12 @@
     min-height: 1358px;
     padding-top: 123px;
     padding-bottom: 80px;
+
+    @include mobile($screen_md) {
+      min-height: 0;
+      padding-top: 90px;
+      padding-bottom: 100px;
+    }
   }
 
   .titleBox {
@@ -34,9 +40,12 @@
   &__circlesBlock {
     @include position(absolute, 0, 0, 100%, 100%);
     overflow: hidden;
-    transition: opacity 1.5s;
-    transition-delay: 2s;
-    opacity: 0;
+
+    @include desktop($screen_md) {
+      transition: opacity 1.5s;
+      transition-delay: 2s;
+      opacity: 0;
+    }
   }
 
   &__circles {
@@ -60,11 +69,16 @@
 
     &--1 {
       margin-left: -788px;
-      animation: 18s linear 2s infinite methods_circles;
+
+      @include desktop($screen_md) {
+        animation: 18s linear 2s infinite methods_circles;
+      }
 
       span {
         @include circle_position(24px, 24px);
-        animation: 18s ease-in-out 2s infinite methods_circles_side_1;
+        @include desktop($screen_md) {
+          animation: 18s ease-in-out 2s infinite methods_circles_side_1;
+        }
 
         i {
           background-color: $color_yellow;
@@ -74,11 +88,15 @@
 
     &--2 {
       margin-left: -603px;
-      animation: 11s linear 1s infinite methods_circles;
+      @include desktop($screen_md) {
+        animation: 11s linear 1s infinite methods_circles;
+      }
 
       span {
         @include circle_position(12px, 12px);
-        animation: 11s ease-in-out 1s infinite methods_circles_side_2;
+        @include desktop($screen_md) {
+          animation: 11s ease-in-out 1s infinite methods_circles_side_2;
+        }
 
         i {
           border: 2px solid $color_dark;
@@ -88,11 +106,15 @@
 
     &--3 {
       margin-left: -138px;
-      animation: 16s linear 0.5s infinite methods_circles;
+      @include desktop($screen_md) {
+        animation: 16s linear 0.5s infinite methods_circles;
+      }
 
       span {
         @include circle_position(24px, 24px);
-        animation: 16s ease-in-out 0.5s infinite methods_circles_side_2;
+        @include desktop($screen_md) {
+          animation: 16s ease-in-out 0.5s infinite methods_circles_side_2;
+        }
 
         i {
           background-color: $color_blue;
@@ -102,11 +124,15 @@
 
     &--4 {
       margin-left: -364px;
-      animation: 13s linear 0.1s infinite methods_circles;
+      @include desktop($screen_md) {
+        animation: 13s linear 0.1s infinite methods_circles;
+      }
 
       span {
         @include circle_position(32px, 32px);
-        animation: 13s ease-in-out 0.1s infinite methods_circles_side_1;
+        @include desktop($screen_md) {
+          animation: 13s ease-in-out 0.1s infinite methods_circles_side_1;
+        }
 
         i {
           background-color: $color_yellow;
@@ -116,11 +142,15 @@
 
     &--5 {
       margin-left: 170px;
-      animation: 21s linear 1.5s infinite methods_circles;
+      @include desktop($screen_md) {
+        animation: 21s linear 1.5s infinite methods_circles;
+      }
 
       span {
         @include circle_position(36px, 36px);
-        animation: 21s ease-in-out 1.5s infinite methods_circles_side_2;
+        @include desktop($screen_md) {
+          animation: 21s ease-in-out 1.5s infinite methods_circles_side_2;
+        }
 
         i {
           background-color: $color_yellow;
@@ -130,11 +160,15 @@
 
     &--6 {
       margin-left: 630px;
-      animation: 19s linear 0.7s infinite methods_circles;
+      @include desktop($screen_md) {
+        animation: 19s linear 0.7s infinite methods_circles;
+      }
 
       span {
         @include circle_position(12px, 12px);
-        animation: 19s ease-in-out 0.7s infinite methods_circles_side_2;
+        @include desktop($screen_md) {
+          animation: 19s ease-in-out 0.7s infinite methods_circles_side_2;
+        }
 
         i {
           background-color: $color_blue;
@@ -144,11 +178,15 @@
 
     &--7 {
       margin-left: 643px;
-      animation: 15s linear 0.3s infinite methods_circles;
+      @include desktop($screen_md) {
+        animation: 15s linear 0.3s infinite methods_circles;
+      }
 
       span {
         @include circle_position(12px, 12px);
-        animation: 15s ease-in-out 0.3s infinite methods_circles_side_1;
+        @include desktop($screen_md) {
+          animation: 15s ease-in-out 0.3s infinite methods_circles_side_1;
+        }
 
         i {
           background-color: $color_blue;
@@ -158,11 +196,15 @@
 
     &--8 {
       margin-left: 828px;
-      animation: 12s linear 0s infinite methods_circles;
+      @include desktop($screen_md) {
+        animation: 12s linear 0s infinite methods_circles;
+      }
 
       span {
         @include circle_position(32px, 32px);
-        animation: 12s ease-in-out 0s infinite methods_circles_side_2;
+        @include desktop($screen_md) {
+          animation: 12s ease-in-out 0s infinite methods_circles_side_2;
+        }
 
         i {
           border: 2px solid $color_dark;
@@ -175,11 +217,21 @@
     @include block();
     margin: 97px -30px 0 -30px;
 
-    &.active {
-      #{$methods}__cont {
-        transform: translateY(0);
-        opacity: 1;
+    @include desktop($screen_md) {
+      &.active {
+        #{$methods}__cont {
+          transform: translateY(0);
+          opacity: 1;
+        }
       }
+    }
+
+    @include mobile($screen_lg) {
+      margin: 97px -20px 0 -20px;
+    }
+
+    @include mobile($screen_md) {
+      margin: 64px 0 0 0;
     }
   }
 
@@ -192,30 +244,47 @@
       width: 66.67%;
     }
 
-    &:nth-child(1) { 
-      #{$methods}__cont {
-        transition-delay: 0.1s;
+    @include desktop($screen_md) {
+      &:nth-child(1) { 
+        #{$methods}__cont {
+          transition-delay: 0.1s;
+        }
+      }
+      &:nth-child(2) { 
+        #{$methods}__cont {
+          transition-delay: 0.3s;
+        }
+      }
+      &:nth-child(3) { 
+        #{$methods}__cont {
+          transition-delay: 0.5s;
+        }
+      }
+      &:nth-child(4) { 
+        #{$methods}__cont {
+          transition-delay: 0.7s;
+        }
+      }
+      &:nth-child(5) { 
+        #{$methods}__cont {
+          transition-delay: 0.9s;
+        }
       }
     }
-    &:nth-child(2) { 
-      #{$methods}__cont {
-        transition-delay: 0.3s;
-      }
+
+    @include mobile($screen_lg) {
+      padding: 0 20px 40px 20px;
     }
-    &:nth-child(3) { 
-      #{$methods}__cont {
-        transition-delay: 0.5s;
-      }
-    }
-    &:nth-child(4) { 
-      #{$methods}__cont {
-        transition-delay: 0.7s;
-      }
-    }
-    &:nth-child(5) { 
-      #{$methods}__cont {
-        transition-delay: 0.9s;
-      }
+
+    @include mobile($screen_md) {
+      position: relative !important;
+      display: block !important;
+      left: auto !important;
+      top: auto !important;
+      width: auto;
+      max-width: 600px;
+      padding: 0 0 60px 0;
+      margin: 0 auto;
     }
   }
 
@@ -229,9 +298,16 @@
     background-color: $color_white;
     box-shadow: 0px 18px 42px rgba(197, 228, 243, 0.4);
     border-radius: 18px;
-    transition: transform 0.6s, opacity 0.6s;
-    transform: translateY(20px);
-    opacity: 0;
+
+    @include desktop($screen_md) {
+      transition: transform 0.6s, opacity 0.6s;
+      transform: translateY(20px);
+      opacity: 0;
+    }
+
+    @include mobile($screen_md) {
+      min-height: auto;
+    }
 
     &-box {
       @include flex();
@@ -266,9 +342,11 @@
     }
   }
 
-  &.active {
-    #{$methods}__circlesBlock {
-      opacity: 1;
+  @include desktop($screen_md) {
+    &.active {
+      #{$methods}__circlesBlock {
+        opacity: 1;
+      }
     }
   }
 }

@@ -2,12 +2,40 @@
   @include block();
   margin-top: 262px;
 
+  @include mobile($screen_lg) {
+    margin-top: 150px;
+  }
+
+  @include mobile($screen_md) {
+    margin-top: 96px;
+  }
+
+  .row {
+    @include mobile($screen_md) {
+      flex-direction: column;
+    }
+  }
+
   .col {
+    @include mobile($screen_md) {
+      width: 100%;
+      flex: none;
+    }
+
     &:nth-child(1) {
       padding-right: 30px;
+
+      @include mobile($screen_md) {
+        padding-right: 0;
+      }
     }
+
     &:nth-child(2) {
       padding-left: 30px;
+
+      @include mobile($screen_md) {
+        padding-left: 0;
+      }
     }
   }
 
@@ -23,12 +51,30 @@
     height: 506px;
     margin-left: 720px;
 
+    @include mobile($screen_md) {
+      top: auto;
+      bottom: -160px;
+      left: auto;
+      right: -70px;
+      width: 160px;
+      height: 220px;
+      margin-left: 0;
+    }
+
     span {
       @include position(absolute, 0, 0, 100%, 100%);
+
+      @include mobile($screen_md) {
+        transform: translate3d(0, 0, 0) !important;
+      }
 
       i {
         @include position(absolute, 0, 0, 100%, 100%);
         transition: transform 0.15s;
+
+        @include mobile($screen_md) {
+          transform: translate3d(0, 0, 0) translate(0, 0) !important;
+        }
       }
 
       &:nth-child(1) {
@@ -39,6 +85,11 @@
       &:nth-child(2) {
         top: 50px;
         left: -20px;
+
+        @include mobile($screen_md) {
+          top: 0;
+          left: 0;
+        }
 
         i {
           @include image('avoid-problems/circles-2.svg', contain, 0 0);

@@ -114,6 +114,10 @@
   &--howWorks {
     margin-top: 190px;
 
+    @include mobile($screen_md) {
+      margin-top: 140px;
+    }
+
     .row {
 
       &:nth-child(2n + 1) .col {
@@ -186,9 +190,18 @@
         margin-top: 364px;
         margin-bottom: 0;
 
+        @include mobile($screen_md) {
+          margin-top: 0;
+        }
+
         .col {
+
           &:nth-child(2) {
             padding-left: 30px; 
+
+            @include mobile($screen_md) {
+              padding-left: 0; 
+            }
           }
         }
 
@@ -196,8 +209,33 @@
           height: auto;
           padding-top: 48px;
 
+          @include mobile($screen_md) {
+            padding-top: 0;
+          }
+
           .button {
             margin-top: 30px;
+
+            @include mobile($screen_md) {
+              margin-top: 35px;
+            }
+          }
+        }
+      }
+
+      &:not(:last-child) {
+        @include mobile($screen_md) {
+          margin-bottom: 0;
+
+          &:after {
+            position: relative;
+            display: block;
+            left: 50%;
+            margin: 30px 0 50px -1px;
+            width: 2px;
+            height: 110px;
+            content: '';
+            background-color: #E8F4FA;
           }
         }
       }
@@ -211,6 +249,15 @@
     .textBox {
       max-width: 440px;
       height: 0;
+
+      @include mobile($screen_md) {
+        max-width: none;
+        height: auto;
+
+        p, h4 {
+          text-align: center;
+        } 
+      }
 
       h4 {
         margin-bottom: 11px;
@@ -228,9 +275,49 @@
     margin-top: 142px;
     padding: 122px 0 72px 0;
 
+    @include mobile($screen_md) {
+      margin-top: 100px;
+      padding: 108px 0 60px 0;
+    }
+
     .row {
+
       &:not(:last-child) {
         margin-bottom: 103px;
+
+        @include mobile($screen_md) {
+          margin-bottom: 0;
+        }
+      }
+
+      &:nth-child(2) {
+        @include mobile($screen_md) {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .col {
+          @include mobile($screen_md) {
+            display: flex;
+          }
+
+          &:nth-child(1) {
+            @include mobile($screen_md) {
+              order: 1;
+            }
+          }
+
+          &:nth-child(2) {
+            @include mobile($screen_lg) {
+              padding-right: 100px;
+            }
+
+            @include mobile($screen_md) {
+              padding-right: 0;
+              order: 0;
+            }
+          }
+        }
       }
     }
 
@@ -243,6 +330,11 @@
     margin-top: 256px;
     margin-bottom: 144px;
 
+    @include mobile($screen_md) {
+      margin-top: 90px;
+      margin-bottom: 108px;
+    }
+
     .row {
       
       &:nth-child(2n + 0) .col {
@@ -254,6 +346,10 @@
         &:nth-child(2) {
           order: 1;
           padding: 0 0 0 30px;  
+
+          @include mobile($screen_md) {
+            padding: 0;  
+          }
         }
       }
 
@@ -272,6 +368,10 @@
 
       &:not(:last-child) {
         margin-bottom: 227px;
+
+        @include mobile($screen_md) {
+          margin-bottom: 100px;
+        }
       }
     }
   }
@@ -330,6 +430,11 @@
     margin-top: 256px;
     margin-bottom: 144px;
 
+    @include mobile($screen_md) {
+      margin-top: 110px;
+      margin-bottom: 108px;
+    }
+
     .row {
       
       &:nth-child(2n + 0) .col {
@@ -341,6 +446,10 @@
         &:nth-child(2) {
           order: 1;
           padding: 0 0 0 30px;  
+
+          @include mobile($screen_md) {
+            padding: 0;  
+          }
         }
       }
 
@@ -359,11 +468,19 @@
 
       &:not(:last-child) {
         margin-bottom: 225px;
+
+        @include mobile($screen_md) {
+          margin-bottom: 100px;
+        }
       }
     }
 
     #{$block}__button {
       margin-top: 110px;
+
+      @include mobile($screen_md) {
+        margin-top: 80px;
+      }
     }
   }
 
@@ -881,6 +998,16 @@
       width: 405px;
       height: 372px;
 
+      @include mobile($screen_md) {
+        margin: 0 auto 50px auto;
+      }
+
+      @include mobile($screen_sm) {
+        width: 303px;
+        height: 280px;
+        margin-bottom: 40px;
+      }
+
       span {
         &:nth-child(1) {
           &:before {
@@ -925,6 +1052,16 @@
       width: 410px;
       height: 380px;
 
+      @include mobile($screen_md) {
+        margin: 0 auto 50px auto;
+      }
+
+      @include mobile($screen_sm) {
+        width: 305px;
+        height: 285px;
+        margin-bottom: 40px;
+      }
+
       span {
         &:nth-child(1) {
           &:before {
@@ -965,6 +1102,16 @@
       @include image('block-container/store-items/element-1.svg', contain, 0 0);
       width: 419px;
       height: 370px;
+
+      @include mobile($screen_md) {
+        margin: 0 auto 50px auto;
+      }
+
+      @include mobile($screen_sm) {
+        width: 313px;
+        height: 279px;
+        margin-bottom: 40px;
+      }
 
       span {
         &:nth-child(1) {
@@ -1019,6 +1166,16 @@
       width: 392px;
       height: 371px;
 
+      @include mobile($screen_md) {
+        margin: 0 auto 50px auto;
+      }
+
+      @include mobile($screen_sm) {
+        width: 292px;
+        height: 277px;
+        margin-bottom: 40px;
+      }
+
       span {
         &:nth-child(1) {
           &:before {
@@ -1051,6 +1208,18 @@
       left: 110px;
       width: 382px;
       height: 321px;
+
+      @include mobile($screen_md) {
+        left: auto;
+        height: 340px;
+        margin: 0 auto 50px auto;
+      }
+
+      @include mobile($screen_sm) {
+        width: 286px;
+        height: 260px;
+        margin-bottom: 40px;
+      }
 
       span {
         &:nth-child(1) {
@@ -1105,6 +1274,18 @@
       left: 2px;
       width: 498px;
       height: 430px;
+
+      @include mobile($screen_md) {
+        top: auto;
+        left: auto;
+        margin: 0 auto 40px auto;
+      }
+
+      @include mobile($screen_sm) {
+        width: 340px;
+        height: 300px;
+        margin-bottom: 30px;
+      }
 
       span {
         &:nth-child(1) {
@@ -1164,6 +1345,18 @@
       width: 386px;
       height: 385px;
 
+      @include mobile($screen_md) {
+        top: auto;
+        right: auto;
+        margin: 0 auto 50px auto;
+      }
+
+      @include mobile($screen_sm) {
+        width: 290px;
+        height: 290px;
+        margin-bottom: 40px;
+      }
+
       span {
         &:nth-child(1) {
           &:before {
@@ -1210,6 +1403,18 @@
       width: 409px;
       height: 355px;
 
+      @include mobile($screen_md) {
+        top: auto;
+        left: auto;
+        margin: 0 auto 50px auto;
+      }
+
+      @include mobile($screen_sm) {
+        width: 306px;
+        height: 270px;
+        margin-bottom: 40px;
+      }
+
       span {
         &:nth-child(1) {
           &:before {
@@ -1255,6 +1460,18 @@
       right: 0;
       width: 421px;
       height: 488px;
+
+      @include mobile($screen_md) {
+        top: auto;
+        right: auto;
+        margin: 0 auto 50px auto;
+      }
+
+      @include mobile($screen_sm) {
+        width: 315px;
+        height: 368px;
+        margin-bottom: 40px;
+      }
 
       span {
         &:nth-child(1) {
@@ -1312,6 +1529,18 @@
       width: 409px;
       height: 433px;
 
+      @include mobile($screen_md) {
+        top: auto;
+        right: auto;
+        margin: 0 auto 50px auto;
+      }
+
+      @include mobile($screen_sm) {
+        width: 306px;
+        height: 325px;
+        margin-bottom: 40px;
+      }
+
       span {
         &:nth-child(1) {
           &:before {
@@ -1355,6 +1584,18 @@
       right: 0;
       width: 482px;
       height: 317px;
+
+      @include mobile($screen_md) {
+        top: auto;
+        right: auto;
+        margin: 0 auto 30px auto;
+      }
+
+      @include mobile($screen_sm) {
+        width: 300px;
+        height: 200px;
+        margin-bottom: 20px;
+      }
 
       span {
         &:nth-child(1) {
@@ -1469,6 +1710,18 @@
       width: 427px;
       height: 323px;
 
+      @include mobile($screen_md) {
+        top: auto;
+        right: auto;
+        margin: 0 auto 30px auto;
+      }
+
+      @include mobile($screen_sm) {
+        width: 300px;
+        height: 228px;
+        margin-bottom: 20px;
+      }
+
       span {
         &:nth-child(1) {
           &:before {
@@ -1538,6 +1791,18 @@
       left: 0;
       width: 412px;
       height: 338px;
+
+      @include mobile($screen_md) {
+        top: auto;
+        left: auto;
+        margin: 0 auto 30px auto;
+      }
+
+      @include mobile($screen_sm) {
+        width: 300px;
+        height: 250px;
+        margin-bottom: 20px;
+      }
 
       span {
         &:nth-child(1) {
@@ -1703,6 +1968,10 @@
     height: 2px;
     border-radius: 10px;
     background-color: $color_blueLight;
+
+    @include mobile($screen_md) {
+      display: none;
+    }
   }
 }
 

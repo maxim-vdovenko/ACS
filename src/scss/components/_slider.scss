@@ -52,6 +52,10 @@
     border-radius: 100px;
     background-color: $color_white;
 
+    @include mobile($screen_md) {
+      margin-top: 60px;
+    }
+
     &-box {
       @include block();
       height: 6px;

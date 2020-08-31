@@ -32,7 +32,7 @@ loader.init = function() {
       $(this.bl).removeClass('active')
       this.launch()
     })
-  }, 0) // 1000
+  }, 1000) 
 }
 
 loader.launch = function() {
@@ -67,6 +67,7 @@ loader.launch = function() {
   aboutUs.init()
   serviceDream.init()
   shippingAgents.init()
+  doesWork.init()
 }
 
 
@@ -321,6 +322,16 @@ interNetwork.init = function() {
       th.parents(this.box).addClass('active')
     }
   })
+}
+
+
+
+const doesWork = {
+  textBox: '.doesWork-textBoxColor'
+}
+
+doesWork.init = function() {
+  animationAdd.act(this.textBox, $(this.textBox).outerHeight())
 }
 
 

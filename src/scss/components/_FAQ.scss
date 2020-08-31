@@ -4,17 +4,33 @@
   .container {
     padding-top: 266px;
     padding-bottom: 95px;
+
+    @include mobile($screen_md) {
+      padding-top: 200px;
+      padding-bottom: 80px;
+    }
   }
 
   &__cont {
     @include flex();
     margin: 49px -30px 0 -30px;
+
+    @include mobile($screen_md) {
+      display: block;
+      max-width: 500px;
+      margin: 49px auto 0 auto;
+    }
   }
 
   &__column {
     @include block();
     width: 33.33%;
     padding: 0 30px;
+
+    @include mobile($screen_md) {
+      width: auto;
+      padding: 0;
+    }
   }
 
   &__box {

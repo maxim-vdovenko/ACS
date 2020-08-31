@@ -2,6 +2,10 @@
   @include block();
   margin-top: 70px;
 
+  @include mobile($screen_md) {
+    margin-top: 100px;
+  }
+
   .titleBox {
     h2 {
       text-align: center;
@@ -18,6 +22,10 @@
 
     .container {
       padding-top: 121px;
+
+      @include mobile($screen_md) {
+        padding-top: 95px;
+      }
     }
   }
 
@@ -27,6 +35,10 @@
     margin-top: 97px;
     border-radius: 18px;
     background-color: $color_white;
+
+    @include mobile($screen_md) {
+      margin-top: 60px;
+    }
   }
 
   &__box {
@@ -35,9 +47,19 @@
     justify-content: space-between;
     min-height: 200px;
     padding: 35px;
-    transition: opacity 0.6s;
-    transition-delay: 0.35s;
-    opacity: 0;
+
+    @include desktop($screen_md) {
+      transition: opacity 0.6s;
+      transition-delay: 0.35s;
+      opacity: 0;
+    }
+
+    @include mobile($screen_md) {
+      align-items: flex-start;
+      min-height: 0;
+      padding: 40px 35px 34px 35px;
+      flex-direction: column;
+    }
 
     &:not(:last-child) {
       border-bottom: 2px solid $color_blueLight;
@@ -46,6 +68,10 @@
     &-text {
       @include block();
       padding: 0 80px 7px 0;
+
+      @include mobile($screen_md) {
+        padding-right: 0;
+      }
 
       h4 {
         margin-bottom: 10px;
@@ -60,6 +86,15 @@
       min-width: 134px;
       height: 134px;
       padding: 10px;
+
+      @include mobile($screen_md) {
+        flex-direction: row;
+        width: 100%;
+        min-width: 0;
+        max-width: 400px;
+        height: 70px;
+        margin: 17px auto 0 auto;
+      }
 
       &:before {
         @include position(absolute, 0, 0, 100%, 100%);
@@ -86,6 +121,10 @@
         line-height: 20px;
         color: $color_text_main;
         text-align: center;
+
+        @include mobile($screen_md) {
+          padding: 14px 0 0 6px;
+        }
       }
 
       &--request {
@@ -100,13 +139,19 @@
           font-size: 14px;
           line-height: 28px;
           letter-spacing: 0.025em;
+
+          @include mobile($screen_md) {
+            padding: 0;
+          }
         }
       }
     }
 
-    &.active {
-      transform: translateY(0);
-      opacity: 1;
+    @include desktop($screen_md) {
+      &.active {
+        transform: translateY(0);
+        opacity: 1;
+      }
     }
   }
 

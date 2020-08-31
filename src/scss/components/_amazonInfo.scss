@@ -1,25 +1,58 @@
 .amazonInfo {
   @include block();
   margin-top: 76px;
+  
+  @include mobile($screen_md) {
+    margin-top: 80px;
+  }
+
+  .row {
+    @include mobile($screen_md) {
+      flex-direction: column;
+      min-height: auto;
+    }
+  }
 
   .col {
+
     &:nth-child(1) {
       order: 1;
       padding-left: 30px;
+
+      @include mobile($screen_md) {
+        order: 0;
+        padding-left: 0;
+        align-items: center;
+        margin-bottom: 40px;
+      }
     }
+
     &:nth-child(2) {
       order: 0;
       padding-right: 30px;
+
+      @include mobile($screen_md) {
+        order: 1;
+        padding-right: 0;
+      }
     }
   }
 
   &__button {
-    @include block();
+    @include flex();
     margin-top: 62px;
+
+    @include mobile($screen_md) {
+      justify-content: center;
+    }
   }
 
   &__img {
     @include inline_block();
+
+    img {
+      max-width: 100%;
+    }
   }
 
   .textBox {
@@ -29,12 +62,20 @@
       margin-top: 39px;
     }
 
-    .colorBlue {
-      transition: color 1s;
-      color: $color_text_main;
+    @include desktop($screen_md) {
+      .colorBlue {
+        transition: color 1s;
+        color: $color_text_main;
+      }
+
+      &.active {
+        .colorBlue {
+          color: $color_text_blue;
+        }
+      }
     }
 
-    &.active {
+    @include mobile($screen_md) {
       .colorBlue {
         color: $color_text_blue;
       }
@@ -49,16 +90,29 @@
     span {
       position: absolute;
 
+      @include mobile($screen_md) {
+        transform: translate3d(0, 0, 0) !important;
+      }
+
       i {
         @include position(absolute, 0, 0, 100%, 100%);
         border-radius: 1000px;
         transition: transform 0.15s;
+
+        @include mobile($screen_md) {
+          transform: translate3d(0, 0, 0) translate(0, 0) !important;
+        }
       }
     }
 
     &--1 {
       top: 200px;
       right: 230px;
+
+      @include mobile($screen_md) {
+        top: -50px;
+        right: 140px;
+      }
 
       span {
         @include circle_position(16px, 16px);
@@ -73,6 +127,11 @@
       top: 180px;
       right: 150px;
 
+      @include mobile($screen_md) {
+        top: -2px;
+        right: 40px;
+      }
+
       span {
         @include circle_position(32px, 32px);
 
@@ -85,6 +144,11 @@
     &--3 {
       bottom: 80px;
       left: 0;
+
+      @include mobile($screen_md) {
+        bottom: 0;
+        left: 60px;
+      }
 
       span {
         @include circle_position(48px, 48px);

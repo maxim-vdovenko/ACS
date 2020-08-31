@@ -2,21 +2,43 @@
   @include block();
   margin-top: 258px;
 
+  @include mobile($screen_md) {
+    margin-top: 190px;
+  }
+
   .container {
     padding-bottom: 150px;
+
+    @include mobile($screen_md) {
+      padding-bottom: 0;
+    }
   }
 
   .row {
 
+    @include mobile($screen_md) {
+      flex-direction: column;
+    }
+
     &--text {
+
       .col {
+
         &:nth-child(1) {
           max-width: 300px;
           flex: none;
+
+          @include mobile($screen_md) {
+            max-width: none;
+          }
         }
 
         &:nth-child(2) {
           padding-top: 29px;
+
+          @include mobile($screen_md) {
+            padding-top: 0;
+          }
         }
       }
     }
@@ -24,27 +46,74 @@
     &--cont {
       margin-top: 60px;
 
+      @include mobile($screen_md) {
+        margin-top: 65px;
+      }
+
       .col {
+
+        &:nth-child(1) {
+
+          @include mobile($screen_lg) {
+            flex: none;
+            width: 50%;
+          }
+
+          @include mobile($screen_md) {
+            width: 100%;
+          }
+        }
+
         &:nth-child(2) {
-         justify-content: flex-end;
+          justify-content: center;
+          height: 604px;
+          top: 16px;
+
+          @include mobile($screen_lg) {
+            flex: none;
+            width: 50%;
+          }
+
+          @include mobile($screen_md) {
+            width: 100%;
+            height: auto;
+            top: auto;
+            justify-content: flex-start;
+            align-items: center;
+            margin-top: 200px;
+          }
         }
       }
     }
   }
 
+  .titleBox {
+    @include mobile($screen_md) {
+      margin-bottom: 42px;
+    }
+  }
+
   &__mask {
     position: absolute;
-    top: 16px;
     left: 50%;
     width: 10000px;
-    height: 604px;
+    height: 100%;
     background-color: $color_yellow;
-    transition: all 1.5s;
-    transform: translateX(100vh);
 
-    &.active {
-      transform: translateX(0);
-      margin-left: 55px;
+    @include desktop($screen_md) {
+      transition: all 1.5s;
+      transform: translateX(100vh);
+  
+      &.active {
+        transform: translateX(0);
+        margin-left: 55px;
+      }
+    }
+
+    @include mobile($screen_md) {
+      left: -$padding_sides;
+      right: -$padding_sides;
+      width: auto;
     }
   }
 
@@ -53,8 +122,18 @@
     margin-bottom: 8px;
     left: 150px;
 
+    @include mobile($screen_md) {
+      margin-bottom: 0;
+      left: auto;
+      top: -108px;
+    }
+
     img {
       max-width: 590px;
+
+      @include mobile($screen_md) {
+        max-width: 100%;
+      }
     }
   }
 
@@ -65,9 +144,16 @@
       @include block();
       min-height: 100px;
       padding-left: 124px;
-      transition: transform 0.6s, opacity 0.6s;
-      transform: translateY(20px);
-      opacity: 0;
+
+      @include desktop($screen_md) {
+        transition: transform 0.6s, opacity 0.6s;
+        transform: translateY(20px);
+        opacity: 0;
+      }
+
+      @include mobile($screen_md) {
+        padding: 108px 0 0 0;
+      }
 
       &:not(:last-child) {
         margin-bottom: 48px;
@@ -112,14 +198,16 @@
         padding-bottom: 12px;
       }
 
-      &:nth-child(1) {
-        transition-delay: 0.1s;
-      }
-      &:nth-child(2) {
-        transition-delay: 0.4s;
-      }
-      &:nth-child(3) {
-        transition-delay: 0.7s;
+      @include desktop($screen_md) {
+        &:nth-child(1) {
+          transition-delay: 0.1s;
+        }
+        &:nth-child(2) {
+          transition-delay: 0.4s;
+        }
+        &:nth-child(3) {
+          transition-delay: 0.7s;
+        }
       }
     }
 
@@ -141,10 +229,12 @@
       }
     }
 
-    &.active {
-      li {
-        transform: translateY(0);
-        opacity: 1;
+    @include desktop($screen_md) {
+      &.active {
+        li {
+          transform: translateY(0);
+          opacity: 1;
+        }
       }
     }
   }
@@ -157,16 +247,29 @@
     span {
       position: absolute;
 
+      @include mobile($screen_md) {
+        transform: translate3d(0, 0, 0) !important;
+      }
+
       i {
         @include position(absolute, 0, 0, 100%, 100%);
         border-radius: 1000px;
         transition: transform 0.15s;
+
+        @include mobile($screen_md) {
+          transform: translate3d(0, 0, 0) translate(0, 0) !important;
+        }
       }
     }
 
     &--1 {
       top: 85px;
       right: 100px;
+
+      @include mobile($screen_md) {
+        top: -30px;
+        right: 80px;
+      }
 
       span {
         @include circle_position(16px, 16px);
@@ -181,6 +284,11 @@
       top: 210px;
       right: 25px;
 
+      @include mobile($screen_md) {
+        top: 170px;
+        right: 3px;
+      }
+
       span {
         @include circle_position(32px, 32px);
 
@@ -193,6 +301,11 @@
     &--3 {
       bottom: -90px;
       left: 100px;
+
+      @include mobile($screen_md) {
+        bottom: 4px;
+        left: 90px;
+      }
 
       span {
         @include circle_position(50px, 50px);
