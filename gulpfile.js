@@ -38,6 +38,7 @@ gulp.task('js-plugins', () => {
     'node_modules/jquery-ui-dist/jquery-ui.min.js',
     'node_modules/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js',
     'node_modules/slick-carousel/slick/slick.min.js',
+    'node_modules/flickity/dist/flickity.pkgd.min.js',
     'node_modules/masonry-layout/dist/masonry.pkgd.min.js',
     'node_modules/gsap/dist/gsap.min.js',
     'node_modules/scrollmagic/scrollmagic/minified/ScrollMagic.min.js',

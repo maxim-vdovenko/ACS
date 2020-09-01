@@ -32,7 +32,7 @@ loader.init = function() {
       $(this.bl).removeClass('active')
       this.launch()
     })
-  }, 1000) 
+  }, 0) 
 }
 
 loader.launch = function() {
@@ -614,31 +614,53 @@ const slider = {
 }
 
 slider.init = function() {
-  $(this.box).slider({
+
+  const flickityBlock = $(this.block).flickity({
+    freeScroll: true,
+    contain: true,
+    prevNextButtons: false,
+    pageDots: false
+  })
+
+  flickityBlock.on('scroll.flickity', (event, progress) => {
+    const x = progress * 10000
+    sliderBox.slider({value: x})
+    this.scrollFn(x)
+
+    if ((x / 100) >= 0 && (x / 100) <= 100) {
+      $(this.slid).css('width', x / 100 + '%')
+    }
+  })
+
+  const sliderBox = $(this.box).slider({
     range: false,
     min: 0,
     max: 10000,
     slide: (event, ui) => {
       const x = ui.value
-      const xSlid = x / 100
-      const xList = (($(this.block).width() - $(this.box).width() - 60) / 10000) * x  
 
-      $(this.slid).css('width', xSlid + '%')
-      $(this.block).css({'transform': 'translateX('  + -xList + 'px)'})
+      $(this.slid).css('width', x / 100 + '%')
 
-      if (x <= 1250) {
-        this.switching(0)
-      } else if (x <= 3750) {
-        this.switching(1)
-      } else if (x <= 6250) {
-        this.switching(2)
-      } else if (x <= 8750) {
-        this.switching(3)
-      } else {
-        this.switching(4)
-      }
+      // flickityBlock.scroll(100)
+
+      this.scrollFn(x)
+
     }
   })
+}
+
+slider.scrollFn = function(x) {
+  if (x <= 1250) {
+    this.switching(0)
+  } else if (x <= 3750) {
+    this.switching(1)
+  } else if (x <= 6250) {
+    this.switching(2)
+  } else if (x <= 8750) {
+    this.switching(3)
+  } else {
+    this.switching(4)
+  }
 }
 
 slider.switching = function(ind) {

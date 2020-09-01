@@ -3,25 +3,36 @@
   @include block();
 
   &__list {
-    @include flex();
+    @include block();
     margin: 0 -30px;
 
+    @include mobile($screen_lg) {
+      margin: 0;
+    }
+
     &-block {
-      position: relative;
-      display: inline-flex; 
+      @include block();
     }
 
     &-box {
       position: relative;
-      min-width: 340px;
-      margin: 0 30px;
+      width: 33.33%;
+      padding: 0 20px;
+
+      @include mobile($screen_md) {
+        width: 50%;
+      }
+
+      @include mobile($screen_sm) {
+        width: 100%;
+      }
 
       &:not(:last-child) {
         &:after {
           @include image('icon-arrow.svg', contain, 0 0);
           position: absolute;
-          top: 63px;
-          right: -37px;
+          top: 65px;
+          right: -5px;
           width: 10px;
           height: 17px;
           content: '';
