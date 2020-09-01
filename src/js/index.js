@@ -478,8 +478,8 @@ shipping.init = function() {
   parallaxAdd.act(this.serviceDream.circles[2], this.serviceDream.circles[2] + ' span', '-50px', '100%')
 
   $('body').on('mousemove', (e) => {
-    const x = e.originalEvent.clientX / 130
-    const y = e.originalEvent.clientY / 120
+    const x = e.originalEvent.clientX / 120
+    const y = e.originalEvent.clientY / 70
 
     animationCircles(this.discounted.circles)
     animationCircles(this.flexibility.circles)
