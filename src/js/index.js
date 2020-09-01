@@ -507,7 +507,6 @@ shipping.init = function() {
 
 const integrateTools = {
   bl: '.integrateTools',
-  fon: '.integrateTools__fon',
   reviews: '.reviews',
   instruments: '.instruments',
   button: '.integrateTools__instruments-button',
@@ -525,7 +524,23 @@ const integrateTools = {
 
 integrateTools.init = function() {
   $(this.bl).addClass('active')
-  animationAdd.act(this.fon, 200)
+
+  const controller = new ScrollMagic.Controller()
+  const scene = new ScrollMagic.Scene({
+    triggerElement: this.reviews, 
+    triggerHook: 'onEnter', 
+    offset: $(this.reviews).outerHeight()})
+    .setTween(this.reviews)
+    .addTo(controller)
+
+  scene.on('enter', () => {
+    $('body').addClass('addColor-blueLight')
+  })
+
+  scene.on('leave', () => {
+    $('body').removeClass('addColor-blueLight')
+  })
+
   animationAdd.act(this.reviews, $(this.reviews).outerHeight() / 2)
   animationAdd.act(this.instruments, $(this.instruments).outerHeight() / 2)
   animationAdd.act(this.button, $(this.button).outerHeight() / 2)

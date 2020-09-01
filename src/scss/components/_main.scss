@@ -12,7 +12,12 @@
 }
 
 body {
-  background-color: $color_fon; 
+  background-color: $color_fon;
+  transition: background-color 2s;
+
+  &.addColor-blueLight {
+    background-color: $color_blueLight_2;
+  }
 }
 
 html, body {
