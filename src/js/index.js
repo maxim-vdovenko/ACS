@@ -507,8 +507,8 @@ shipping.init = function() {
 
 const integrateTools = {
   bl: '.integrateTools',
-  reviews: '.reviews',
-  instruments: '.instruments',
+  reviews: '.integrateTools .reviews',
+  instruments: '.integrateTools .instruments',
   button: '.integrateTools__instruments-button',
   circles: [
     '.integrateTools__circles--1',
@@ -525,12 +525,12 @@ const integrateTools = {
 integrateTools.init = function() {
   $(this.bl).addClass('active')
 
-  if ($(this.reviews).length) {
+  if ($(this.bl).length) {
     const controller = new ScrollMagic.Controller()
     const scene = new ScrollMagic.Scene({
       triggerElement: this.reviews, 
       triggerHook: 'onEnter', 
-      offset: $(this.reviews).outerHeight()})
+      offset: $(this.reviews).outerHeight() / 2})
       .setTween(this.reviews)
       .addTo(controller)
   
@@ -796,14 +796,16 @@ assistedPurchase.init = function() {
 
 const shippingMethods = {
   bl: '.shippingMethods',
-  fon: '.shippingMethods__fon',
+  // fon: '.shippingMethods__fon',
   block: '.shippingMethods__block',
   item: '.shippingMethods__item'
 }
 
 shippingMethods.init = function() {
   $(this.bl).addClass('active')
-  animationAdd.act(this.fon, 200)
+  // animationAdd.act(this.fon, 200)
+
+
   animationAdd.act(this.block, $(this.block).outerHeight() / 2)
 }
 
