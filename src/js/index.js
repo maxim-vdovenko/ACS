@@ -638,13 +638,8 @@ slider.init = function() {
     max: 10000,
     slide: (event, ui) => {
       const x = ui.value
-
       $(this.slid).css('width', x / 100 + '%')
-
-      // flickityBlock.scroll(100)
-
       this.scrollFn(x)
-
     }
   })
 }
