@@ -796,15 +796,38 @@ assistedPurchase.init = function() {
 
 const shippingMethods = {
   bl: '.shippingMethods',
-  // fon: '.shippingMethods__fon',
   block: '.shippingMethods__block',
   item: '.shippingMethods__item'
 }
 
 shippingMethods.init = function() {
   $(this.bl).addClass('active')
-  // animationAdd.act(this.fon, 200)
 
+  if ($(this.bl).length) {
+    const controller = new ScrollMagic.Controller()
+    const sceneOne = new ScrollMagic.Scene({
+      triggerElement: this.bl, 
+      triggerHook: 'onEnter', 
+      offset: $(this.bl).outerHeight() / 4}).setTween(this.bl).addTo(controller)
+      
+    const sceneTwo = new ScrollMagic.Scene({
+        triggerElement: this.bl, 
+        triggerHook: 'onLeave', 
+        offset: $(this.bl).outerHeight() / 1.5}).setTween(this.bl).addTo(controller)
+  
+    sceneOne.on('enter', () => {
+      $('body').addClass('addColor-blueLight')
+    })
+    sceneOne.on('leave', () => {
+      $('body').removeClass('addColor-blueLight')
+    })
+    sceneTwo.on('enter', () => {
+      $('body').removeClass('addColor-blueLight')
+    })
+    sceneTwo.on('leave', () => {
+      $('body').addClass('addColor-blueLight')
+    })
+  }
 
   animationAdd.act(this.block, $(this.block).outerHeight() / 2)
 }
