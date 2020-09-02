@@ -1172,10 +1172,22 @@ professionalPrinciples.init = function() {
 
 
 const login = {
-  circles: '.login__circles'
+  circles: '.login__circles',
+  slider: '.login__slider'
 }
 
 login.init = function() {
+
+  $(this.slider).slick({
+    arrows: false,
+    dots: false,
+    infinite: true,
+    fade: false,
+    speed: 400,
+    slidesToShow: 1,
+    slidesToScroll: 1
+  })
+
   parallaxAdd.act(this.circles, this.circles + ' span:nth-child(1)', '-200px', '100%')
   parallaxAdd.act(this.circles, this.circles + ' span:nth-child(2)', '-300px', '100%')
 

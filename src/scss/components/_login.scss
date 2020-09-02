@@ -52,6 +52,7 @@
     }
 
     &:nth-child(1) {
+
       @include mobile($screen_md) {
         display: none;
       }
@@ -268,6 +269,39 @@
           @include image('login/circles-2.svg', contain, 0 0);
         }
       }
+    }
+  }
+
+  &__slider {
+    @include block();
+    overflow: hidden;
+    min-height: 100%;
+    margin-left: -30px;
+
+    // @include b();
+
+    &-box {
+      @include inline_block();
+      min-height: 100%;
+      padding-left: 30px;
+    }
+
+    &-cont {
+      @include flex();
+      flex-direction: column;
+  
+      min-height: 100vh;
+
+     @include b();
+    }
+
+    .slick-list {
+      min-height: 100%;
+    }
+
+    .slick-track {
+      position: absolute;
+      min-height: 100%;
     }
   }
 }
