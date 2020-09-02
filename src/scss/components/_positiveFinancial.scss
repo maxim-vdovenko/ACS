@@ -18,10 +18,10 @@
 
   .col {
     width: 50%;
+    flex: none;
 
     @include mobile($screen_md) {
       width: 100%;
-      flex: 1;
     }
 
     &:nth-child(2) {
