@@ -284,6 +284,11 @@
 
       &--button {
         margin-top: 40px;
+
+        .button span {
+          min-width: 0;
+          padding: 0 10px;
+        }
       }
     }
 

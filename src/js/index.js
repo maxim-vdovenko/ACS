@@ -1,5 +1,6 @@
 window.onload = function() {
   loader.init()
+  button.init()
   acs.init()
   slider.init()
   select.init()
@@ -32,7 +33,7 @@ loader.init = function() {
       $(this.bl).removeClass('active')
       this.launch()
     })
-  }, 1000) 
+  }, 0) 
 }
 
 loader.launch = function() {
@@ -1389,4 +1390,44 @@ const shippingAgents = {
 shippingAgents.init = function() {
   animationAdd.act(this.img, $(this.img).outerHeight() / 2)
   animationAdd.act(this.textBox, $(this.textBox).outerHeight())
+}
+
+
+
+const button = {
+  butt: '.buttonCircles',
+  addElement: 'addButtCircles',
+  sizeButt: 20
+}
+
+button.init = function() {
+
+  if ($(this.butt).length) {
+
+    $('body').on('mousemove', this.butt, (e) => {
+      const th = $(e.currentTarget)
+      const x = e.originalEvent.layerX
+      const y = e.originalEvent.layerY
+      const w = th.outerWidth()
+      const h = th.outerHeight()
+
+      if (!th.find('.' + this.addElement).length) {
+        th.prepend('<div class="' + this.addElement + '" style="transform: translate(' + (x - this.sizeButt) + 'px, ' + (y - this.sizeButt) + 'px)"></div>')
+      } else {
+        if ((x > 0 && y > 0) || (x < w && y < h)) {
+          th.find('.' + this.addElement).css({
+            'transform': 'translate('  + (x - this.sizeButt) + 'px, ' + (y - this.sizeButt) + 'px)',
+          })
+        }
+      }
+    })
+
+    $('body').on('mouseleave', this.butt, (e) => {
+      const th = $(e.currentTarget)
+
+      if (th.find('.' + this.addElement).length) {
+        th.find('.' + this.addElement).remove()
+      }
+    })
+  }
 }

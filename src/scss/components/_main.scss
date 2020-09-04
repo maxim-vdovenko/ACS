@@ -287,36 +287,48 @@ a, input, textarea, select, button {
 }
 
 .button {
-  position: relative;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  min-width: 240px;
-  height: 48px;
-  padding: 0 20px;
+  @include inline_block();
   background-color: $color_blue;
   border: none;
   border-radius: 1000px;
-  font-size: 14px;
-  line-height: 28px;
-  letter-spacing: 0.025em;
   text-decoration: none;
-  color: $color_text_white;
   cursor: pointer;
   user-select: none; 
   box-shadow: 0 14px 18px -2px rgba(47, 130, 255, 0.4);
   transition: box-shadow 0.4s;
+  overflow: hidden;
+
+  span {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-width: 240px;
+    height: 48px;
+    padding: 0 20px;
+    font-size: 14px;
+    line-height: 28px;
+    letter-spacing: 0.025em;
+    text-decoration: none;
+    color: $color_text_white;
+  }
 
   &--blueLight {
     background-color: $color_blueLight;
-    color: $color_text_main;
     box-shadow: none !important;
+
+    span {
+      color: $color_text_main;
+    }
   }
 
   &--big {
-    height: 60px;
-    font-size: 18px;
-    line-height: 24px;
+    span {
+      height: 60px;
+      font-size: 18px;
+      line-height: 24px;
+    }
   }
 
   @include desktop($screen_md) {
@@ -328,6 +340,50 @@ a, input, textarea, select, button {
   @include mobile($screen_md) {
     &:active {
       box-shadow: 0 15px 20px 0 rgba(47, 130, 255, 0.6);
+    }
+  }
+}
+
+.addButtCircles {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 1000px;
+
+  @include mobile($screen_md) {
+    display: none !important;
+  }
+}
+
+.buttonCircles {
+  .addButtCircles {
+    background-color: $color_cyan;
+  }
+  &--blueLight {
+    .addButtCircles {
+      background-color: $color_blueLight;
+    }
+  }
+  &--violet {
+    .addButtCircles {
+      background-color: $color_violet;
+    }
+  }
+  &--cyan {
+    .addButtCircles {
+      background-color: $color_cyan;
+    }
+  }
+  &--red {
+    .addButtCircles {
+      background-color: $color_red;
+    }
+  }
+  &--yellow {
+    .addButtCircles {
+      background-color: $color_yellow;
     }
   }
 }
