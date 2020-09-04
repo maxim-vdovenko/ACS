@@ -92,20 +92,16 @@
     }
   }
 
-  &__fon {
-    @include position(absolute, 0, 0, 50%, 100%);
-    @include image('login-fon.jpg', cover, center);
-    z-index: 1;
-
-    @include mobile($screen_md) {
-      display: none;
-    }
-  }
-
   &__text {
     @include block();
     max-width: 520px;
-    margin-top: 132px;
+
+    @include desktop($screen_md) {
+      transition: transform 1.2s, opacity 1.5s;
+      transition-delay: 0.4s;
+      transform: translate(0, 50px);
+      opacity: 0;
+    }
 
     @include mobile($screen_md) {
       display: none;
@@ -125,6 +121,13 @@
     @include block();
     max-width: 340px;
     margin: auto 0 48px 0;
+
+    @include desktop($screen_md) {
+      transition: transform 1.2s, opacity 1.2s;
+      transition-delay: 0.6s;
+      transform: translate(0, 60px);
+      opacity: 0;
+    }
 
     @include mobile($screen_md) {
       display: none;
@@ -267,6 +270,68 @@
         i {
           @include image('login/circles-2.svg', contain, 0 0);
         }
+      }
+    }
+  }
+
+  &__slider {
+    @include position(absolute, 0, 0, 50%, 100%);
+    z-index: 10;
+    overflow: hidden;
+    user-select: none;
+
+    @include mobile($screen_md) {
+      display: none;
+    }
+
+    .slick-list, .slick-track {
+      min-height: 100vh;
+    }
+
+    &-box {
+      @include inline_block();
+      min-height: 100vh;
+
+      &.slick-active {
+
+        .login__text {
+          transform: translate(0, 0);
+          opacity: 1;
+        }
+
+        .login__reviews {
+          transform: translate(0, 0);
+          opacity: 1;
+        }
+      }
+    }
+
+    &-cont {
+      @include flex();
+      flex-direction: column;
+      align-items: flex-end;
+      min-height: 100vh;
+    }
+
+    &-item {
+      @include flex();
+      flex-direction: column;
+      width: 100%;
+      max-width: 927px;
+      min-height: 100vh;
+      padding: 240px $padding_sides 0 $padding_sides;
+
+      @include mobile($screen_xl) {
+        padding-top: 220px;
+      }
+    }
+
+    &-img {
+      @include position(absolute, 0, 108px, 100%, 100%);
+      object-fit: cover;
+
+      @include mobile($screen_xl) {
+        top: 90px;
       }
     }
   }
