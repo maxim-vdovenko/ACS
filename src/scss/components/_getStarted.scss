@@ -110,10 +110,7 @@
 
     &-box {
       @include inline_block();
-
-      @include mobile($screen_md) {
-        vertical-align: top;
-      }
+      vertical-align: top;
 
       img {
         @include block();
