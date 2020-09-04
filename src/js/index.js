@@ -1,5 +1,6 @@
 window.onload = function() {
   loader.init()
+  button.init()
   acs.init()
   slider.init()
   select.init()
@@ -478,8 +479,8 @@ shipping.init = function() {
   parallaxAdd.act(this.serviceDream.circles[2], this.serviceDream.circles[2] + ' span', '-50px', '100%')
 
   $('body').on('mousemove', (e) => {
-    const x = e.originalEvent.clientX / 60
-    const y = e.originalEvent.clientY / 50
+    const x = e.originalEvent.clientX / 120
+    const y = e.originalEvent.clientY / 70
 
     animationCircles(this.discounted.circles)
     animationCircles(this.flexibility.circles)
@@ -507,9 +508,8 @@ shipping.init = function() {
 
 const integrateTools = {
   bl: '.integrateTools',
-  fon: '.integrateTools__fon',
-  reviews: '.reviews',
-  instruments: '.instruments',
+  reviews: '.integrateTools .reviews',
+  instruments: '.integrateTools .instruments',
   button: '.integrateTools__instruments-button',
   circles: [
     '.integrateTools__circles--1',
@@ -525,7 +525,25 @@ const integrateTools = {
 
 integrateTools.init = function() {
   $(this.bl).addClass('active')
-  animationAdd.act(this.fon, 200)
+
+  if ($(this.bl).length) {
+    const controller = new ScrollMagic.Controller()
+    const scene = new ScrollMagic.Scene({
+      triggerElement: this.reviews, 
+      triggerHook: 'onEnter', 
+      offset: $(this.reviews).outerHeight() / 2})
+      .setTween(this.reviews)
+      .addTo(controller)
+  
+    scene.on('enter', () => {
+      $('body').addClass('addColor-blueLight')
+    })
+  
+    scene.on('leave', () => {
+      $('body').removeClass('addColor-blueLight')
+    })
+  }
+
   animationAdd.act(this.reviews, $(this.reviews).outerHeight() / 2)
   animationAdd.act(this.instruments, $(this.instruments).outerHeight() / 2)
   animationAdd.act(this.button, $(this.button).outerHeight() / 2)
@@ -796,14 +814,39 @@ assistedPurchase.init = function() {
 
 const shippingMethods = {
   bl: '.shippingMethods',
-  fon: '.shippingMethods__fon',
   block: '.shippingMethods__block',
   item: '.shippingMethods__item'
 }
 
 shippingMethods.init = function() {
   $(this.bl).addClass('active')
-  animationAdd.act(this.fon, 200)
+
+  if ($(this.bl).length) {
+    const controller = new ScrollMagic.Controller()
+    const sceneOne = new ScrollMagic.Scene({
+      triggerElement: this.bl, 
+      triggerHook: 'onEnter', 
+      offset: $(this.bl).outerHeight() / 4}).setTween(this.bl).addTo(controller)
+      
+    const sceneTwo = new ScrollMagic.Scene({
+        triggerElement: this.bl, 
+        triggerHook: 'onLeave', 
+        offset: $(this.bl).outerHeight() / 1.5}).setTween(this.bl).addTo(controller)
+  
+    sceneOne.on('enter', () => {
+      $('body').addClass('addColor-blueLight')
+    })
+    sceneOne.on('leave', () => {
+      $('body').removeClass('addColor-blueLight')
+    })
+    sceneTwo.on('enter', () => {
+      $('body').removeClass('addColor-blueLight')
+    })
+    sceneTwo.on('leave', () => {
+      $('body').addClass('addColor-blueLight')
+    })
+  }
+
   animationAdd.act(this.block, $(this.block).outerHeight() / 2)
 }
 
@@ -1376,4 +1419,44 @@ const shippingAgents = {
 shippingAgents.init = function() {
   animationAdd.act(this.img, $(this.img).outerHeight() / 2)
   animationAdd.act(this.textBox, $(this.textBox).outerHeight())
+}
+
+
+
+const button = {
+  butt: '.buttonCircles',
+  addElement: 'addButtCircles',
+  sizeButt: 20
+}
+
+button.init = function() {
+
+  if ($(this.butt).length) {
+
+    $('body').on('mousemove', this.butt, (e) => {
+      const th = $(e.currentTarget)
+      const x = e.originalEvent.layerX
+      const y = e.originalEvent.layerY
+      const w = th.outerWidth()
+      const h = th.outerHeight()
+
+      if (!th.find('.' + this.addElement).length) {
+        th.prepend('<div class="' + this.addElement + '" style="transform: translate(' + (x - this.sizeButt) + 'px, ' + (y - this.sizeButt) + 'px)"></div>')
+      } else {
+        if ((x > 0 && y > 0) || (x < w && y < h)) {
+          th.find('.' + this.addElement).css({
+            'transform': 'translate('  + (x - this.sizeButt) + 'px, ' + (y - this.sizeButt) + 'px)',
+          })
+        }
+      }
+    })
+
+    $('body').on('mouseleave', this.butt, (e) => {
+      const th = $(e.currentTarget)
+
+      if (th.find('.' + this.addElement).length) {
+        th.find('.' + this.addElement).remove()
+      }
+    })
+  }
 }

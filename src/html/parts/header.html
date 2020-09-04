@@ -27,8 +27,40 @@
       <div class="col"> 
 
         <ul class="header__login">
-          <li><a class="button button--blueLight" href="login.html">Login</a></li>
-          <li><a class="button" href="get-started.html">Get Started</a></li>
+         
+          @@if (menuIndex === 0) {
+            <li><a class="button button--blueLight buttonCircles" href="login.html"><span>Login</span></a></li>
+            <li><a class="button buttonCircles" href="get-started.html"><span>Get Started</span></a></li>
+          }
+          @@if (menuIndex === 1) {
+            <li><a class="button button--blueLight buttonCircles buttonCircles" href="login.html"><span>Login</span></a></li>
+            <li><a class="button buttonCircles buttonCircles--blueLight" href="get-started.html"><span>Get Started</span></a></li>
+          }
+          @@if (menuIndex === 2) {
+            <li><a class="button button--blueLight buttonCircles buttonCircles" href="login.html"><span>Login</span></a></li>
+            <li><a class="button buttonCircles buttonCircles--blueLight" href="get-started.html"><span>Get Started</span></a></li>
+          }
+          @@if (menuIndex === 3) {
+            <li><a class="button button--blueLight buttonCircles buttonCircles--yellow" href="login.html"><span>Login</span></a></li>
+            <li><a class="button buttonCircles buttonCircles--yellow" href="get-started.html"><span>Get Started</span></a></li>
+          }
+          @@if (menuIndex === 4) {
+            <li><a class="button button--blueLight buttonCircles buttonCircles--violet" href="login.html"><span>Login</span></a></li>
+            <li><a class="button buttonCircles buttonCircles--violet" href="get-started.html"><span>Get Started</span></a></li>
+          }
+          @@if (menuIndex === 5) {
+            <li><a class="button button--blueLight buttonCircles buttonCircles--cyan" href="login.html"><span>Login</span></a></li>
+            <li><a class="button buttonCircles buttonCircles--cyan" href="get-started.html"><span>Get Started</span></a></li>
+          }
+          @@if (menuIndex === 6) {
+            <li><a class="button button--blueLight buttonCircles buttonCircles--red" href="login.html"><span>Login</span></a></li>
+            <li><a class="button buttonCircles buttonCircles--red" href="get-started.html"><span>Get Started</span></a></li>
+          }
+          @@if (menuIndex === 7) {
+            <li><a class="button button--blueLight buttonCircles" href="login.html"><span>Login</span></a></li>
+            <li><a class="button buttonCircles" href="get-started.html"><span>Get Started</span></a></li>
+          }
+
         </ul>
 
         <a class="header__user" href="#"></a>
