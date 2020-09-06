@@ -1369,13 +1369,23 @@ aboutUs.init = function() {
     const y = e.originalEvent.clientY / 50
     const xImg = e.originalEvent.clientX / 300
     const yImg = e.originalEvent.clientY / 300
+    let a = 0
 
     window.requestAnimationFrame(() => {
+
       for (let i = 0; i < $(this.img + ' span').length; i++) {
+
+        if (i === 2 || i === 4) {
+          a = i - 1
+        } else {
+          a = i
+        }
+
         $(this.img + ' span').eq(i).find('i').css({
-          'transform': 'translate3d(0, 0, 0) translate('  + ((i + 1) * xImg) + 'px, ' + ((i + 1) * yImg) + 'px)',
+          'transform': 'translate3d(0, 0, 0) translate('  + ((a + 1) * xImg) + 'px, ' + ((a + 1) * yImg) + 'px)',
         })
       }
+
       for (let i = 0; i < $(this.circles + ' span').length; i++) {
         $(this.circles + ' span').eq(i).find('i').css({
           'transform': 'translate3d(0, 0, 0) translate('  + ((i + 1) * x) + 'px, ' + ((i + 1) * y) + 'px)',

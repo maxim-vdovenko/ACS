@@ -1,7 +1,15 @@
-<svg width="533" height="524" viewBox="0 0 533 524" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M173.232 54.7869L139.032 12.7869C138.132 11.6869 136.432 11.9869 135.932 13.2869L119.532 56.8869C118.632 59.2869 119.032 62.0869 120.732 64.0869L154.332 105.287C155.932 107.287 158.532 108.287 161.132 107.887L213.332 99.2869C215.832 98.8869 218.032 97.0869 218.932 94.6869L235.332 51.0869C235.832 49.7869 234.732 48.3869 233.332 48.6869L180.232 57.3869C177.532 57.7869 174.932 56.7869 173.232 54.7869Z" fill="#98A2F4"/>
-<path d="M233.232 48.5869L180.032 57.2869C177.432 57.6869 174.832 56.6869 173.232 54.6869L139.032 12.6869C138.132 11.5869 138.732 9.98692 140.132 9.78692L193.332 1.08692C195.932 0.686918 198.532 1.68692 200.132 3.68692L234.332 45.6869C235.232 46.7869 234.632 48.3869 233.232 48.5869Z" fill="#9AF4DC"/>
-<path d="M234.832 52.0869C235.732 49.6869 235.332 46.8869 233.632 44.8869L200.132 3.68692C198.532 1.68692 195.932 0.686918 193.332 1.08692L141.132 9.68692C138.632 10.0869 136.432 11.8869 135.532 14.2869L119.532 56.9869C118.632 59.3869 119.032 62.1869 120.732 64.1869" stroke="#171A21" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M157.631 6.98691L196.531 54.6869L217.831 51.1869L178.931 3.48691L157.631 6.98691Z" fill="white"/>
-<path d="M157.631 6.98691L196.531 54.6869L217.831 51.1869L178.931 3.48691L157.631 6.98691Z" fill="white" stroke="#171A21" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="12 12"/>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 22.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 534 523" style="enable-background:new 0 0 534 523;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:none;stroke:#171A21;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+	.st1{fill:none;stroke:#171A21;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:11.93,11.93;}
+	.st2{fill:none;stroke:#171A21;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:11.93,11.93;stroke-dashoffset:5;}
+</style>
+<path class="st0" d="M233.3,173.1c0,0-7.1,0.6-9.1,0.8"/>
+<path class="st1" d="M457,307.2c2-0.6,3.9-1.2,5.8-1.9c92.9-30.9,92.4-80.9-1.1-111.7c-12.9-4.2-26.8-7.9-41.6-11"/>
+<path class="st1" d="M457,307.2"/>
+<path class="st2" d="M212.3,175.1c-32.2,3.8-62.4,10-88.1,18.5c-85.2,28.3-91.8,72.7-20.3,103.6"/>
+<path class="st0" d="M418.7,182.6c0,0-8.3-1.9-10.3-2.2"/>
 </svg>

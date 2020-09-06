@@ -130,6 +130,7 @@
         transform: translate(0, 0) scale(0.7);
         transition-delay: 0s;
         opacity: 0;
+        z-index: 2;
 
         i {
           @include image('about-us/element-1.svg', contain, center);
@@ -139,6 +140,7 @@
         transform: translate(0, 0) scale(0.7);
         transition-delay: 0.1s;
         opacity: 0;
+        z-index: 1;
 
         i {
           @include image('about-us/element-2.svg', contain, center);
@@ -146,56 +148,92 @@
       }
       &:nth-child(3) {
         transform: translate(0, 0) scale(0.7);
-        transition-delay: 0.15s;
+        transition-delay: 0.1s;
         opacity: 0;
+        z-index: 2;
 
         i {
           @include image('about-us/element-3.svg', contain, center);
         }
       }
       &:nth-child(4) {
-        transform: translate(30px, 40px);
+        transform: translate(0, 0) scale(0.7);
         transition-delay: 0.25s;
         opacity: 0;
+        left: -10px;
+        z-index: 1;
+
+        @include mobile($screen_md) {
+          left: 0;
+        }
 
         i {
           @include image('about-us/element-4.svg', contain, center);
         }
       }
       &:nth-child(5) {
-        transform: translate(-30px, -30px);
-        transition-delay: 0.3s;
+        transform: translate(0, 0) scale(0.7);
+        transition-delay: 0.25s;
         opacity: 0;
+        left: -10px;
+        z-index: 2;
+
+        @include mobile($screen_md) {
+          left: 0;
+        }
 
         i {
           @include image('about-us/element-5.svg', contain, center);
         }
       }
       &:nth-child(6) {
-        transform: translate(10px, -30px);
-        transition-delay: 0.3s;
+        transform: translate(25px, 40px);
+        transition-delay: 0.4s;
         opacity: 0;
+        z-index: 2;
 
         i {
           @include image('about-us/element-6.svg', contain, center);
         }
       }
       &:nth-child(7) {
-        transform: translate(40px, 0);
+        transform: translate(-30px, -40px);
         transition-delay: 0.35s;
         opacity: 0;
+        z-index: 2;
 
         i {
           @include image('about-us/element-7.svg', contain, center);
         }
       }
       &:nth-child(8) {
-        transform: translate(20px, -25px);
+        transform: translate(30px, -40px);
         transition-delay: 0.4s;
         opacity: 0;
+        z-index: 2;
 
         i {
           @include image('about-us/element-8.svg', contain, center);
+        }
+      }
+      &:nth-child(9) {
+        transform: translate(35px, 0);
+        transition-delay: 0.45s;
+        opacity: 0;
+        z-index: 2;
+
+        i {
+          @include image('about-us/element-9.svg', contain, center);
+        }
+      }
+      &:nth-child(10) {
+        transform: translate(-30px, 40px);
+        transition-delay: 0.4s;
+        opacity: 0;
+        z-index: 2;
+
+        i {
+          @include image('about-us/element-10.svg', contain, center);
         }
       }
     }
