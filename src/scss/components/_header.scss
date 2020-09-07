@@ -20,13 +20,21 @@
     min-height: inherit;
     align-items: center;
 
+    @include mobile(1550px) {
+      flex-wrap: wrap;
+      align-items: flex-start;
+    }
+
     @include mobile($screen_md) {
       display: flex;
+      align-items: center;
       justify-content: space-between;
     }
   }
 
   .col {
+
+
 
     @include mobile($screen_md) {
       display: flex;
@@ -34,28 +42,53 @@
 
     &:nth-child(1) {
       flex: none;
+
+      @include mobile(1550px) {
+        width: 50%;
+        height: 50px;
+        padding-top: 5px;
+      }
     }
+
     &:nth-child(2) {
       flex: 1;
       align-items: center;
       padding-right: 10px;
 
       @include mobile($screen_xl) {
-        padding: 0 20px;
+        padding: 0 20px 0 40px;
       }
-      @include mobile($screen_lg) {
-        padding: 0 30px 0 60px;
+
+      @include mobile(1550px) {
+        flex: none;
+        align-items: flex-start;
+        width: 100%;
+        order: 3;
+        padding: 0;
       }
+
+      // @include mobile($screen_lg) {
+      //   padding: 0 30px 0 60px;
+      // }
+
       @include mobile($screen_md) {
         display: none;
       }
     }
+
     &:nth-child(3) {
       flex: none;
       align-items: flex-end;
 
+      @include mobile(1550px) {
+        width: 50%;
+        height: 50px;
+        padding-top: 5px;
+      }
+
       @include mobile($screen_md) {
         flex-direction: row;
+        justify-content: flex-end;
       }
     }
   }
@@ -72,7 +105,7 @@
       top: 2px;
     }
 
-    @media (max-width: 1640px) { 
+    @include mobile($screen_lg) {
       width: 48px;
       height: 48px;
       top: auto;
@@ -93,7 +126,11 @@
       margin: 0 18px;
 
       @include mobile($screen_xl) {
-        margin: 0 14px;
+        margin: 0 12px;
+      }
+
+      @include mobile(1550px) {
+        margin: 0 40px 0 0;
       }
 
       a {
