@@ -67,10 +67,6 @@
         padding: 0;
       }
 
-      // @include mobile($screen_lg) {
-      //   padding: 0 30px 0 60px;
-      // }
-
       @include mobile($screen_md) {
         display: none;
       }
@@ -88,7 +84,7 @@
 
       @include mobile($screen_md) {
         flex-direction: row;
-        justify-content: flex-end;
+        justify-content: flex-end; 
       }
     }
   }
