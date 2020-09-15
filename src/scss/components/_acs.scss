@@ -326,7 +326,8 @@
 
     &-video {
       @include position(absolute, 0, 0, 100%, 100%);
-
+      background-color: #4184e0;
+      
       .vjs-tech {
         @include position(absolute, 0, 0, 100%, 100%);
       }
@@ -336,8 +337,6 @@
           display: none;
         } 
       }
-
-      background-color: #4184e0;
     }
 
     &:after {
