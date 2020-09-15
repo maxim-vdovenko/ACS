@@ -171,7 +171,10 @@ const acs = {
   bl: '.acs',
   mask: '.acs__mask',
   circles: '.acs__circles',
-  textBox: '.acs .textBox'
+  textBox: '.acs .textBox',
+  laptop: '.acs__laptop',
+  player: null,
+  buttonPlay: '.acs__play.button-play'
 }
 
 acs.init = function() {
@@ -198,6 +201,44 @@ acs.init = function() {
         })
       }
     })
+  })
+
+  if ($(this.laptop).length) {
+
+    this.videoPlayerInit()
+
+    $('body').on('click', this.buttonPlay, (e) => {
+      if ($(this.buttonPlay).hasClass('button-play--start')) {
+        this.buttonPlayStart()
+        this.player.play()
+      } else {
+        this.buttonPlayStop()
+        this.player.pause()
+        this.player.reset()
+        this.videoPlayerInit()
+      }
+    })
+  }
+}
+
+acs.buttonPlayStart = function() {
+  $(this.buttonPlay).removeClass('button-play--start').addClass('button-play--stop')
+  $(this.laptop).addClass('active')
+}
+
+acs.buttonPlayStop = function() {
+  $(this.buttonPlay).removeClass('button-play--stop').addClass('button-play--start')
+  $(this.laptop).removeClass('active')
+}
+
+acs.videoPlayerInit = function() {
+  this.player = videojs('laptop-video')
+  this.player.src('video/home.mp4')
+  this.player.poster('video/home-poster.png')
+
+  this.player.on('ended', () => {
+    this.videoPlayerInit()
+    this.buttonPlayStop()
   })
 }
 

@@ -389,7 +389,6 @@ a, input, textarea, select, button {
 }
 
 .button-play {
-  @include image('icon-play.svg', 33px auto, left 42px center);
   position: relative;
   width: 108px;
   height: 108px;
@@ -411,6 +410,29 @@ a, input, textarea, select, button {
     &:active {
       box-shadow: 0 15px 20px 0 rgba(47, 130, 255, 0.75);
       transform: scale(1.06);
+    }
+  }
+
+  &:before, &:after {
+    @include position(absolute, 0, 0, 100%, 100%);
+    content: '';
+    opacity: 0;
+  }
+  &:before {
+    @include image('icon-play.svg', 34px auto, left 40px center);
+  }
+  &:after {
+    @include image('icon-stop.svg', 34px auto, center);
+  }
+
+  &--start {
+    &:before {
+      opacity: 1;
+    }
+  }
+  &--stop {
+    &:after {
+      opacity: 1;
     }
   }
 }

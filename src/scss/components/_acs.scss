@@ -36,12 +36,20 @@
     flex: none;
     width: 50%;
 
-    @include mobile($screen_md) {
-      width: 100%;
-    }
-
     &:nth-child(1) {
       order: 1;
+
+      @include mobile($screen_xl) {
+        width: 55%;
+      }
+
+      @include mobile($screen_lg) {
+        width: 60%;
+      }
+
+      @include mobile($screen_md) {
+        width: 100%;
+      }
 
       .textBox {
         margin-top: 20px;
@@ -62,6 +70,18 @@
 
     &:nth-child(2) {
       order: 0;
+
+      @include mobile($screen_xl) {
+        width: 45%;
+      }
+
+      @include mobile($screen_lg) {
+        width: 40%;
+      }
+
+      @include mobile($screen_md) {
+        width: 100%;
+      }
 
       .textBox {
         padding-right: 20px;
@@ -235,37 +255,109 @@
 
   &__laptop {
     @include block();
-    @include image('acs/laptop.svg', contain, 0 0);
     width: 854px;
     height: 585px;
-    margin: 27px 0 0 31px;
+    margin-top: 27px;
+    margin-left: 31px;
+
+    @include mobile($screen_xl) {
+      width: 700px;
+      height: 480px;
+      margin-top: 60px;
+      margin-left: 25px;
+    }
 
     @include mobile($screen_lg) {
-      width: 780px;
-      height: 500px;
+      width: 650px;
+      height: 450px;
+      margin-left: 20px;
     }
 
     @include mobile($screen_md) {
-      width: 100%;
-      max-width: 700px;
-      height: 0;
-      padding-bottom: 48%;
+      width: 700px;
+      height: 480px;
       margin: 50px auto 0 auto;
-      background-position: top;
     }
 
     @include mobile($screen_sm) {
+      top: 70px;
+      width: 100%;
+      height: 0;
       padding-bottom: 68%;
+    }
+
+    &-cont {
+      position: absolute;
+      top: 28px;
+      left: 85px;
+      right: 85px;
+      bottom: 168px;
+      background-color: #fff;
+      overflow: hidden;
+
+      @include mobile($screen_xl) {
+        top: 23px;
+        left: 73px;
+        right: 73px;
+        bottom: 135px;
+      }
+
+      @include mobile($screen_lg) {
+        top: 20px;
+        left: 68px;
+        right: 68px;
+        bottom: 130px;
+      }
+
+      @include mobile($screen_md) {
+        top: 25px;
+        left: 70px;
+        right: 70px;
+        bottom: 138px;
+      }
+
+      @include mobile($screen_sm) {
+        top: 1.5%;
+        left: 10.6%;
+        right: 10.6%;
+        bottom: 25%;
+      }
+    }
+
+    &-video {
+      @include position(absolute, 0, 0, 100%, 100%);
+
+      .vjs-tech {
+        @include position(absolute, 0, 0, 100%, 100%);
+      }
+
+      * {
+        &:not(.vjs-tech) {
+          display: none;
+        } 
+      }
+
+      background-color: #4184e0;
+    }
+
+    &:after {
+      @include position(absolute, 0, 0, 100%, 100%);
+      @include image('acs/laptop.png', contain, 0 0);
+      content: '';
     }
   }
 
   &__play {
     position: absolute;
     top: 189px;
-    left: 61px;
+    left: 69px;
+
+    @include mobile($screen_xl) {
+      left: 48px;
+    }
 
     @include mobile($screen_lg) {
-      left: 74px;
+      left: 35px;
     }
 
     @include mobile($screen_md) {

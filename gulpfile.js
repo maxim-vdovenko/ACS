@@ -41,7 +41,8 @@ gulp.task('js-plugins', () => {
     'node_modules/masonry-layout/dist/masonry.pkgd.min.js',
     'node_modules/gsap/dist/gsap.min.js',
     'node_modules/scrollmagic/scrollmagic/minified/ScrollMagic.min.js',
-    'node_modules/scrollmagic/scrollmagic/minified/plugins/animation.gsap.min.js'
+    'node_modules/scrollmagic/scrollmagic/minified/plugins/animation.gsap.min.js',
+    'node_modules/video.js/dist/video.min.js'
   ])
   .pipe(concat('plugins.min.js'))
   .pipe(gulp.dest(dist + '/js'));
@@ -69,6 +70,12 @@ gulp.task('images', () => {
     .pipe(browserSync.reload({stream: true}));
 });
 
+gulp.task('video', () => {
+  return gulp.src(src + '/video/**/*.*')
+    .pipe(gulp.dest(dist + '/video'))
+    .pipe(browserSync.reload({stream: true}));
+});
+
 gulp.task('clean', () => {
   return del([dist + '/']);
 });
@@ -92,6 +99,6 @@ gulp.task('watch', () => {
 
 gulp.task('default', 
   gulp.series('clean', 
-    gulp.parallel('watch', 'scss', 'js', 'js-plugins', 'html', 'img', 'images', 'browser-sync')
+    gulp.parallel('watch', 'scss', 'js', 'js-plugins', 'html', 'img', 'images', 'video', 'browser-sync')
   )
 ); 
